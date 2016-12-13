@@ -31,12 +31,13 @@
     "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack src/index.js dist/redux.min.js",
     "build:examples": "babel-node examples/buildAll.js",
     "build": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
-    "prepublish": "npm run clean && npm run check:src && npm run build && check-es3-syntax lib/ dist/ --kill --print",
+    "prepublish": "npm run pages",
     "docs:clean": "rimraf _book",
     "docs:prepare": "gitbook install",
     "docs:build": "npm run docs:prepare && gitbook build -g reactjs/redux && cp logo/apple-touch-icon.png _book/gitbook/images/apple-touch-icon-precomposed-152.png && cp logo/favicon.ico _book/gitbook/images",
     "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:reactjs/redux gh-pages --force"
+    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:reactjs/redux gh-pages --force",
+    "pages": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -103,6 +104,8 @@
     "eslint": "^1.10.3",
     "eslint-config-rackt": "^1.1.1",
     "eslint-plugin-react": "^3.16.1",
+    "gh-pages": "^0.12.0",
+    "ghooks": "^1.3.2",
     "gitbook-cli": "^2.3.0",
     "glob": "^6.0.4",
     "jest": "^15.1.1",
@@ -128,5 +131,10 @@
   },
   "jest": {
     "testRegex": "(/test/.*\\.spec.js)$"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run pages"
+    }
   }
 }

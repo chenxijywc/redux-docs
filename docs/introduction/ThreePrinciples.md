@@ -2,7 +2,7 @@
 
 Redux can be described in three fundamental principles:
 
-### Single source of truth
+## Single source of truth
 
 **The [state](../Glossary.md#state) of your whole application is stored in an object tree within a single [store](../Glossary.md#store).**
 
@@ -28,7 +28,7 @@ console.log(store.getState())
 */
 ```
 
-### State is read-only
+## State is read-only
 
 **The only way to change the state is to emit an [action](../Glossary.md#action), an object describing what happened.**
 
@@ -46,7 +46,7 @@ store.dispatch({
 })
 ```
 
-### Changes are made with pure functions
+## Changes are made with pure functions
 
 **To specify how the state tree is transformed by actions, you write pure [reducers](../Glossary.md#reducer).**
 
