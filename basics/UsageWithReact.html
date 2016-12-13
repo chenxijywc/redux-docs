@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Usage with React - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item chapter-item-current"><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../basics/index.html" class="breadcrumb-item">basics</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../basics/UsageWithReact.html" class="breadcrumb-item">Usage with React</a></div>
+    <h1 class="article-title">Usage with React</h1>
+    <div class="article">
+      <p>From the very beginning, we need to stress that Redux has no relation to React. You can write Redux apps with React, Angular, Ember, jQuery, or vanilla JavaScript.</p>
+<p>That said, Redux works especially well with libraries like <a href="http://facebook.github.io/react/">React</a> and <a href="https://github.com/dekujs/deku">Deku</a> because they let you describe UI as a function of state, and Redux emits state updates in response to actions.</p>
+<p>We will use React to build our simple todo app.</p>
+<h2 id="installing-react-redux">Installing React Redux <a class="markdownIt-Anchor" href="#installing-react-redux">#</a></h2>
+<p><a href="https://github.com/reactjs/react-redux">React bindings</a> are not included in Redux by default. You need to install them explicitly:</p>
+<pre class="hljs"><code>npm install --save react-redux
+</code></pre>
+<p>If you don't use npm, you may grab the latest UMD build from unpkg (either a <a href="https://unpkg.com/react-redux@latest/dist/react-redux.js">development</a> or a <a href="https://unpkg.com/react-redux@latest/dist/react-redux.min.js">production</a> build). The UMD build exports a global called <code>window.ReactRedux</code> if you add it to your page via a <code>&lt;script&gt;</code> tag.</p>
+<h2 id="presentational-and-container-components">Presentational and Container Components <a class="markdownIt-Anchor" href="#presentational-and-container-components">#</a></h2>
+<p>React bindings for Redux embrace the idea of <strong>separating presentational and container components</strong>. If you're not familiar with these terms, <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">read about them first</a>, and then come back. They are important, so we'll wait!</p>
+<p>Finished reading the article? Let's recount their differences:</p>
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th scope="col" style="text-align:left">Presentational Components</th>
+            <th scope="col" style="text-align:left">Container Components</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <th scope="row" style="text-align:right">Purpose</th>
+          <td>How things look (markup, styles)</td>
+          <td>How things work (data fetching, state updates)</td>
+        </tr>
+        <tr>
+          <th scope="row" style="text-align:right">Aware of Redux</th>
+          <td>No</th>
+          <td>Yes</th>
+        </tr>
+        <tr>
+          <th scope="row" style="text-align:right">To read data</th>
+          <td>Read data from props</td>
+          <td>Subscribe to Redux state</td>
+        </tr>
+        <tr>
+          <th scope="row" style="text-align:right">To change data</th>
+          <td>Invoke callbacks from props</td>
+          <td>Dispatch Redux actions</td>
+        </tr>
+        <tr>
+          <th scope="row" style="text-align:right">Are written</th>
+          <td>By hand</td>
+          <td>Usually generated by React Redux</td>
+        </tr>
+    </tbody>
+</table>
+<p>Most of the components we'll write will be presentational, but we'll need to generate a few container components to connect them to the Redux store.</p>
+<p>Technically you could write the container components by hand using <a href="../api/Store.md#subscribe"><code>store.subscribe()</code></a>. We don't advise you to do this because React Redux makes many performance optimizations that are hard to do by hand. For this reason, rather than write container components, we will generate them using the <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options"><code>connect()</code></a> function provided by React Redux, as you will see below.</p>
+<h2 id="designing-component-hierarchy">Designing Component Hierarchy <a class="markdownIt-Anchor" href="#designing-component-hierarchy">#</a></h2>
+<p>Remember how we <a href="Reducers.md">designed the shape of the root state object</a>? It's time we design the UI hierarchy to match it. This is not a Redux-specific task. <a href="https://facebook.github.io/react/docs/thinking-in-react.html">Thinking in React</a> is a great tutorial that explains the process.</p>
+<p>Our design brief is simple. We want to show a list of todo items. On click, a todo item is crossed out as completed. We want to show a field where the user may add a new todo. In the footer, we want to show a toggle to show all, only completed, or only active todos.</p>
+<h3 id="presentational-components">Presentational Components <a class="markdownIt-Anchor" href="#presentational-components">#</a></h3>
+<p>I see the following presentational components and their props emerge from this brief:</p>
+<ul>
+<li><strong><code>TodoList</code></strong> is a list showing visible todos.
+<ul>
+<li><code>todos: Array</code> is an array of todo items with <code>{ id, text, completed }</code> shape.</li>
+<li><code>onTodoClick(id: number)</code> is a callback to invoke when a todo is clicked.</li>
+</ul>
+</li>
+<li><strong><code>Todo</code></strong> is a single todo item.
+<ul>
+<li><code>text: string</code> is the text to show.</li>
+<li><code>completed: boolean</code> is whether todo should appear crossed out.</li>
+<li><code>onClick()</code> is a callback to invoke when a todo is clicked.</li>
+</ul>
+</li>
+<li><strong><code>Link</code></strong> is a link with a callback.
+<ul>
+<li><code>onClick()</code> is a callback to invoke when link is clicked.</li>
+</ul>
+</li>
+<li><strong><code>Footer</code></strong> is where we let the user change currently visible todos.</li>
+<li><strong><code>App</code></strong> is the root component that renders everything else.</li>
+</ul>
+<p>They describe the <em>look</em> but don't know <em>where</em> the data comes from, or <em>how</em> to change it. They only render what's given to them. If you migrate from Redux to something else, you'll be able to keep all these components exactly the same. They have no dependency on Redux.</p>
+<h3 id="container-components">Container Components <a class="markdownIt-Anchor" href="#container-components">#</a></h3>
+<p>We will also need some container components to connect the presentational components to Redux. For example, the presentational <code>TodoList</code> component needs a container like <code>VisibleTodoList</code> that subscribes to the Redux store and knows how to apply the current visibility filter. To change the visibility filter, we will provide a <code>FilterLink</code> container component that renders a <code>Link</code> that dispatches an appropriate action on click:</p>
+<ul>
+<li><strong><code>VisibleTodoList</code></strong> filters the todos according to the current visibility filter and renders a <code>TodoList</code>.</li>
+<li><strong><code>FilterLink</code></strong> gets the current visibility filter and renders a <code>Link</code>.
+<ul>
+<li><code>filter: string</code> is the visibility filter it represents.</li>
+</ul>
+</li>
+</ul>
+<h3 id="other-components">Other Components <a class="markdownIt-Anchor" href="#other-components">#</a></h3>
+<p>Sometimes it's hard to tell if some component should be a presentational component or a container. For example, sometimes form and function are really coupled together, such as in case of this tiny component:</p>
+<ul>
+<li><strong><code>AddTodo</code></strong> is an input field with an “Add” button</li>
+</ul>
+<p>Technically we could split it into two components but it might be too early at this stage. It's fine to mix presentation and logic in a component that is very small. As it grows, it will be more obvious how to split it, so we'll leave it mixed.</p>
+<h2 id="implementing-components">Implementing Components <a class="markdownIt-Anchor" href="#implementing-components">#</a></h2>
+<p>Let's write the components! We begin with the presentational components so we don't need to think about binding to Redux yet.</p>
+<h3 id="presentational-components-2">Presentational Components <a class="markdownIt-Anchor" href="#presentational-components-2">#</a></h3>
+<p>These are all normal React components, so we won't examine them in detail. We write functional stateless components unless we need to use local state or the lifecycle methods. This doesn't mean that presentational components <em>have to</em> be functions—it's just easier to define them this way. If and when you need to add local state, lifecycle methods, or performance optimizations, you can convert them to classes.</p>
+<h4 id="componentstodojs"><code>components/Todo.js</code> <a class="markdownIt-Anchor" href="#componentstodojs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React, { PropTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-keyword">const</span> Todo = <span class="hljs-function">(<span class="hljs-params">{ onClick, completed, text }</span>) =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>
+    <span class="hljs-attr">onClick</span>=<span class="hljs-string">{onClick}</span>
+    <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span>
+      <span class="hljs-attr">textDecoration:</span> <span class="hljs-attr">completed</span> ? '<span class="hljs-attr">line-through</span>' <span class="hljs-attr">:</span> '<span class="hljs-attr">none</span>'
+    }}
+  &gt;</span>
+    {text}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span>
+)
+
+Todo.propTypes = {
+  <span class="hljs-attr">onClick</span>: PropTypes.func.isRequired,
+  <span class="hljs-attr">completed</span>: PropTypes.bool.isRequired,
+  <span class="hljs-attr">text</span>: PropTypes.string.isRequired
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Todo
+</code></pre>
+<h4 id="componentstodolistjs"><code>components/TodoList.js</code> <a class="markdownIt-Anchor" href="#componentstodolistjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React, { PropTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> Todo <span class="hljs-keyword">from</span> <span class="hljs-string">'./Todo'</span>
+
+<span class="hljs-keyword">const</span> TodoList = <span class="hljs-function">(<span class="hljs-params">{ todos, onTodoClick }</span>) =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    {todos.map(todo =&gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">Todo</span>
+        <span class="hljs-attr">key</span>=<span class="hljs-string">{todo.id}</span>
+        {<span class="hljs-attr">...todo</span>}
+        <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> onTodoClick(todo.id)}
+      /&gt;
+    )}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+)
+
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    completed: PropTypes.bool.isRequired,
+    text: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+  onTodoClick: PropTypes.func.isRequired
+}
+
+export default TodoList
+</span></code></pre>
+<h4 id="componentslinkjs"><code>components/Link.js</code> <a class="markdownIt-Anchor" href="#componentslinkjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React, { PropTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-keyword">const</span> Link = <span class="hljs-function">(<span class="hljs-params">{ active, children, onClick }</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (active) {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>
+  }
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>
+       <span class="hljs-attr">onClick</span>=<span class="hljs-string">{e</span> =&gt;</span> {
+         e.preventDefault()
+         onClick()
+       }}
+    &gt;
+      {children}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span>
+  )
+}
+
+Link.propTypes = {
+  <span class="hljs-attr">active</span>: PropTypes.bool.isRequired,
+  <span class="hljs-attr">children</span>: PropTypes.node.isRequired,
+  <span class="hljs-attr">onClick</span>: PropTypes.func.isRequired
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Link
+</code></pre>
+<h4 id="componentsfooterjs"><code>components/Footer.js</code> <a class="markdownIt-Anchor" href="#componentsfooterjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> FilterLink <span class="hljs-keyword">from</span> <span class="hljs-string">'../containers/FilterLink'</span>
+
+<span class="hljs-keyword">const</span> Footer = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    Show:
+    {" "}
+    <span class="hljs-tag">&lt;<span class="hljs-name">FilterLink</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">"SHOW_ALL"</span>&gt;</span>
+      All
+    <span class="hljs-tag">&lt;/<span class="hljs-name">FilterLink</span>&gt;</span>
+    {", "}
+    <span class="hljs-tag">&lt;<span class="hljs-name">FilterLink</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">"SHOW_ACTIVE"</span>&gt;</span>
+      Active
+    <span class="hljs-tag">&lt;/<span class="hljs-name">FilterLink</span>&gt;</span>
+    {", "}
+    <span class="hljs-tag">&lt;<span class="hljs-name">FilterLink</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">"SHOW_COMPLETED"</span>&gt;</span>
+      Completed
+    <span class="hljs-tag">&lt;/<span class="hljs-name">FilterLink</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Footer
+</code></pre>
+<h4 id="componentsappjs"><code>components/App.js</code> <a class="markdownIt-Anchor" href="#componentsappjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> Footer <span class="hljs-keyword">from</span> <span class="hljs-string">'./Footer'</span>
+<span class="hljs-keyword">import</span> AddTodo <span class="hljs-keyword">from</span> <span class="hljs-string">'../containers/AddTodo'</span>
+<span class="hljs-keyword">import</span> VisibleTodoList <span class="hljs-keyword">from</span> <span class="hljs-string">'../containers/VisibleTodoList'</span>
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">AddTodo</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">VisibleTodoList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Footer</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App
+</code></pre>
+<h3 id="container-components-2">Container Components <a class="markdownIt-Anchor" href="#container-components-2">#</a></h3>
+<p>Now it's time to hook up those presentational components to Redux by creating some containers. Technically, a container component is just a React component that uses <a href="../api/Store.md#subscribe"><code>store.subscribe()</code></a> to read a part of the Redux state tree and supply props to a presentational component it renders. You could write a container component by hand, but we suggest instead generating container components with the React Redux library's <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options"><code>connect()</code></a> function, which provides many useful optimizations to prevent unnecessary re-renders. (One result of this is that you shouldn't have to worry about the <a href="https://facebook.github.io/react/docs/advanced-performance.html">React performance suggestion</a> of implementing <code>shouldComponentUpdate</code> yourself.)</p>
+<p>To use <code>connect()</code>, you need to define a special function called <code>mapStateToProps</code> that tells how to transform the current Redux store state into the props you want to pass to a presentational component you are wrapping. For example, <code>VisibleTodoList</code> needs to calculate <code>todos</code> to pass to the <code>TodoList</code>, so we define a function that filters the <code>state.todos</code> according to the <code>state.visibilityFilter</code>, and use it in its <code>mapStateToProps</code>:</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> getVisibleTodos = <span class="hljs-function">(<span class="hljs-params">todos, filter</span>) =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (filter) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SHOW_ALL'</span>:
+      <span class="hljs-keyword">return</span> todos
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SHOW_COMPLETED'</span>:
+      <span class="hljs-keyword">return</span> todos.filter(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> t.completed)
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SHOW_ACTIVE'</span>:
+      <span class="hljs-keyword">return</span> todos.filter(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> !t.completed)
+  }
+}
+
+<span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">todos</span>: getVisibleTodos(state.todos, state.visibilityFilter)
+  }
+}
+</code></pre>
+<p>In addition to reading the state, container components can dispatch actions. In a similar fashion, you can define a function called <code>mapDispatchToProps()</code> that receives the <a href="../api/Store.md#dispatch"><code>dispatch()</code></a> method and returns callback props that you want to inject into the presentational component. For example, we want the <code>VisibleTodoList</code> to inject a prop called <code>onTodoClick</code> into the <code>TodoList</code> component, and we want <code>onTodoClick</code> to dispatch a <code>TOGGLE_TODO</code> action:</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> mapDispatchToProps = <span class="hljs-function">(<span class="hljs-params">dispatch</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">onTodoClick</span>: <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> {
+      dispatch(toggleTodo(id))
+    }
+  }
+}
+</code></pre>
+<p>Finally, we create the <code>VisibleTodoList</code> by calling <code>connect()</code> and passing these two functions:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+
+<span class="hljs-keyword">const</span> VisibleTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> VisibleTodoList
+</code></pre>
+<p>These are the basics of the React Redux API, but there are a few shortcuts and power options so we encourage you to check out <a href="https://github.com/reactjs/react-redux">its documentation</a> in detail. In case you are worried about <code>mapStateToProps</code> creating new objects too often, you might want to learn about <a href="../recipes/ComputingDerivedData.md">computing derived data</a> with <a href="https://github.com/reactjs/reselect">reselect</a>.</p>
+<p>Find the rest of the container components defined below:</p>
+<h4 id="containersfilterlinkjs"><code>containers/FilterLink.js</code> <a class="markdownIt-Anchor" href="#containersfilterlinkjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> { setVisibilityFilter } <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions'</span>
+<span class="hljs-keyword">import</span> Link <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/Link'</span>
+
+<span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state, ownProps</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">active</span>: ownProps.filter === state.visibilityFilter
+  }
+}
+
+<span class="hljs-keyword">const</span> mapDispatchToProps = <span class="hljs-function">(<span class="hljs-params">dispatch, ownProps</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">onClick</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      dispatch(setVisibilityFilter(ownProps.filter))
+    }
+  }
+}
+
+<span class="hljs-keyword">const</span> FilterLink = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Link)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> FilterLink
+</code></pre>
+<h4 id="containersvisibletodolistjs"><code>containers/VisibleTodoList.js</code> <a class="markdownIt-Anchor" href="#containersvisibletodolistjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> { toggleTodo } <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions'</span>
+<span class="hljs-keyword">import</span> TodoList <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/TodoList'</span>
+
+<span class="hljs-keyword">const</span> getVisibleTodos = <span class="hljs-function">(<span class="hljs-params">todos, filter</span>) =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (filter) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SHOW_ALL'</span>:
+      <span class="hljs-keyword">return</span> todos
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SHOW_COMPLETED'</span>:
+      <span class="hljs-keyword">return</span> todos.filter(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> t.completed)
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SHOW_ACTIVE'</span>:
+      <span class="hljs-keyword">return</span> todos.filter(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> !t.completed)
+  }
+}
+
+<span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">todos</span>: getVisibleTodos(state.todos, state.visibilityFilter)
+  }
+}
+
+<span class="hljs-keyword">const</span> mapDispatchToProps = <span class="hljs-function">(<span class="hljs-params">dispatch</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">onTodoClick</span>: <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> {
+      dispatch(toggleTodo(id))
+    }
+  }
+}
+
+<span class="hljs-keyword">const</span> VisibleTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> VisibleTodoList
+</code></pre>
+<h3 id="other-components-2">Other Components <a class="markdownIt-Anchor" href="#other-components-2">#</a></h3>
+<h4 id="containersaddtodojs"><code>containers/AddTodo.js</code> <a class="markdownIt-Anchor" href="#containersaddtodojs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> { addTodo } <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions'</span>
+
+<span class="hljs-keyword">let</span> AddTodo = <span class="hljs-function">(<span class="hljs-params">{ dispatch }</span>) =&gt;</span> {
+  <span class="hljs-keyword">let</span> input
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{e</span> =&gt;</span> {
+        e.preventDefault()
+        if (!input.value.trim()) {
+          return
+        }
+        dispatch(addTodo(input.value))
+        input.value = ''
+      }}&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">{node</span> =&gt;</span> {
+          input = node
+        }} /&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>
+          Add Todo
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  )
+}
+AddTodo = connect()(AddTodo)
+
+export default AddTodo
+</span></code></pre>
+<h2 id="passing-the-store">Passing the Store <a class="markdownIt-Anchor" href="#passing-the-store">#</a></h2>
+<p>All container components need access to the Redux store so they can subscribe to it. One option would be to pass it as a prop to every container component. However it gets tedious, as you have to wire <code>store</code> even through presentational components just because they happen to render a container deep in the component tree.</p>
+<p>The option we recommend is to use a special React Redux component called <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#provider-store"><code>&lt;Provider&gt;</code></a> to <a href="https://facebook.github.io/react/docs/context.html">magically</a> make the store available to all container components in the application without passing it explicitly. You only need to use it once when you render the root component:</p>
+<h4 id="indexjs"><code>index.js</code> <a class="markdownIt-Anchor" href="#indexjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { render } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>
+<span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+<span class="hljs-keyword">import</span> todoApp <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducers'</span>
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./components/App'</span>
+
+<span class="hljs-keyword">let</span> store = createStore(todoApp)
+
+render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+)
+</code></pre>
+<h2 id="next-steps">Next Steps <a class="markdownIt-Anchor" href="#next-steps">#</a></h2>
+<p>Read the <a href="ExampleTodoList.md">complete source code for this tutorial</a> to better internalize the knowledge you have gained. Then, head straight to the <a href="../advanced/README.md">advanced tutorial</a> to learn how to handle network requests and routing!</p>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../basics/DataFlow.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../basics/ExampleTodoList.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'basics/UsageWithReact.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#installing-react-redux\">Installing React Redux</a></li>\n<li><a href=\"#presentational-and-container-components\">Presentational and Container Components</a></li>\n<li><a href=\"#designing-component-hierarchy\">Designing Component Hierarchy</a>\n<ul>\n<li><a href=\"#presentational-components\">Presentational Components</a></li>\n<li><a href=\"#container-components\">Container Components</a></li>\n<li><a href=\"#other-components\">Other Components</a></li>\n</ul>\n</li>\n<li><a href=\"#implementing-components\">Implementing Components</a>\n<ul>\n<li><a href=\"#presentational-components-2\">Presentational Components</a></li>\n<li><a href=\"#container-components-2\">Container Components</a></li>\n<li><a href=\"#other-components-2\">Other Components</a></li>\n</ul>\n</li>\n<li><a href=\"#passing-the-store\">Passing the Store</a></li>\n<li><a href=\"#next-steps\">Next Steps</a></li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

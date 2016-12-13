@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Middleware - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item chapter-item-current"><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/index.html" class="breadcrumb-item">advanced</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/Middleware.html" class="breadcrumb-item">Middleware</a></div>
+    <h1 class="article-title">Middleware</h1>
+    <div class="article">
+      <p>You've seen middleware in action in the <a href="../advanced/AsyncActions.md">Async Actions</a> example. If you've used server-side libraries like <a href="http://expressjs.com/">Express</a> and <a href="http://koajs.com/">Koa</a>, you were also probably already familiar with the concept of <em>middleware</em>. In these frameworks, middleware is some code you can put between the framework receiving a request, and the framework generating a response. For example, Express or Koa middleware may add CORS headers, logging, compression, and more. The best feature of middleware is that it's composable in a chain. You can use multiple independent third-party middleware in a single project.</p>
+<p>Redux middleware solves different problems than Express or Koa middleware, but in a conceptually similar way. <strong>It provides a third-party extension point between dispatching an action, and the moment it reaches the reducer.</strong> People use Redux middleware for logging, crash reporting, talking to an asynchronous API, routing, and more.</p>
+<p>This article is divided into an in-depth intro to help you grok the concept, and <a href="#seven-examples">a few practical examples</a> to show the power of middleware at the very end. You may find it helpful to switch back and forth between them, as you flip between feeling bored and inspired.</p>
+<h2 id="understanding-middleware">Understanding Middleware <a class="markdownIt-Anchor" href="#understanding-middleware">#</a></h2>
+<p>While middleware can be used for a variety of things, including asynchronous API calls, it's really important that you understand where it comes from. We'll guide you through the thought process leading to middleware, by using logging and crash reporting as examples.</p>
+<h3 id="problem-logging">Problem: Logging <a class="markdownIt-Anchor" href="#problem-logging">#</a></h3>
+<p>One of the benefits of Redux is that it makes state changes predictable and transparent. Every time an action is dispatched, the new state is computed and saved. The state cannot change by itself, it can only change as a consequence of a specific action.</p>
+<p>Wouldn't it be nice if we logged every action that happens in the app, together with the state computed after it? When something goes wrong, we can look back at our log, and figure out which action corrupted the state.</p>
+<img src='http://i.imgur.com/BjGBlES.png' width='70%'>
+<p>How do we approach this with Redux?</p>
+<h3 id="attempt-1-logging-manually">Attempt #1: Logging Manually <a class="markdownIt-Anchor" href="#attempt-1-logging-manually">#</a></h3>
+<p>The most naïve solution is just to log the action and the next state yourself every time you call <a href="../api/Store.md#dispatch"><code>store.dispatch(action)</code></a>. It's not really a solution, but just a first step towards understanding the problem.</p>
+<blockquote>
+<h5 id="note">Note <a class="markdownIt-Anchor" href="#note">#</a></h5>
+</blockquote>
+<blockquote>
+<p>If you're using <a href="https://github.com/gaearon/react-redux">react-redux</a> or similar bindings, you likely won't have direct access to the store instance in your components. For the next few paragraphs, just assume you pass the store down explicitly.</p>
+</blockquote>
+<p>Say, you call this when creating a todo:</p>
+<pre class="hljs"><code>store.dispatch(addTodo(<span class="hljs-string">'Use Redux'</span>))
+</code></pre>
+<p>To log the action and state, you can change it to something like this:</p>
+<pre class="hljs"><code><span class="hljs-keyword">let</span> action = addTodo(<span class="hljs-string">'Use Redux'</span>)
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dispatching'</span>, action)
+store.dispatch(action)
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next state'</span>, store.getState())
+</code></pre>
+<p>This produces the desired effect, but you wouldn't want to do it every time.</p>
+<h3 id="attempt-2-wrapping-dispatch">Attempt #2: Wrapping Dispatch <a class="markdownIt-Anchor" href="#attempt-2-wrapping-dispatch">#</a></h3>
+<p>You can extract logging into a function:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatchAndLog</span>(<span class="hljs-params">store, action</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dispatching'</span>, action)
+  store.dispatch(action)
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next state'</span>, store.getState())
+}
+</code></pre>
+<p>You can then use it everywhere instead of <code>store.dispatch()</code>:</p>
+<pre class="hljs"><code>dispatchAndLog(store, addTodo(<span class="hljs-string">'Use Redux'</span>))
+</code></pre>
+<p>We could end this here, but it's not very convenient to import a special function every time.</p>
+<h3 id="attempt-3-monkeypatching-dispatch">Attempt #3: Monkeypatching Dispatch <a class="markdownIt-Anchor" href="#attempt-3-monkeypatching-dispatch">#</a></h3>
+<p>What if we just replace the <code>dispatch</code> function on the store instance? The Redux store is just a plain object with <a href="../api/Store.md">a few methods</a>, and we're writing JavaScript, so we can just monkeypatch the <code>dispatch</code> implementation:</p>
+<pre class="hljs"><code><span class="hljs-keyword">let</span> next = store.dispatch
+store.dispatch = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatchAndLog</span>(<span class="hljs-params">action</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dispatching'</span>, action)
+  <span class="hljs-keyword">let</span> result = next(action)
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next state'</span>, store.getState())
+  <span class="hljs-keyword">return</span> result
+}
+</code></pre>
+<p>This is already closer to what we want!  No matter where we dispatch an action, it is guaranteed to be logged. Monkeypatching never feels right, but we can live with this for now.</p>
+<h3 id="problem-crash-reporting">Problem: Crash Reporting <a class="markdownIt-Anchor" href="#problem-crash-reporting">#</a></h3>
+<p>What if we want to apply <strong>more than one</strong> such transformation to <code>dispatch</code>?</p>
+<p>A different useful transformation that comes to my mind is reporting JavaScript errors in production. The global <code>window.onerror</code> event is not reliable because it doesn't provide stack information in some older browsers, which is crucial to understand why an error is happening.</p>
+<p>Wouldn't it be useful if, any time an error is thrown as a result of dispatching an action, we would send it to a crash reporting service like <a href="https://getsentry.com/welcome/">Sentry</a> with the stack trace, the action that caused the error, and the current state? This way it's much easier to reproduce the error in development.</p>
+<p>However, it is important that we keep logging and crash reporting separate. Ideally we want them to be different modules, potentially in different packages. Otherwise we can't have an ecosystem of such utilities. (Hint: we're slowly getting to what middleware is!)</p>
+<p>If logging and crash reporting are separate utilities, they might look like this:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">patchStoreToAddLogging</span>(<span class="hljs-params">store</span>) </span>{
+  <span class="hljs-keyword">let</span> next = store.dispatch
+  store.dispatch = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatchAndLog</span>(<span class="hljs-params">action</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dispatching'</span>, action)
+    <span class="hljs-keyword">let</span> result = next(action)
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next state'</span>, store.getState())
+    <span class="hljs-keyword">return</span> result
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">patchStoreToAddCrashReporting</span>(<span class="hljs-params">store</span>) </span>{
+  <span class="hljs-keyword">let</span> next = store.dispatch
+  store.dispatch = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatchAndReportErrors</span>(<span class="hljs-params">action</span>) </span>{
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">return</span> next(action)
+    } <span class="hljs-keyword">catch</span> (err) {
+      <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Caught an exception!'</span>, err)
+      Raven.captureException(err, {
+        <span class="hljs-attr">extra</span>: {
+          action,
+          <span class="hljs-attr">state</span>: store.getState()
+        }
+      })
+      <span class="hljs-keyword">throw</span> err
+    }
+  }
+}
+</code></pre>
+<p>If these functions are published as separate modules, we can later use them to patch our store:</p>
+<pre class="hljs"><code>patchStoreToAddLogging(store)
+patchStoreToAddCrashReporting(store)
+</code></pre>
+<p>Still, this isn't nice.</p>
+<h3 id="attempt-4-hiding-monkeypatching">Attempt #4: Hiding Monkeypatching <a class="markdownIt-Anchor" href="#attempt-4-hiding-monkeypatching">#</a></h3>
+<p>Monkeypatching is a hack. “Replace any method you like”, what kind of API is that? Let's figure out the essence of it instead. Previously, our functions replaced <code>store.dispatch</code>. What if they <em>returned</em> the new <code>dispatch</code> function instead?</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logger</span>(<span class="hljs-params">store</span>) </span>{
+  <span class="hljs-keyword">let</span> next = store.dispatch
+
+  <span class="hljs-comment">// Previously:</span>
+  <span class="hljs-comment">// store.dispatch = function dispatchAndLog(action) {</span>
+
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatchAndLog</span>(<span class="hljs-params">action</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dispatching'</span>, action)
+    <span class="hljs-keyword">let</span> result = next(action)
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next state'</span>, store.getState())
+    <span class="hljs-keyword">return</span> result
+  }
+}
+</code></pre>
+<p>We could provide a helper inside Redux that would apply the actual monkeypatching as an implementation detail:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">applyMiddlewareByMonkeypatching</span>(<span class="hljs-params">store, middlewares</span>) </span>{
+  middlewares = middlewares.slice()
+  middlewares.reverse()
+
+  <span class="hljs-comment">// Transform dispatch function with each middleware.</span>
+  middlewares.forEach(<span class="hljs-function"><span class="hljs-params">middleware</span> =&gt;</span>
+    store.dispatch = middleware(store)
+  )
+}
+</code></pre>
+<p>We could use it to apply multiple middleware like this:</p>
+<pre class="hljs"><code>applyMiddlewareByMonkeypatching(store, [ logger, crashReporter ])
+</code></pre>
+<p>However, it is still monkeypatching.<br>
+The fact that we hide it inside the library doesn't alter this fact.</p>
+<h3 id="attempt-5-removing-monkeypatching">Attempt #5: Removing Monkeypatching <a class="markdownIt-Anchor" href="#attempt-5-removing-monkeypatching">#</a></h3>
+<p>Why do we even overwrite <code>dispatch</code>? Of course, to be able to call it later, but there's also another reason: so that every middleware can access (and call) the previously wrapped <code>store.dispatch</code>:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logger</span>(<span class="hljs-params">store</span>) </span>{
+  <span class="hljs-comment">// Must point to the function returned by the previous middleware:</span>
+  <span class="hljs-keyword">let</span> next = store.dispatch
+
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatchAndLog</span>(<span class="hljs-params">action</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dispatching'</span>, action)
+    <span class="hljs-keyword">let</span> result = next(action)
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next state'</span>, store.getState())
+    <span class="hljs-keyword">return</span> result
+  }
+}
+</code></pre>
+<p>It is essential to chaining middleware!</p>
+<p>If <code>applyMiddlewareByMonkeypatching</code> doesn't assign <code>store.dispatch</code> immediately after processing the first middleware, <code>store.dispatch</code> will keep pointing to the original <code>dispatch</code> function. Then the second middleware will also be bound to the original <code>dispatch</code> function.</p>
+<p>But there's also a different way to enable chaining. The middleware could accept the <code>next()</code> dispatch function as a parameter instead of reading it from the <code>store</code> instance.</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logger</span>(<span class="hljs-params">store</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wrapDispatchToAddLogging</span>(<span class="hljs-params">next</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatchAndLog</span>(<span class="hljs-params">action</span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dispatching'</span>, action)
+      <span class="hljs-keyword">let</span> result = next(action)
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next state'</span>, store.getState())
+      <span class="hljs-keyword">return</span> result
+    }
+  }
+}
+</code></pre>
+<p>It's a <a href="http://knowyourmeme.com/memes/we-need-to-go-deeper">“we need to go deeper”</a> kind of moment, so it might take a while for this to make sense. The function cascade feels intimidating. ES6 arrow functions make this <a href="https://en.wikipedia.org/wiki/Currying">currying</a> easier on eyes:</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> logger = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dispatching'</span>, action)
+  <span class="hljs-keyword">let</span> result = next(action)
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next state'</span>, store.getState())
+  <span class="hljs-keyword">return</span> result
+}
+
+<span class="hljs-keyword">const</span> crashReporter = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">return</span> next(action)
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Caught an exception!'</span>, err)
+    Raven.captureException(err, {
+      <span class="hljs-attr">extra</span>: {
+        action,
+        <span class="hljs-attr">state</span>: store.getState()
+      }
+    })
+    <span class="hljs-keyword">throw</span> err
+  }
+}
+</code></pre>
+<p><strong>This is exactly what Redux middleware looks like.</strong></p>
+<p>Now middleware takes the <code>next()</code> dispatch function, and returns a dispatch function, which in turn serves as <code>next()</code> to the middleware to the left, and so on. It's still useful to have access to some store methods like <code>getState()</code>, so <code>store</code> stays available as the top-level argument.</p>
+<h3 id="attempt-6-naïvely-applying-the-middleware">Attempt #6: Naïvely Applying the Middleware <a class="markdownIt-Anchor" href="#attempt-6-naïvely-applying-the-middleware">#</a></h3>
+<p>Instead of <code>applyMiddlewareByMonkeypatching()</code>, we could write <code>applyMiddleware()</code> that first obtains the final, fully wrapped <code>dispatch()</code> function, and returns a copy of the store using it:</p>
+<pre class="hljs"><code><span class="hljs-comment">// Warning: Naïve implementation!</span>
+<span class="hljs-comment">// That's *not* Redux API.</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">applyMiddleware</span>(<span class="hljs-params">store, middlewares</span>) </span>{
+  middlewares = middlewares.slice()
+  middlewares.reverse()
+
+  <span class="hljs-keyword">let</span> dispatch = store.dispatch
+  middlewares.forEach(<span class="hljs-function"><span class="hljs-params">middleware</span> =&gt;</span>
+    dispatch = middleware(store)(dispatch)
+  )
+
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.assign({}, store, { dispatch })
+}
+</code></pre>
+<p>The implementation of <a href="../api/applyMiddleware.md"><code>applyMiddleware()</code></a> that ships with Redux is similar, but <strong>different in three important aspects</strong>:</p>
+<ul>
+<li>
+<p>It only exposes a subset of the <a href="../api/Store.md">store API</a> to the middleware: <a href="../api/Store.md#dispatch"><code>dispatch(action)</code></a> and <a href="../api/Store.md#getState"><code>getState()</code></a>.</p>
+</li>
+<li>
+<p>It does a bit of trickery to make sure that if you call <code>store.dispatch(action)</code> from your middleware instead of <code>next(action)</code>, the action will actually travel the whole middleware chain again, including the current middleware. This is useful for asynchronous middleware, as we have seen <a href="AsyncActions.md">previously</a>.</p>
+</li>
+<li>
+<p>To ensure that you may only apply middleware once, it operates on <code>createStore()</code> rather than on <code>store</code> itself. Instead of <code>(store, middlewares) =&gt; store</code>, its signature is <code>(...middlewares) =&gt; (createStore) =&gt; createStore</code>.</p>
+</li>
+</ul>
+<p>Because it is cumbersome to apply functions to <code>createStore()</code> before using it, <code>createStore()</code> accepts an optional last argument to specify such functions.</p>
+<h3 id="the-final-approach">The Final Approach <a class="markdownIt-Anchor" href="#the-final-approach">#</a></h3>
+<p>Given this middleware we just wrote:</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> logger = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dispatching'</span>, action)
+  <span class="hljs-keyword">let</span> result = next(action)
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next state'</span>, store.getState())
+  <span class="hljs-keyword">return</span> result
+}
+
+<span class="hljs-keyword">const</span> crashReporter = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">return</span> next(action)
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Caught an exception!'</span>, err)
+    Raven.captureException(err, {
+      <span class="hljs-attr">extra</span>: {
+        action,
+        <span class="hljs-attr">state</span>: store.getState()
+      }
+    })
+    <span class="hljs-keyword">throw</span> err
+  }
+}
+</code></pre>
+<p>Here's how to apply it to a Redux store:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore, combineReducers, applyMiddleware } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+
+<span class="hljs-keyword">let</span> todoApp = combineReducers(reducers)
+<span class="hljs-keyword">let</span> store = createStore(
+  todoApp,
+  <span class="hljs-comment">// applyMiddleware() tells createStore() how to handle middleware</span>
+  applyMiddleware(logger, crashReporter)
+)
+</code></pre>
+<p>That's it! Now any actions dispatched to the store instance will flow through <code>logger</code> and <code>crashReporter</code>:</p>
+<pre class="hljs"><code><span class="hljs-comment">// Will flow through both logger and crashReporter middleware!</span>
+store.dispatch(addTodo(<span class="hljs-string">'Use Redux'</span>))
+</code></pre>
+<h2 id="seven-examples">Seven Examples <a class="markdownIt-Anchor" href="#seven-examples">#</a></h2>
+<p>If your head boiled from reading the above section, imagine what it was like to write it. This section is meant to be a relaxation for you and me, and will help get your gears turning.</p>
+<p>Each function below is a valid Redux middleware. They are not equally useful, but at least they are equally fun.</p>
+<pre class="hljs"><code><span class="hljs-comment">/**
+ * Logs all actions and states after they are dispatched.
+ */</span>
+<span class="hljs-keyword">const</span> logger = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.group(action.type)
+  <span class="hljs-built_in">console</span>.info(<span class="hljs-string">'dispatching'</span>, action)
+  <span class="hljs-keyword">let</span> result = next(action)
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'next state'</span>, store.getState())
+  <span class="hljs-built_in">console</span>.groupEnd(action.type)
+  <span class="hljs-keyword">return</span> result
+}
+
+<span class="hljs-comment">/**
+ * Sends crash reports as state is updated and listeners are notified.
+ */</span>
+<span class="hljs-keyword">const</span> crashReporter = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">return</span> next(action)
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Caught an exception!'</span>, err)
+    Raven.captureException(err, {
+      <span class="hljs-attr">extra</span>: {
+        action,
+        <span class="hljs-attr">state</span>: store.getState()
+      }
+    })
+    <span class="hljs-keyword">throw</span> err
+  }
+}
+
+<span class="hljs-comment">/**
+ * Schedules actions with { meta: { delay: N } } to be delayed by N milliseconds.
+ * Makes `dispatch` return a function to cancel the timeout in this case.
+ */</span>
+<span class="hljs-keyword">const</span> timeoutScheduler = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> {
+  <span class="hljs-keyword">if</span> (!action.meta || !action.meta.delay) {
+    <span class="hljs-keyword">return</span> next(action)
+  }
+
+  <span class="hljs-keyword">let</span> timeoutId = setTimeout(
+    <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> next(action),
+    action.meta.delay
+  )
+
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cancel</span>(<span class="hljs-params"></span>) </span>{
+    clearTimeout(timeoutId)
+  }
+}
+
+<span class="hljs-comment">/**
+ * Schedules actions with { meta: { raf: true } } to be dispatched inside a rAF loop
+ * frame.  Makes `dispatch` return a function to remove the action from the queue in
+ * this case.
+ */</span>
+<span class="hljs-keyword">const</span> rafScheduler = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; {
+  <span class="hljs-keyword">let</span> queuedActions = []
+  <span class="hljs-keyword">let</span> frame = <span class="hljs-literal">null</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loop</span>(<span class="hljs-params"></span>) </span>{
+    frame = <span class="hljs-literal">null</span>
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-keyword">if</span> (queuedActions.length) {
+        next(queuedActions.shift())
+      }
+    } <span class="hljs-keyword">finally</span> {
+      maybeRaf()
+    }
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maybeRaf</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (queuedActions.length &amp;&amp; !frame) {
+      frame = requestAnimationFrame(loop)
+    }
+  }
+
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> {
+    <span class="hljs-keyword">if</span> (!action.meta || !action.meta.raf) {
+      <span class="hljs-keyword">return</span> next(action)
+    }
+
+    queuedActions.push(action)
+    maybeRaf()
+
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cancel</span>(<span class="hljs-params"></span>) </span>{
+      queuedActions = queuedActions.filter(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a !== action)
+    }
+  }
+}
+
+<span class="hljs-comment">/**
+ * Lets you dispatch promises in addition to actions.
+ * If the promise is resolved, its result will be dispatched as an action.
+ * The promise is returned from `dispatch` so the caller may handle rejection.
+ */</span>
+<span class="hljs-keyword">const</span> vanillaPromise = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> {
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> action.then !== <span class="hljs-string">'function'</span>) {
+    <span class="hljs-keyword">return</span> next(action)
+  }
+
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve(action).then(store.dispatch)
+}
+
+<span class="hljs-comment">/**
+ * Lets you dispatch special actions with a { promise } field.
+ *
+ * This middleware will turn them into a single action at the beginning,
+ * and a single success (or failure) action when the `promise` resolves.
+ *
+ * For convenience, `dispatch` will return the promise so the caller can wait.
+ */</span>
+<span class="hljs-keyword">const</span> readyStatePromise = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> {
+  <span class="hljs-keyword">if</span> (!action.promise) {
+    <span class="hljs-keyword">return</span> next(action)
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeAction</span>(<span class="hljs-params">ready, data</span>) </span>{
+    <span class="hljs-keyword">let</span> newAction = <span class="hljs-built_in">Object</span>.assign({}, action, { ready }, data)
+    <span class="hljs-keyword">delete</span> newAction.promise
+    <span class="hljs-keyword">return</span> newAction
+  }
+
+  next(makeAction(<span class="hljs-literal">false</span>))
+  <span class="hljs-keyword">return</span> action.promise.then(
+    <span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> next(makeAction(<span class="hljs-literal">true</span>, { result })),
+    error =&gt; next(makeAction(<span class="hljs-literal">true</span>, { error }))
+  )
+}
+
+<span class="hljs-comment">/**
+ * Lets you dispatch a function instead of an action.
+ * This function will receive `dispatch` and `getState` as arguments.
+ *
+ * Useful for early exits (conditions over `getState()`), as well
+ * as for async control flow (it can `dispatch()` something else).
+ *
+ * `dispatch` will return the return value of the dispatched function.
+ */</span>
+<span class="hljs-keyword">const</span> thunk = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span>
+  <span class="hljs-keyword">typeof</span> action === <span class="hljs-string">'function'</span> ?
+    action(store.dispatch, store.getState) :
+    next(action)
+
+
+<span class="hljs-comment">// You can use all of them! (It doesn't mean you should.)</span>
+<span class="hljs-keyword">let</span> todoApp = combineReducers(reducers)
+<span class="hljs-keyword">let</span> store = createStore(
+  todoApp,
+  applyMiddleware(
+    rafScheduler,
+    timeoutScheduler,
+    thunk,
+    vanillaPromise,
+    readyStatePromise,
+    logger,
+    crashReporter
+  )
+)
+</code></pre>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../advanced/ExampleRedditAPI.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../advanced/NextSteps.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'advanced/Middleware.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#understanding-middleware\">Understanding Middleware</a>\n<ul>\n<li><a href=\"#problem-logging\">Problem: Logging</a></li>\n<li><a href=\"#attempt-1-logging-manually\">Attempt #1: Logging Manually</a></li>\n<li><a href=\"#attempt-2-wrapping-dispatch\">Attempt #2: Wrapping Dispatch</a></li>\n<li><a href=\"#attempt-3-monkeypatching-dispatch\">Attempt #3: Monkeypatching Dispatch</a></li>\n<li><a href=\"#problem-crash-reporting\">Problem: Crash Reporting</a></li>\n<li><a href=\"#attempt-4-hiding-monkeypatching\">Attempt #4: Hiding Monkeypatching</a></li>\n<li><a href=\"#attempt-5-removing-monkeypatching\">Attempt #5: Removing Monkeypatching</a></li>\n<li><a href=\"#attempt-6-na%C3%AFvely-applying-the-middleware\">Attempt #6: Naïvely Applying the Middleware</a></li>\n<li><a href=\"#the-final-approach\">The Final Approach</a></li>\n</ul>\n</li>\n<li><a href=\"#seven-examples\">Seven Examples</a></li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

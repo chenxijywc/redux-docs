@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Initializing State - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item chapter-item-current"><a href="../../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../api/Store.html">Store</a></li><li class="chapter-item "><a href="../../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/index.html" class="breadcrumb-item">reducers</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/InitializingState.html" class="breadcrumb-item">Initializing State</a></div>
+    <h1 class="article-title">Initializing State</h1>
+    <div class="article">
+      <p>There are two main ways to initialize state for your application.  The <code>createStore</code> method can accept an optional <code>preloadedState</code> value as its second argument.  Reducers can also specify an initial value by looking for an incoming state argument that is <code>undefined</code>, and returning the value they'd like to use as a default.  This can either be done with an explicit check inside the reducer, or by using the ES6 default argument value syntax: <code>function myReducer(state = someDefaultValue, action)</code>.</p>
+<p>It's not always immediately clear how these two approaches interact.  Fortunately, the process does follow some predictable rules.  Here's how the pieces fit together.</p>
+<h2 id="summary">Summary <a class="markdownIt-Anchor" href="#summary">#</a></h2>
+<p>Without <code>combineReducers()</code> or similar manual code, <code>preloadedState</code> always wins over <code>state = ...</code> in the reducer because the <code>state</code> passed to the reducer <em>is</em> <code>preloadedState</code> and <em>is not</em> <code>undefined</code>, so the ES6 argument syntax doesn't apply.</p>
+<p>With <code>combineReducers()</code> the behavior is more nuanced. Those reducers whose state is specified in <code>preloadedState</code> will receive that state. Other reducers will receive <code>undefined</code> <em>and because of that</em> will fall back to the <code>state = ...</code> default argument they specify.</p>
+<p><strong>In general, <code>preloadedState</code> wins over the state specified by the reducer. This lets reducers specify initial data that makes sense <em>to them</em> as default arguments, but also allows loading existing data (fully or partially) when you're hydrating the store from some persistent storage or the server.</strong></p>
+<h2 id="in-depth">In Depth <a class="markdownIt-Anchor" href="#in-depth">#</a></h2>
+<h3 id="single-simple-reducer">Single Simple Reducer <a class="markdownIt-Anchor" href="#single-simple-reducer">#</a></h3>
+<p>First let's consider a case where you have a single reducer.  Say you don't use <code>combineReducers()</code>.</p>
+<p>Then your reducer might look like this:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">counter</span>(<span class="hljs-params">state = <span class="hljs-number">0</span>, action</span>) </span>{
+  <span class="hljs-keyword">switch</span> (action.type) {
+  <span class="hljs-keyword">case</span> <span class="hljs-string">'INCREMENT'</span>: <span class="hljs-keyword">return</span> state + <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">case</span> <span class="hljs-string">'DECREMENT'</span>: <span class="hljs-keyword">return</span> state - <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">default</span>: <span class="hljs-keyword">return</span> state;
+  }
+}
+</code></pre>
+<p>Now let's say you create a store with it.</p>
+<pre class="hljs"><code>import { createStore } from 'redux';
+let store = createStore(counter);
+console.log(store.getState()); // 0
+</code></pre>
+<p>The initial state is zero. Why?   Because the second argument to <code>createStore</code> was <code>undefined</code>. This is the <code>state</code> passed to your reducer the first time. When Redux initializes it dispatches a &quot;dummy&quot; action to fill the state. So your <code>counter</code> reducer was called with <code>state</code> equal to <code>undefined</code>. <strong>This is exactly the case that &quot;activates&quot; the default argument.</strong> Therefore, <code>state</code> is now <code>0</code> as per the default <code>state</code> value (<code>state = 0</code>). This state (<code>0</code>) will be returned.</p>
+<p>Let's consider a different scenario:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">let</span> store = createStore(counter, <span class="hljs-number">42</span>);
+<span class="hljs-built_in">console</span>.log(store.getState()); <span class="hljs-comment">// 42</span>
+</code></pre>
+<p>Why is it <code>42</code>, and not <code>0</code>, this time? Because <code>createStore</code> was called with <code>42</code> as the second argument. This argument becomes the <code>state</code> passed to your reducer along with the dummy action. <strong>This time, <code>state</code> is not undefined (it's <code>42</code>!), so ES6 default argument syntax has no effect.</strong> The <code>state</code> is <code>42</code>, and <code>42</code> is returned from the reducer.</p>
+<h3 id="combined-reducers">Combined Reducers <a class="markdownIt-Anchor" href="#combined-reducers">#</a></h3>
+<p>Now let's consider a case where you use <code>combineReducers()</code>.<br>
+You have two reducers:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params">state = <span class="hljs-string">'lol'</span>, action</span>) </span>{
+ <span class="hljs-keyword">return</span> state;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params">state = <span class="hljs-string">'wat'</span>, action</span>) </span>{
+ <span class="hljs-keyword">return</span> state;
+}
+</code></pre>
+<p>The reducer generated by <code>combineReducers({ a, b })</code> looks like this:</p>
+<pre class="hljs"><code><span class="hljs-comment">// const combined = combineReducers({ a, b })</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">combined</span>(<span class="hljs-params">state = {}, action</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+	<span class="hljs-attr">a</span>: a(state.a, action),
+	<span class="hljs-attr">b</span>: b(state.b, action)
+  };
+}
+</code></pre>
+<p>If we call <code>createStore</code> without the <code>preloadedState</code>, it's going to initialize the <code>state</code> to <code>{}</code>. Therefore, <code>state.a</code> and <code>state.b</code> will be <code>undefined</code> by the time it calls <code>a</code> and <code>b</code> reducers. <strong>Both <code>a</code> and <code>b</code> reducers will receive <code>undefined</code> as <em>their</em> <code>state</code> arguments, and if they specify default <code>state</code> values, those will be returned.</strong> This is how the combined reducer returns a <code>{ a: 'lol', b: 'wat' }</code> state object on the first invocation.</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">let</span> store = createStore(combined);
+<span class="hljs-built_in">console</span>.log(store.getState()); <span class="hljs-comment">// { a: 'lol', b: 'wat' }</span>
+</code></pre>
+<p>Let's consider a different scenario:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">let</span> store = createStore(combined, { <span class="hljs-attr">a</span>: <span class="hljs-string">'horse'</span> });
+<span class="hljs-built_in">console</span>.log(store.getState()); <span class="hljs-comment">// { a: 'horse', b: 'wat' }</span>
+</code></pre>
+<p>Now I specified the <code>preloadedState</code> as the argument to <code>createStore()</code>. The state returned from the combined reducer <em>combines</em> the initial state I specified for the <code>a</code> reducer with the <code>'wat'</code> default argument specified that <code>b</code> reducer chose itself.</p>
+<p>Let's recall what the combined reducer does:</p>
+<pre class="hljs"><code><span class="hljs-comment">// const combined = combineReducers({ a, b })</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">combined</span>(<span class="hljs-params">state = {}, action</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+	<span class="hljs-attr">a</span>: a(state.a, action),
+	<span class="hljs-attr">b</span>: b(state.b, action)
+  };
+}
+</code></pre>
+<p>In this case, <code>state</code> was specified so it didn't fall back to <code>{}</code>. It was an object with <code>a</code> field equal to <code>'horse'</code>, but without the <code>b</code> field. This is why the <code>a</code> reducer received <code>'horse'</code> as its <code>state</code> and gladly returned it, but the <code>b</code> reducer received <code>undefined</code> as its <code>state</code> and thus returned <em>its idea</em> of the default <code>state</code> (in our example, <code>'wat'</code>). This is how we get <code>{ a: 'horse', b: 'wat' }</code> in return.</p>
+<h2 id="recap">Recap <a class="markdownIt-Anchor" href="#recap">#</a></h2>
+<p>To sum this up, if you stick to Redux conventions and return the initial state from reducers when they're called with <code>undefined</code> as the <code>state</code> argument (the easiest way to implement this is to specify the <code>state</code> ES6 default argument value), you're going to have a nice useful behavior for combined reducers. <strong>They will prefer the corresponding value in the <code>preloadedState</code> object you pass to the <code>createStore()</code> function, but if you didn't pass any, or if the corresponding field is not set, the default <code>state</code> argument specified by the reducer is chosen instead.</strong> This approach works well because it provides both initialization and hydration of existing data, but lets individual reducers reset their state if their data was not preserved. Of course you can apply this pattern recursively, as you can use <code>combineReducers()</code> on many levels, or even compose reducers manually by calling reducers and giving them the relevant part of the state tree.</p>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../../recipes/reducers/ImmutableUpdatePatterns.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../../recipes/reducers/NormalizingStateShape.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'recipes/reducers/InitializingState.md';
+  LOPPO.relative_root_path = '../../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#summary\">Summary</a></li>\n<li><a href=\"#in-depth\">In Depth</a>\n<ul>\n<li><a href=\"#single-simple-reducer\">Single Simple Reducer</a></li>\n<li><a href=\"#combined-reducers\">Combined Reducers</a></li>\n</ul>\n</li>\n<li><a href=\"#recap\">Recap</a></li>\n</ul>\n";
+</script>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Beyond `combineReducers` - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item chapter-item-current"><a href="../../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../api/Store.html">Store</a></li><li class="chapter-item "><a href="../../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/index.html" class="breadcrumb-item">reducers</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/BeyondCombineReducers.html" class="breadcrumb-item">Beyond `combineReducers`</a></div>
+    <h1 class="article-title">Beyond `combineReducers`</h1>
+    <div class="article">
+      <p>The <code>combineReducers</code> utility included with Redux is very useful, but is deliberately limited to handle a single common use case: updating a state tree that is a plain Javascript object, by delegating the work of updating each slice of state to a specific slice reducer.  It does <em>not</em> handle other use cases, such as a state tree made up of Immutable.js Maps, trying to pass other portions of the state tree as an additional argument to a slice reducer, or performing &quot;ordering&quot; of slice reducer calls.  It also does not care how a given slice reducer does its work.</p>
+<p>The common question, then, is &quot;How can I use <code>combineReducers</code> to handle these other use cases?&quot;.  The answer to that is simply: &quot;you don't - you probably need to use something else&quot;.  <strong>Once you go past the core use case for <code>combineReducers</code>, it's time to use more &quot;custom&quot; reducer logic</strong>, whether it be specific logic for a one-off use case, or a reusable function that could be widely shared.  Here's some suggestions for dealing with a couple of these typical use cases, but feel free to come up with your own approaches.</p>
+<h2 id="using-slice-reducers-with-immutablejs-objects">Using slice reducers with Immutable.js objects <a class="markdownIt-Anchor" href="#using-slice-reducers-with-immutablejs-objects">#</a></h2>
+<p>Since <code>combineReducers</code> currently only works with plain Javascript objects, an application that uses an Immutable.js Map object for the top of its state tree could not use <code>combineReducers</code> to manage that Map.  Since many developers do use Immutable.js, there are a number of published utilities that provide equivalent functionality, such as <a href="https://github.com/gajus/redux-immutable">redux-immutable</a>.  This package provides its own implementation of <code>combineReducers</code> that knows how to iterate over an Immutable Map instead of a plain Javascript object.</p>
+<h2 id="sharing-data-between-slice-reducers">Sharing data between slice reducers <a class="markdownIt-Anchor" href="#sharing-data-between-slice-reducers">#</a></h2>
+<p>Similarly, if <code>sliceReducerA</code> happens to need some data from <code>sliceReducerB</code>'s slice of state in order to handle a particular action, or <code>sliceReducerB</code> happens to need the entire state as an argument, <code>combineReducers</code> does not handle that itself.  This could be resolved by writing a custom function that knows to pass the needed data as an additional argument in those specific cases, such as:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">combinedReducer</span>(<span class="hljs-params">state, action</span>) </span>{
+    <span class="hljs-keyword">switch</span>(action.type) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"A_TYPICAL_ACTION"</span> : {
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">a</span> : sliceReducerA(state.a, action),
+                <span class="hljs-attr">b</span> : sliceReducerB(state.b, action)
+            };
+        }
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"SOME_SPECIAL_ACTION"</span> : {
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-comment">// specifically pass state.b as an additional argument</span>
+                a : sliceReducerA(state.a, action, state.b),
+                <span class="hljs-attr">b</span> : sliceReducerB(state.b, action)
+            }        
+        }
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"ANOTHER_SPECIAL_ACTION"</span> : {
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-attr">a</span> : sliceReducerA(state.a, action),
+                <span class="hljs-comment">// specifically pass the entire state as an additional argument</span>
+                b : sliceReducerB(state.b, action, state)
+            }         
+        }    
+        <span class="hljs-keyword">default</span>: <span class="hljs-keyword">return</span> state;
+    }
+}
+</code></pre>
+<p>Another alternative to the &quot;shared-slice updates&quot; issue would be to simply put more data into the action.  This is easily accomplished using thunk functions or a similar approach, per this example:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">someSpecialActionCreator</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">dispatch, getState</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> state = getState();
+        <span class="hljs-keyword">const</span> dataFromB = selectImportantDataFromB(state);
+        
+        dispatch({
+            <span class="hljs-attr">type</span> : <span class="hljs-string">"SOME_SPECIAL_ACTION"</span>,
+            <span class="hljs-attr">payload</span> : {
+                dataFromB
+            }
+        });
+    }
+}
+</code></pre>
+<p>Because the data from B's slice is already in the action, the parent reducer doesn't have to do anything special to make that data available to <code>sliceReducerA</code>.</p>
+<p>A third approach would be to use the reducer generated by <code>combineReducers</code> to handle the &quot;simple&quot; cases where each slice reducer can update itself independently, but also use another reducer to handle the &quot;special&quot; cases where data needs to be shared across slices.  Then, a wrapping function could call both of those reducers in turn to generate the final result:</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> combinedReducer = combineReducers({
+    <span class="hljs-attr">a</span> : sliceReducerA,
+    <span class="hljs-attr">b</span> : sliceReducerB
+}); 
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">crossSliceReducer</span>(<span class="hljs-params">state, action</span>) </span>{
+    <span class="hljs-keyword">switch</span>(action.type) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"SOME_SPECIAL_ACTION"</span> : {
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-comment">// specifically pass state.b as an additional argument</span>
+                a : handleSpecialCaseForA(state.a, action, state.b),
+                <span class="hljs-attr">b</span> : sliceReducerB(state.b, action)
+            }        
+        }
+        <span class="hljs-keyword">default</span> : <span class="hljs-keyword">return</span> state;
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">rootReducer</span>(<span class="hljs-params">state, action</span>) </span>{
+    <span class="hljs-keyword">const</span> intermediateState = combinedReducer(state, action);
+    <span class="hljs-keyword">const</span> finalState = crossSliceReducer(intermediateState, action);
+    <span class="hljs-keyword">return</span> finalState;
+}
+</code></pre>
+<p>As it turns out, there's a useful utility called <a href="https://github.com/acdlite/reduce-reducers">reduce-reducers</a> that can make that process easier.  It simply takes multiple reducers and runs <code>reduce()</code> on them, passing the intermediate state values to the next reducer in line:</p>
+<pre class="hljs"><code><span class="hljs-comment">// Same as the "manual" rootReducer above</span>
+<span class="hljs-keyword">const</span> rootReducer = reduceReducers(combinedReducers, crossSliceReducer);
+</code></pre>
+<p>Note that if you use <code>reduceReducers</code>, you should make sure that the first reducer in the list is able to define the initial state, since the later reducers will generally assume that the entire state already exists and not try to provide defaults.</p>
+<h2 id="further-suggestions">Further Suggestions <a class="markdownIt-Anchor" href="#further-suggestions">#</a></h2>
+<p>Again, it's important to understand that Redux reducers are <em>just</em> functions.  While <code>combineReducers</code> is useful, it's just one tool in the toolbox.  Functions can contain conditional logic other than switch statements, functions can be composed to wrap each other, and functions can call other functions.  Maybe you need one of your slice reducers to be able to reset its state, and to only respond to specific actions overall.  You could do:</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> undoableFilteredSliceA = compose(undoReducer, filterReducer(<span class="hljs-string">"ACTION_1"</span>, <span class="hljs-string">"ACTION_2"</span>), sliceReducerA);
+<span class="hljs-keyword">const</span> rootReducer = combineReducers({
+    <span class="hljs-attr">a</span> : undoableFilteredSliceA,
+    <span class="hljs-attr">b</span> : normalSliceReducerB
+});
+</code></pre>
+<p>Note that <code>combineReducers</code> doesn't know or care that there's anything special about the reducer function that's responsible for managing <code>a</code>.  We didn't need to modify <code>combineReducers</code> to specifically know how to undo things - we just built up the pieces we needed into a new composed function.</p>
+<p>Also, while <code>combineReducers</code> is the one reducer utility function that's built into Redux, there's a wide variety of third-party reducer utilities that have published for reuse.  The <a href="https://github.com/markerikson/redux-ecosystem-links">Redux Addons Catalog</a> lists many of the third-party utilities that are available.  Or, if none of the published utilities solve your use case, you can always write a function yourself that does just exactly what you need.</p>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../../recipes/reducers/BasicReducerStructure.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../../recipes/reducers/ImmutableUpdatePatterns.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'recipes/reducers/BeyondCombineReducers.md';
+  LOPPO.relative_root_path = '../../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#using-slice-reducers-with-immutablejs-objects\">Using slice reducers with Immutable.js objects</a></li>\n<li><a href=\"#sharing-data-between-slice-reducers\">Sharing data between slice reducers</a></li>\n<li><a href=\"#further-suggestions\">Further Suggestions</a></li>\n</ul>\n";
+</script>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>
+

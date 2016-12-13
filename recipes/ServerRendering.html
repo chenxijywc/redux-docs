@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Server Rendering - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item chapter-item-current"><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../recipes/ServerRendering.html" class="breadcrumb-item">Server Rendering</a></div>
+    <h1 class="article-title">Server Rendering</h1>
+    <div class="article">
+      <p>The most common use case for server-side rendering is to handle the <em>initial render</em> when a user (or search engine crawler) first requests our app.  When the server receives the request, it renders the required component(s) into an HTML string, and then sends it as a response to the client.  From that point on, the client takes over rendering duties.</p>
+<p>We will use React in the examples below, but the same techniques can be used with other view frameworks that can render on the server.</p>
+<h3 id="redux-on-the-server">Redux on the Server <a class="markdownIt-Anchor" href="#redux-on-the-server">#</a></h3>
+<p>When using Redux with server rendering, we must also send the state of our app along in our response, so the client can use it as the initial state. This is important because, if we preload any data before generating the HTML, we want the client to also have access to this data. Otherwise, the markup generated on the client won't match the server markup, and the client would have to load the data again.</p>
+<p>To send the data down to the client, we need to:</p>
+<ul>
+<li>create a fresh, new Redux store instance on every request;</li>
+<li>optionally dispatch some actions;</li>
+<li>pull the state out of store;</li>
+<li>and then pass the state along to the client.</li>
+</ul>
+<p>On the client side, a new Redux store will be created and initialized with the state provided from the server.<br>
+Redux's <strong><em>only</em></strong> job on the server side is to provide the <strong>initial state</strong> of our app.</p>
+<h2 id="setting-up">Setting Up <a class="markdownIt-Anchor" href="#setting-up">#</a></h2>
+<p>In the following recipe, we are going to look at how to set up server-side rendering. We'll use the simplistic <a href="https://github.com/reactjs/redux/tree/master/examples/counter">Counter app</a> as a guide and show how the server can render state ahead of time based on the request.</p>
+<h3 id="install-packages">Install Packages <a class="markdownIt-Anchor" href="#install-packages">#</a></h3>
+<p>For this example, we'll be using <a href="http://expressjs.com/">Express</a> as a simple web server. We also need to install the React bindings for Redux, since they are not included in Redux by default.</p>
+<pre class="hljs"><code>npm install --save express react-redux
+</code></pre>
+<h2 id="the-server-side">The Server Side <a class="markdownIt-Anchor" href="#the-server-side">#</a></h2>
+<p>The following is the outline for what our server side is going to look like. We are going to set up an <a href="http://expressjs.com/guide/using-middleware.html">Express middleware</a> using <a href="http://expressjs.com/api.html#app.use">app.use</a> to handle all requests that come in to our server. If you're unfamiliar with Express or middleware, just know that our handleRender function will be called every time the server receives a request.</p>
+<p>Additionally, as we are using ES6 and JSX syntax, we will need to compile with <a href="https://babeljs.io/">Babel</a> (see this example of a <a href="https://github.com/babel/example-node-server">this example of a Node Server with Babel</a>) and the <a href="https://babeljs.io/docs/plugins/preset-react/">React preset</a>.</p>
+<h5 id="serverjs"><code>server.js</code> <a class="markdownIt-Anchor" href="#serverjs">#</a></h5>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">'path'</span>
+<span class="hljs-keyword">import</span> Express <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+<span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> counterApp <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducers'</span>
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./containers/App'</span>
+
+<span class="hljs-keyword">const</span> app = Express()
+<span class="hljs-keyword">const</span> port = <span class="hljs-number">3000</span>
+
+<span class="hljs-comment">// This is fired every time the server side receives a request</span>
+app.use(handleRender)
+
+<span class="hljs-comment">// We are going to fill these out in the sections to follow</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleRender</span>(<span class="hljs-params">req, res</span>) </span>{ <span class="hljs-comment">/* ... */</span> }
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderFullPage</span>(<span class="hljs-params">html, preloadedState</span>) </span>{ <span class="hljs-comment">/* ... */</span> }
+
+app.listen(port)
+</code></pre>
+<h3 id="handling-the-request">Handling the Request <a class="markdownIt-Anchor" href="#handling-the-request">#</a></h3>
+<p>The first thing that we need to do on every request is create a new Redux store instance. The only purpose of this store instance is to provide the initial state of our application.</p>
+<p>When rendering, we will wrap <code>&lt;App /&gt;</code>, our root component, inside a <code>&lt;Provider&gt;</code> to make the store available to all components in the component tree, as we saw in <a href="../basics/UsageWithReact.md">Usage with React</a>.</p>
+<p>The key step in server side rendering is to render the initial HTML of our component <em><strong>before</strong></em> we send it to the client side. To do this, we use <a href="https://facebook.github.io/react/docs/react-dom-server.html#rendertostring">ReactDOMServer.renderToString()</a>.</p>
+<p>We then get the initial state from our Redux store using <a href="../api/Store.md#getState"><code>store.getState()</code></a>. We will see how this is passed along in our <code>renderFullPage</code> function.</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { renderToString } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom/server'</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleRender</span>(<span class="hljs-params">req, res</span>) </span>{
+  <span class="hljs-comment">// Create a new Redux store instance</span>
+  <span class="hljs-keyword">const</span> store = createStore(counterApp)
+
+  <span class="hljs-comment">// Render the component to a string</span>
+  <span class="hljs-keyword">const</span> html = renderToString(
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+  )
+
+  <span class="hljs-comment">// Grab the initial state from our Redux store</span>
+  <span class="hljs-keyword">const</span> preloadedState = store.getState()
+
+  <span class="hljs-comment">// Send the rendered page back to the client</span>
+  res.send(renderFullPage(html, preloadedState))
+}
+</code></pre>
+<h3 id="inject-initial-component-html-and-state">Inject Initial Component HTML and State <a class="markdownIt-Anchor" href="#inject-initial-component-html-and-state">#</a></h3>
+<p>The final step on the server side is to inject our initial component HTML and initial state into a template to be rendered on the client side. To pass along the state, we add a <code>&lt;script&gt;</code> tag that will attach <code>preloadedState</code> to <code>window.__PRELOADED_STATE__</code>.</p>
+<p>The <code>preloadedState</code> will then be available on the client side by accessing <code>window.__PRELOADED_STATE__</code>.</p>
+<p>We also include our bundle file for the client-side application via a script tag. This is whatever output your bundling tool provides for your client entry point. It may be a static file or a URL to a hot reloading development server.</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renderFullPage</span>(<span class="hljs-params">html, preloadedState</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`
+    &lt;!doctype html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Redux Universal Example&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div id="root"&gt;<span class="hljs-subst">${html}</span>&lt;/div&gt;
+        &lt;script&gt;
+          // WARNING: See the following for Security isues with this approach:
+          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
+          window.__PRELOADED_STATE__ = <span class="hljs-subst">${<span class="hljs-built_in">JSON</span>.stringify(preloadedState)}</span>
+        &lt;/script&gt;
+        &lt;script src="/static/bundle.js"&gt;&lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+    `</span>
+}
+</code></pre>
+<h2 id="the-client-side">The Client Side <a class="markdownIt-Anchor" href="#the-client-side">#</a></h2>
+<p>The client side is very straightforward. All we need to do is grab the initial state from <code>window.__PRELOADED_STATE__</code>, and pass it to our <a href="../api/createStore.md"><code>createStore()</code></a> function as the initial state.</p>
+<p>Let's take a look at our new client file:</p>
+<h4 id="clientjs"><code>client.js</code> <a class="markdownIt-Anchor" href="#clientjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { render } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>
+<span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+<span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./containers/App'</span>
+<span class="hljs-keyword">import</span> counterApp <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducers'</span>
+
+<span class="hljs-comment">// Grab the state from a global variable injected into the server-generated HTML</span>
+<span class="hljs-keyword">const</span> preloadedState = <span class="hljs-built_in">window</span>.__PRELOADED_STATE__
+
+<span class="hljs-comment">// Create Redux store with initial state</span>
+<span class="hljs-keyword">const</span> store = createStore(counterApp, preloadedState)
+
+render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+)
+</code></pre>
+<p>You can set up your build tool of choice (Webpack, Browserify, etc.) to compile a bundle file into <code>static/bundle.js</code>.</p>
+<p>When the page loads, the bundle file will be started up and <a href="https://facebook.github.io/react/docs/top-level-api.html#reactdom.render"><code>ReactDOM.render()</code></a> will hook into the <code>data-react-id</code> attributes from the server-rendered HTML. This will connect our newly-started React instance to the virtual DOM used on the server. Since we have the same initial state for our Redux store and used the same code for all our view components, the result will be the same real DOM.</p>
+<p>And that's it! That is all we need to do to implement server side rendering.</p>
+<p>But the result is pretty vanilla. It essentially renders a static view from dynamic code. What we need to do next is build an initial state dynamically to allow that rendered view to be dynamic.</p>
+<h2 id="preparing-the-initial-state">Preparing the Initial State <a class="markdownIt-Anchor" href="#preparing-the-initial-state">#</a></h2>
+<p>Because the client side executes ongoing code, it can start with an empty initial state and obtain any necessary state on demand and over time. On the server side, rendering is synchronous and we only get one shot to render our view. We need to be able to compile our initial state during the request, which will have to react to input and obtain external state (such as that from an API or database).</p>
+<h3 id="processing-request-parameters">Processing Request Parameters <a class="markdownIt-Anchor" href="#processing-request-parameters">#</a></h3>
+<p>The only input for server side code is the request made when loading up a page in your app in your browser. You may choose to configure the server during its boot (such as when you are running in a development vs. production environment), but that configuration is static.</p>
+<p>The request contains information about the URL requested, including any query parameters, which will be useful when using something like <a href="https://github.com/reactjs/react-router">React Router</a>. It can also contain headers with inputs like cookies or authorization, or POST body data. Let's see how we can set the initial counter state based on a query parameter.</p>
+<h4 id="serverjs-2"><code>server.js</code> <a class="markdownIt-Anchor" href="#serverjs-2">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> qs <span class="hljs-keyword">from</span> <span class="hljs-string">'qs'</span> <span class="hljs-comment">// Add this at the top of the file</span>
+<span class="hljs-keyword">import</span> { renderToString } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom/server'</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleRender</span>(<span class="hljs-params">req, res</span>) </span>{
+  <span class="hljs-comment">// Read the counter from the request, if provided</span>
+  <span class="hljs-keyword">const</span> params = qs.parse(req.query)
+  <span class="hljs-keyword">const</span> counter = <span class="hljs-built_in">parseInt</span>(params.counter, <span class="hljs-number">10</span>) || <span class="hljs-number">0</span>
+
+  <span class="hljs-comment">// Compile an initial state</span>
+  <span class="hljs-keyword">let</span> preloadedState = { counter }
+
+  <span class="hljs-comment">// Create a new Redux store instance</span>
+  <span class="hljs-keyword">const</span> store = createStore(counterApp, preloadedState)
+
+  <span class="hljs-comment">// Render the component to a string</span>
+  <span class="hljs-keyword">const</span> html = renderToString(
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+  )
+
+  <span class="hljs-comment">// Grab the initial state from our Redux store</span>
+  <span class="hljs-keyword">const</span> finalState = store.getState()
+
+  <span class="hljs-comment">// Send the rendered page back to the client</span>
+  res.send(renderFullPage(html, finalState))
+}
+</code></pre>
+<p>The code reads from the Express <code>Request</code> object passed into our server middleware. The parameter is parsed into a number and then set in the initial state. If you visit <a href="http://localhost:3000/?counter=100">http://localhost:3000/?counter=100</a> in your browser, you'll see the counter starts at 100. In the rendered HTML, you'll see the counter output as 100 and the <code>__PRELOADED_STATE__</code> variable has the counter set in it.</p>
+<h3 id="async-state-fetching">Async State Fetching <a class="markdownIt-Anchor" href="#async-state-fetching">#</a></h3>
+<p>The most common issue with server side rendering is dealing with state that comes in asynchronously. Rendering on the server is synchronous by nature, so it's necessary to map any asynchronous fetches into a synchronous operation.</p>
+<p>The easiest way to do this is to pass through some callback back to your synchronous code. In this case, that will be a function that will reference the response object and send back our rendered HTML to the client. Don't worry, it's not as hard as it may sound.</p>
+<p>For our example, we'll imagine there is an external datastore that contains the counter's initial value (Counter As A Service, or CaaS). We'll make a mock call over to them and build our initial state from the result. We'll start by building out our API call:</p>
+<h4 id="apicounterjs"><code>api/counter.js</code> <a class="markdownIt-Anchor" href="#apicounterjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRandomInt</span>(<span class="hljs-params">min, max</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * (max - min)) + min
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchCounter</span>(<span class="hljs-params">callback</span>) </span>{
+  setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    callback(getRandomInt(<span class="hljs-number">1</span>, <span class="hljs-number">100</span>))
+  }, <span class="hljs-number">500</span>)
+}
+</code></pre>
+<p>Again, this is just a mock API, so we use <code>setTimeout</code> to simulate a network request that takes 500 milliseconds to respond (this should be much faster with a real world API). We pass in a callback that returns a random number asynchronously. If you're using a Promise-based API client, then you would issue this callback in your <code>then</code> handler.</p>
+<p>On the server side, we simply wrap our existing code in the <code>fetchCounter</code> and receive the result in the callback:</p>
+<h4 id="serverjs-3"><code>server.js</code> <a class="markdownIt-Anchor" href="#serverjs-3">#</a></h4>
+<pre class="hljs"><code><span class="hljs-comment">// Add this to our imports</span>
+<span class="hljs-keyword">import</span> { fetchCounter } <span class="hljs-keyword">from</span> <span class="hljs-string">'./api/counter'</span>
+<span class="hljs-keyword">import</span> { renderToString } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom/server'</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleRender</span>(<span class="hljs-params">req, res</span>) </span>{
+  <span class="hljs-comment">// Query our mock API asynchronously</span>
+  fetchCounter(<span class="hljs-function"><span class="hljs-params">apiResult</span> =&gt;</span> {
+    <span class="hljs-comment">// Read the counter from the request, if provided</span>
+    <span class="hljs-keyword">const</span> params = qs.parse(req.query)
+    <span class="hljs-keyword">const</span> counter = <span class="hljs-built_in">parseInt</span>(params.counter, <span class="hljs-number">10</span>) || apiResult || <span class="hljs-number">0</span>
+
+    <span class="hljs-comment">// Compile an initial state</span>
+    <span class="hljs-keyword">let</span> preloadedState = { counter }
+
+    <span class="hljs-comment">// Create a new Redux store instance</span>
+    <span class="hljs-keyword">const</span> store = createStore(counterApp, preloadedState)
+
+    <span class="hljs-comment">// Render the component to a string</span>
+    <span class="hljs-keyword">const</span> html = renderToString(
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+    )
+
+    <span class="hljs-comment">// Grab the initial state from our Redux store</span>
+    <span class="hljs-keyword">const</span> finalState = store.getState()
+
+    <span class="hljs-comment">// Send the rendered page back to the client</span>
+    res.send(renderFullPage(html, finalState))
+  })
+}
+</code></pre>
+<p>Because we call <code>res.send()</code> inside of the callback, the server will hold open the connection and won't send any data until that callback executes. You'll notice a 500ms delay is now added to each server request as a result of our new API call. A more advanced usage would handle errors in the API gracefully, such as a bad response or timeout.</p>
+<h3 id="security-considerations">Security Considerations <a class="markdownIt-Anchor" href="#security-considerations">#</a></h3>
+<p>Because we have introduced more code that relies on user generated content (UGC) and input, we have increased our attack surface area for our application. It is important for any application that you ensure your input is properly sanitized to prevent things like cross-site scripting (XSS) attacks or code injections.</p>
+<p>In our example, we take a rudimentary approach to security. When we obtain the parameters from the request, we use <code>parseInt</code> on the <code>counter</code> parameter to ensure this value is a number. If we did not do this, you could easily get dangerous data into the rendered HTML by providing a script tag in the request. That might look like this: <code>?counter=&lt;/script&gt;&lt;script&gt;doSomethingBad();&lt;/script&gt;</code></p>
+<p>For our simplistic example, coercing our input into a number is sufficiently secure. If you're handling more complex input, such as freeform text, then you should run that input through an appropriate sanitization function, such as <a href="https://www.npmjs.com/package/validator">validator.js</a>.</p>
+<p>Furthermore, you can add additional layers of security by sanitizing your state output. <code>JSON.stringify</code> can be subject to script injections. To counter this, you can scrub the JSON string of HTML tags and other dangerous characters. This can be done with either a simple text replacement on the string, e.g. <code>JSON.stringify(state).replace(/&lt;/g, '\\u003c')</code>, or via more sophisticated libraries such as <a href="https://github.com/yahoo/serialize-javascript">serialize-javascript</a>.</p>
+<h2 id="next-steps">Next Steps <a class="markdownIt-Anchor" href="#next-steps">#</a></h2>
+<p>You may want to read <a href="../advanced/AsyncActions.md">Async Actions</a> to learn more about expressing asynchronous flow in Redux with async primitives such as Promises and thunks. Keep in mind that anything you learn there can also be applied to universal rendering.</p>
+<p>If you use something like <a href="https://github.com/reactjs/react-router">React Router</a>, you might also want to express your data fetching dependencies as static <code>fetchData()</code> methods on your route handler components. They may return <a href="../advanced/AsyncActions.md">async actions</a>, so that your <code>handleRender</code> function can match the route to the route handler component classes, dispatch <code>fetchData()</code> result for each of them, and render only after the Promises have resolved. This way the specific API calls required for different routes are colocated with the route handler component definitions. You can also use the same technique on the client side to prevent the router from switching the page until its data has been loaded.</p>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../recipes/ReducingBoilerplate.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../recipes/StructuringReducers.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'recipes/ServerRendering.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li>\n<ul>\n<li><a href=\"#redux-on-the-server\">Redux on the Server</a></li>\n</ul>\n</li>\n<li><a href=\"#setting-up\">Setting Up</a>\n<ul>\n<li><a href=\"#install-packages\">Install Packages</a></li>\n</ul>\n</li>\n<li><a href=\"#the-server-side\">The Server Side</a>\n<ul>\n<li><a href=\"#handling-the-request\">Handling the Request</a></li>\n<li><a href=\"#inject-initial-component-html-and-state\">Inject Initial Component HTML and State</a></li>\n</ul>\n</li>\n<li><a href=\"#the-client-side\">The Client Side</a></li>\n<li><a href=\"#preparing-the-initial-state\">Preparing the Initial State</a>\n<ul>\n<li><a href=\"#processing-request-parameters\">Processing Request Parameters</a></li>\n<li><a href=\"#async-state-fetching\">Async State Fetching</a></li>\n<li><a href=\"#security-considerations\">Security Considerations</a></li>\n</ul>\n</li>\n<li><a href=\"#next-steps\">Next Steps</a></li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

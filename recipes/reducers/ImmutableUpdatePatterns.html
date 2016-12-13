@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Immutable Update Patterns - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item chapter-item-current"><a href="../../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../api/Store.html">Store</a></li><li class="chapter-item "><a href="../../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/index.html" class="breadcrumb-item">reducers</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/ImmutableUpdatePatterns.html" class="breadcrumb-item">Immutable Update Patterns</a></div>
+    <h1 class="article-title">Immutable Update Patterns</h1>
+    <div class="article">
+      <p>The articles listed in <a href="PrerequisiteConcepts.md#immutable-data-management">Prerequisite Concepts#Immutable Data Management</a> give a number of good examples for how to perform basic update operations immutably, such as updating a field in an object or adding an item to the end of an array.  However, reducers will often need to use those basic operations in combination to perform more complicated tasks.  Here are some examples for some of the more common tasks you might have to implement.</p>
+<h2 id="updating-nested-objects">Updating Nested Objects <a class="markdownIt-Anchor" href="#updating-nested-objects">#</a></h2>
+<p>The key to updating nested data is <strong>that <em>every</em> level of nesting must be copied and updated appropriately</strong>.  This is often a difficult concept for those learning Redux, and there are some specific problems that frequently occur when trying to update nested objects.  These lead to accidental direct mutation, and should be avoided.</p>
+<h5 id="common-mistake-1-new-variables-that-point-to-the-same-objects">Common Mistake #1: New variables that point to the same objects <a class="markdownIt-Anchor" href="#common-mistake-1-new-variables-that-point-to-the-same-objects">#</a></h5>
+<p>Defining a new variable does <em>not</em> create a new actual object - it only creates another reference to the same object.  An example of this error would be:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateNestedState</span>(<span class="hljs-params">state, action</span>) </span>{
+    <span class="hljs-keyword">let</span> nestedState = state.nestedState;
+    <span class="hljs-comment">// ERROR: this directly modifies the existing object reference - don't do this!</span>
+    nestedState.nestedField = action.data;
+    
+    <span class="hljs-keyword">return</span> {
+        ...state,
+        nestedState
+    };
+}
+</code></pre>
+<p>This function does correctly return a shallow copy of the top-level state object, but because the <code>nestedState</code> variable was still pointing at the existing object, the state was directly mutated.</p>
+<h5 id="common-mistake-2-only-making-a-shallow-copy-of-one-level">Common Mistake #2: Only making a shallow copy of one level <a class="markdownIt-Anchor" href="#common-mistake-2-only-making-a-shallow-copy-of-one-level">#</a></h5>
+<p>Another common version of this error looks like this:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateNestedState</span>(<span class="hljs-params">state, action</span>) </span>{
+    <span class="hljs-comment">// Problem: this only does a shallow copy!</span>
+    <span class="hljs-keyword">let</span> newState = {...state};
+    
+    <span class="hljs-comment">// ERROR: nestedState is still the same object!</span>
+    newState.nestedState.nestedField = action.data;
+    
+    <span class="hljs-keyword">return</span> newState;
+}
+</code></pre>
+<p>Doing a shallow copy of the top level is <em>not</em> sufficient - the <code>nestedState</code> object should be copied as well.</p>
+<h5 id="correct-approach-copying-all-levels-of-nested-data">Correct Approach: Copying All Levels of Nested Data <a class="markdownIt-Anchor" href="#correct-approach-copying-all-levels-of-nested-data">#</a></h5>
+<p>Unfortunately, the process of correctly applying immutable updates to deeply nested state can easily become verbose and hard to read.  Here's what an example of updating <code>state.first.second[someId].fourth</code> might look like:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateVeryNestedField</span>(<span class="hljs-params">state, action</span>) </span>{
+    <span class="hljs-keyword">return</span> {
+        ....state,
+        <span class="hljs-attr">first</span> : {
+            ...state.first,
+            <span class="hljs-attr">second</span> : {
+                ...state.first.second,
+                [action.someId] : {
+                    ...state.first.second[action.someId],
+                    <span class="hljs-attr">fourth</span> : action.someValue
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p>Obviously, each layer of nesting makes this harder to read, and gives more chances to make mistakes.  This is one of several reasons why you are encouraged to keep your state flattened, and compose reducers as much as possible.</p>
+<h2 id="inserting-and-removing-items-in-arrays">Inserting and Removing Items in Arrays <a class="markdownIt-Anchor" href="#inserting-and-removing-items-in-arrays">#</a></h2>
+<p>Normally, a Javascript array's contents are modified using mutative functions like <code>push</code>, <code>unshift</code>, and <code>splice</code>.  Since we don't want to mutate state directly in reducers, those should normally be avoided.  Because of that, you might see &quot;insert&quot; or &quot;remove&quot; behavior written like this:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertItem</span>(<span class="hljs-params">array, action</span>) </span>{
+    <span class="hljs-keyword">return</span> [
+        ...array.slice(<span class="hljs-number">0</span>, action.index),
+        action.item,
+        ...array.slice(action.index)
+    ]
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeItem</span>(<span class="hljs-params">array, action</span>) </span>{
+    <span class="hljs-keyword">return</span> [
+        ...array.slice(<span class="hljs-number">0</span>, action.index),
+        ...array.slice(action.index + <span class="hljs-number">1</span>)
+    ];
+}
+</code></pre>
+<p>However, remember that the key is that the <em>original in-memory reference</em> is not modified.  <strong>As long as we make a copy first, we can safely mutate the copy</strong>.  Note that this is true for both arrays and objects, but nested values still must be updated using the same rules.</p>
+<p>This means that we could also write the insert and remove functions like this:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertItem</span>(<span class="hljs-params">array, action</span>) </span>{
+    <span class="hljs-keyword">let</span> newArray = array.slice();
+    newArray.splice(action.index, <span class="hljs-number">0</span>, action.item);
+    <span class="hljs-keyword">return</span> newArray;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeItem</span>(<span class="hljs-params">array, action</span>) </span>{
+    <span class="hljs-keyword">let</span> newArray = array.slice();
+    newArray.splice(action.index, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> newArray;
+}
+</code></pre>
+<p>The remove function could also be implemented as:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeItem</span>(<span class="hljs-params">array, action</span>) </span>{
+    <span class="hljs-keyword">return</span> array.filter( <span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> index !== action.index);
+}
+</code></pre>
+<h2 id="updating-an-item-in-an-array">Updating an Item in an Array <a class="markdownIt-Anchor" href="#updating-an-item-in-an-array">#</a></h2>
+<p>Updating one item in an array can be accomplished by using <code>Array.map</code>, returning a new value for the item we want to update, and returning the existing values for all other items:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateObjectInArray</span>(<span class="hljs-params">array, action</span>) </span>{
+    <span class="hljs-keyword">return</span> array.map( <span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span>(index !== action.index) {
+            <span class="hljs-comment">// This isn't the item we care about - keep it as-is</span>
+            <span class="hljs-keyword">return</span> item;
+        }
+        
+        <span class="hljs-comment">// Otherwise, this is the one we want - return an updated value</span>
+        <span class="hljs-keyword">return</span> {
+            ...item,
+            ...action.item
+        };    
+    });
+}
+</code></pre>
+<h2 id="immutable-update-utility-libraries">Immutable Update Utility Libraries <a class="markdownIt-Anchor" href="#immutable-update-utility-libraries">#</a></h2>
+<p>Because writing immutable update code can become tedious, there are a number of utility libraries that try to abstract out the process.  These libraries vary in APIs and usage, but all try to provide a shorter and more succinct way of writing these updates.  Some, like <a href="https://github.com/debitoor/dot-prop-immutable">dot-prop-immutable</a>, take string paths for commands:</p>
+<pre class="hljs"><code>state = dotProp.set(state, <span class="hljs-string">`todos.<span class="hljs-subst">${index}</span>.complete`</span>, <span class="hljs-literal">true</span>)
+</code></pre>
+<p>Others, like <a href="https://github.com/kolodny/immutability-helper">immutability-helper</a> (a fork of the now-deprecated React Immutability Helpers addon), use nested values and helper functions:</p>
+<pre class="hljs"><code><span class="hljs-keyword">var</span> collection = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, {<span class="hljs-attr">a</span>: [<span class="hljs-number">12</span>, <span class="hljs-number">17</span>, <span class="hljs-number">15</span>]}];
+<span class="hljs-keyword">var</span> newCollection = update(collection, {<span class="hljs-number">2</span>: {<span class="hljs-attr">a</span>: {<span class="hljs-attr">$splice</span>: [[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>]]}}});
+</code></pre>
+<p>They can provide a useful alternative to writing manual immutable update logic.</p>
+<p>A list of many immutable update utilities can be found in the <a href="https://github.com/markerikson/redux-ecosystem-links/blob/master/immutable-data.md#immutable-update-utilities">Immutable Data#Immutable Update Utilities</a> section of the <a href="https://github.com/markerikson/redux-ecosystem-links">Redux Addons Catalog</a>.</p>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../../recipes/reducers/BeyondCombineReducers.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../../recipes/reducers/InitializingState.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'recipes/reducers/ImmutableUpdatePatterns.md';
+  LOPPO.relative_root_path = '../../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#updating-nested-objects\">Updating Nested Objects</a></li>\n<li><a href=\"#inserting-and-removing-items-in-arrays\">Inserting and Removing Items in Arrays</a></li>\n<li><a href=\"#updating-an-item-in-an-array\">Updating an Item in an Array</a></li>\n<li><a href=\"#immutable-update-utility-libraries\">Immutable Update Utility Libraries</a></li>\n</ul>\n";
+</script>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>
+

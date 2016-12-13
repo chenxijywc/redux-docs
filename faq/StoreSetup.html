@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Redux FAQ: Store Setup - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item chapter-item-current"><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../faq/index.html" class="breadcrumb-item">faq</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../faq/StoreSetup.html" class="breadcrumb-item">Redux FAQ: Store Setup</a></div>
+    <h1 class="article-title">Redux FAQ: Store Setup</h1>
+    <div class="article">
+      <h2 id="table-of-contents">Table of Contents <a class="markdownIt-Anchor" href="#table-of-contents">#</a></h2>
+<ul>
+<li><a href="#store-setup-multiple-stores">Can or should I create multiple stores? Can I import my store directly, and use it in components myself?</a></li>
+<li><a href="#store-setup-middleware-chains">Is it OK to have more than one middleware chain in my store enhancer? What is the difference between next and dispatch in a middleware function?</a></li>
+<li><a href="#store-setup-subscriptions">How do I subscribe to only a portion of the state? Can I get the dispatched action as part of the subscription?</a></li>
+</ul>
+<h2 id="store-setup">Store Setup <a class="markdownIt-Anchor" href="#store-setup">#</a></h2>
+<p><a id="store-setup-multiple-stores"></a></p>
+<h3 id="can-or-should-i-create-multiple-stores-can-i-import-my-store-directly-and-use-it-in-components-myself">Can or should I create multiple stores? Can I import my store directly, and use it in components myself? <a class="markdownIt-Anchor" href="#can-or-should-i-create-multiple-stores-can-i-import-my-store-directly-and-use-it-in-components-myself">#</a></h3>
+<p>The original Flux pattern describes having multiple “stores” in an app, each one holding a different area of domain data. This can introduce issues such as needing to have one store “<code>waitFor</code>” another store to update. This is not necessary in Redux because the separation between data domains is already achieved by splitting a single reducer into smaller reducers.</p>
+<p>As with several other questions, it is <em>possible</em> to create multiple distinct Redux stores in a page, but the intended pattern is to have only a single store. Having a single store enables using the Redux DevTools, makes persisting and rehydrating data simpler, and simplifies the subscription logic.</p>
+<p>Some valid reasons for using multiple stores in Redux might include:</p>
+<ul>
+<li>Solving a performance issue caused by too frequent updates of some part of the state, when confirmed by profiling the app.</li>
+<li>Isolating a Redux app as a component in a bigger application, in which case you might want to create a store per root component instance.</li>
+</ul>
+<p>However, creating new stores shouldn't be your first instinct, especially if you come from a Flux background. Try reducer composition first, and only use multiple stores if it doesn't solve your problem.</p>
+<p>Similarly, while you <em>can</em> reference your store instance by importing it directly, this is not a recommended pattern in Redux. If you create a store instance and export it from a module, it will become a singleton. This means it will be harder to isolate a Redux app as a component of a larger app, if this is ever necessary, or to enable server rendering, because on the server you want to create separate store instances for every request.</p>
+<p>With <a href="https://github.com/reactjs/react-redux">React Redux</a>, the wrapper classes generated by the <code>connect()</code> function do actually look for <code>props.store</code> if it exists, but it's best if you wrap your root component in <code>&lt;Provider store={store}&gt;</code> and let React Redux worry about passing the store down. This way components don't need to worry about importing a store module, and isolating a Redux app or enabling server rendering is much easier to do later.</p>
+<h4 id="further-information">Further information <a class="markdownIt-Anchor" href="#further-information">#</a></h4>
+<p><strong>Documentation</strong></p>
+<ul>
+<li><a href="/docs/api/Store.md">API: Store</a></li>
+</ul>
+<p><strong>Discussions</strong></p>
+<ul>
+<li><a href="https://github.com/reactjs/redux/issues/1436">#1346: Is it bad practice to just have a 'stores' directory?</a></li>
+<li><a href="http://stackoverflow.com/questions/33619775/redux-multiple-stores-why-not">Stack Overflow: Redux multiple stores, why not?</a></li>
+<li><a href="http://stackoverflow.com/questions/35667249/accessing-redux-state-in-an-action-creator">Stack Overflow: Accessing Redux state in an action creator</a></li>
+<li><a href="https://gist.github.com/gaearon/eeee2f619620ab7b55673a4ee2bf8400">Gist: Breaking out of Redux paradigm to isolate apps</a></li>
+</ul>
+<p><a id="store-setup-middleware-chains"></a></p>
+<h3 id="is-it-ok-to-have-more-than-one-middleware-chain-in-my-store-enhancer-what-is-the-difference-between-next-and-dispatch-in-a-middleware-function">Is it OK to have more than one middleware chain in my store enhancer? What is the difference between <code>next</code> and <code>dispatch</code> in a middleware function? <a class="markdownIt-Anchor" href="#is-it-ok-to-have-more-than-one-middleware-chain-in-my-store-enhancer-what-is-the-difference-between-next-and-dispatch-in-a-middleware-function">#</a></h3>
+<p>Redux middleware act like a linked list. Each middleware function can either call <code>next(action)</code> to pass an action along to the next middleware in line, call <code>dispatch(action)</code> to restart the processing at the beginning of the list, or do nothing at all to stop the action from being processed further.</p>
+<p>This chain of middleware is defined by the arguments passed to the <code>applyMiddleware</code> function used when creating a store. Defining multiple chains will not work correctly, as they would have distinctly different <code>dispatch</code> references and the different chains would effectively be disconnected.</p>
+<h4 id="further-information-2">Further information <a class="markdownIt-Anchor" href="#further-information-2">#</a></h4>
+<p><strong>Documentation</strong></p>
+<ul>
+<li><a href="/docs/advanced/Middleware.md">Advanced: Middleware</a></li>
+<li><a href="/docs/api/applyMiddleware.md">API: applyMiddleware</a></li>
+</ul>
+<p><strong>Discussions</strong></p>
+<ul>
+<li><a href="https://github.com/reactjs/redux/issues/1051">#1051: Shortcomings of the current applyMiddleware and composing createStore</a></li>
+<li><a href="https://medium.com/@meagle/understanding-87566abcfb7a">Understanding Redux Middleware</a></li>
+<li><a href="http://blog.krawaller.se/posts/exploring-redux-middleware/">Exploring Redux Middleware</a></li>
+</ul>
+<p><a id="store-setup-subscriptions"></a></p>
+<h3 id="how-do-i-subscribe-to-only-a-portion-of-the-state-can-i-get-the-dispatched-action-as-part-of-the-subscription">How do I subscribe to only a portion of the state? Can I get the dispatched action as part of the subscription? <a class="markdownIt-Anchor" href="#how-do-i-subscribe-to-only-a-portion-of-the-state-can-i-get-the-dispatched-action-as-part-of-the-subscription">#</a></h3>
+<p>Redux provides a single <code>store.subscribe</code> method for notifying listeners that the store has updated. Listener callbacks do not receive the current state as an argument—it is simply an indication that <em>something</em> has changed. The subscriber logic can then call <code>getState()</code> to get the current state value.</p>
+<p>This API is intended as a low-level primitive with no dependencies or complications, and can be used to build higher-level subscription logic. UI bindings such as React Redux can create a subscription for each connected component. It is also possible to write functions that can intelligently compare the old state vs the new state, and execute additional logic if certain pieces have changed. Examples include <a href="https://github.com/jprichardson/redux-watch">redux-watch</a> and <a href="https://github.com/ashaffer/redux-subscribe">redux-subscribe</a> which offer different approaches to specifying subscriptions and handling changes.</p>
+<p>The new state is not passed to the listeners in order to simplify implementing store enhancers such as the Redux DevTools. In addition, subscribers are intended to react to the state value itself, not the action. Middleware can be used if the action is important and needs to be handled specifically.</p>
+<h4 id="further-information-3">Further information <a class="markdownIt-Anchor" href="#further-information-3">#</a></h4>
+<p><strong>Documentation</strong></p>
+<ul>
+<li><a href="/docs/basics/Store.md">Basics: Store</a></li>
+<li><a href="/docs/api/Store.md">API: Store</a></li>
+</ul>
+<p><strong>Discussions</strong></p>
+<ul>
+<li><a href="https://github.com/reactjs/redux/issues/303">#303: subscribe API with state as an argument</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/580">#580: Is it possible to get action and state in store.subscribe?</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/922">#922: Proposal: add subscribe to middleware API</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1057">#1057: subscribe listener can get action param?</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1300">#1300: Redux is great but major feature is missing</a></li>
+</ul>
+<p><strong>Libraries</strong></p>
+<ul>
+<li><a href="https://github.com/markerikson/redux-ecosystem-links/blob/master/store.md#store-change-subscriptions">Redux Addons Catalog: Store Change Subscriptions</a></li>
+</ul>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../faq/Reducers.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../Troubleshooting.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'faq/StoreSetup.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#table-of-contents\">Table of Contents</a></li>\n<li><a href=\"#store-setup\">Store Setup</a>\n<ul>\n<li><a href=\"#can-or-should-i-create-multiple-stores-can-i-import-my-store-directly-and-use-it-in-components-myself\">Can or should I create multiple stores? Can I import my store directly, and use it in components myself?</a></li>\n<li><a href=\"#is-it-ok-to-have-more-than-one-middleware-chain-in-my-store-enhancer-what-is-the-difference-between-next-and-dispatch-in-a-middleware-function\">Is it OK to have more than one middleware chain in my store enhancer? What is the difference between <code>next</code> and <code>dispatch</code> in a middleware function?</a></li>\n<li><a href=\"#how-do-i-subscribe-to-only-a-portion-of-the-state-can-i-get-the-dispatched-action-as-part-of-the-subscription\">How do I subscribe to only a portion of the state? Can I get the dispatched action as part of the subscription?</a></li>\n</ul>\n</li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

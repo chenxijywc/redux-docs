@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>`applyMiddleware(...middlewares)` - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item chapter-item-current"><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/index.html" class="breadcrumb-item">api</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/applyMiddleware.html" class="breadcrumb-item">`applyMiddleware(...middlewares)`</a></div>
+    <h1 class="article-title">`applyMiddleware(...middlewares)`</h1>
+    <div class="article">
+      <p>Middleware is the suggested way to extend Redux with custom functionality. Middleware lets you wrap the store's <a href="Store.md#dispatch"><code>dispatch</code></a> method for fun and profit. The key feature of middleware is that it is composable. Multiple middleware can be combined together, where each middleware requires no knowledge of what comes before or after it in the chain.</p>
+<p>The most common use case for middleware is to support asynchronous actions without much boilerplate code or a dependency on a library like <a href="https://github.com/Reactive-Extensions/RxJS">Rx</a>. It does so by letting you dispatch <a href="../Glossary.md#async-action">async actions</a> in addition to normal actions.</p>
+<p>For example, <a href="https://github.com/gaearon/redux-thunk">redux-thunk</a> lets the action creators invert control by dispatching functions. They would receive <a href="Store.md#dispatch"><code>dispatch</code></a> as an argument and may call it asynchronously. Such functions are called <em>thunks</em>. Another example of middleware is <a href="https://github.com/acdlite/redux-promise">redux-promise</a>. It lets you dispatch a <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> async action, and dispatches a normal action when the Promise resolves.</p>
+<p>Middleware is not baked into <a href="createStore.md"><code>createStore</code></a> and is not a fundamental part of the Redux architecture, but we consider it useful enough to be supported right in the core. This way, there is a single standard way to extend <a href="Store.md#dispatch"><code>dispatch</code></a> in the ecosystem, and different middleware may compete in expressiveness and utility.</p>
+<h4 id="arguments">Arguments <a class="markdownIt-Anchor" href="#arguments">#</a></h4>
+<ul>
+<li><code>...middlewares</code> (<em>arguments</em>): Functions that conform to the Redux <em>middleware API</em>. Each middleware receives <a href="Store.md"><code>Store</code></a>'s <a href="Store.md#dispatch"><code>dispatch</code></a> and <a href="Store.md#getState"><code>getState</code></a> functions as named arguments, and returns a function. That function will be given the <code>next</code> middleware's dispatch method, and is expected to return a function of <code>action</code> calling <code>next(action)</code> with a potentially different argument, or at a different time, or maybe not calling it at all. The last middleware in the chain will receive the real store's <a href="Store.md#dispatch"><code>dispatch</code></a> method as the <code>next</code> parameter, thus ending the chain. So, the middleware signature is <code>({ getState, dispatch }) =&gt; next =&gt; action</code>.</li>
+</ul>
+<h4 id="returns">Returns <a class="markdownIt-Anchor" href="#returns">#</a></h4>
+<p>(<em>Function</em>) A store enhancer that applies the given middleware. The store enhancer signature is <code>createStore =&gt; createStore'</code> but the easiest way to apply it is to pass it to <a href="./createStore.md"><code>createStore()</code></a> as the last <code>enhancer</code> argument.</p>
+<h4 id="example-custom-logger-middleware">Example: Custom Logger Middleware <a class="markdownIt-Anchor" href="#example-custom-logger-middleware">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore, applyMiddleware } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+<span class="hljs-keyword">import</span> todos <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducers'</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logger</span>(<span class="hljs-params">{ getState }</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">next</span>) =&gt;</span> (action) =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'will dispatch'</span>, action)
+
+    <span class="hljs-comment">// Call the next dispatch method in the middleware chain.</span>
+    <span class="hljs-keyword">let</span> returnValue = next(action)
+
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'state after dispatch'</span>, getState())
+
+    <span class="hljs-comment">// This will likely be the action itself, unless</span>
+    <span class="hljs-comment">// a middleware further in chain changed it.</span>
+    <span class="hljs-keyword">return</span> returnValue
+  }
+}
+
+<span class="hljs-keyword">let</span> store = createStore(
+  todos,
+  [ <span class="hljs-string">'Use Redux'</span> ],
+  applyMiddleware(logger)
+)
+
+store.dispatch({
+  <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>,
+  <span class="hljs-attr">text</span>: <span class="hljs-string">'Understand the middleware'</span>
+})
+<span class="hljs-comment">// (These lines will be logged by the middleware:)</span>
+<span class="hljs-comment">// will dispatch: { type: 'ADD_TODO', text: 'Understand the middleware' }</span>
+<span class="hljs-comment">// state after dispatch: [ 'Use Redux', 'Understand the middleware' ]</span>
+</code></pre>
+<h4 id="example-using-thunk-middleware-for-async-actions">Example: Using Thunk Middleware for Async Actions <a class="markdownIt-Anchor" href="#example-using-thunk-middleware-for-async-actions">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore, combineReducers, applyMiddleware } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+<span class="hljs-keyword">import</span> thunk <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-thunk'</span>
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> reducers <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducers'</span>
+
+<span class="hljs-keyword">let</span> reducer = combineReducers(reducers)
+<span class="hljs-comment">// applyMiddleware supercharges createStore with middleware:</span>
+<span class="hljs-keyword">let</span> store = createStore(reducer, applyMiddleware(thunk))
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchSecretSauce</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> fetch(<span class="hljs-string">'https://www.google.com/search?q=secret+sauce'</span>)
+}
+
+<span class="hljs-comment">// These are the normal action creators you have seen so far.</span>
+<span class="hljs-comment">// The actions they return can be dispatched without any middleware.</span>
+<span class="hljs-comment">// However, they only express “facts” and not the “async flow”.</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeASandwich</span>(<span class="hljs-params">forPerson, secretSauce</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'MAKE_SANDWICH'</span>,
+    forPerson,
+    secretSauce
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">apologize</span>(<span class="hljs-params">fromPerson, toPerson, error</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'APOLOGIZE'</span>,
+    fromPerson,
+    toPerson,
+    error
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">withdrawMoney</span>(<span class="hljs-params">amount</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'WITHDRAW'</span>,
+    amount
+  }
+}
+
+<span class="hljs-comment">// Even without middleware, you can dispatch an action:</span>
+store.dispatch(withdrawMoney(<span class="hljs-number">100</span>))
+
+<span class="hljs-comment">// But what do you do when you need to start an asynchronous action,</span>
+<span class="hljs-comment">// such as an API call, or a router transition?</span>
+
+<span class="hljs-comment">// Meet thunks.</span>
+<span class="hljs-comment">// A thunk is a function that returns a function.</span>
+<span class="hljs-comment">// This is a thunk.</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeASandwichWithSecretSauce</span>(<span class="hljs-params">forPerson</span>) </span>{
+
+  <span class="hljs-comment">// Invert control!</span>
+  <span class="hljs-comment">// Return a function that accepts `dispatch` so we can dispatch later.</span>
+  <span class="hljs-comment">// Thunk middleware knows how to turn thunk async actions into actions.</span>
+
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dispatch</span>) </span>{
+    <span class="hljs-keyword">return</span> fetchSecretSauce().then(
+      <span class="hljs-function"><span class="hljs-params">sauce</span> =&gt;</span> dispatch(makeASandwich(forPerson, sauce)),
+      error =&gt; dispatch(apologize(<span class="hljs-string">'The Sandwich Shop'</span>, forPerson, error))
+    )
+  }
+}
+
+<span class="hljs-comment">// Thunk middleware lets me dispatch thunk async actions</span>
+<span class="hljs-comment">// as if they were actions!</span>
+
+store.dispatch(
+  makeASandwichWithSecretSauce(<span class="hljs-string">'Me'</span>)
+)
+
+<span class="hljs-comment">// It even takes care to return the thunk's return value</span>
+<span class="hljs-comment">// from the dispatch, so I can chain Promises as long as I return them.</span>
+
+store.dispatch(
+  makeASandwichWithSecretSauce(<span class="hljs-string">'My wife'</span>)
+).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Done!'</span>)
+})
+
+<span class="hljs-comment">// In fact I can write action creators that dispatch</span>
+<span class="hljs-comment">// actions and async actions from other action creators,</span>
+<span class="hljs-comment">// and I can build my control flow with Promises.</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeSandwichesForEverybody</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dispatch, getState</span>) </span>{
+    <span class="hljs-keyword">if</span> (!getState().sandwiches.isShopOpen) {
+
+      <span class="hljs-comment">// You don't have to return Promises, but it's a handy convention</span>
+      <span class="hljs-comment">// so the caller can always call .then() on async dispatch result.</span>
+
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve()
+    }
+
+    <span class="hljs-comment">// We can dispatch both plain object actions and other thunks,</span>
+    <span class="hljs-comment">// which lets us compose the asynchronous actions in a single flow.</span>
+
+    <span class="hljs-keyword">return</span> dispatch(
+      makeASandwichWithSecretSauce(<span class="hljs-string">'My Grandma'</span>)
+    ).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+      <span class="hljs-built_in">Promise</span>.all([
+        dispatch(makeASandwichWithSecretSauce(<span class="hljs-string">'Me'</span>)),
+        dispatch(makeASandwichWithSecretSauce(<span class="hljs-string">'My wife'</span>))
+      ])
+    ).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+      dispatch(makeASandwichWithSecretSauce(<span class="hljs-string">'Our kids'</span>))
+    ).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+      dispatch(getState().myMoney &gt; <span class="hljs-number">42</span> ?
+        withdrawMoney(<span class="hljs-number">42</span>) :
+        apologize(<span class="hljs-string">'Me'</span>, <span class="hljs-string">'The Sandwich Shop'</span>)
+      )
+    )
+  }
+}
+
+<span class="hljs-comment">// This is very useful for server side rendering, because I can wait</span>
+<span class="hljs-comment">// until data is available, then synchronously render the app.</span>
+
+<span class="hljs-keyword">import</span> { renderToString } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom/server'</span>
+
+store.dispatch(
+  makeSandwichesForEverybody()
+).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
+  response.send(renderToString(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">MyApp</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span> /&gt;</span>))
+)
+
+// I can also dispatch a thunk async action from a component
+// any time its props change to load the missing data.
+
+import { connect } from 'react-redux'
+import { Component } from 'react'
+
+class SandwichShop extends Component {
+  componentDidMount() {
+    this.props.dispatch(
+      makeASandwichWithSecretSauce(this.props.forPerson)
+    )
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.forPerson !== this.props.forPerson) {
+      this.props.dispatch(
+        makeASandwichWithSecretSauce(nextProps.forPerson)
+      )
+    }
+  }
+
+  render() {
+    return <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{this.props.sandwiches.join('mustard')}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  }
+}
+
+export default connect(
+  state =&gt; ({
+    sandwiches: state.sandwiches
+  })
+)(SandwichShop)
+</span></code></pre>
+<h4 id="tips">Tips <a class="markdownIt-Anchor" href="#tips">#</a></h4>
+<ul>
+<li>
+<p>Middleware only wraps the store's <a href="Store.md#dispatch"><code>dispatch</code></a> function. Technically, anything a middleware can do, you can do manually by wrapping every <code>dispatch</code> call, but it's easier to manage this in a single place and define action transformations on the scale of the whole project.</p>
+</li>
+<li>
+<p>If you use other store enhancers in addition to <code>applyMiddleware</code>, make sure to put <code>applyMiddleware</code> before them in the composition chain because the middleware is potentially asynchronous. For example, it should go before <a href="https://github.com/gaearon/redux-devtools">redux-devtools</a> because otherwise the DevTools won't see the raw actions emitted by the Promise middleware and such.</p>
+</li>
+<li>
+<p>If you want to conditionally apply a middleware, make sure to only import it when it's needed:</p>
+<pre class="hljs"><code><span class="hljs-keyword">let</span> middleware = [ a, b ]
+<span class="hljs-keyword">if</span> (process.env.NODE_ENV !== <span class="hljs-string">'production'</span>) {
+  <span class="hljs-keyword">let</span> c = <span class="hljs-built_in">require</span>(<span class="hljs-string">'some-debug-middleware'</span>)
+  <span class="hljs-keyword">let</span> d = <span class="hljs-built_in">require</span>(<span class="hljs-string">'another-debug-middleware'</span>)
+  middleware = [ ...middleware, c, d ]
+}
+
+<span class="hljs-keyword">const</span> store = createStore(
+  reducer,
+  preloadedState,
+  applyMiddleware(...middleware)
+)
+</code></pre>
+<p>This makes it easier for bundling tools to cut out unneeded modules and reduces the size of your builds.</p>
+</li>
+<li>
+<p>Ever wondered what <code>applyMiddleware</code> itself is? It ought to be an extension mechanism more powerful than the middleware itself. Indeed, <code>applyMiddleware</code> is an example of the most powerful Redux extension mechanism called <a href="../Glossary.md#store-enhancer">store enhancers</a>. It is highly unlikely you'll ever want to write a store enhancer yourself. Another example of a store enhancer is <a href="https://github.com/gaearon/redux-devtools">redux-devtools</a>. Middleware is less powerful than a store enhancer, but it is easier to write.</p>
+</li>
+<li>
+<p>Middleware sounds much more complicated than it really is. The only way to really understand middleware is to see how the existing middleware works, and try to write your own. The function nesting can be intimidating, but most of the middleware you'll find are, in fact, 10-liners, and the nesting and composability is what makes the middleware system powerful.</p>
+</li>
+<li>
+<p>To apply multiple store enhancers, you may use <a href="./compose.md"><code>compose()</code></a>.</p>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../api/Store.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../api/bindActionCreators.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'api/applyMiddleware.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

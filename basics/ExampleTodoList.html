@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Example: Todo List - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item chapter-item-current"><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../basics/index.html" class="breadcrumb-item">basics</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../basics/ExampleTodoList.html" class="breadcrumb-item">Example: Todo List</a></div>
+    <h1 class="article-title">Example: Todo List</h1>
+    <div class="article">
+      <p>This is the complete source code of the tiny todo app we built during the <a href="./README.md">basics tutorial</a>.</p>
+<h2 id="entry-point">Entry Point <a class="markdownIt-Anchor" href="#entry-point">#</a></h2>
+<h4 id="indexjs"><code>index.js</code> <a class="markdownIt-Anchor" href="#indexjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { render } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>
+<span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+<span class="hljs-keyword">import</span> todoApp <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducers'</span>
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./components/App'</span>
+
+<span class="hljs-keyword">let</span> store = createStore(todoApp)
+
+render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+)
+</code></pre>
+<h2 id="action-creators">Action Creators <a class="markdownIt-Anchor" href="#action-creators">#</a></h2>
+<h4 id="actionsindexjs"><code>actions/index.js</code> <a class="markdownIt-Anchor" href="#actionsindexjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">let</span> nextTodoId = <span class="hljs-number">0</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> addTodo = <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>,
+    <span class="hljs-attr">id</span>: nextTodoId++,
+    text
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> setVisibilityFilter = <span class="hljs-function">(<span class="hljs-params">filter</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'SET_VISIBILITY_FILTER'</span>,
+    filter
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> toggleTodo = <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'TOGGLE_TODO'</span>,
+    id
+  }
+}
+</code></pre>
+<h2 id="reducers">Reducers <a class="markdownIt-Anchor" href="#reducers">#</a></h2>
+<h4 id="reducerstodosjs"><code>reducers/todos.js</code> <a class="markdownIt-Anchor" href="#reducerstodosjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> todo = <span class="hljs-function">(<span class="hljs-params">state = {}, action</span>) =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'ADD_TODO'</span>:
+      <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">id</span>: action.id,
+        <span class="hljs-attr">text</span>: action.text,
+        <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>
+      }
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'TOGGLE_TODO'</span>:
+      <span class="hljs-keyword">if</span> (state.id !== action.id) {
+        <span class="hljs-keyword">return</span> state
+      }
+
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.assign({}, state, {
+        <span class="hljs-attr">completed</span>: !state.completed
+      })
+      
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">return</span> state
+  }
+}
+
+<span class="hljs-keyword">const</span> todos = <span class="hljs-function">(<span class="hljs-params">state = [], action</span>) =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'ADD_TODO'</span>:
+      <span class="hljs-keyword">return</span> [
+        ...state,
+        todo(<span class="hljs-literal">undefined</span>, action)
+      ]
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'TOGGLE_TODO'</span>:
+      <span class="hljs-keyword">return</span> state.map(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span>
+        todo(t, action)
+      )
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">return</span> state
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> todos
+</code></pre>
+<h4 id="reducersvisibilityfilterjs"><code>reducers/visibilityFilter.js</code> <a class="markdownIt-Anchor" href="#reducersvisibilityfilterjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> visibilityFilter = <span class="hljs-function">(<span class="hljs-params">state = <span class="hljs-string">'SHOW_ALL'</span>, action</span>) =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SET_VISIBILITY_FILTER'</span>:
+      <span class="hljs-keyword">return</span> action.filter
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">return</span> state
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> visibilityFilter
+</code></pre>
+<h4 id="reducersindexjs"><code>reducers/index.js</code> <a class="markdownIt-Anchor" href="#reducersindexjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { combineReducers } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+<span class="hljs-keyword">import</span> todos <span class="hljs-keyword">from</span> <span class="hljs-string">'./todos'</span>
+<span class="hljs-keyword">import</span> visibilityFilter <span class="hljs-keyword">from</span> <span class="hljs-string">'./visibilityFilter'</span>
+
+<span class="hljs-keyword">const</span> todoApp = combineReducers({
+  todos,
+  visibilityFilter
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> todoApp
+</code></pre>
+<h2 id="presentational-components">Presentational Components <a class="markdownIt-Anchor" href="#presentational-components">#</a></h2>
+<h4 id="componentstodojs"><code>components/Todo.js</code> <a class="markdownIt-Anchor" href="#componentstodojs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React, { PropTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-keyword">const</span> Todo = <span class="hljs-function">(<span class="hljs-params">{ onClick, completed, text }</span>) =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>
+    <span class="hljs-attr">onClick</span>=<span class="hljs-string">{onClick}</span>
+    <span class="hljs-attr">style</span>=<span class="hljs-string">{{</span>
+      <span class="hljs-attr">textDecoration:</span> <span class="hljs-attr">completed</span> ? '<span class="hljs-attr">line-through</span>' <span class="hljs-attr">:</span> '<span class="hljs-attr">none</span>'
+    }}
+  &gt;</span>
+    {text}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span>
+)
+
+Todo.propTypes = {
+  <span class="hljs-attr">onClick</span>: PropTypes.func.isRequired,
+  <span class="hljs-attr">completed</span>: PropTypes.bool.isRequired,
+  <span class="hljs-attr">text</span>: PropTypes.string.isRequired
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Todo
+</code></pre>
+<h4 id="componentstodolistjs"><code>components/TodoList.js</code> <a class="markdownIt-Anchor" href="#componentstodolistjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React, { PropTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> Todo <span class="hljs-keyword">from</span> <span class="hljs-string">'./Todo'</span>
+
+<span class="hljs-keyword">const</span> TodoList = <span class="hljs-function">(<span class="hljs-params">{ todos, onTodoClick }</span>) =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    {todos.map(todo =&gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">Todo</span>
+        <span class="hljs-attr">key</span>=<span class="hljs-string">{todo.id}</span>
+        {<span class="hljs-attr">...todo</span>}
+        <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> onTodoClick(todo.id)}
+      /&gt;
+    )}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+)
+
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    completed: PropTypes.bool.isRequired,
+    text: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+  onTodoClick: PropTypes.func.isRequired
+}
+
+export default TodoList
+</span></code></pre>
+<h4 id="componentslinkjs"><code>components/Link.js</code> <a class="markdownIt-Anchor" href="#componentslinkjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React, { PropTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+
+<span class="hljs-keyword">const</span> Link = <span class="hljs-function">(<span class="hljs-params">{ active, children, onClick }</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (active) {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>
+  }
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>
+       <span class="hljs-attr">onClick</span>=<span class="hljs-string">{e</span> =&gt;</span> {
+         e.preventDefault()
+         onClick()
+       }}
+    &gt;
+      {children}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span>
+  )
+}
+
+Link.propTypes = {
+  <span class="hljs-attr">active</span>: PropTypes.bool.isRequired,
+  <span class="hljs-attr">children</span>: PropTypes.node.isRequired,
+  <span class="hljs-attr">onClick</span>: PropTypes.func.isRequired
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Link
+</code></pre>
+<h4 id="componentsfooterjs"><code>components/Footer.js</code> <a class="markdownIt-Anchor" href="#componentsfooterjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> FilterLink <span class="hljs-keyword">from</span> <span class="hljs-string">'../containers/FilterLink'</span>
+
+<span class="hljs-keyword">const</span> Footer = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    Show:
+    {" "}
+    <span class="hljs-tag">&lt;<span class="hljs-name">FilterLink</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">"SHOW_ALL"</span>&gt;</span>
+      All
+    <span class="hljs-tag">&lt;/<span class="hljs-name">FilterLink</span>&gt;</span>
+    {", "}
+    <span class="hljs-tag">&lt;<span class="hljs-name">FilterLink</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">"SHOW_ACTIVE"</span>&gt;</span>
+      Active
+    <span class="hljs-tag">&lt;/<span class="hljs-name">FilterLink</span>&gt;</span>
+    {", "}
+    <span class="hljs-tag">&lt;<span class="hljs-name">FilterLink</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">"SHOW_COMPLETED"</span>&gt;</span>
+      Completed
+    <span class="hljs-tag">&lt;/<span class="hljs-name">FilterLink</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Footer
+</code></pre>
+<h4 id="componentsappjs"><code>components/App.js</code> <a class="markdownIt-Anchor" href="#componentsappjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> Footer <span class="hljs-keyword">from</span> <span class="hljs-string">'./Footer'</span>
+<span class="hljs-keyword">import</span> AddTodo <span class="hljs-keyword">from</span> <span class="hljs-string">'../containers/AddTodo'</span>
+<span class="hljs-keyword">import</span> VisibleTodoList <span class="hljs-keyword">from</span> <span class="hljs-string">'../containers/VisibleTodoList'</span>
+
+<span class="hljs-keyword">const</span> App = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">AddTodo</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">VisibleTodoList</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Footer</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App
+</code></pre>
+<h2 id="container-components">Container Components <a class="markdownIt-Anchor" href="#container-components">#</a></h2>
+<h4 id="containersvisibletodolistjs"><code>containers/VisibleTodoList.js</code> <a class="markdownIt-Anchor" href="#containersvisibletodolistjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> { toggleTodo } <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions'</span>
+<span class="hljs-keyword">import</span> TodoList <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/TodoList'</span>
+
+<span class="hljs-keyword">const</span> getVisibleTodos = <span class="hljs-function">(<span class="hljs-params">todos, filter</span>) =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (filter) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SHOW_ALL'</span>:
+      <span class="hljs-keyword">return</span> todos
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SHOW_COMPLETED'</span>:
+      <span class="hljs-keyword">return</span> todos.filter(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> t.completed)
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'SHOW_ACTIVE'</span>:
+      <span class="hljs-keyword">return</span> todos.filter(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> !t.completed)
+  }
+}
+
+<span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">todos</span>: getVisibleTodos(state.todos, state.visibilityFilter)
+  }
+}
+
+<span class="hljs-keyword">const</span> mapDispatchToProps = <span class="hljs-function">(<span class="hljs-params">dispatch</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">onTodoClick</span>: <span class="hljs-function">(<span class="hljs-params">id</span>) =&gt;</span> {
+      dispatch(toggleTodo(id))
+    }
+  }
+}
+
+<span class="hljs-keyword">const</span> VisibleTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> VisibleTodoList
+</code></pre>
+<h4 id="containersfilterlinkjs"><code>containers/FilterLink.js</code> <a class="markdownIt-Anchor" href="#containersfilterlinkjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> { setVisibilityFilter } <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions'</span>
+<span class="hljs-keyword">import</span> Link <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/Link'</span>
+
+<span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state, ownProps</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">active</span>: ownProps.filter === state.visibilityFilter
+  }
+}
+
+<span class="hljs-keyword">const</span> mapDispatchToProps = <span class="hljs-function">(<span class="hljs-params">dispatch, ownProps</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">onClick</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      dispatch(setVisibilityFilter(ownProps.filter))
+    }
+  }
+}
+
+<span class="hljs-keyword">const</span> FilterLink = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Link)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> FilterLink
+</code></pre>
+<h3 id="other-components">Other Components <a class="markdownIt-Anchor" href="#other-components">#</a></h3>
+<h4 id="containersaddtodojs"><code>containers/AddTodo.js</code> <a class="markdownIt-Anchor" href="#containersaddtodojs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> { addTodo } <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions'</span>
+
+<span class="hljs-keyword">let</span> AddTodo = <span class="hljs-function">(<span class="hljs-params">{ dispatch }</span>) =&gt;</span> {
+  <span class="hljs-keyword">let</span> input
+
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{e</span> =&gt;</span> {
+        e.preventDefault()
+        if (!input.value.trim()) {
+          return
+        }
+        dispatch(addTodo(input.value))
+        input.value = ''
+      }}&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">{node</span> =&gt;</span> {
+          input = node
+        }} /&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>
+          Add Todo
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  )
+}
+AddTodo = connect()(AddTodo)
+
+export default AddTodo
+</span></code></pre>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../basics/UsageWithReact.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../advanced/index.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'basics/ExampleTodoList.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#entry-point\">Entry Point</a></li>\n<li><a href=\"#action-creators\">Action Creators</a></li>\n<li><a href=\"#reducers\">Reducers</a></li>\n<li><a href=\"#presentational-components\">Presentational Components</a></li>\n<li><a href=\"#container-components\">Container Components</a>\n<ul>\n<li><a href=\"#other-components\">Other Components</a></li>\n</ul>\n</li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

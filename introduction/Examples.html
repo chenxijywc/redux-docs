@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Examples - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item chapter-item-current"><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../introduction/index.html" class="breadcrumb-item">introduction</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../introduction/Examples.html" class="breadcrumb-item">Examples</a></div>
+    <h1 class="article-title">Examples</h1>
+    <div class="article">
+      <p>Redux is distributed with a few examples in its <a href="https://github.com/reactjs/redux/tree/master/examples">source code</a>.</p>
+<h2 id="counter-vanilla">Counter Vanilla <a class="markdownIt-Anchor" href="#counter-vanilla">#</a></h2>
+<p>Run the <a href="https://github.com/reactjs/redux/tree/master/examples/counter-vanilla">Counter Vanilla</a> example:</p>
+<pre class="hljs"><code>git clone https://github.com/reactjs/redux.git
+
+cd redux/examples/counter-vanilla
+open index.html
+</code></pre>
+<p>It does not require a build system or a view framework and exists to show the raw Redux API used with ES5.</p>
+<h2 id="counter">Counter <a class="markdownIt-Anchor" href="#counter">#</a></h2>
+<p>Run the <a href="https://github.com/reactjs/redux/tree/master/examples/counter">Counter</a> example:</p>
+<pre class="hljs"><code>git clone https://github.com/reactjs/redux.git
+
+cd redux/examples/counter
+npm install
+npm start
+
+open http://localhost:3000/
+</code></pre>
+<p>This is the most basic example of using Redux together with React. For simplicity, it re-renders the React component manually when the store changes. In real projects, you will likely want to use the highly performant <a href="https://github.com/reactjs/react-redux">React Redux</a> bindings instead.</p>
+<p>This example includes tests.</p>
+<h2 id="todos">Todos <a class="markdownIt-Anchor" href="#todos">#</a></h2>
+<p>Run the <a href="https://github.com/reactjs/redux/tree/master/examples/todos">Todos</a> example:</p>
+<pre class="hljs"><code>git clone https://github.com/reactjs/redux.git
+
+cd redux/examples/todos
+npm install
+npm start
+
+open http://localhost:3000/
+</code></pre>
+<p>This is the best example to get a deeper understanding of how the state updates work together with components in Redux. It shows how reducers can delegate handling actions to other reducers, and how you can use <a href="https://github.com/reactjs/react-redux">React Redux</a> to generate container components from your presentational components.</p>
+<p>This example includes tests.</p>
+<h2 id="todos-with-undo">Todos with Undo <a class="markdownIt-Anchor" href="#todos-with-undo">#</a></h2>
+<p>Run the <a href="https://github.com/reactjs/redux/tree/master/examples/todos-with-undo">Todos with Undo</a> example:</p>
+<pre class="hljs"><code>git clone https://github.com/reactjs/redux.git
+
+cd redux/examples/todos-with-undo
+npm install
+npm start
+
+open http://localhost:3000/
+</code></pre>
+<p>This is a variation on the previous example. It is almost identical, but additionally shows how wrapping your reducer with <a href="https://github.com/omnidan/redux-undo">Redux Undo</a> lets you add a Undo/Redo functionality to your app with a few lines of code.</p>
+<h2 id="todomvc">TodoMVC <a class="markdownIt-Anchor" href="#todomvc">#</a></h2>
+<p>Run the <a href="https://github.com/reactjs/redux/tree/master/examples/todomvc">TodoMVC</a> example:</p>
+<pre class="hljs"><code>git clone https://github.com/reactjs/redux.git
+
+cd redux/examples/todomvc
+npm install
+npm start
+
+open http://localhost:3000/
+</code></pre>
+<p>This is the classical <a href="http://todomvc.com/">TodoMVC</a> example. It's here for the sake of comparison, but it covers the same points as the Todos example.</p>
+<p>This example includes tests.</p>
+<h2 id="shopping-cart">Shopping Cart <a class="markdownIt-Anchor" href="#shopping-cart">#</a></h2>
+<p>Run the <a href="https://github.com/reactjs/redux/tree/master/examples/shopping-cart">Shopping Cart</a> example:</p>
+<pre class="hljs"><code>git clone https://github.com/reactjs/redux.git
+
+cd redux/examples/shopping-cart
+npm install
+npm start
+
+open http://localhost:3000/
+</code></pre>
+<p>This example shows important idiomatic Redux patterns that become important as your app grows. In particular, it shows how to store entities in a normalized way by their IDs, how to compose reducers on several levels, and how to define selectors alongside the reducers so the knowledge about the state shape is encapsulated. It also demonstrates logging with <a href="https://github.com/fcomb/redux-logger">Redux Logger</a> and conditional dispatching of actions with <a href="https://github.com/gaearon/redux-thunk">Redux Thunk</a> middleware.</p>
+<h2 id="tree-view">Tree View <a class="markdownIt-Anchor" href="#tree-view">#</a></h2>
+<p>Run the <a href="https://github.com/reactjs/redux/tree/master/examples/tree-view">Tree View</a> example:</p>
+<pre class="hljs"><code>git clone https://github.com/reactjs/redux.git
+
+cd redux/examples/tree-view
+npm install
+npm start
+
+open http://localhost:3000/
+</code></pre>
+<p>This example demonstrates rendering a deeply nested tree view and representing its state in a normalized form so it is easy to update from reducers. Good rendering performance is achieved by the container components granularly subscribing only to the tree nodes that they render.</p>
+<p>This example includes tests.</p>
+<h2 id="async">Async <a class="markdownIt-Anchor" href="#async">#</a></h2>
+<p>Run the <a href="https://github.com/reactjs/redux/tree/master/examples/async">Async</a> example:</p>
+<pre class="hljs"><code>git clone https://github.com/reactjs/redux.git
+
+cd redux/examples/async
+npm install
+npm start
+
+open http://localhost:3000/
+</code></pre>
+<p>This example includes reading from an asynchronous API, fetching data in response to user input, showing loading indicators, caching the response, and invalidating the cache. It uses <a href="https://github.com/gaearon/redux-thunk">Redux Thunk</a> middleware to encapsulate asynchronous side effects.</p>
+<h2 id="universal">Universal <a class="markdownIt-Anchor" href="#universal">#</a></h2>
+<p>Run the <a href="https://github.com/reactjs/redux/tree/master/examples/universal">Universal</a> example:</p>
+<pre class="hljs"><code>git clone https://github.com/reactjs/redux.git
+
+cd redux/examples/universal
+npm install
+npm start
+
+open http://localhost:3000/
+</code></pre>
+<p>This is a basic demonstration of <a href="../recipes/ServerRendering.md">server rendering</a> with Redux and React. It shows how to prepare the initial store state on the server, and pass it down to the client so the client store can boot up from an existing state.</p>
+<h2 id="real-world">Real World <a class="markdownIt-Anchor" href="#real-world">#</a></h2>
+<p>Run the <a href="https://github.com/reactjs/redux/tree/master/examples/real-world">Real World</a> example:</p>
+<pre class="hljs"><code>git clone https://github.com/reactjs/redux.git
+
+cd redux/examples/real-world
+npm install
+npm start
+
+open http://localhost:3000/
+</code></pre>
+<p>This is the most advanced example. It is dense by design. It covers keeping fetched entities in a normalized cache, implementing a custom middleware for API calls, rendering partially loaded data, pagination, caching responses, displaying error messages, and routing. Additionally, it includes Redux DevTools.</p>
+<h2 id="more-examples">More Examples <a class="markdownIt-Anchor" href="#more-examples">#</a></h2>
+<p>You can find more examples in <a href="https://github.com/xgrommx/awesome-redux">Awesome Redux</a>.</p>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../introduction/Ecosystem.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../basics/index.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'introduction/Examples.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#counter-vanilla\">Counter Vanilla</a></li>\n<li><a href=\"#counter\">Counter</a></li>\n<li><a href=\"#todos\">Todos</a></li>\n<li><a href=\"#todos-with-undo\">Todos with Undo</a></li>\n<li><a href=\"#todomvc\">TodoMVC</a></li>\n<li><a href=\"#shopping-cart\">Shopping Cart</a></li>\n<li><a href=\"#tree-view\">Tree View</a></li>\n<li><a href=\"#async\">Async</a></li>\n<li><a href=\"#universal\">Universal</a></li>\n<li><a href=\"#real-world\">Real World</a></li>\n<li><a href=\"#more-examples\">More Examples</a></li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

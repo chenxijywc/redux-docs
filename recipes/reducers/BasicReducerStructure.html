@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Basic Reducer Structure and State Shape - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item chapter-item-current"><a href="../../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../api/Store.html">Store</a></li><li class="chapter-item "><a href="../../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/index.html" class="breadcrumb-item">reducers</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/BasicReducerStructure.html" class="breadcrumb-item">Basic Reducer Structure and State Shape</a></div>
+    <h1 class="article-title">Basic Reducer Structure and State Shape</h1>
+    <div class="article">
+      <h2 id="basic-reducer-structure">Basic Reducer Structure <a class="markdownIt-Anchor" href="#basic-reducer-structure">#</a></h2>
+<p>First and foremost, it's important to understand that your entire application really only has <strong>one single reducer function</strong>: the function that you've passed into <code>createStore</code> as the first argument.  That one single reducer function ultimately needs to do several things:</p>
+<ul>
+<li>The first time the reducer is called, the <code>state</code> value will be <code>undefined</code>.  The reducer needs to handle this case by supplying a default state value before handling the incoming action.</li>
+<li>It needs to look at the previous state and the dispatched action, and determine what kind of work needs to be done</li>
+<li>Assuming actual changes need to occur, it needs to create new objects and arrays with the updated data and return those</li>
+<li>If no changes are needed, it should return the existing state as-is.</li>
+</ul>
+<p>The simplest possible approach to writing reducer logic is to put everything into a single function declaration, like this:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">counter</span>(<span class="hljs-params">state, action</span>) </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> state === <span class="hljs-string">'undefined'</span>) {
+    state = <span class="hljs-number">0</span>; <span class="hljs-comment">// If state is undefined, initialize it with a default value</span>
+  }
+
+  <span class="hljs-keyword">if</span> (action.type === <span class="hljs-string">'INCREMENT'</span>) {
+    <span class="hljs-keyword">return</span> state + <span class="hljs-number">1</span>;
+  } 
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (action.type === <span class="hljs-string">'DECREMENT'</span>) {
+    <span class="hljs-keyword">return</span> state - <span class="hljs-number">1</span>;
+  } 
+  <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> state; <span class="hljs-comment">// In case an action is passed in we don't understand</span>
+  }
+}
+</code></pre>
+<p>Notice that this simple function fulfills all the basic requirements.  It returns a default value if none exists, initializing the store; it determines what sort of update needs to be done based on the type of the action, and returns new values; and it returns the previous state if no work needs to be done.</p>
+<p>There are some simple tweaks that can be made to this reducer.  First, repeated <code>if</code>/<code>else</code> statements quickly grow tiresome, so it's very common to use <code>switch</code> statements instead.  Second, we can use ES6's default parameter values to handle the initial &quot;no existing data&quot; case.  With those changes, the reducer would look like:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">counter</span>(<span class="hljs-params">state = <span class="hljs-number">0</span>, action</span>) </span>{
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'INCREMENT'</span>:
+      <span class="hljs-keyword">return</span> state + <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'DECREMENT'</span>:
+      <span class="hljs-keyword">return</span> state - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">return</span> state;
+  }
+}
+</code></pre>
+<p>This is the basic structure that a typical Redux reducer function uses.</p>
+<h2 id="basic-state-shape">Basic State Shape <a class="markdownIt-Anchor" href="#basic-state-shape">#</a></h2>
+<p>Redux encourages you to think about your application in terms of the data you need to manage.  The data at any given point in time is the &quot;<em>state</em>&quot; of your application, and the structure and organization of that state is typically referred to as its &quot;<em>shape</em>&quot;.  The shape of your state plays a major role in how you structure your reducer logic.</p>
+<p>A Redux state usually has a plain Javascript object as the top of the state tree. (It is certainly possible to have another type of data instead, such as a single number, an array, or a specialized data structure, but most libraries assume that the top-level value is a plain object.)  The most common way to organize data within that top-level object is to further divide data into sub-trees, where each top-level key represents some &quot;domain&quot; or &quot;slice&quot; of related data.  For example, a basic Todo app's state might look like:</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">visibilityFilter</span>: <span class="hljs-string">'SHOW_ALL'</span>,
+  <span class="hljs-attr">todos</span>: [
+    {
+      <span class="hljs-attr">text</span>: <span class="hljs-string">'Consider using Redux'</span>,
+      <span class="hljs-attr">completed</span>: <span class="hljs-literal">true</span>,
+    },
+    {
+      <span class="hljs-attr">text</span>: <span class="hljs-string">'Keep all state in a single tree'</span>,
+      <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>
+    }
+  ]
+}
+</code></pre>
+<p>In this example, <code>todos</code> and <code>visibilityFilter</code> are both top-level keys in the state, and each represents a &quot;slice&quot; of data for some particular concept.</p>
+<p>Most applications deal with multiple types of data, which can be broadly divided into three categories:</p>
+<ul>
+<li><em>Domain data</em>: data that the application needs to show, use, or modify (such as &quot;all of the Todos retrieved from the server&quot;)</li>
+<li><em>App state</em>: data that is specific to the application's behavior (such as &quot;Todo #5 is currently selected&quot;, or &quot;there is a request in progress to fetch Todos&quot;)</li>
+<li><em>UI state</em>: data that represents how the UI is currently displayed (such as &quot;The EditTodo modal dialog is currently open&quot;)</li>
+</ul>
+<p>Because the store represents the core of your application, you should <strong>define your state shape in terms of your domain data and app state, not your UI component tree</strong>.  As an example, a shape of <code>state.leftPane.todoList.todos</code> would be a bad idea, because the idea of &quot;todos&quot; is central to the whole application, not just a single part of the UI.  The <code>todos</code> slice should be at the top of the state tree instead.</p>
+<p>There will <em>rarely</em> be a 1-to-1 correspondence between your UI tree and your state shape.  The exception to that might be if you are explicitly tracking various aspects of UI data in your Redux store as well, but even then the shape of the UI data and the shape of the domain data would likely be different.</p>
+<p>A typical app's state shape might look roughly like:</p>
+<pre class="hljs"><code>{
+    <span class="hljs-attr">domainData1</span> : {},
+    <span class="hljs-attr">domainData2</span> : {},
+    <span class="hljs-attr">appState1</span> : {},
+    <span class="hljs-attr">appState2</span> : {},
+    <span class="hljs-attr">ui</span> : {
+        <span class="hljs-attr">uiState1</span> : {},
+        <span class="hljs-attr">uiState2</span> : {},
+    }
+}
+</code></pre>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../../recipes/reducers/index.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../../recipes/reducers/BeyondCombineReducers.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'recipes/reducers/BasicReducerStructure.md';
+  LOPPO.relative_root_path = '../../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#basic-reducer-structure\">Basic Reducer Structure</a></li>\n<li><a href=\"#basic-state-shape\">Basic State Shape</a></li>\n</ul>\n";
+</script>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>
+

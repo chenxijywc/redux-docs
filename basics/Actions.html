@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Actions - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item chapter-item-current"><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../basics/index.html" class="breadcrumb-item">basics</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../basics/Actions.html" class="breadcrumb-item">Actions</a></div>
+    <h1 class="article-title">Actions</h1>
+    <div class="article">
+      <p>First, let's define some actions.</p>
+<p><strong>Actions</strong> are payloads of information that send data from your application to your store. They are the <em>only</em> source of information for the store. You send them to the store using <a href="../api/Store.md#dispatch"><code>store.dispatch()</code></a>.</p>
+<p>Here's an example action which represents adding a new todo item:</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> ADD_TODO = <span class="hljs-string">'ADD_TODO'</span>
+</code></pre>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">type</span>: ADD_TODO,
+  <span class="hljs-attr">text</span>: <span class="hljs-string">'Build my first Redux app'</span>
+}
+</code></pre>
+<p>Actions are plain JavaScript objects. Actions must have a <code>type</code> property that indicates the type of action being performed. Types should typically be defined as string constants. Once your app is large enough, you may want to move them into a separate module.</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { ADD_TODO, REMOVE_TODO } <span class="hljs-keyword">from</span> <span class="hljs-string">'../actionTypes'</span>
+</code></pre>
+<blockquote>
+<h5 id="note-on-boilerplate">Note on Boilerplate <a class="markdownIt-Anchor" href="#note-on-boilerplate">#</a></h5>
+</blockquote>
+<blockquote>
+<p>You don't have to define action type constants in a separate file, or even to define them at all. For a small project, it might be easier to just use string literals for action types. However, there are some benefits to explicitly declaring constants in larger codebases. Read <a href="../recipes/ReducingBoilerplate.md">Reducing Boilerplate</a> for more practical tips on keeping your codebase clean.</p>
+</blockquote>
+<p>Other than <code>type</code>, the structure of an action object is really up to you. If you're interested, check out <a href="https://github.com/acdlite/flux-standard-action">Flux Standard Action</a> for recommendations on how actions could be constructed.</p>
+<p>We'll add one more action type to describe a user ticking off a todo as completed. We refer to a particular todo by <code>index</code> because we store them in an array. In a real app, it is wiser to generate a unique ID every time something new is created.</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">type</span>: TOGGLE_TODO,
+  <span class="hljs-attr">index</span>: <span class="hljs-number">5</span>
+}
+</code></pre>
+<p>It's a good idea to pass as little data in each action as possible. For example, it's better to pass <code>index</code> than the whole todo object.</p>
+<p>Finally, we'll add one more action type for changing the currently visible todos.</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">type</span>: SET_VISIBILITY_FILTER,
+  <span class="hljs-attr">filter</span>: SHOW_COMPLETED
+}
+</code></pre>
+<h2 id="action-creators">Action Creators <a class="markdownIt-Anchor" href="#action-creators">#</a></h2>
+<p><strong>Action creators</strong> are exactly that—functions that create actions. It's easy to conflate the terms “action” and “action creator,” so do your best to use the proper term.</p>
+<p>In Redux action creators simply return an action:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addTodo</span>(<span class="hljs-params">text</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: ADD_TODO,
+    text
+  }
+}
+</code></pre>
+<p>This makes them portable and easy to test.</p>
+<p>In <a href="http://facebook.github.io/flux">traditional Flux</a>, action creators often trigger a dispatch when invoked, like so:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addTodoWithDispatch</span>(<span class="hljs-params">text</span>) </span>{
+  <span class="hljs-keyword">const</span> action = {
+    <span class="hljs-attr">type</span>: ADD_TODO,
+    text
+  }
+  dispatch(action)
+}
+</code></pre>
+<p>In Redux this is <em>not</em> the case.<br>
+Instead, to actually initiate a dispatch, pass the result to the <code>dispatch()</code> function:</p>
+<pre class="hljs"><code>dispatch(addTodo(text))
+dispatch(completeTodo(index))
+</code></pre>
+<p>Alternatively, you can create a <strong>bound action creator</strong> that automatically dispatches:</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> boundAddTodo = <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span> dispatch(addTodo(text))
+<span class="hljs-keyword">const</span> boundCompleteTodo = <span class="hljs-function">(<span class="hljs-params">index</span>) =&gt;</span> dispatch(completeTodo(index))
+</code></pre>
+<p>Now you'll be able to call them directly:</p>
+<pre class="hljs"><code>boundAddTodo(text)
+boundCompleteTodo(index)
+</code></pre>
+<p>The <code>dispatch()</code> function can be accessed directly from the store as <a href="../api/Store.md#dispatch"><code>store.dispatch()</code></a>, but more likely you'll access it using a helper like <a href="http://github.com/gaearon/react-redux">react-redux</a>'s <code>connect()</code>. You can use <a href="../api/bindActionCreators.md"><code>bindActionCreators()</code></a> to automatically bind many action creators to a <code>dispatch()</code> function.</p>
+<p>Action creators can also be asynchronous and have side-effects. You can read about <a href="../advanced/AsyncActions.md">async actions</a> in the <a href="../advanced/README.md">advanced tutorial</a> to learn how to handle AJAX responses and compose action creators into async control flow. Don't skip ahead to async actions until you've completed the basics tutorial, as it covers other important concepts that are prerequisite for the advanced tutorial and async actions.</p>
+<h2 id="source-code">Source Code <a class="markdownIt-Anchor" href="#source-code">#</a></h2>
+<h3 id="actionsjs"><code>actions.js</code> <a class="markdownIt-Anchor" href="#actionsjs">#</a></h3>
+<pre class="hljs"><code><span class="hljs-comment">/*
+ * action types
+ */</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> ADD_TODO = <span class="hljs-string">'ADD_TODO'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> TOGGLE_TODO = <span class="hljs-string">'TOGGLE_TODO'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> SET_VISIBILITY_FILTER = <span class="hljs-string">'SET_VISIBILITY_FILTER'</span>
+
+<span class="hljs-comment">/*
+ * other constants
+ */</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> VisibilityFilters = {
+  <span class="hljs-attr">SHOW_ALL</span>: <span class="hljs-string">'SHOW_ALL'</span>,
+  <span class="hljs-attr">SHOW_COMPLETED</span>: <span class="hljs-string">'SHOW_COMPLETED'</span>,
+  <span class="hljs-attr">SHOW_ACTIVE</span>: <span class="hljs-string">'SHOW_ACTIVE'</span>
+}
+
+<span class="hljs-comment">/*
+ * action creators
+ */</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addTodo</span>(<span class="hljs-params">text</span>) </span>{
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">type</span>: ADD_TODO, text }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toggleTodo</span>(<span class="hljs-params">index</span>) </span>{
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">type</span>: TOGGLE_TODO, index }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setVisibilityFilter</span>(<span class="hljs-params">filter</span>) </span>{
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">type</span>: SET_VISIBILITY_FILTER, filter }
+}
+</code></pre>
+<h2 id="next-steps">Next Steps <a class="markdownIt-Anchor" href="#next-steps">#</a></h2>
+<p>Now let's <a href="Reducers.md">define some reducers</a> to specify how the state updates when you dispatch these actions!</p>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../basics/index.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../basics/Reducers.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'basics/Actions.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#action-creators\">Action Creators</a></li>\n<li><a href=\"#source-code\">Source Code</a>\n<ul>\n<li><a href=\"#actionsjs\"><code>actions.js</code></a></li>\n</ul>\n</li>\n<li><a href=\"#next-steps\">Next Steps</a></li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

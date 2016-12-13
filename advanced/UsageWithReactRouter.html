@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Usage with React Router - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item chapter-item-current"><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/index.html" class="breadcrumb-item">advanced</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/UsageWithReactRouter.html" class="breadcrumb-item">Usage with React Router</a></div>
+    <h1 class="article-title">Usage with React Router</h1>
+    <div class="article">
+      <p>So you want to do routing with your Redux app. You can use it with <a href="https://github.com/reactjs/react-router">React Router</a>. Redux will be the source of truth for your data and React Router will be the source of truth for your URL. In most of the cases, <strong>it is fine</strong> to have them separate unless you need to time travel and rewind actions that triggers the change URL.</p>
+<h2 id="installing-react-router">Installing React Router <a class="markdownIt-Anchor" href="#installing-react-router">#</a></h2>
+<p><code>react-router</code> is available on npm . This guides assumes you are using <code>react-router@^2.7.0</code>.</p>
+<p><code>npm install --save react-router</code></p>
+<h2 id="configuring-the-fallback-url">Configuring the Fallback URL <a class="markdownIt-Anchor" href="#configuring-the-fallback-url">#</a></h2>
+<p>Before integrating React Router, we need to configure our development server. Indeed, our development server may be unaware of the declared routes in React Router configuration. For example, if you access <code>/todos</code> and refresh, your development server needs to be instructed to serve <code>index.html</code> because it is a single-page app. Here's how to enable this with popular development severs.</p>
+<blockquote>
+<h3 id="note-on-create-react-app">Note on Create React App <a class="markdownIt-Anchor" href="#note-on-create-react-app">#</a></h3>
+</blockquote>
+<blockquote>
+<p>If you are using Create React App, you won't need to configure a fallback URL, it is automatically done.</p>
+</blockquote>
+<h3 id="configuring-express">Configuring Express <a class="markdownIt-Anchor" href="#configuring-express">#</a></h3>
+<p>If you are serving your <code>index.html</code> from Express:</p>
+<pre class="hljs"><code>  app.get(<span class="hljs-string">'/*'</span>, (req,res) =&gt; {
+    res.sendfile(path.join(__dirname, <span class="hljs-string">'index.html'</span>))
+  })
+</code></pre>
+<h3 id="configuring-webpackdevserver">Configuring WebpackDevServer <a class="markdownIt-Anchor" href="#configuring-webpackdevserver">#</a></h3>
+<p>If you are serving your <code>index.html</code> from WebpackDevServer:
+You can add to your webpack.config.dev.js:</p>
+<pre class="hljs"><code>  devServer: {
+    <span class="hljs-attr">historyApiFallback</span>: <span class="hljs-literal">true</span>,
+  }
+</code></pre>
+<h2 id="connecting-react-router-with-redux-app">Connecting React Router with Redux App <a class="markdownIt-Anchor" href="#connecting-react-router-with-redux-app">#</a></h2>
+<p>Along this chapter, we will be using the <a href="https://github.com/reactjs/redux/tree/master/examples/todos">Todos</a> example. We recommend you to clone it while reading this chapter.</p>
+<p>First we will need to import <code>&lt;Router /&gt;</code> and <code>&lt;Route /&gt;</code> from React Router. Here's how to do it:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { Router, Route, browserHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router'</span>;
+</code></pre>
+<p>In a React app, usually you would wrap <code>&lt;Route /&gt;</code> in <code>&lt;Router /&gt;</code> so that when the URL changes, <code>&lt;Router /&gt;</code> will match a branch of its routes, and render their configured components. <code>&lt;Route /&gt;</code> is used to declaratively map routes to your application's component hierarchy. You would declare in <code>path</code> the path used in the URL and in <code>component</code> the single component to be rendered when the route matches the URL.</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> Root = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Router</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{App}</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Router</span>&gt;</span>  
+);
+</span></code></pre>
+<p>However, in our Redux App we will still need <code>&lt;Provider /&gt;</code>. <code>&lt;Provider /&gt;</code> is the higher-order component provided by React Redux that lets you bind Redux to React (see <a href="../basics/UsageWithReact.md">Usage with React</a>).</p>
+<p>We will then import the <code>&lt;Provider /&gt;</code> from React Redux:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+</code></pre>
+<p>We will wrap <code>&lt;Router /&gt;</code> in <code>&lt;Provider /&gt;</code> so that route handlers can get <a href="http://redux.js.org/docs/basics/UsageWithReact.html#passing-the-store">access to the <code>store</code></a>.</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> Root = <span class="hljs-function">(<span class="hljs-params">{ store }</span>) =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Router</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{App}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Router</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span>
+);
+</span></code></pre>
+<p>Now the <code>&lt;App /&gt;</code> component will be rendered if the URL matches '/'. Additionally, we will add the optional <code>(:filter)</code> parameter to <code>/</code>, because we will need it further on when we try to read the parameter <code>(:filter)</code> from the URL.</p>
+<pre class="hljs"><code>&lt;Route path=<span class="hljs-string">"/(:filter)"</span> component={App} /&gt;
+</code></pre>
+<p>You will probably want to remove the hash from the URL (e.g: <code>http://localhost:3000/#/?_k=4sbb0i</code>). For doing this, you will need to also import <code>browserHistory</code> from React Router:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { Router, Route, browserHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router'</span>;
+</code></pre>
+<p>and pass it to the <code>&lt;Router /&gt;</code> in order to remove the hash from the URL:</p>
+<pre class="hljs"><code>    &lt;Router history={browserHistory}&gt;
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/(:filter)"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{App}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Router</span>&gt;</span></span>
+</code></pre>
+<p>Unless you are targeting old browsers like IE9, you can always use <code>browserHistory</code>.</p>
+<h4 id="componentsrootjs"><code>components/Root.js</code> <a class="markdownIt-Anchor" href="#componentsrootjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React, { PropTypes } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> { Router, Route, browserHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router'</span>;
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./App'</span>;
+
+<span class="hljs-keyword">const</span> Root = <span class="hljs-function">(<span class="hljs-params">{ store }</span>) =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Router</span> <span class="hljs-attr">history</span>=<span class="hljs-string">{browserHistory}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/(:filter)"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{App}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Router</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span>
+);
+
+Root.propTypes = {
+  store: PropTypes.object.isRequired,
+};
+
+export default Root;
+</span></code></pre>
+<h2 id="navigating-with-react-router">Navigating with React Router <a class="markdownIt-Anchor" href="#navigating-with-react-router">#</a></h2>
+<p>React Router comes with a <a href="https://github.com/reactjs/react-router/blob/master/docs/API.md#link"><code>&lt;Link /&gt;</code></a> component that lets you navigate around your application. In our example, we can wrap <code>&lt;Link /&gt;</code> with a new container component <code>&lt;FilterLink /&gt;</code> so as to dynamically change the URL. The <code>activeStyle={}</code> property lets us apply a style on the active state.</p>
+<h4 id="containersfilterlinkjs"><code>containers/FilterLink.js</code> <a class="markdownIt-Anchor" href="#containersfilterlinkjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { Link } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router'</span>;
+
+<span class="hljs-keyword">const</span> FilterLink = <span class="hljs-function">(<span class="hljs-params">{ filter, children }</span>) =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Link</span>
+    <span class="hljs-attr">to</span>=<span class="hljs-string">{filter</span> === <span class="hljs-string">'all'</span> ? '' <span class="hljs-attr">:</span> <span class="hljs-attr">filter</span>}
+    <span class="hljs-attr">activeStyle</span>=<span class="hljs-string">{{</span>
+      <span class="hljs-attr">textDecoration:</span> '<span class="hljs-attr">none</span>',
+      <span class="hljs-attr">color:</span> '<span class="hljs-attr">black</span>'
+    }}
+  &gt;</span>
+    {children}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span>
+);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> FilterLink;
+</code></pre>
+<h4 id="containersfooterjs"><code>containers/Footer.js</code> <a class="markdownIt-Anchor" href="#containersfooterjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> FilterLink <span class="hljs-keyword">from</span> <span class="hljs-string">'../containers/FilterLink'</span>
+
+<span class="hljs-keyword">const</span> Footer = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    Show:
+    {" "}
+    <span class="hljs-tag">&lt;<span class="hljs-name">FilterLink</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">"all"</span>&gt;</span>
+      All
+    <span class="hljs-tag">&lt;/<span class="hljs-name">FilterLink</span>&gt;</span>
+    {", "}
+    <span class="hljs-tag">&lt;<span class="hljs-name">FilterLink</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">"active"</span>&gt;</span>
+      Active
+    <span class="hljs-tag">&lt;/<span class="hljs-name">FilterLink</span>&gt;</span>
+    {", "}
+    <span class="hljs-tag">&lt;<span class="hljs-name">FilterLink</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">"completed"</span>&gt;</span>
+      Completed
+    <span class="hljs-tag">&lt;/<span class="hljs-name">FilterLink</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Footer
+</code></pre>
+<p>Now if you click on <code>&lt;FilterLink /&gt;</code> you will see that your URL will change from <code>'/complete'</code>, <code>'/active'</code>, <code>'/'</code>. Even if you are going back with your browser, it will use your browser's history and effectively go to your previous URL.</p>
+<h2 id="reading-from-the-url">Reading From the URL <a class="markdownIt-Anchor" href="#reading-from-the-url">#</a></h2>
+<p>Currently, the todo list is not filtered even after the URL changed. This is because we are filtering from <code>&lt;VisibleTodoList /&gt;</code>'s <code>mapStateToProps()</code> is still bound to the <code>state</code> and not to the URL. <code>mapStateToProps</code> has an optional second argument <code>ownProps</code> that is an object with every props passed to <code>&lt;VisibleTodoList /&gt;</code></p>
+<h4 id="containersvisibletodolistjs"><code>containers/VisibleTodoList.js</code> <a class="markdownIt-Anchor" href="#containersvisibletodolistjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state, ownProps</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">todos</span>: getVisibleTodos(state.todos, ownProps.filter) <span class="hljs-comment">// previously was getVisibleTodos(state.todos, state.visibilityFilter)</span>
+  };
+};
+</code></pre>
+<p>Right now we are not passing anything to <code>&lt;App /&gt;</code> so <code>ownProps</code> is an empty object. To filter our todos according to the URL, we want to pass the URL params to <code>&lt;VisibleTodoList /&gt;</code>.</p>
+<p>When previously we wrote:  <code>&lt;Route path=&quot;/(:filter)&quot; component={App} /&gt;</code>, it made available inside <code>App</code> a <code>params</code> property.</p>
+<p><code>params</code> property is an object with every param specified in the url. <em>e.g: <code>params</code> will be equal to <code>{ filter: 'completed' }</code> if we are navigating to <code>localhost:3000/completed</code>. We can now read the URL from <code>&lt;App /&gt;</code>.</em></p>
+<p>Note that we are using <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">ES6 destructuring</a> on the properties to pass in <code>params</code> to <code>&lt;VisibleTodoList /&gt;</code>.</p>
+<h4 id="componentsappjs"><code>components/App.js</code> <a class="markdownIt-Anchor" href="#componentsappjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> App = <span class="hljs-function">(<span class="hljs-params">{ params }</span>) =&gt;</span> {
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">AddTodo</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">VisibleTodoList</span>
+        <span class="hljs-attr">filter</span>=<span class="hljs-string">{params.filter</span> || '<span class="hljs-attr">all</span>'}
+      /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Footer</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  );
+};
+</span></code></pre>
+<h2 id="next-steps">Next Steps <a class="markdownIt-Anchor" href="#next-steps">#</a></h2>
+<p>Now that you know how to do basic routing, you can learn more about <a href="https://github.com/reactjs/react-router/tree/master/docs">React Router API</a></p>
+<blockquote>
+<h5 id="note-about-other-routing-libraries">Note About Other Routing Libraries <a class="markdownIt-Anchor" href="#note-about-other-routing-libraries">#</a></h5>
+</blockquote>
+<blockquote>
+<p><em>Redux Router</em> is an experimental library, it lets you keep entirely the state of your URL inside your redux store. It has the same API with React Router API but has a smaller community support than react-router.</p>
+</blockquote>
+<blockquote>
+<p><em>React Router Redux</em> creates binding between your redux app and react-router and it keeps them in sync. Without this binding, you will not be able to rewind the actions with Time Travel. Unless you need this, React-router and Redux can operates completely apart.</p>
+</blockquote>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../advanced/NextSteps.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../recipes/index.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'advanced/UsageWithReactRouter.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#installing-react-router\">Installing React Router</a></li>\n<li><a href=\"#configuring-the-fallback-url\">Configuring the Fallback URL</a>\n<ul>\n<li><a href=\"#note-on-create-react-app\">Note on Create React App</a></li>\n<li><a href=\"#configuring-express\">Configuring Express</a></li>\n<li><a href=\"#configuring-webpackdevserver\">Configuring WebpackDevServer</a></li>\n</ul>\n</li>\n<li><a href=\"#connecting-react-router-with-redux-app\">Connecting React Router with Redux App</a></li>\n<li><a href=\"#navigating-with-react-router\">Navigating with React Router</a></li>\n<li><a href=\"#reading-from-the-url\">Reading From the URL</a></li>\n<li><a href=\"#next-steps\">Next Steps</a></li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

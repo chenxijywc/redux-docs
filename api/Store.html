@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Store - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item chapter-item-current"><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/index.html" class="breadcrumb-item">api</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/Store.html" class="breadcrumb-item">Store</a></div>
+    <h1 class="article-title">Store</h1>
+    <div class="article">
+      <p>A store holds the whole <a href="../Glossary.md#state">state tree</a> of your application.<br>
+The only way to change the state inside it is to dispatch an <a href="../Glossary.md#action">action</a> on it.</p>
+<p>A store is not a class. It's just an object with a few methods on it.<br>
+To create it, pass your root <a href="../Glossary.md#reducer">reducing function</a> to <a href="createStore.md"><code>createStore</code></a>.</p>
+<blockquote>
+<h5 id="a-note-for-flux-users">A Note for Flux Users <a class="markdownIt-Anchor" href="#a-note-for-flux-users">#</a></h5>
+</blockquote>
+<blockquote>
+<p>If you're coming from Flux, there is a single important difference you need to understand. Redux doesn't have a Dispatcher or support many stores. <strong>Instead, there is just a single store with a single root <a href="../Glossary.md#reducer">reducing function</a>.</strong> As your app grows, instead of adding stores, you split the root reducer into smaller reducers independently operating on the different parts of the state tree. You can use a helper like <a href="combineReducers.md"><code>combineReducers</code></a> to combine them. This is similar to how there is just one root component in a React app, but it is composed out of many small components.</p>
+</blockquote>
+<h3 id="store-methods">Store Methods <a class="markdownIt-Anchor" href="#store-methods">#</a></h3>
+<ul>
+<li><a href="#getState"><code>getState()</code></a></li>
+<li><a href="#dispatch"><code>dispatch(action)</code></a></li>
+<li><a href="#subscribe"><code>subscribe(listener)</code></a></li>
+<li><a href="#replaceReducer"><code>replaceReducer(nextReducer)</code></a></li>
+</ul>
+<h2 id="store-methods-2">Store Methods <a class="markdownIt-Anchor" href="#store-methods-2">#</a></h2>
+<h3 id="a-idgetstateagetstate"><a id='getState'></a><a href="#getState"><code>getState()</code></a> <a class="markdownIt-Anchor" href="#a-idgetstateagetstate">#</a></h3>
+<p>Returns the current state tree of your application.<br>
+It is equal to the last value returned by the store's reducer.</p>
+<h4 id="returns">Returns <a class="markdownIt-Anchor" href="#returns">#</a></h4>
+<p><em>(any)</em>: The current state tree of your application.</p>
+<hr>
+<h3 id="a-iddispatchadispatchaction"><a id='dispatch'></a><a href="#dispatch"><code>dispatch(action)</code></a> <a class="markdownIt-Anchor" href="#a-iddispatchadispatchaction">#</a></h3>
+<p>Dispatches an action. This is the only way to trigger a state change.</p>
+<p>The store's reducing function will be called with the current <a href="#getState"><code>getState()</code></a> result and the given <code>action</code> synchronously. Its return value will be considered the next state. It will be returned from <a href="#getState"><code>getState()</code></a> from now on, and the change listeners will immediately be notified.</p>
+<blockquote>
+<h5 id="a-note-for-flux-users-2">A Note for Flux Users <a class="markdownIt-Anchor" href="#a-note-for-flux-users-2">#</a></h5>
+<p>If you attempt to call <code>dispatch</code> from inside the <a href="../Glossary.md#reducer">reducer</a>, it will throw with an error saying “Reducers may not dispatch actions.” This is similar to “Cannot dispatch in a middle of dispatch” error in Flux, but doesn't cause the problems associated with it. In Flux, a dispatch is forbidden while Stores are handling the action and emitting updates. This is unfortunate because it makes it impossible to dispatch actions from component lifecycle hooks or other benign places.</p>
+</blockquote>
+<blockquote>
+<p>In Redux, subscriptions are called after the root reducer has returned the new state, so you <em>may</em> dispatch in the subscription listeners. You are only disallowed to dispatch inside the reducers because they must have no side effects. If you want to cause a side effect in response to an action, the right place to do this is in the potentially async <a href="../Glossary.md#action-creator">action creator</a>.</p>
+</blockquote>
+<h4 id="arguments">Arguments <a class="markdownIt-Anchor" href="#arguments">#</a></h4>
+<ol>
+<li><code>action</code> (<em>Object</em><sup>†</sup>): A plain object describing the change that makes sense for your application. Actions are the only way to get data into the store, so any data, whether from the UI events, network callbacks, or other sources such as WebSockets needs to eventually be dispatched as actions. Actions must have a <code>type</code> field that indicates the type of action being performed. Types can be defined as constants and imported from another module. It's better to use strings for <code>type</code> than <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbols</a> because strings are serializable. Other than <code>type</code>, the structure of an action object is really up to you. If you're interested, check out <a href="https://github.com/acdlite/flux-standard-action">Flux Standard Action</a> for recommendations on how actions could be constructed.</li>
+</ol>
+<h4 id="returns-2">Returns <a class="markdownIt-Anchor" href="#returns-2">#</a></h4>
+<p>(Object<sup>†</sup>): The dispatched action (see notes).</p>
+<h4 id="notes">Notes <a class="markdownIt-Anchor" href="#notes">#</a></h4>
+<p><sup>†</sup> The “vanilla” store implementation you get by calling <a href="createStore.md"><code>createStore</code></a> only supports plain object actions and hands them immediately to the reducer.</p>
+<p>However, if you wrap <a href="createStore.md"><code>createStore</code></a> with <a href="applyMiddleware.md"><code>applyMiddleware</code></a>, the middleware can interpret actions differently, and provide support for dispatching <a href="../Glossary.md#async-action">async actions</a>. Async actions are usually asynchronous primitives like Promises, Observables, or thunks.</p>
+<p>Middleware is created by the community and does not ship with Redux by default. You need to explicitly install packages like <a href="https://github.com/gaearon/redux-thunk">redux-thunk</a> or <a href="https://github.com/acdlite/redux-promise">redux-promise</a> to use it. You may also create your own middleware.</p>
+<p>To learn how to describe asynchronous API calls, read the current state inside action creators, perform side effects, or chain them to execute in a sequence, see the examples for <a href="applyMiddleware.md"><code>applyMiddleware</code></a>.</p>
+<h4 id="example">Example <a class="markdownIt-Anchor" href="#example">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+<span class="hljs-keyword">let</span> store = createStore(todos, [ <span class="hljs-string">'Use Redux'</span> ])
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addTodo</span>(<span class="hljs-params">text</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>,
+    text
+  }
+}
+
+store.dispatch(addTodo(<span class="hljs-string">'Read the docs'</span>))
+store.dispatch(addTodo(<span class="hljs-string">'Read about the middleware'</span>))
+</code></pre>
+<hr>
+<h3 id="a-idsubscribeasubscribelistener"><a id='subscribe'></a><a href="#subscribe"><code>subscribe(listener)</code></a> <a class="markdownIt-Anchor" href="#a-idsubscribeasubscribelistener">#</a></h3>
+<p>Adds a change listener. It will be called any time an action is dispatched, and some part of the state tree may potentially have changed. You may then call <a href="#getState"><code>getState()</code></a> to read the current state tree inside the callback.</p>
+<p>You may call <a href="#dispatch"><code>dispatch()</code></a> from a change listener, with the following caveats:</p>
+<ol>
+<li>
+<p>The listener should only call <a href="#dispatch"><code>dispatch()</code></a> either in response to user actions or under specific conditions (e. g. dispatching an action when the store has a specific field). Calling <a href="#dispatch"><code>dispatch()</code></a> without any conditions is technically possible, however it leads to infinite loop as every <a href="#dispatch"><code>dispatch()</code></a> call usually triggers the listener again.</p>
+</li>
+<li>
+<p>The subscriptions are snapshotted just before every <a href="#dispatch"><code>dispatch()</code></a> call. If you subscribe or unsubscribe while the listeners are being invoked, this will not have any effect on the <a href="#dispatch"><code>dispatch()</code></a> that is currently in progress. However, the next <a href="#dispatch"><code>dispatch()</code></a> call, whether nested or not, will use a more recent snapshot of the subscription list.</p>
+</li>
+<li>
+<p>The listener should not expect to see all state changes, as the state might have been updated multiple times during a nested <a href="#dispatch"><code>dispatch()</code></a> before the listener is called. It is, however, guaranteed that all subscribers registered before the <a href="#dispatch"><code>dispatch()</code></a> started will be called with the latest state by the time it exits.</p>
+</li>
+</ol>
+<p>It is a low-level API. Most likely, instead of using it directly, you'll use React (or other) bindings. If you commonly use the callback as a hook to react to state changes, you might want to <a href="https://github.com/reactjs/redux/issues/303#issuecomment-125184409">write a custom <code>observeStore</code> utility</a>. The <code>Store</code> is also an <a href="https://github.com/zenparsing/es-observable"><code>Observable</code></a>, so you can <code>subscribe</code> to changes with libraries like <a href="https://github.com/ReactiveX/RxJS">RxJS</a>.</p>
+<p>To unsubscribe the change listener, invoke the function returned by <code>subscribe</code>.</p>
+<h4 id="arguments-2">Arguments <a class="markdownIt-Anchor" href="#arguments-2">#</a></h4>
+<ol>
+<li><code>listener</code> (<em>Function</em>): The callback to be invoked any time an action has been dispatched, and the state tree might have changed. You may call <a href="#getState"><code>getState()</code></a> inside this callback to read the current state tree. It is reasonable to expect that the store's reducer is a pure function, so you may compare references to some deep path in the state tree to learn whether its value has changed.</li>
+</ol>
+<h5 id="returns-3">Returns <a class="markdownIt-Anchor" href="#returns-3">#</a></h5>
+<p>(<em>Function</em>): A function that unsubscribes the change listener.</p>
+<h5 id="example-2">Example <a class="markdownIt-Anchor" href="#example-2">#</a></h5>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">select</span>(<span class="hljs-params">state</span>) </span>{
+  <span class="hljs-keyword">return</span> state.some.deep.property
+}
+
+<span class="hljs-keyword">let</span> currentValue
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleChange</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">let</span> previousValue = currentValue
+  currentValue = select(store.getState())
+  
+  <span class="hljs-keyword">if</span> (previousValue !== currentValue) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Some deep nested property changed from'</span>, previousValue, <span class="hljs-string">'to'</span>, currentValue)
+  }
+}
+
+<span class="hljs-keyword">let</span> unsubscribe = store.subscribe(handleChange)
+unsubscribe()
+</code></pre>
+<hr>
+<h3 id="a-idreplacereducerareplacereducernextreducer"><a id='replaceReducer'></a><a href="#replaceReducer"><code>replaceReducer(nextReducer)</code></a> <a class="markdownIt-Anchor" href="#a-idreplacereducerareplacereducernextreducer">#</a></h3>
+<p>Replaces the reducer currently used by the store to calculate the state.</p>
+<p>It is an advanced API. You might need this if your app implements code splitting, and you want to load some of the reducers dynamically. You might also need this if you implement a hot reloading mechanism for Redux.</p>
+<h4 id="arguments-3">Arguments <a class="markdownIt-Anchor" href="#arguments-3">#</a></h4>
+<ol>
+<li><code>reducer</code> (<em>Function</em>) The next reducer for the store to use.</li>
+</ol>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../api/index.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../api/applyMiddleware.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'api/Store.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li>\n<ul>\n<li><a href=\"#store-methods\">Store Methods</a></li>\n</ul>\n</li>\n<li><a href=\"#store-methods-2\">Store Methods</a>\n<ul>\n<li>[<a id='getState'></a><a href=\"#getState\"><code>getState()</code></a>](#a-idgetstateagetstate)</li>\n<li>[<a id='dispatch'></a><a href=\"#dispatch\"><code>dispatch(action)</code></a>](#a-iddispatchadispatchaction)</li>\n<li>[<a id='subscribe'></a><a href=\"#subscribe\"><code>subscribe(listener)</code></a>](#a-idsubscribeasubscribelistener)</li>\n<li>[<a id='replaceReducer'></a><a href=\"#replaceReducer\"><code>replaceReducer(nextReducer)</code></a>](#a-idreplacereducerareplacereducernextreducer)</li>\n</ul>\n</li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

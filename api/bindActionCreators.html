@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>`bindActionCreators(actionCreators, dispatch)` - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item chapter-item-current"><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/index.html" class="breadcrumb-item">api</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/bindActionCreators.html" class="breadcrumb-item">`bindActionCreators(actionCreators, dispatch)`</a></div>
+    <h1 class="article-title">`bindActionCreators(actionCreators, dispatch)`</h1>
+    <div class="article">
+      <p>Turns an object whose values are <a href="../Glossary.md#action-creator">action creators</a>, into an object with the same keys, but with every action creator wrapped into a <a href="Store.md#dispatch"><code>dispatch</code></a> call so they may be invoked directly.</p>
+<p>Normally you should just call <a href="Store.md#dispatch"><code>dispatch</code></a> directly on your <a href="Store.md"><code>Store</code></a> instance. If you use Redux with React, <a href="https://github.com/gaearon/react-redux">react-redux</a> will provide you with the <a href="Store.md#dispatch"><code>dispatch</code></a> function so you can call it directly, too.</p>
+<p>The only use case for <code>bindActionCreators</code> is when you want to pass some action creators down to a component that isn't aware of Redux, and you don't want to pass <a href="Store.md#dispatch"><code>dispatch</code></a> or the Redux store to it.</p>
+<p>For convenience, you can also pass a single function as the first argument, and get a function in return.</p>
+<h4 id="parameters">Parameters <a class="markdownIt-Anchor" href="#parameters">#</a></h4>
+<ol>
+<li>
+<p><code>actionCreators</code> (<em>Function</em> or <em>Object</em>): An <a href="../Glossary.md#action-creator">action creator</a>, or an object whose values are action creators.</p>
+</li>
+<li>
+<p><code>dispatch</code> (<em>Function</em>): A <a href="Store.md#dispatch"><code>dispatch</code></a> function available on the <a href="Store.md"><code>Store</code></a> instance.</p>
+</li>
+</ol>
+<h4 id="returns">Returns <a class="markdownIt-Anchor" href="#returns">#</a></h4>
+<p>(<em>Function</em> or <em>Object</em>): An object mimicking the original object, but with each function immediately dispatching the action returned by the corresponding action creator. If you passed a function as <code>actionCreators</code>, the return value will also be a single function.</p>
+<h4 id="example">Example <a class="markdownIt-Anchor" href="#example">#</a></h4>
+<h4 id="todoactioncreatorsjs"><code>TodoActionCreators.js</code> <a class="markdownIt-Anchor" href="#todoactioncreatorsjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addTodo</span>(<span class="hljs-params">text</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>,
+    text
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeTodo</span>(<span class="hljs-params">id</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'REMOVE_TODO'</span>,
+    id
+  }
+}
+</code></pre>
+<h4 id="somecomponentjs"><code>SomeComponent.js</code> <a class="markdownIt-Anchor" href="#somecomponentjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { bindActionCreators } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> TodoActionCreators <span class="hljs-keyword">from</span> <span class="hljs-string">'./TodoActionCreators'</span>
+<span class="hljs-built_in">console</span>.log(TodoActionCreators)
+<span class="hljs-comment">// {</span>
+<span class="hljs-comment">//   addTodo: Function,</span>
+<span class="hljs-comment">//   removeTodo: Function</span>
+<span class="hljs-comment">// }</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TodoListContainer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  componentDidMount() {
+    <span class="hljs-comment">// Injected by react-redux:</span>
+    <span class="hljs-keyword">let</span> { dispatch } = <span class="hljs-keyword">this</span>.props
+
+    <span class="hljs-comment">// Note: this won't work:</span>
+    <span class="hljs-comment">// TodoActionCreators.addTodo('Use Redux')</span>
+
+    <span class="hljs-comment">// You're just calling a function that creates an action.</span>
+    <span class="hljs-comment">// You must dispatch the action, too!</span>
+
+    <span class="hljs-comment">// This will work:</span>
+    <span class="hljs-keyword">let</span> action = TodoActionCreators.addTodo(<span class="hljs-string">'Use Redux'</span>)
+    dispatch(action)
+  }
+
+  render() {
+    <span class="hljs-comment">// Injected by react-redux:</span>
+    <span class="hljs-keyword">let</span> { todos, dispatch } = <span class="hljs-keyword">this</span>.props
+
+    <span class="hljs-comment">// Here's a good use case for bindActionCreators:</span>
+    <span class="hljs-comment">// You want a child component to be completely unaware of Redux.</span>
+
+    <span class="hljs-keyword">let</span> boundActionCreators = bindActionCreators(TodoActionCreators, dispatch)
+    <span class="hljs-built_in">console</span>.log(boundActionCreators)
+    <span class="hljs-comment">// {</span>
+    <span class="hljs-comment">//   addTodo: Function,</span>
+    <span class="hljs-comment">//   removeTodo: Function</span>
+    <span class="hljs-comment">// }</span>
+
+    <span class="hljs-keyword">return</span> (
+      &lt;TodoList todos={todos}
+                {...boundActionCreators} /&gt;
+    )
+
+    // An alternative to bindActionCreators is to pass
+    // just the dispatch function down, but then your child component
+    // needs to import action creators and know about them.
+
+    // return &lt;TodoList todos={todos} dispatch={dispatch} /&gt;
+  }
+}
+
+export default connect(
+  state =&gt; ({ todos: state.todos })
+)(TodoListContainer)
+</code></pre>
+<h4 id="tips">Tips <a class="markdownIt-Anchor" href="#tips">#</a></h4>
+<ul>
+<li>
+<p>You might ask: why don't we bind the action creators to the store instance right away, like in classical Flux? The problem is that this won't work well with universal apps that need to render on the server. Most likely you want to have a separate store instance per request so you can prepare them with different data, but binding action creators during their definition means you're stuck with a single store instance for all requests.</p>
+</li>
+<li>
+<p>If you use ES5, instead of <code>import * as</code> syntax you can just pass <code>require('./TodoActionCreators')</code> to <code>bindActionCreators</code> as the first argument. The only thing it cares about is that the values of the <code>actionCreators</code> arguments are functions. The module system doesn't matter.</p>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../api/applyMiddleware.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../api/combineReducers.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'api/bindActionCreators.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

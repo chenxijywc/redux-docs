@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Troubleshooting - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/bulma.min.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="basics/Store.html">Store</a></li><li class="chapter-item "><a href="basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item chapter-item-current"><a href="Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="Glossary.html">Glossary</a></li><li class="chapter-item "><a href="api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="api/Store.html">Store</a></li><li class="chapter-item "><a href="api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="Troubleshooting.html" class="breadcrumb-item">Troubleshooting</a></div>
+    <h1 class="article-title">Troubleshooting</h1>
+    <div class="article">
+      <p>This is a place to share common problems and solutions to them.<br>
+The examples use React, but you should still find them useful if you use something else.</p>
+<h3 id="nothing-happens-when-i-dispatch-an-action">Nothing happens when I dispatch an action <a class="markdownIt-Anchor" href="#nothing-happens-when-i-dispatch-an-action">#</a></h3>
+<p>Sometimes, you are trying to dispatch an action, but your view does not update. Why does this happen? There may be several reasons for this.</p>
+<h4 id="never-mutate-reducer-arguments">Never mutate reducer arguments <a class="markdownIt-Anchor" href="#never-mutate-reducer-arguments">#</a></h4>
+<p>It is tempting to modify the <code>state</code> or <code>action</code> passed to you by Redux. Don't do this!</p>
+<p>Redux assumes that you never mutate the objects it gives to you in the reducer. <strong>Every single time, you must return the new state object.</strong> Even if you don't use a library like <a href="https://facebook.github.io/immutable-js/">Immutable</a>, you need to completely avoid mutation.</p>
+<p>Immutability is what lets <a href="https://github.com/gaearon/react-redux">react-redux</a> efficiently subscribe to fine-grained updates of your state. It also enables great developer experience features such as time travel with <a href="http://github.com/gaearon/redux-devtools">redux-devtools</a>.</p>
+<p>For example, a reducer like this is wrong because it mutates the state:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">todos</span>(<span class="hljs-params">state = [], action</span>) </span>{
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'ADD_TODO'</span>:
+      <span class="hljs-comment">// Wrong! This mutates state</span>
+      state.push({
+        <span class="hljs-attr">text</span>: action.text,
+        <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>
+      })
+      <span class="hljs-keyword">return</span> state
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'COMPLETE_TODO'</span>:
+      <span class="hljs-comment">// Wrong! This mutates state[action.index].</span>
+      state[action.index].completed = <span class="hljs-literal">true</span>
+      <span class="hljs-keyword">return</span> state
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">return</span> state
+  }
+}
+</code></pre>
+<p>It needs to be rewritten like this:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">todos</span>(<span class="hljs-params">state = [], action</span>) </span>{
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'ADD_TODO'</span>:
+      <span class="hljs-comment">// Return a new array</span>
+      <span class="hljs-keyword">return</span> [
+        ...state,
+        {
+          <span class="hljs-attr">text</span>: action.text,
+          <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>
+        }
+      ]
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'COMPLETE_TODO'</span>:
+      <span class="hljs-comment">// Return a new array</span>
+      <span class="hljs-keyword">return</span> state.map(<span class="hljs-function">(<span class="hljs-params">todo, index</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (index === action.index) {
+          <span class="hljs-comment">// Copy the object before mutating</span>
+          <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.assign({}, todo, {
+            <span class="hljs-attr">completed</span>: <span class="hljs-literal">true</span>
+          })
+        }
+        <span class="hljs-keyword">return</span> todo
+      })
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">return</span> state
+  }
+}
+</code></pre>
+<p>It's more code, but it's exactly what makes Redux predictable and efficient. If you want to have less code, you can use a helper like <a href="https://facebook.github.io/react/docs/update.html"><code>React.addons.update</code></a> to write immutable transformations with a terse syntax:</p>
+<pre class="hljs"><code><span class="hljs-comment">// Before:</span>
+<span class="hljs-keyword">return</span> state.map(<span class="hljs-function">(<span class="hljs-params">todo, index</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (index === action.index) {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.assign({}, todo, {
+      <span class="hljs-attr">completed</span>: <span class="hljs-literal">true</span>
+    })
+  }
+  <span class="hljs-keyword">return</span> todo
+})
+
+<span class="hljs-comment">// After</span>
+<span class="hljs-keyword">return</span> update(state, {
+  [action.index]: {
+    <span class="hljs-attr">completed</span>: {
+      <span class="hljs-attr">$set</span>: <span class="hljs-literal">true</span>
+    }
+  }
+})
+</code></pre>
+<p>Finally, to update objects, you'll need something like <code>_.extend</code> from Underscore, or better, an <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign</code></a> polyfill.</p>
+<p>Make sure that you use <code>Object.assign</code> correctly. For example, instead of returning something like <code>Object.assign(state, newData)</code> from your reducers, return <code>Object.assign({}, state, newData)</code>. This way you don't override the previous <code>state</code>.</p>
+<p>You can also enable the <a href="recipes/UsingObjectSpreadOperator.md">object spread operator proposal</a> for a more succinct syntax:</p>
+<pre class="hljs"><code><span class="hljs-comment">// Before:</span>
+<span class="hljs-keyword">return</span> state.map(<span class="hljs-function">(<span class="hljs-params">todo, index</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (index === action.index) {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.assign({}, todo, {
+      <span class="hljs-attr">completed</span>: <span class="hljs-literal">true</span>
+    })
+  }
+  <span class="hljs-keyword">return</span> todo
+})
+
+<span class="hljs-comment">// After:</span>
+<span class="hljs-keyword">return</span> state.map(<span class="hljs-function">(<span class="hljs-params">todo, index</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (index === action.index) {
+    <span class="hljs-keyword">return</span> { ...todo, <span class="hljs-attr">completed</span>: <span class="hljs-literal">true</span> }
+  }
+  <span class="hljs-keyword">return</span> todo
+})
+</code></pre>
+<p>Note that experimental language features are subject to change.</p>
+<p>Also keep an eye out for nested state objects that need to be deeply copied. Both <code>_.extend</code> and <code>Object.assign</code> make a shallow copy of the state. See <a href="/docs/recipes/reducers/ImmutableUpdatePatterns.md#updating-nested-objects">Updating Nested Objects</a> for suggestions on how to deal with nested state objects.</p>
+<h4 id="dont-forget-to-call-dispatchaction">Don't forget to call <a href="api/Store.md#dispatch"><code>dispatch(action)</code></a> <a class="markdownIt-Anchor" href="#dont-forget-to-call-dispatchaction">#</a></h4>
+<p>If you define an action creator, calling it will <em>not</em> automatically dispatch the action. For example, this code will do nothing:</p>
+<h4 id="todoactionsjs"><code>TodoActions.js</code> <a class="markdownIt-Anchor" href="#todoactionsjs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addTodo</span>(<span class="hljs-params">text</span>) </span>{
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>, text }
+}
+</code></pre>
+<h4 id="addtodojs"><code>AddTodo.js</code> <a class="markdownIt-Anchor" href="#addtodojs">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { addTodo } <span class="hljs-keyword">from</span> <span class="hljs-string">'./TodoActions'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddTodo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  handleClick() {
+    <span class="hljs-comment">// Won't work!</span>
+    addTodo(<span class="hljs-string">'Fix the issue'</span>)
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> this.handleClick()}&gt;
+        Add
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+    )
+  }
+}
+</code></pre>
+<p>It doesn't work because your action creator is just a function that <em>returns</em> an action. It is up to you to actually dispatch it. We can't bind your action creators to a particular Store instance during the definition because apps that render on the server need a separate Redux store for every request.</p>
+<p>The fix is to call <a href="api/Store.md#dispatch"><code>dispatch()</code></a> method on the <a href="api/Store.md">store</a> instance:</p>
+<pre class="hljs"><code>handleClick() {
+  <span class="hljs-comment">// Works! (but you need to grab store somehow)</span>
+  store.dispatch(addTodo(<span class="hljs-string">'Fix the issue'</span>))
+}
+</code></pre>
+<p>If you're somewhere deep in the component hierarchy, it is cumbersome to pass the store down manually. This is why <a href="https://github.com/gaearon/react-redux">react-redux</a> lets you use a <code>connect</code> <a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750">higher-order component</a> that will, apart from subscribing you to a Redux store, inject <code>dispatch</code> into your component's props.</p>
+<p>The fixed code looks like this:</p>
+<h4 id="addtodojs-2"><code>AddTodo.js</code> <a class="markdownIt-Anchor" href="#addtodojs-2">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+<span class="hljs-keyword">import</span> { addTodo } <span class="hljs-keyword">from</span> <span class="hljs-string">'./TodoActions'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddTodo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  handleClick() {
+    <span class="hljs-comment">// Works!</span>
+    <span class="hljs-keyword">this</span>.props.dispatch(addTodo(<span class="hljs-string">'Fix the issue'</span>))
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> this.handleClick()}&gt;
+        Add
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+    )
+  }
+}
+
+<span class="hljs-comment">// In addition to the state, `connect` puts `dispatch` in our props.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> connect()(AddTodo)
+</code></pre>
+<p>You can then pass <code>dispatch</code> down to other components manually, if you want to.</p>
+<h4 id="make-sure-mapstatetoprops-is-correct">Make sure mapStateToProps is correct <a class="markdownIt-Anchor" href="#make-sure-mapstatetoprops-is-correct">#</a></h4>
+<p>It's possible you're correctly dispatching an action and applying your reducer but the corresponding state is not being correctly translated into props.</p>
+<h2 id="something-else-doesnt-work">Something else doesn't work <a class="markdownIt-Anchor" href="#something-else-doesnt-work">#</a></h2>
+<p>Ask around on the <strong>#redux</strong> <a href="http://reactiflux.com/">Reactiflux</a> Discord channel, or <a href="https://github.com/reactjs/redux/issues">create an issue</a>.<br>
+If you figure it out, <a href="https://github.com/reactjs/redux/edit/master/docs/Troubleshooting.md">edit this document</a> as a courtesy to the next person having the same problem.</p>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="faq/StoreSetup.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="Glossary.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'Troubleshooting.md';
+  LOPPO.relative_root_path = '';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li>\n<ul>\n<li><a href=\"#nothing-happens-when-i-dispatch-an-action\">Nothing happens when I dispatch an action</a></li>\n</ul>\n</li>\n<li><a href=\"#something-else-doesnt-work\">Something else doesn't work</a></li>\n</ul>\n";
+</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
+

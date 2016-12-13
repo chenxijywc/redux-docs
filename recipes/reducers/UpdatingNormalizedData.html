@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Managing Normalized Data - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item chapter-item-current"><a href="../../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../../api/Store.html">Store</a></li><li class="chapter-item "><a href="../../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/index.html" class="breadcrumb-item">reducers</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/UpdatingNormalizedData.html" class="breadcrumb-item">Managing Normalized Data</a></div>
+    <h1 class="article-title">Managing Normalized Data</h1>
+    <div class="article">
+      <p>As mentioned in <a href="./NormalizingStateShape.md">Normalizing State Shape</a>, the Normalizr library is frequently used to transform nested response data into a normalized shape suitable for integration into the store.  However, that doesn't address the issue of executing further updates to that normalized data as it's being used elsewhere in the application.  There are a variety of different approaches that you can use, based on your own preference.  We'll use the example of adding a new Comment to a Post.</p>
+<h2 id="standard-approaches">Standard Approaches <a class="markdownIt-Anchor" href="#standard-approaches">#</a></h2>
+<h3 id="simple-merging">Simple Merging <a class="markdownIt-Anchor" href="#simple-merging">#</a></h3>
+<p>One approach is to merge the contents of the action in to the existing state.  In this case, we need to do a deep recursive merge, not just a shallow copy.  The Lodash <code>merge</code> function can handle this for us:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> merge <span class="hljs-keyword">from</span> <span class="hljs-string">"lodash/object/merge"</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commentsById</span>(<span class="hljs-params">state = {}, action</span>) </span>{
+    <span class="hljs-keyword">switch</span>(action.type) {
+        <span class="hljs-attr">default</span> : {
+           <span class="hljs-keyword">if</span>(action.entities &amp;&amp; action.entities.comments) {
+               <span class="hljs-keyword">return</span> merge({}, state, action.entities.comments.byId);
+           }
+           <span class="hljs-keyword">return</span> state;
+        }
+    }
+}
+</code></pre>
+<p>This requires the least amount of work on the reducer side, but does require that the action creator potentially do a fair amount of work to organize the data into the correct shape before the action is dispatched.  It also doesn't handle trying to delete an item.</p>
+<h3 id="slice-reducer-composition">Slice Reducer Composition <a class="markdownIt-Anchor" href="#slice-reducer-composition">#</a></h3>
+<p>If we have a nested tree of slice reducers, each slice reducer will need to know how to respond to this action appropriately.  We will need to include all the relevant data in the action.  We need to update the correct Post object with the comment's ID, create a new Comment object using that ID as a key, and include the Comment's ID in the list of all Comment IDs.  Here's how the pieces for this might fit together:</p>
+<pre class="hljs"><code><span class="hljs-comment">// actions.js</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addComment</span>(<span class="hljs-params">postId, commentText</span>) </span>{
+    <span class="hljs-comment">// Generate a unique ID for this comment</span>
+    <span class="hljs-keyword">const</span> commentId = generateId(<span class="hljs-string">"comment"</span>);
+    
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">type</span> : <span class="hljs-string">"ADD_COMMENT"</span>,
+        <span class="hljs-attr">payload</span> : {
+            postId,
+            commentId,
+            commentText
+        }
+    };
+}
+
+
+<span class="hljs-comment">// reducers/posts.js</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addComment</span>(<span class="hljs-params">state, action</span>) </span>{
+    <span class="hljs-keyword">const</span> {payload} = action;
+    <span class="hljs-keyword">const</span> {postId, commentId} = payload;
+    
+    <span class="hljs-comment">// Look up the correct post, to simplify the rest of the code</span>
+    <span class="hljs-keyword">const</span> post = state[postId];
+    
+    <span class="hljs-keyword">return</span> {
+        ...state,
+        <span class="hljs-comment">// Update our Post object with a new "comments" array</span>
+        [postId] : {
+             ...post,
+             <span class="hljs-attr">comments</span> : post.comments.concat(commentId)             
+        }
+    };
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postsById</span>(<span class="hljs-params">state = {}, action</span>) </span>{
+    <span class="hljs-keyword">switch</span>(action.type) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"ADD_COMMENT"</span> : <span class="hljs-keyword">return</span> addComment(state, action);
+        <span class="hljs-keyword">default</span> : <span class="hljs-keyword">return</span> state;
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allPosts</span>(<span class="hljs-params">state = [], action</span>) </span>{
+    <span class="hljs-comment">// omitted - no work to be done for this example</span>
+}
+
+<span class="hljs-keyword">const</span> postsReducer = combineReducers({
+    <span class="hljs-attr">byId</span> : postsById,
+    <span class="hljs-attr">allIds</span> : allPosts
+});
+
+
+<span class="hljs-comment">// reducers/comments.js</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addCommentEntry</span>(<span class="hljs-params">state, action</span>) </span>{
+    <span class="hljs-keyword">const</span> {payload} = action;
+    <span class="hljs-keyword">const</span> {commentId, commentText} = payload;
+    
+    <span class="hljs-comment">// Create our new Comment object</span>
+    <span class="hljs-keyword">const</span> comment = {<span class="hljs-attr">id</span> : commentId, <span class="hljs-attr">text</span> : commentText};
+    
+    <span class="hljs-comment">// Insert the new Comment object into the updated lookup table</span>
+    <span class="hljs-keyword">return</span> {
+        ...state,
+        [commentId] : comment
+    };
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">commentsById</span>(<span class="hljs-params">state = {}, action</span>) </span>{
+    <span class="hljs-keyword">switch</span>(action.type) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"ADD_COMMENT"</span> : <span class="hljs-keyword">return</span> addCommentEntry(state, action);
+        <span class="hljs-keyword">default</span> : <span class="hljs-keyword">return</span> state;
+    }
+}
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addCommentId</span>(<span class="hljs-params">state, action</span>) </span>{
+    <span class="hljs-keyword">const</span> {payload} = action;
+    <span class="hljs-keyword">const</span> {commentId} = payload;
+    <span class="hljs-comment">// Just append the new Comment's ID to the list of all IDs</span>
+    <span class="hljs-keyword">return</span> state.concat(commentId);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">allComments</span>(<span class="hljs-params">state = [], action</span>) </span>{
+    <span class="hljs-keyword">switch</span>(action.type) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"ADD_COMMENT"</span> : <span class="hljs-keyword">return</span> addCommentId(state, action);
+        <span class="hljs-keyword">default</span> : <span class="hljs-keyword">return</span> state;
+    }
+}
+
+<span class="hljs-keyword">const</span> commentsReducer = combineReducers({
+    <span class="hljs-attr">byId</span> : commentsById,
+    <span class="hljs-attr">allIds</span> : allComments
+});
+</code></pre>
+<p>The example is a bit long, because it's showing how all the different slice reducers and case reducers fit together.  Note that the delegation involved here.  The <code>postsById</code> slice reducer delegates the work for this case to <code>addComment</code>, which inserts the new Comment's ID into the correct Post item.  Meanwhile, both the <code>commentsById</code> and <code>allComments</code> slice reducers have their own case reducers, which update the Comments lookup table and list of all Comment IDs appropriately.</p>
+<h2 id="other-approaches">Other Approaches <a class="markdownIt-Anchor" href="#other-approaches">#</a></h2>
+<h3 id="task-based-updates">Task-Based Updates <a class="markdownIt-Anchor" href="#task-based-updates">#</a></h3>
+<p>Since reducers are just functions, there's an infinite number of ways to split up this logic.  While using slice reducers is obviously the most common, it's also possible to organize behavior in a more task-oriented structure.  Because this will often involve more nested updates, you may want to use an immutable update utility library like <a href="https://github.com/debitoor/dot-prop-immutable">dot-prop-immutable</a> or <a href="https://github.com/mariocasciaro/object-path-immutable">object-path-immutable</a> to simplify the update statements.  Here's an example of what that might look like:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> posts <span class="hljs-keyword">from</span> <span class="hljs-string">"./postsReducer"</span>;
+<span class="hljs-keyword">import</span> comments <span class="hljs-keyword">from</span> <span class="hljs-string">"./commentsReducer"</span>;
+<span class="hljs-keyword">import</span> dotProp <span class="hljs-keyword">from</span> <span class="hljs-string">"dot-prop-immutable"</span>;
+<span class="hljs-keyword">import</span> {combineReducers} <span class="hljs-keyword">from</span> <span class="hljs-string">"redux"</span>;
+<span class="hljs-keyword">import</span> reduceReducers <span class="hljs-keyword">from</span> <span class="hljs-string">"reduce-reducers"</span>;
+
+<span class="hljs-keyword">const</span> combinedReducer = combineReducers({
+    posts,
+    comments
+});
+
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addComment</span>(<span class="hljs-params">state, action</span>) </span>{
+    <span class="hljs-keyword">const</span> {payload} = action;
+    <span class="hljs-keyword">const</span> {postId, commentId, commentText} = payload;
+    
+    <span class="hljs-comment">// State here is the entire combined state</span>
+    <span class="hljs-keyword">const</span> updatedWithPostState = dotProp.set(
+        state, 
+        <span class="hljs-string">`posts.byId.<span class="hljs-subst">${postId}</span>.comments`</span>, 
+        comments =&gt; comments.concat(commentId)
+    );
+    
+    <span class="hljs-keyword">const</span> updatedWithCommentsTable = dotProp.set(
+        updatedWithPostState, 
+        <span class="hljs-string">`comments.byId.<span class="hljs-subst">${commentId}</span>`</span>,
+        {<span class="hljs-attr">id</span> : commentId, <span class="hljs-attr">text</span> : commentText}
+    );
+    
+    <span class="hljs-keyword">const</span> updatedWithCommentsList = dotProp.set(
+        updatedWithCommentsTable,
+        <span class="hljs-string">`comments.allIds`</span>,
+        allIds =&gt; allIds.concat(commentId);
+    );
+    
+    <span class="hljs-keyword">return</span> updatedWithCommentsList;
+}
+
+<span class="hljs-keyword">const</span> featureReducers = createReducer({}, {
+    <span class="hljs-attr">ADD_COMMENT</span> : addComment,
+};
+
+<span class="hljs-keyword">const</span> rootReducer = reduceReducers(
+    combinedReducer,
+    featureReducers
+);
+</code></pre>
+<p>This approach makes it very clear what's happening for the <code>&quot;ADD_COMMENTS&quot;</code> case, but it does require nested updating logic, and some specific knowledge of the state tree shape.  Depending on how you want to compose your reducer logic, this may or may not be desired.</p>
+<h3 id="redux-orm">Redux-ORM <a class="markdownIt-Anchor" href="#redux-orm">#</a></h3>
+<p>The <a href="https://github.com/tommikaikkonen/redux-orm">Redux-ORM</a> library provides a very useful abstraction layer for managing normalized data in a Redux store.  It allows you to declare Model classes and define relations between them.  It can then generate the empty &quot;tables&quot; for your data types, act as a specialized selector tool for looking up the data, and perform immutable updates on that data.</p>
+<p>There's a couple ways Redux-ORM can be used to perform updates.  First, the Redux-ORM docs suggest defining reducer functions on each Model subclass, then including the auto-generated combined reducer function into your store:</p>
+<pre class="hljs"><code><span class="hljs-comment">// models.js</span>
+<span class="hljs-keyword">import</span> {Model, many, Schema} <span class="hljs-keyword">from</span> <span class="hljs-string">"redux-orm"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Post</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>{
+  <span class="hljs-keyword">static</span> get fields() {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-comment">// Define a many-sided relation - one Post can have many Comments, </span>
+      <span class="hljs-comment">// at a field named "comments"</span>
+      comments : many(<span class="hljs-string">"Comment"</span>) 
+    };
+  }
+  
+  <span class="hljs-keyword">static</span> reducer(state, action, Post) {
+    <span class="hljs-keyword">switch</span>(action.type) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"CREATE_POST"</span> : {
+        <span class="hljs-comment">// Queue up the creation of a Post instance</span>
+        Post.create(action.payload);
+        <span class="hljs-keyword">break</span>;
+      }
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"ADD_COMMENT"</span> : {
+        <span class="hljs-keyword">const</span> {payload} = action;
+        <span class="hljs-keyword">const</span> {postId, commentId} = payload;
+        <span class="hljs-comment">// Queue up the addition of a relation between this Comment ID </span>
+        <span class="hljs-comment">// and this Post instance</span>
+        Post.withId(postId).comments.add(commentId);
+        <span class="hljs-keyword">break</span>;
+      }
+    }
+    
+    <span class="hljs-comment">// Redux-ORM will automatically apply queued updates after this returns</span>
+  }
+}
+Post.modelName = <span class="hljs-string">"Post"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comment</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>{
+  <span class="hljs-keyword">static</span> get fields() {
+    <span class="hljs-keyword">return</span> {};
+  }
+  
+  <span class="hljs-keyword">static</span> reducer(state, action, Comment) {
+    <span class="hljs-keyword">switch</span>(action.type) {
+      <span class="hljs-keyword">case</span> <span class="hljs-string">"ADD_COMMENT"</span> : {
+        <span class="hljs-keyword">const</span> {payload} = action;
+        <span class="hljs-keyword">const</span> {commentId, commentText} = payload;
+        
+        <span class="hljs-comment">// Queue up the creation of a Comment instance</span>
+        Comment.create({<span class="hljs-attr">id</span> : commentId, <span class="hljs-attr">text</span> : commentText});
+        <span class="hljs-keyword">break</span>;
+      }   
+    }
+    
+    <span class="hljs-comment">// Redux-ORM will automatically apply queued updates after this returns</span>
+  }
+}
+Comment.modelName = <span class="hljs-string">"Comment"</span>;
+
+<span class="hljs-comment">// Create a Schema instance, and hook up the Post and Comment models</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> schema = <span class="hljs-keyword">new</span> Schema();
+schema.register(Post, Comment);
+
+
+<span class="hljs-comment">// main.js</span>
+<span class="hljs-keyword">import</span> { createStore, combineReducers } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
+<span class="hljs-keyword">import</span> {schema} <span class="hljs-keyword">from</span> <span class="hljs-string">"./models"</span>;
+
+<span class="hljs-keyword">const</span> rootReducer = combineReducers({
+  <span class="hljs-comment">// Insert the auto-generated Redux-ORM reducer.  This will</span>
+  <span class="hljs-comment">// initialize our model "tables", and hook up the reducer</span>
+  <span class="hljs-comment">// logic we defined on each Model subclass</span>
+  entities : schema.reducer()
+});
+
+<span class="hljs-comment">// Dispatch an action to create a Post instance</span>
+store.dispatch({
+  <span class="hljs-attr">type</span> : <span class="hljs-string">"CREATE_POST"</span>,
+  <span class="hljs-attr">payload</span> : {
+    <span class="hljs-attr">id</span> : <span class="hljs-number">1</span>,
+    <span class="hljs-attr">name</span> : <span class="hljs-string">"Test Post Please Ignore"</span> 
+  }
+});
+
+<span class="hljs-comment">// Dispatch an action to create a Comment instance as a child of that Post</span>
+store.dispatch({
+  <span class="hljs-attr">type</span> : <span class="hljs-string">"ADD_COMMENT"</span>,
+  <span class="hljs-attr">payload</span> : {
+    <span class="hljs-attr">postId</span> : <span class="hljs-number">1</span>,
+    <span class="hljs-attr">commentId</span> : <span class="hljs-number">123</span>,
+    <span class="hljs-attr">commentText</span> : <span class="hljs-string">"This is a comment"</span>
+  }
+});
+</code></pre>
+<p>The Redux-ORM library maintains an internal queue of updates to be applied.  Those updates are then applied immutably, simplifying the update process.</p>
+<p>Another variation on this is to use Redux-ORM as an abstraction layer within a single case reducer:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> {schema} <span class="hljs-keyword">from</span> <span class="hljs-string">"./models"</span>;
+
+<span class="hljs-comment">// Assume this case reducer is being used in our "entities" slice reducer, </span>
+<span class="hljs-comment">// and we do not have reducers defined on our Redux-ORM Model subclasses</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addComment</span>(<span class="hljs-params">entitiesState, action</span>) </span>{
+    <span class="hljs-keyword">const</span> session = schema.from(entitiesState);
+    <span class="hljs-keyword">const</span> {Post, Comment} = session;
+    <span class="hljs-keyword">const</span> {payload} = action;
+    <span class="hljs-keyword">const</span> {postId, commentId, commentText} = payload;
+    
+    <span class="hljs-keyword">const</span> post = Post.withId(postId);
+    post.comments.add(commentId);
+    
+    Comment.create({<span class="hljs-attr">id</span> : commentId, <span class="hljs-attr">text</span> : commentText});
+
+    <span class="hljs-keyword">return</span> session.reduce();
+}
+</code></pre>
+<p>Overall, Redux-ORM provides a very useful set of abstractions for defining relations between data types, creating the &quot;tables&quot; in our state, retrieving and denormalizing relational data, and applying immutable updates to relational data.</p>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../../recipes/reducers/SplittingReducerLogic.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../../recipes/reducers/UsingCombineReducers.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'recipes/reducers/UpdatingNormalizedData.md';
+  LOPPO.relative_root_path = '../../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#standard-approaches\">Standard Approaches</a>\n<ul>\n<li><a href=\"#simple-merging\">Simple Merging</a></li>\n<li><a href=\"#slice-reducer-composition\">Slice Reducer Composition</a></li>\n</ul>\n</li>\n<li><a href=\"#other-approaches\">Other Approaches</a>\n<ul>\n<li><a href=\"#task-based-updates\">Task-Based Updates</a></li>\n<li><a href=\"#redux-orm\">Redux-ORM</a></li>\n</ul>\n</li>\n</ul>\n";
+</script>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>
+

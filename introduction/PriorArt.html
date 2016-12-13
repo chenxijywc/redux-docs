@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Prior Art - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item chapter-item-current"><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../introduction/index.html" class="breadcrumb-item">introduction</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../introduction/PriorArt.html" class="breadcrumb-item">Prior Art</a></div>
+    <h1 class="article-title">Prior Art</h1>
+    <div class="article">
+      <p>Redux has a mixed heritage. It is similar to some patterns and technologies, but is also different from them in important ways. We'll explore some of the similarities and the differences below.</p>
+<h3 id="flux">Flux <a class="markdownIt-Anchor" href="#flux">#</a></h3>
+<p>Can Redux be considered a <a href="https://facebook.github.io/flux/">Flux</a> implementation?<br>
+<a href="https://twitter.com/fisherwebdev/status/616278911886884864">Yes</a>, and <a href="https://twitter.com/andrestaltz/status/616270755605708800">no</a>.</p>
+<p>(Don't worry, <a href="https://twitter.com/jingc/status/616608251463909376">Flux creators</a> <a href="https://twitter.com/fisherwebdev/status/616286955693682688">approve of it</a>, if that's all you wanted to know.)</p>
+<p>Redux was inspired by several important qualities of Flux. Like Flux, Redux prescribes that you concentrate your model update logic in a certain layer of your application (“stores” in Flux, “reducers” in Redux). Instead of letting the application code directly mutate the data, both tell you to describe every mutation as a plain object called an “action”.</p>
+<p>Unlike Flux, <strong>Redux does not have the concept of a Dispatcher</strong>. This is because it relies on pure functions instead of event emitters, and pure functions are easy to compose and don't need an additional entity managing them. Depending on how you view Flux, you may see this as either a deviation or an implementation detail. Flux has often been <a href="https://speakerdeck.com/jmorrell/jsconf-uy-flux-those-who-forget-the-past-dot-dot-dot-1">described as <code>(state, action) =&gt; state</code></a>. In this sense, Redux is true to the Flux architecture, but makes it simpler thanks to pure functions.</p>
+<p>Another important difference from Flux is that <strong>Redux assumes you never mutate your data</strong>. You can use plain objects and arrays for your state just fine, but mutating them inside the reducers is strongly discouraged. You should always return a new object, which is easy with the <a href="../recipes/UsingObjectSpreadOperator.md">object spread operator proposal</a>, or with a library like <a href="https://facebook.github.io/immutable-js">Immutable</a>.</p>
+<p>While it is technically <em>possible</em> to <a href="https://github.com/reactjs/redux/issues/328#issuecomment-125035516">write impure reducers</a> that mutate the data for performance corner cases, we actively discourage you from doing this. Development features like time travel, record/replay, or hot reloading will break. Moreover it doesn't seem like immutability poses performance problems in most real apps, because, as <a href="https://github.com/omcljs/om">Om</a> demonstrates, even if you lose out on object allocation, you still win by avoiding expensive re-renders and re-calculations, as you know exactly what changed thanks to reducer purity.</p>
+<h3 id="elm">Elm <a class="markdownIt-Anchor" href="#elm">#</a></h3>
+<p><a href="http://elm-lang.org/">Elm</a> is a functional programming language inspired by Haskell and created by <a href="https://twitter.com/czaplic">Evan Czaplicki</a>. It enforces <a href="https://github.com/evancz/elm-architecture-tutorial/">a “model view update” architecture</a>, where the update has the following signature: <code>(action, state) =&gt; state</code>. Elm “updaters” serve the same purpose as reducers in Redux.</p>
+<p>Unlike Redux, Elm is a language, so it is able to benefit from many things like enforced purity, static typing, out of the box immutability, and pattern matching (using the <code>case</code> expression). Even if you don't plan to use Elm, you should read about the Elm architecture, and play with it. There is an interesting <a href="https://github.com/paldepind/noname-functional-frontend-framework">JavaScript library playground implementing similar ideas</a>. We should look there for inspiration on Redux! One way that we can get closer to the static typing of Elm is by <a href="https://github.com/reactjs/redux/issues/290">using a gradual typing solution like Flow</a>.</p>
+<h3 id="immutable">Immutable <a class="markdownIt-Anchor" href="#immutable">#</a></h3>
+<p><a href="https://facebook.github.io/immutable-js">Immutable</a> is a JavaScript library implementing persistent data structures. It is performant and has an idiomatic JavaScript API.</p>
+<p>Immutable and most similar libraries are orthogonal to Redux. Feel free to use them together!</p>
+<p><strong>Redux doesn't care <em>how</em> you store the state—it can be a plain object, an Immutable object, or anything else.</strong> You'll probably want a (de)serialization mechanism for writing universal apps and hydrating their state from the server, but other than that, you can use any data storage library <em>as long as it supports immutability</em>. For example, it doesn't make sense to use Backbone for Redux state, because Backbone models are mutable.</p>
+<p>Note that, even if your immutable library supports cursors, you shouldn't use them in a Redux app. The whole state tree should be considered read-only, and you should use Redux for updating the state, and subscribing to the updates. Therefore writing via cursor doesn't make sense for Redux. <strong>If your only use case for cursors is decoupling the state tree from the UI tree and gradually refining the cursors, you should look at selectors instead.</strong> Selectors are composable getter functions. See <a href="http://github.com/faassen/reselect">reselect</a> for a really great and concise implementation of composable selectors.</p>
+<h3 id="baobab">Baobab <a class="markdownIt-Anchor" href="#baobab">#</a></h3>
+<p><a href="https://github.com/Yomguithereal/baobab">Baobab</a> is another popular library implementing immutable API for updating plain JavaScript objects. While you can use it with Redux, there is little benefit in using them together.</p>
+<p>Most of the functionality Baobab provides is related to updating the data with cursors, but Redux enforces that the only way to update the data is to dispatch an action. Therefore they solve the same problem differently, and don't complement each other.</p>
+<p>Unlike Immutable, Baobab doesn't yet implement any special efficient data structures under the hood, so you don't really win anything from using it together with Redux. It's easier to just use plain objects in this case.</p>
+<h3 id="rx">Rx <a class="markdownIt-Anchor" href="#rx">#</a></h3>
+<p><a href="https://github.com/Reactive-Extensions/RxJS">Reactive Extensions</a> (and their undergoing <a href="https://github.com/ReactiveX/RxJS">modern rewrite</a>) are a superb way to manage the complexity of asynchronous apps. In fact <a href="http://cycle.js.org">there is an effort to create a library that models human-computer interaction as interdependent observables</a>.</p>
+<p>Does it make sense to use Redux together with Rx? Sure! They work great together. For example, it is easy to expose a Redux store as an observable:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toObservable</span>(<span class="hljs-params">store</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    subscribe({ onNext }) {
+      <span class="hljs-keyword">let</span> dispose = store.subscribe(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> onNext(store.getState()))
+      onNext(store.getState())
+      <span class="hljs-keyword">return</span> { dispose }
+    }
+  }
+}
+</code></pre>
+<p>Similarly, you can compose different asynchronous streams to turn them into actions before feeding them to <code>store.dispatch()</code>.</p>
+<p>The question is: do you really need Redux if you already use Rx? Maybe not. It's not hard to <a href="https://github.com/jas-chen/rx-redux">re-implement Redux in Rx</a>. Some say it's a two-liner using Rx <code>.scan()</code> method. It may very well be!</p>
+<p>If you're in doubt, check out the Redux source code (there isn't much going on there), as well as its ecosystem (for example, <a href="https://github.com/gaearon/redux-devtools">the developer tools</a>). If you don't care too much about it and want to go with the reactive data flow all the way, you might want to explore something like <a href="http://cycle.js.org">Cycle</a> instead, or even combine it with Redux. Let us know how it goes!</p>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../introduction/ThreePrinciples.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../introduction/CoreConcepts.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'introduction/PriorArt.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li>\n<ul>\n<li><a href=\"#flux\">Flux</a></li>\n<li><a href=\"#elm\">Elm</a></li>\n<li><a href=\"#immutable\">Immutable</a></li>\n<li><a href=\"#baobab\">Baobab</a></li>\n<li><a href=\"#rx\">Rx</a></li>\n</ul>\n</li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

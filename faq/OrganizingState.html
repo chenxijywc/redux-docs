@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Redux FAQ: Organizing State - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item "><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item chapter-item-current"><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../faq/index.html" class="breadcrumb-item">faq</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../faq/OrganizingState.html" class="breadcrumb-item">Redux FAQ: Organizing State</a></div>
+    <h1 class="article-title">Redux FAQ: Organizing State</h1>
+    <div class="article">
+      <h2 id="table-of-contents">Table of Contents <a class="markdownIt-Anchor" href="#table-of-contents">#</a></h2>
+<ul>
+<li><a href="#organizing-state-only-redux-state">Do I have to put all my state into Redux? Should I ever use React's setState()?</a></li>
+<li><a href="#organizing-state-non-serializable">Can I put functions, promises, or other non-serializable items in my store state?</a></li>
+<li><a href="#organizing-state-nested-data">How do I organize nested or duplicate data in my state?</a></li>
+</ul>
+<h2 id="organizing-state">Organizing State <a class="markdownIt-Anchor" href="#organizing-state">#</a></h2>
+<p><a id="organizing-state-only-redux-state"></a></p>
+<h3 id="do-i-have-to-put-all-my-state-into-redux-should-i-ever-use-reacts-setstate">Do I have to put all my state into Redux? Should I ever use React's <code>setState()</code>? <a class="markdownIt-Anchor" href="#do-i-have-to-put-all-my-state-into-redux-should-i-ever-use-reacts-setstate">#</a></h3>
+<p>There is no “right” answer for this. Some users prefer to keep every single piece of data in Redux, to maintain a fully serializable and controlled version of their application at all times. Others prefer to keep non-critical or UI state, such as “is this dropdown currently open”, inside a component's internal state.</p>
+<p><strong><em>Using local component state is fine</em></strong>.  As a developer, it is <em>your</em> job to determine what kinds of state make up your application, and where each piece of state should live.  Find a balance that works for you, and go with it.</p>
+<p>Some common rules of thumb for determing what kind of data should be put into Redux:</p>
+<ul>
+<li>Do other parts of the application care about this data?</li>
+<li>Do you need to be able to create further derived data based on this original data?</li>
+<li>Is the same data being used to drive multiple components?</li>
+<li>Is there value to you in being able to restore this state to a given point in time (ie, time travel debugging)?</li>
+<li>Do you want to cache the data (ie, use what's in state if it's already there instead of re-requesting it)?</li>
+</ul>
+<p>There are a number of community packages that implement various approaches for storing per-component state in a Redux store instead, such as <a href="https://github.com/tonyhb/redux-ui">redux-ui</a>, <a href="https://github.com/tomchentw/redux-component">redux-component</a>, <a href="https://github.com/threepointone/redux-react-local">redux-react-local</a>, and more.  It's also possible to apply Redux's principles and concept of reducers to the task of updating local component state as well, along the lines of <code>this.setState( (previousState) =&gt; reducer(previousState, someAction))</code>.</p>
+<h4 id="further-information">Further information <a class="markdownIt-Anchor" href="#further-information">#</a></h4>
+<p><strong>Articles</strong></p>
+<ul>
+<li><a href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367">You Might Not Need Redux</a></li>
+<li><a href="https://medium.com/@adamrackis/finding-state-s-place-with-react-and-redux-e9a586630172">Finding <code>state</code>'s place with React and Redux</a></li>
+<li><a href="https://medium.com/@zackargyle/a-case-for-setstate-1f1c47cd3f73">A Case for setState</a></li>
+<li><a href="https://medium.com/react-ecosystem/how-to-handle-state-in-react-6f2d3cd73a0c">How to handle state in React: the missing FAQ</a></li>
+<li><a href="https://medium.freecodecamp.com/where-do-i-belong-a-guide-to-saving-react-component-data-in-state-store-static-and-this-c49b335e2a00">Where to Hold React Component Data: state, store, static, and this</a></li>
+<li><a href="http://jamesknelson.com/5-types-react-application-state/">The 5 Types of React Application State</a></li>
+</ul>
+<p><strong>Discussions</strong></p>
+<ul>
+<li><a href="https://github.com/reactjs/redux/issues/159">#159: Investigate using Redux for pseudo-local component state</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1098">#1098: Using Redux in reusable React component</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1287">#1287: How to choose between Redux's store and React's state?</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1385">#1385: What are the disadvantages of storing all your state in a single immutable atom?</a></li>
+<li><a href="https://twitter.com/dan_abramov/status/749710501916139520">Twitter: Should I keep something in React component state?</a></li>
+<li><a href="https://twitter.com/dan_abramov/status/736310245945933824">Twitter: Using a reducer to update a component</a></li>
+<li><a href="https://discuss.reactjs.org/t/redux-and-global-state-vs-local-state/4187">React Forums: Redux and global state vs local state</a></li>
+<li><a href="https://www.reddit.com/r/reactjs/comments/4w04to/when_using_redux_should_all_asynchronous_actions/d63u4o8">Reddit: &quot;When should I put something into my Redux store?&quot;</a></li>
+<li><a href="http://stackoverflow.com/questions/35664594/redux-why-is-state-all-in-one-place-even-state-that-isnt-global">Stack Overflow: Why is state all in one place, even state that isn't global?</a></li>
+<li><a href="http://stackoverflow.com/questions/35328056/react-redux-should-all-component-states-be-kept-in-redux-store">Stack Overflow: Should all component state be kept in Redux store?</a></li>
+</ul>
+<p><strong>Libraries</strong></p>
+<ul>
+<li><a href="https://github.com/markerikson/redux-ecosystem-links/blob/master/component-state.md">Redux Addons Catalog: Component State</a></li>
+</ul>
+<p><a id="organizing-state-non-serializable"></a></p>
+<h3 id="can-i-put-functions-promises-or-other-non-serializable-items-in-my-store-state">Can I put functions, promises, or other non-serializable items in my store state? <a class="markdownIt-Anchor" href="#can-i-put-functions-promises-or-other-non-serializable-items-in-my-store-state">#</a></h3>
+<p>It is highly recommended that you only put plain serializable objects, arrays, and primitives into your store. It's <em>technically</em> possible to insert non-serializable items into the store, but doing so can break the ability to persist and rehydrate the contents of a store, as well as interfere with time-travel debugging.</p>
+<p>If you are okay with things like persistence and time-travel debugging potentially not working as intended, then you are totally welcome to put non-serializable items into your Redux store.  Ultimately, it's <em>your</em> application, and how you implement it is up to you.  As with many other things about Redux, just be sure you understand what tradeoffs are involved.</p>
+<h4 id="further-information-2">Further information <a class="markdownIt-Anchor" href="#further-information-2">#</a></h4>
+<p><strong>Discussions</strong></p>
+<ul>
+<li><a href="https://github.com/reactjs/redux/issues/1248">#1248: Is it ok and possible to store a react component in a reducer?</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1279">#1279: Have any suggestions for where to put a Map Component in Flux?</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1390">#1390: Component Loading</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1407">#1407: Just sharing a great base class</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1793">#1793: React Elements in Redux State</a></li>
+</ul>
+<p><a id="organizing-state-nested-data"></a></p>
+<h3 id="how-do-i-organize-nested-or-duplicate-data-in-my-state">How do I organize nested or duplicate data in my state? <a class="markdownIt-Anchor" href="#how-do-i-organize-nested-or-duplicate-data-in-my-state">#</a></h3>
+<p>Data with IDs, nesting, or relationships should generally be stored in a “normalized” fashion: each object should be stored once, keyed by ID, and other objects that reference it should only store the ID rather than a copy of the entire object. It may help to think of parts of your store as a database, with individual “tables” per item type. Libraries such as <a href="https://github.com/gaearon/normalizr">normalizr</a> and <a href="https://github.com/tommikaikkonen/redux-orm">redux-orm</a> can provide help and abstractions in managing normalized data.</p>
+<h4 id="further-information-3">Further information <a class="markdownIt-Anchor" href="#further-information-3">#</a></h4>
+<p><strong>Documentation</strong></p>
+<ul>
+<li><a href="/docs/advanced/AsyncActions.md">Advanced: Async Actions</a></li>
+<li><a href="/docs/introduction/Examples.html#real-world">Examples: Real World example</a></li>
+<li><a href="/docs/recipes/reducers/PrerequisiteConcepts.md#normalizing-data">Recipes: Structuring Reducers - Prerequisite Concepts</a></li>
+<li><a href="/docs/recipes/reducers/NormalizingStateShape.md">Recipes: Structuring Reducers - Normalizing State Shape</a></li>
+<li><a href="https://github.com/reactjs/redux/tree/master/examples/tree-view">Examples: Tree View</a></li>
+</ul>
+<p><strong>Articles</strong></p>
+<ul>
+<li><a href="http://somebody32.github.io/high-performance-redux/">High-Performance Redux</a></li>
+<li><a href="https://medium.com/@adamrackis/querying-a-redux-store-37db8c7f3b0f">Querying a Redux Store</a></li>
+</ul>
+<p><strong>Discussions</strong></p>
+<ul>
+<li><a href="https://github.com/reactjs/redux/issues/316">#316: How to create nested reducers?</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/815">#815: Working with Data Structures</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/946">#946: Best way to update related state fields with split reducers?</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/994">#994: How to cut the boilerplate when updating nested entities?</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1255">#1255: Normalizr usage with nested objects in React/Redux</a></li>
+<li><a href="https://github.com/reactjs/redux/pull/1269">#1269: Add tree view example</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1824#issuecomment-228585904">#1824: Normalising state and garbage collection</a></li>
+<li><a href="https://twitter.com/dan_abramov/status/715507260244496384">Twitter: state shape should be normalized</a></li>
+<li><a href="http://stackoverflow.com/questions/32798193/how-to-handle-tree-shaped-entities-in-redux-reducers">Stack Overflow: How to handle tree-shaped entities in Redux reducers?</a></li>
+<li><a href="http://stackoverflow.com/questions/37264415/how-to-optimize-small-updates-to-props-of-nested-component-in-react-redux">Stack Overflow: How to optimize small updates to props of nested components in React + Redux?</a></li>
+</ul>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../faq/Miscellaneous.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../faq/Performance.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'faq/OrganizingState.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li><a href=\"#table-of-contents\">Table of Contents</a></li>\n<li><a href=\"#organizing-state\">Organizing State</a>\n<ul>\n<li><a href=\"#do-i-have-to-put-all-my-state-into-redux-should-i-ever-use-reacts-setstate\">Do I have to put all my state into Redux? Should I ever use React's <code>setState()</code>?</a></li>\n<li><a href=\"#can-i-put-functions-promises-or-other-non-serializable-items-in-my-store-state\">Can I put functions, promises, or other non-serializable items in my store state?</a></li>\n<li><a href=\"#how-do-i-organize-nested-or-duplicate-data-in-my-state\">How do I organize nested or duplicate data in my state?</a></li>\n</ul>\n</li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+

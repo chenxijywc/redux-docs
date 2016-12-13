@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Writing Tests - Redux Documents</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../assets/css/bulma.min.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+</head>
+<body>
+
+<nav class="columns navbar">
+  <div class="column logo is-3 is-offset-1">
+    <a class="is-brand" href="../index.html">
+      Redux Documents
+    </a>
+  </div>
+</nav>
+
+<div class="book-toc notification is-warning is-hidden">
+  <h3>Table of chapters &nbsp;<span class="title-close"><a class="button is-danger"> Close </a></span></h3>
+  <ul class="chapter-area"><li class="chapter-item "><a href="../introduction/index.html">introduction</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../introduction/Motivation.html">Motivation</a></li><li class="chapter-item "><a href="../introduction/ThreePrinciples.html">Three Principles</a></li><li class="chapter-item "><a href="../introduction/PriorArt.html">Prior Art</a></li><li class="chapter-item "><a href="../introduction/CoreConcepts.html">Core Concepts</a></li><li class="chapter-item "><a href="../introduction/Ecosystem.html">Ecosystem</a></li><li class="chapter-item "><a href="../introduction/Examples.html">Examples</a></li></ul><li class="chapter-item "><a href="../basics/index.html">basics</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../basics/Actions.html">Actions</a></li><li class="chapter-item "><a href="../basics/Reducers.html">Reducers</a></li><li class="chapter-item "><a href="../basics/Store.html">Store</a></li><li class="chapter-item "><a href="../basics/DataFlow.html">Data Flow</a></li><li class="chapter-item "><a href="../basics/UsageWithReact.html">Usage with React</a></li><li class="chapter-item "><a href="../basics/ExampleTodoList.html">Example: Todo List</a></li></ul><li class="chapter-item "><a href="../advanced/index.html">advanced</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../advanced/AsyncActions.html">Async Actions</a></li><li class="chapter-item "><a href="../advanced/AsyncFlow.html">Async Flow</a></li><li class="chapter-item "><a href="../advanced/ExampleRedditAPI.html">Example: Reddit API</a></li><li class="chapter-item "><a href="../advanced/Middleware.html">Middleware</a></li><li class="chapter-item "><a href="../advanced/NextSteps.html">Next Steps</a></li><li class="chapter-item "><a href="../advanced/UsageWithReactRouter.html">Usage with React Router</a></li></ul><li class="chapter-item "><a href="../recipes/index.html">recipes</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-collapse" data-icon="collapse"></span></a></li><ul class="chapter-level-1 chapter-level-1-current"><li class="chapter-item "><a href="../recipes/ComputingDerivedData.html">Computing Derived Data</a></li><li class="chapter-item "><a href="../recipes/ImplementingUndoHistory.html">Implementing Undo History</a></li><li class="chapter-item "><a href="../recipes/IsolatingSubapps.html">Isolating Redux Sub-Apps</a></li><li class="chapter-item "><a href="../recipes/MigratingToRedux.html">Migrating to Redux</a></li><li class="chapter-item "><a href="../recipes/ReducingBoilerplate.html">Reducing Boilerplate</a></li><li class="chapter-item "><a href="../recipes/ServerRendering.html">Server Rendering</a></li><li class="chapter-item "><a href="../recipes/StructuringReducers.html">Structuring Reducers</a></li><li class="chapter-item "><a href="../recipes/UsingObjectSpreadOperator.html">Using Object Spread Operator</a></li><li class="chapter-item chapter-item-current"><a href="../recipes/WritingTests.html">Writing Tests</a></li><li class="chapter-item "><a href="../recipes/reducers/index.html">reducers</a></li><ul class="chapter-level-2"><li class="chapter-item "><a href="../recipes/reducers/BasicReducerStructure.html">Basic Reducer Structure and State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/BeyondCombineReducers.html">Beyond `combineReducers`</a></li><li class="chapter-item "><a href="../recipes/reducers/ImmutableUpdatePatterns.html">Immutable Update Patterns</a></li><li class="chapter-item "><a href="../recipes/reducers/InitializingState.html">Initializing State</a></li><li class="chapter-item "><a href="../recipes/reducers/NormalizingStateShape.html">Normalizing State Shape</a></li><li class="chapter-item "><a href="../recipes/reducers/PrerequisiteConcepts.html">Prerequisite Reducer Concepts</a></li><li class="chapter-item "><a href="../recipes/reducers/RefactoringReducersExample.html">Refactoring Reducer Logic Using Functional Decomposition and Reducer Composition</a></li><li class="chapter-item "><a href="../recipes/reducers/ReusingReducerLogic.html">Reusing Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/SplittingReducerLogic.html">Splitting Up Reducer Logic</a></li><li class="chapter-item "><a href="../recipes/reducers/UpdatingNormalizedData.html">Managing Normalized Data</a></li><li class="chapter-item "><a href="../recipes/reducers/UsingCombineReducers.html">Using `combineReducers`</a></li></ul><li class="chapter-item "><a href="../faq/index.html">faq</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><li class="chapter-item "><a href="../faq/Actions.html">Redux FAQ: Actions</a></li><li class="chapter-item "><a href="../faq/CodeStructure.html">Redux FAQ: Code Structure</a></li><li class="chapter-item "><a href="../faq/General.html">Redux FAQ: General</a></li><li class="chapter-item "><a href="../faq/Miscellaneous.html">Redux FAQ: Miscellaneous</a></li><li class="chapter-item "><a href="../faq/OrganizingState.html">Redux FAQ: Organizing State</a></li><li class="chapter-item "><a href="../faq/Performance.html">Redux FAQ: Performance</a></li><li class="chapter-item "><a href="../faq/ReactRedux.html">Redux FAQ: React Redux</a></li><li class="chapter-item "><a href="../faq/Reducers.html">Redux FAQ: Reducers</a></li><li class="chapter-item "><a href="../faq/StoreSetup.html">Redux FAQ: Store Setup</a></li></ul><li class="chapter-item "><a href="../Troubleshooting.html">Troubleshooting</a></li><li class="chapter-item "><a href="../Glossary.html">Glossary</a></li><li class="chapter-item "><a href="../api/index.html">api</a>&nbsp;<a class="first-level-collapse"><span class="icon icon-expand" data-icon="expand"></span></a></li><ul class="chapter-level-1"><li class="chapter-item "><a href="../api/Store.html">Store</a></li><li class="chapter-item "><a href="../api/applyMiddleware.html">`applyMiddleware(...middlewares)`</a></li><li class="chapter-item "><a href="../api/bindActionCreators.html">`bindActionCreators(actionCreators, dispatch)`</a></li><li class="chapter-item "><a href="../api/combineReducers.html">`combineReducers(reducers)`</a></li><li class="chapter-item "><a href="../api/compose.html">`compose(...functions)`</a></li><li class="chapter-item "><a href="../api/createStore.html">`createStore(reducer, [preloadedState], [enhancer])`</a></li></ul><li class="chapter-item "><a href="../Feedback.html">Feedback</a></li></ul>
+</div>
+
+<div class="columns content">
+  <div class="column is-2-desktop is-3-widescreen is-hidden-touch">
+  </div>
+  <div class="column article-container is-11-tablet is-8-desktop is-6-widescreen">
+    <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../recipes/WritingTests.html" class="breadcrumb-item">Writing Tests</a></div>
+    <h1 class="article-title">Writing Tests</h1>
+    <div class="article">
+      <p>Because most of the Redux code you write are functions, and many of them are pure, they are easy to test without mocking.</p>
+<h3 id="setting-up">Setting Up <a class="markdownIt-Anchor" href="#setting-up">#</a></h3>
+<p>We recommend <a href="http://facebook.github.io/jest/">Jest</a> as the testing engine.
+Note that it runs in a Node environment, so you won't have access to the DOM.</p>
+<pre class="hljs"><code>npm install --save-dev jest
+</code></pre>
+<p>To use it together with <a href="http://babeljs.io">Babel</a>, you will need to install <code>babel-jest</code>:</p>
+<pre class="hljs"><code>npm install --save-dev babel-jest
+</code></pre>
+<p>and configure it to use ES2015 features in <code>.babelrc</code>:</p>
+<pre class="hljs"><code>{
+  <span class="hljs-string">"presets"</span>: [<span class="hljs-string">"es2015"</span>]
+}
+</code></pre>
+<p>Then, add this to <code>scripts</code> in your <code>package.json</code>:</p>
+<pre class="hljs"><code>{
+  ...
+  <span class="hljs-string">"scripts"</span>: {
+    ...
+    <span class="hljs-string">"test"</span>: <span class="hljs-string">"jest"</span>,
+    <span class="hljs-string">"test:watch"</span>: <span class="hljs-string">"npm test -- --watch"</span>
+  },
+  ...
+}
+</code></pre>
+<p>and run <code>npm test</code> to run it once, or <code>npm run test:watch</code> to test on every file change.</p>
+<h3 id="action-creators">Action Creators <a class="markdownIt-Anchor" href="#action-creators">#</a></h3>
+<p>In Redux, action creators are functions which return plain objects. When testing action creators we want to test whether the correct action creator was called and also whether the right action was returned.</p>
+<h4 id="example">Example <a class="markdownIt-Anchor" href="#example">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addTodo</span>(<span class="hljs-params">text</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'ADD_TODO'</span>,
+    text
+  }
+}
+</code></pre>
+<p>can be tested like:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> actions <span class="hljs-keyword">from</span> <span class="hljs-string">'../../actions/TodoActions'</span>
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> types <span class="hljs-keyword">from</span> <span class="hljs-string">'../../constants/ActionTypes'</span>
+
+describe(<span class="hljs-string">'actions'</span>, () =&gt; {
+  it(<span class="hljs-string">'should create an action to add a todo'</span>, () =&gt; {
+    <span class="hljs-keyword">const</span> text = <span class="hljs-string">'Finish docs'</span>
+    <span class="hljs-keyword">const</span> expectedAction = {
+      <span class="hljs-attr">type</span>: types.ADD_TODO,
+      text
+    }
+    expect(actions.addTodo(text)).toEqual(expectedAction)
+  })
+})
+</code></pre>
+<h3 id="async-action-creators">Async Action Creators <a class="markdownIt-Anchor" href="#async-action-creators">#</a></h3>
+<p>For async action creators using <a href="https://github.com/gaearon/redux-thunk">Redux Thunk</a> or other middleware, it's best to completely mock the Redux store for tests. You can apply the middleware to a mock store using <a href="https://github.com/arnaudbenard/redux-mock-store">redux-mock-store</a>. You can also use <a href="https://github.com/pgte/nock">nock</a> to mock the HTTP requests.</p>
+<h4 id="example-2">Example <a class="markdownIt-Anchor" href="#example-2">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> fetch <span class="hljs-keyword">from</span> <span class="hljs-string">'isomorphic-fetch'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchTodosRequest</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: FETCH_TODOS_REQUEST
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchTodosSuccess</span>(<span class="hljs-params">body</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: FETCH_TODOS_SUCCESS,
+    body
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchTodosFailure</span>(<span class="hljs-params">ex</span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: FETCH_TODOS_FAILURE,
+    ex
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchTodos</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">dispatch</span> =&gt;</span> {
+    dispatch(fetchTodosRequest())
+    <span class="hljs-keyword">return</span> fetch(<span class="hljs-string">'http://example.com/todos'</span>)
+      .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> res.json())
+      .then(<span class="hljs-function"><span class="hljs-params">json</span> =&gt;</span> dispatch(fetchTodosSuccess(json.body)))
+      .catch(<span class="hljs-function"><span class="hljs-params">ex</span> =&gt;</span> dispatch(fetchTodosFailure(ex)))
+  }
+}
+</code></pre>
+<p>can be tested like:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> configureMockStore <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-mock-store'</span>
+<span class="hljs-keyword">import</span> thunk <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-thunk'</span>
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> actions <span class="hljs-keyword">from</span> <span class="hljs-string">'../../actions/TodoActions'</span>
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> types <span class="hljs-keyword">from</span> <span class="hljs-string">'../../constants/ActionTypes'</span>
+<span class="hljs-keyword">import</span> nock <span class="hljs-keyword">from</span> <span class="hljs-string">'nock'</span>
+<span class="hljs-keyword">import</span> expect <span class="hljs-keyword">from</span> <span class="hljs-string">'expect'</span> <span class="hljs-comment">// You can use any testing library</span>
+
+<span class="hljs-keyword">const</span> middlewares = [ thunk ]
+<span class="hljs-keyword">const</span> mockStore = configureMockStore(middlewares)
+
+describe(<span class="hljs-string">'async actions'</span>, () =&gt; {
+  afterEach(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    nock.cleanAll()
+  })
+
+  it(<span class="hljs-string">'creates FETCH_TODOS_SUCCESS when fetching todos has been done'</span>, () =&gt; {
+    nock(<span class="hljs-string">'http://example.com/'</span>)
+      .get(<span class="hljs-string">'/todos'</span>)
+      .reply(<span class="hljs-number">200</span>, { <span class="hljs-attr">body</span>: { <span class="hljs-attr">todos</span>: [<span class="hljs-string">'do something'</span>] }})
+
+    <span class="hljs-keyword">const</span> expectedActions = [
+      { <span class="hljs-attr">type</span>: types.FETCH_TODOS_REQUEST },
+      { <span class="hljs-attr">type</span>: types.FETCH_TODOS_SUCCESS, <span class="hljs-attr">body</span>: { <span class="hljs-attr">todos</span>: [<span class="hljs-string">'do something'</span>]  } }
+    ]
+    <span class="hljs-keyword">const</span> store = mockStore({ <span class="hljs-attr">todos</span>: [] })
+
+    <span class="hljs-keyword">return</span> store.dispatch(actions.fetchTodos())
+      .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-comment">// return of async actions</span>
+        expect(store.getActions()).toEqual(expectedActions)
+      })
+  })
+})
+</code></pre>
+<h3 id="reducers">Reducers <a class="markdownIt-Anchor" href="#reducers">#</a></h3>
+<p>A reducer should return the new state after applying the action to the previous state, and that's the behavior tested below.</p>
+<h4 id="example-3">Example <a class="markdownIt-Anchor" href="#example-3">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { ADD_TODO } <span class="hljs-keyword">from</span> <span class="hljs-string">'../constants/ActionTypes'</span>
+
+<span class="hljs-keyword">const</span> initialState = [
+  {
+    <span class="hljs-attr">text</span>: <span class="hljs-string">'Use Redux'</span>,
+    <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">id</span>: <span class="hljs-number">0</span>
+  }
+]
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">todos</span>(<span class="hljs-params">state = initialState, action</span>) </span>{
+  <span class="hljs-keyword">switch</span> (action.type) {
+    <span class="hljs-keyword">case</span> ADD_TODO:
+      <span class="hljs-keyword">return</span> [
+        {
+          <span class="hljs-attr">id</span>: state.reduce(<span class="hljs-function">(<span class="hljs-params">maxId, todo</span>) =&gt;</span> <span class="hljs-built_in">Math</span>.max(todo.id, maxId), <span class="hljs-number">-1</span>) + <span class="hljs-number">1</span>,
+          <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">text</span>: action.text
+        },
+        ...state
+      ]
+
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">return</span> state
+  }
+}
+</code></pre>
+<p>can be tested like:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> reducer <span class="hljs-keyword">from</span> <span class="hljs-string">'../../reducers/todos'</span>
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> types <span class="hljs-keyword">from</span> <span class="hljs-string">'../../constants/ActionTypes'</span>
+
+describe(<span class="hljs-string">'todos reducer'</span>, () =&gt; {
+  it(<span class="hljs-string">'should return the initial state'</span>, () =&gt; {
+    expect(
+      reducer(<span class="hljs-literal">undefined</span>, {})
+    ).toEqual([
+      {
+        <span class="hljs-attr">text</span>: <span class="hljs-string">'Use Redux'</span>,
+        <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">id</span>: <span class="hljs-number">0</span>
+      }
+    ])
+  })
+
+  it(<span class="hljs-string">'should handle ADD_TODO'</span>, () =&gt; {
+    expect(
+      reducer([], {
+        <span class="hljs-attr">type</span>: types.ADD_TODO,
+        <span class="hljs-attr">text</span>: <span class="hljs-string">'Run the tests'</span>
+      })
+    ).toEqual(
+      [
+        {
+          <span class="hljs-attr">text</span>: <span class="hljs-string">'Run the tests'</span>,
+          <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">id</span>: <span class="hljs-number">0</span>
+        }
+      ]
+    )
+
+    expect(
+      reducer(
+        [
+          {
+            <span class="hljs-attr">text</span>: <span class="hljs-string">'Use Redux'</span>,
+            <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">0</span>
+          }
+        ],
+        {
+          <span class="hljs-attr">type</span>: types.ADD_TODO,
+          <span class="hljs-attr">text</span>: <span class="hljs-string">'Run the tests'</span>
+        }
+      )
+    ).toEqual(
+      [
+        {
+          <span class="hljs-attr">text</span>: <span class="hljs-string">'Run the tests'</span>,
+          <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>
+        },
+        {
+          <span class="hljs-attr">text</span>: <span class="hljs-string">'Use Redux'</span>,
+          <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">id</span>: <span class="hljs-number">0</span>
+        }
+      ]
+    )
+  })
+})
+</code></pre>
+<h3 id="components">Components <a class="markdownIt-Anchor" href="#components">#</a></h3>
+<p>A nice thing about React components is that they are usually small and only rely on their props. That makes them easy to test.</p>
+<p>First, we will install <a href="http://airbnb.io/enzyme/">Enzyme</a>. Enzyme uses the <a href="https://facebook.github.io/react/docs/test-utils.html">React Test Utilities</a> underneath, but is more convenient, readable, and powerful.</p>
+<pre class="hljs"><code>npm install --save-dev enzyme
+</code></pre>
+<p>To test the components we make a <code>setup()</code> helper that passes the stubbed callbacks as props and renders the component with <a href="http://airbnb.io/enzyme/docs/api/shallow.html">shallow rendering</a>. This lets individual tests assert on whether the callbacks were called when expected.</p>
+<h4 id="example-4">Example <a class="markdownIt-Anchor" href="#example-4">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React, { PropTypes, Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> TodoTextInput <span class="hljs-keyword">from</span> <span class="hljs-string">'./TodoTextInput'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Header</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+  handleSave(text) {
+    <span class="hljs-keyword">if</span> (text.length !== <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">this</span>.props.addTodo(text)
+    }
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">className</span>=<span class="hljs-string">'header'</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>todos<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">TodoTextInput</span> <span class="hljs-attr">newTodo</span>=<span class="hljs-string">{true}</span>
+                         <span class="hljs-attr">onSave</span>=<span class="hljs-string">{this.handleSave.bind(this)}</span>
+                         <span class="hljs-attr">placeholder</span>=<span class="hljs-string">'What needs to be done?'</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    )
+  }
+}
+
+Header.propTypes = {
+  addTodo: PropTypes.func.isRequired
+}
+
+export default Header
+</span></code></pre>
+<p>can be tested like:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { shallow } <span class="hljs-keyword">from</span> <span class="hljs-string">'enzyme'</span>
+<span class="hljs-keyword">import</span> Header <span class="hljs-keyword">from</span> <span class="hljs-string">'../../components/Header'</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setup</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> props = {
+    <span class="hljs-attr">addTodo</span>: jest.fn()
+  }
+
+  <span class="hljs-keyword">const</span> enzymeWrapper = shallow(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Header</span> {<span class="hljs-attr">...props</span>} /&gt;</span>)
+
+  return {
+    props,
+    enzymeWrapper
+  }
+}
+
+describe('components', () =&gt; {
+  describe('Header', () =&gt; {
+    it('should render self and subcomponents', () =&gt; {
+      const { enzymeWrapper } = setup()
+
+      expect(enzymeWrapper.find('header').hasClass('header')).toBe(true)
+
+      expect(enzymeWrapper.find('h1').text()).toBe('todos')
+
+      const todoInputProps = enzymeWrapper.find('TodoTextInput').props()
+      expect(todoInputProps.newTodo).toBe(true)
+      expect(todoInputProps.placeholder).toEqual('What needs to be done?')
+    })
+
+    it('should call addTodo if length of text is greater than 0', () =&gt; {
+      const { enzymeWrapper, props } = setup()
+      const input = enzymeWrapper.find('TodoTextInput')
+      input.props().onSave('')
+      expect(props.addTodo.mock.calls.length).toBe(0)
+      input.props().onSave('Use Redux')
+      expect(props.addTodo.mock.calls.length).toBe(1)
+    })
+  })
+})
+
+</span></code></pre>
+<h3 id="connected-components">Connected Components <a class="markdownIt-Anchor" href="#connected-components">#</a></h3>
+<p>If you use a library like <a href="https://github.com/reactjs/react-redux">React Redux</a>, you might be using <a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750">higher-order components</a> like <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options"><code>connect()</code></a>. This lets you inject Redux state into a regular React component.</p>
+<p>Consider the following <code>App</code> component:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> connect(mapStateToProps)(App)
+</code></pre>
+<p>In a unit test, you would normally import the <code>App</code> component like this:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./App'</span>
+</code></pre>
+<p>However, when you import it, you're actually holding the wrapper component returned by <code>connect()</code>, and not the <code>App</code> component itself. If you want to test its interaction with Redux, this is good news: you can wrap it in a <a href="https://github.com/reactjs/react-redux#provider-store"><code>&lt;Provider&gt;</code></a> with a store created specifically for this unit test. But sometimes you want to test just the rendering of the component, without a Redux store.</p>
+<p>In order to be able to test the App component itself without having to deal with the decorator, we recommend you to also export the undecorated component:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
+
+<span class="hljs-comment">// Use named export for unconnected component (for tests)</span>
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{ <span class="hljs-comment">/* ... */</span> }
+
+<span class="hljs-comment">// Use default export for the connected component (for app)</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> connect(mapStateToProps)(App)
+</code></pre>
+<p>Since the default export is still the decorated component, the import statement pictured above will work as before so you won't have to change your application code. However, you can now import the undecorated <code>App</code> components in your test file like this:</p>
+<pre class="hljs"><code><span class="hljs-comment">// Note the curly braces: grab the named export instead of default export</span>
+<span class="hljs-keyword">import</span> { App } <span class="hljs-keyword">from</span> <span class="hljs-string">'./App'</span>
+</code></pre>
+<p>And if you need both:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> ConnectedApp, { App } <span class="hljs-keyword">from</span> <span class="hljs-string">'./App'</span>
+</code></pre>
+<p>In the app itself, you would still import it normally:</p>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./App'</span>
+</code></pre>
+<p>You would only use the named export for tests.</p>
+<blockquote>
+<h5 id="a-note-on-mixing-es6-modules-and-commonjs">A Note on Mixing ES6 Modules and CommonJS <a class="markdownIt-Anchor" href="#a-note-on-mixing-es6-modules-and-commonjs">#</a></h5>
+</blockquote>
+<blockquote>
+<p>If you are using ES6 in your application source, but write your tests in ES5, you should know that Babel handles the interchangeable use of ES6 <code>import</code> and CommonJS <code>require</code> through its <a href="http://babeljs.io/docs/usage/modules/#interop">interop</a> capability to run two module formats side-by-side, but the behavior is <a href="https://github.com/babel/babel/issues/2047">slightly different</a>. If you add a second export beside your default export, you can no longer import the default using <code>require('./App')</code>. Instead you have to use <code>require('./App').default</code>.</p>
+</blockquote>
+<h3 id="middleware">Middleware <a class="markdownIt-Anchor" href="#middleware">#</a></h3>
+<p>Middleware functions wrap behavior of <code>dispatch</code> calls in Redux, so to test this modified behavior we need to mock the behavior of the <code>dispatch</code> call.</p>
+<h4 id="example-5">Example <a class="markdownIt-Anchor" href="#example-5">#</a></h4>
+<pre class="hljs"><code><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> types <span class="hljs-keyword">from</span> <span class="hljs-string">'../../constants/ActionTypes'</span>
+<span class="hljs-keyword">import</span> singleDispatch <span class="hljs-keyword">from</span> <span class="hljs-string">'../../middleware/singleDispatch'</span>
+
+<span class="hljs-keyword">const</span> createFakeStore = <span class="hljs-function"><span class="hljs-params">fakeData</span> =&gt;</span> ({
+  getState() {
+    <span class="hljs-keyword">return</span> fakeData
+  }
+})
+
+<span class="hljs-keyword">const</span> dispatchWithStoreOf = <span class="hljs-function">(<span class="hljs-params">storeData, action</span>) =&gt;</span> {
+  <span class="hljs-keyword">let</span> dispatched = <span class="hljs-literal">null</span>
+  <span class="hljs-keyword">const</span> dispatch = singleDispatch(createFakeStore(storeData))(<span class="hljs-function"><span class="hljs-params">actionAttempt</span> =&gt;</span> dispatched = actionAttempt)
+  dispatch(action)
+  <span class="hljs-keyword">return</span> dispatched
+}
+
+describe(<span class="hljs-string">'middleware'</span>, () =&gt; {
+  it(<span class="hljs-string">'should dispatch if store is empty'</span>, () =&gt; {
+    <span class="hljs-keyword">const</span> action = {
+      <span class="hljs-attr">type</span>: types.ADD_TODO
+    }
+
+    expect(
+      dispatchWithStoreOf({}, action)
+    ).toEqual(action)
+  })
+
+  it(<span class="hljs-string">'should not dispatch if store already has type'</span>, () =&gt; {
+    <span class="hljs-keyword">const</span> action = {
+      <span class="hljs-attr">type</span>: types.ADD_TODO
+    }
+
+    expect(
+      dispatchWithStoreOf({
+        [types.ADD_TODO]: <span class="hljs-string">'dispatched'</span>
+      }, action)
+    ).toNotExist()
+  })
+})
+</code></pre>
+<h3 id="glossary">Glossary <a class="markdownIt-Anchor" href="#glossary">#</a></h3>
+<ul>
+<li>
+<p><a href="http://airbnb.io/enzyme/">Enzyme</a>: Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.</p>
+</li>
+<li>
+<p><a href="http://facebook.github.io/react/docs/test-utils.html">React Test Utils</a>: Test Utilities for React. Used by Enzyme.</p>
+</li>
+<li>
+<p><a href="http://airbnb.io/enzyme/docs/api/shallow.html">Shallow rendering</a>: Shallow rendering lets you instantiate a component and effectively get the result of its <code>render</code> method just a single level deep instead of rendering components recursively to a DOM. Shallow rendering is useful for unit tests, where you test a particular component only, and importantly not its children. This also means that changing a child component won't affect the tests for the parent component. Testing a component and all its children can be accomplished with <a href="http://airbnb.io/enzyme/docs/api/mount.html">Enzyme's <code>mount()</code> method</a>, aka full DOM rendering.</p>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="level article-bar is-mobile">
+      <div class="level-item has-text-centered">
+        <a title="previous page" class="previouse-article-link" href="../recipes/UsingObjectSpreadOperator.html"><span class="icon icon-previous" data-icon="previous"></span><span class="link-content">&laquo; Previous</span></a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="font size" class="link-item link-item-size">
+          <span class="icon icon-size" data-icon="size"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="table of content" class="link-item link-item-toc">
+          <span class="icon icon-toc" data-icon="toc"></span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="top" href="#">
+          <span class="icon icon-up" data-icon="up"></span>
+          <span class="link-content">⤊ Top</span>
+        </a>
+      </div>
+      <div class="level-item has-text-centered">
+        <a title="next page" class="next-article-link" href="../recipes/reducers/index.html"><span class="icon icon-next" data-icon="next"></span><span class="link-content">Next &raquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="column is-2-widescreen is-hidden">
+  </div>
+</div>
+
+<div class="columns foot">
+  <div class="column is-3 is-offset-9 build-by">
+    Build by Loppo 1.0.0
+  </div>
+</div>
+<!-- SCRIPTS -->
+<script>
+  var LOPPO = {};
+  LOPPO.current_path = 'recipes/WritingTests.md';
+  LOPPO.relative_root_path = '../';
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li>\n<ul>\n<li><a href=\"#setting-up\">Setting Up</a></li>\n<li><a href=\"#action-creators\">Action Creators</a></li>\n<li><a href=\"#async-action-creators\">Async Action Creators</a></li>\n<li><a href=\"#reducers\">Reducers</a></li>\n<li><a href=\"#components\">Components</a></li>\n<li><a href=\"#connected-components\">Connected Components</a></li>\n<li><a href=\"#middleware\">Middleware</a></li>\n<li><a href=\"#glossary\">Glossary</a></li>\n</ul>\n</li>\n</ul>\n";
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
+
