@@ -134,7 +134,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run pages"
+      "pre-push": "npm run pages"
     }
   }
 }
