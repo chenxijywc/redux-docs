@@ -32,24 +32,24 @@
     <div class="breadcrumb-area"><a href="index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="Glossary.html" class="breadcrumb-item">Glossary</a></div>
     <h1 class="article-title">Glossary</h1>
     <div class="article">
-      <p>This is a glossary of the core terms in Redux, along with their type signatures. The types are documented using <a href="http://flowtype.org/docs/quick-reference.html">Flow notation</a>.</p>
+      <p>This is a glossary of the core terms in Redux, along with their type signatures. The types are documented using <a href="http://flowtype.org/docs/quick-reference.html" target="_blank" rel="noopener">Flow notation</a>.</p>
 <h2 id="state">State <a class="markdownIt-Anchor" href="#state">#</a></h2>
 <pre class="hljs"><code>type State = any
 </code></pre>
-<p><em>State</em> (also called the <em>state tree</em>) is a broad term, but in the Redux API it usually refers to the single state value that is managed by the store and returned by <a href="api/Store.md#getState"><code>getState()</code></a>. It represents the entire state of a Redux application, which is often a deeply nested object.</p>
+<p><em>State</em> (also called the <em>state tree</em>) is a broad term, but in the Redux API it usually refers to the single state value that is managed by the store and returned by <a href="api/Store.md#getState" target="_blank" rel="noopener"><code>getState()</code></a>. It represents the entire state of a Redux application, which is often a deeply nested object.</p>
 <p>By convention, the top-level state is an object or some other key-value collection like a Map, but technically it can be any type. Still, you should do your best to keep the state serializable. Don't put anything inside it that you can't easily turn into JSON.</p>
 <h2 id="action">Action <a class="markdownIt-Anchor" href="#action">#</a></h2>
 <pre class="hljs"><code>type Action = <span class="hljs-built_in">Object</span>
 </code></pre>
 <p>An <em>action</em> is a plain object that represents an intention to change the state. Actions are the only way to get data into the store. Any data, whether from UI events, network callbacks, or other sources such as WebSockets needs to eventually be dispatched as actions.</p>
-<p>Actions must have a <code>type</code> field that indicates the type of action being performed. Types can be defined as constants and imported from another module. It's better to use strings for <code>type</code> than <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbols</a> because strings are serializable.</p>
-<p>Other than <code>type</code>, the structure of an action object is really up to you. If you're interested, check out <a href="https://github.com/acdlite/flux-standard-action">Flux Standard Action</a> for recommendations on how actions should be constructed.</p>
+<p>Actions must have a <code>type</code> field that indicates the type of action being performed. Types can be defined as constants and imported from another module. It's better to use strings for <code>type</code> than <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener">Symbols</a> because strings are serializable.</p>
+<p>Other than <code>type</code>, the structure of an action object is really up to you. If you're interested, check out <a href="https://github.com/acdlite/flux-standard-action" target="_blank" rel="noopener">Flux Standard Action</a> for recommendations on how actions should be constructed.</p>
 <p>See also <a href="#async-action">async action</a> below.</p>
 <h2 id="reducer">Reducer <a class="markdownIt-Anchor" href="#reducer">#</a></h2>
 <pre class="hljs"><code>type Reducer&lt;S, A&gt; = <span class="hljs-function">(<span class="hljs-params">state: S, action: A</span>) =&gt;</span> S
 </code></pre>
 <p>A <em>reducer</em> (also called a <em>reducing function</em>) is a function that accepts an accumulation and a value and returns a new accumulation. They are used to reduce a collection of values down to a single value.</p>
-<p>Reducers are not unique to Redux—they are a fundamental concept in functional programming.  Even most non-functional languages, like JavaScript, have a built-in API for reducing. In JavaScript, it's <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"><code>Array.prototype.reduce()</code></a>.</p>
+<p>Reducers are not unique to Redux—they are a fundamental concept in functional programming.  Even most non-functional languages, like JavaScript, have a built-in API for reducing. In JavaScript, it's <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank" rel="noopener"><code>Array.prototype.reduce()</code></a>.</p>
 <p>In Redux, the accumulated value is the state object, and the values being accumulated are actions. Reducers calculate a new state given the previous state and an action. They must be <em>pure functions</em>—functions that return the exact same output for given inputs. They should also be free of side-effects. This is what enables exciting features like hot reloading and time travel.</p>
 <p>Reducers are the most important concept in Redux.</p>
 <p><em>Do not put API calls into reducers.</em></p>
@@ -58,26 +58,26 @@
 type Dispatch = <span class="hljs-function">(<span class="hljs-params">a: Action | AsyncAction</span>) =&gt;</span> any
 </code></pre>
 <p>A <em>dispatching function</em> (or simply <em>dispatch function</em>) is a function that accepts an action or an <a href="#async-action">async action</a>; it then may or may not dispatch one or more actions to the store.</p>
-<p>We must distinguish between dispatching functions in general and the base <a href="api/Store.md#dispatch"><code>dispatch</code></a> function provided by the store instance without any middleware.</p>
+<p>We must distinguish between dispatching functions in general and the base <a href="api/Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> function provided by the store instance without any middleware.</p>
 <p>The base dispatch function <em>always</em> synchronously sends an action to the store's reducer, along with the previous state returned by the store, to calculate a new state. It expects actions to be plain objects ready to be consumed by the reducer.</p>
 <p><a href="#middleware">Middleware</a> wraps the base dispatch function. It allows the dispatch function to handle <a href="#async-action">async actions</a> in addition to actions. Middleware may transform, delay, ignore, or otherwise interpret actions or async actions before passing them to the next middleware. See below for more information.</p>
 <h2 id="action-creator">Action Creator <a class="markdownIt-Anchor" href="#action-creator">#</a></h2>
 <pre class="hljs"><code>type ActionCreator = <span class="hljs-function">(<span class="hljs-params">...args: any</span>) =&gt;</span> Action | AsyncAction
 </code></pre>
 <p>An <em>action creator</em> is, quite simply, a function that creates an action. Do not confuse the two terms—again, an action is a payload of information, and an action creator is a factory that creates an action.</p>
-<p>Calling an action creator only produces an action, but does not dispatch it. You need to call the store's <a href="api/Store.md#dispatch"><code>dispatch</code></a> function to actually cause the mutation. Sometimes we say <em>bound action creators</em> to mean functions that call an action creator and immediately dispatch its result to a specific store instance.</p>
+<p>Calling an action creator only produces an action, but does not dispatch it. You need to call the store's <a href="api/Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> function to actually cause the mutation. Sometimes we say <em>bound action creators</em> to mean functions that call an action creator and immediately dispatch its result to a specific store instance.</p>
 <p>If an action creator needs to read the current state, perform an API call, or cause a side effect, like a routing transition, it should return an <a href="#async-action">async action</a> instead of an action.</p>
 <h2 id="async-action">Async Action <a class="markdownIt-Anchor" href="#async-action">#</a></h2>
 <pre class="hljs"><code>type AsyncAction = any
 </code></pre>
-<p>An <em>async action</em> is a value that is sent to a dispatching function, but is not yet ready for consumption by the reducer. It will be transformed by <a href="#middleware">middleware</a> into an action (or a series of actions) before being sent to the base <a href="api/Store.md#dispatch"><code>dispatch()</code></a> function. Async actions may have different types, depending on the middleware you use. They are often asynchronous primitives, like a Promise or a thunk, which are not passed to the reducer immediately, but trigger action dispatches once an operation has completed.</p>
+<p>An <em>async action</em> is a value that is sent to a dispatching function, but is not yet ready for consumption by the reducer. It will be transformed by <a href="#middleware">middleware</a> into an action (or a series of actions) before being sent to the base <a href="api/Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch()</code></a> function. Async actions may have different types, depending on the middleware you use. They are often asynchronous primitives, like a Promise or a thunk, which are not passed to the reducer immediately, but trigger action dispatches once an operation has completed.</p>
 <h2 id="middleware">Middleware <a class="markdownIt-Anchor" href="#middleware">#</a></h2>
 <pre class="hljs"><code>type MiddlewareAPI = { <span class="hljs-attr">dispatch</span>: Dispatch, <span class="hljs-attr">getState</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> State }
 type Middleware = <span class="hljs-function">(<span class="hljs-params">api: MiddlewareAPI</span>) =&gt;</span> (next: Dispatch) =&gt; Dispatch
 </code></pre>
 <p>A middleware is a higher-order function that composes a <a href="#dispatching-function">dispatch function</a> to return a new dispatch function. It often turns <a href="#async-action">async actions</a> into actions.</p>
 <p>Middleware is composable using function composition. It is useful for logging actions, performing side effects like routing, or turning an asynchronous API call into a series of synchronous actions.</p>
-<p>See <a href="./api/applyMiddleware.md"><code>applyMiddleware(...middlewares)</code></a> for a detailed look at middleware.</p>
+<p>See <a href="./api/applyMiddleware.md" target="_blank" rel="noopener"><code>applyMiddleware(...middlewares)</code></a> for a detailed look at middleware.</p>
 <h2 id="store">Store <a class="markdownIt-Anchor" href="#store">#</a></h2>
 <pre class="hljs"><code>type Store = {
   <span class="hljs-attr">dispatch</span>: Dispatch
@@ -89,23 +89,23 @@ type Middleware = <span class="hljs-function">(<span class="hljs-params">api: Mi
 <p>A store is an object that holds the application's state tree.<br>
 There should only be a single store in a Redux app, as the composition happens on the reducer level.</p>
 <ul>
-<li><a href="api/Store.md#dispatch"><code>dispatch(action)</code></a> is the base dispatch function described above.</li>
-<li><a href="api/Store.md#getState"><code>getState()</code></a> returns the current state of the store.</li>
-<li><a href="api/Store.md#subscribe"><code>subscribe(listener)</code></a> registers a function to be called on state changes.</li>
-<li><a href="api/Store.md#replaceReducer"><code>replaceReducer(nextReducer)</code></a> can be used to implement hot reloading and code splitting. Most likely you won't use it.</li>
+<li><a href="api/Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch(action)</code></a> is the base dispatch function described above.</li>
+<li><a href="api/Store.md#getState" target="_blank" rel="noopener"><code>getState()</code></a> returns the current state of the store.</li>
+<li><a href="api/Store.md#subscribe" target="_blank" rel="noopener"><code>subscribe(listener)</code></a> registers a function to be called on state changes.</li>
+<li><a href="api/Store.md#replaceReducer" target="_blank" rel="noopener"><code>replaceReducer(nextReducer)</code></a> can be used to implement hot reloading and code splitting. Most likely you won't use it.</li>
 </ul>
-<p>See the complete <a href="api/Store.md#dispatch">store API reference</a> for more details.</p>
+<p>See the complete <a href="api/Store.md#dispatch" target="_blank" rel="noopener">store API reference</a> for more details.</p>
 <h2 id="store-creator">Store creator <a class="markdownIt-Anchor" href="#store-creator">#</a></h2>
 <pre class="hljs"><code>type StoreCreator = <span class="hljs-function">(<span class="hljs-params">reducer: Reducer, preloadedState: ?State</span>) =&gt;</span> Store
 </code></pre>
-<p>A store creator is a function that creates a Redux store. Like with dispatching function, we must distinguish the base store creator, <a href="api/createStore.md"><code>createStore(reducer, preloadedState)</code></a> exported from the Redux package, from store creators that are returned from the store enhancers.</p>
+<p>A store creator is a function that creates a Redux store. Like with dispatching function, we must distinguish the base store creator, <a href="api/createStore.md" target="_blank" rel="noopener"><code>createStore(reducer, preloadedState)</code></a> exported from the Redux package, from store creators that are returned from the store enhancers.</p>
 <h2 id="store-enhancer">Store enhancer <a class="markdownIt-Anchor" href="#store-enhancer">#</a></h2>
 <pre class="hljs"><code>type StoreEnhancer = <span class="hljs-function">(<span class="hljs-params">next: StoreCreator</span>) =&gt;</span> StoreCreator
 </code></pre>
 <p>A store enhancer is a higher-order function that composes a store creator to return a new, enhanced store creator. This is similar to middleware in that it allows you to alter the store interface in a composable way.</p>
 <p>Store enhancers are much the same concept as higher-order components in React, which are also occasionally called “component enhancers”.</p>
-<p>Because a store is not an instance, but rather a plain-object collection of functions, copies can be easily created and modified without mutating the original store. There is an example in <a href="api/compose.md"><code>compose</code></a> documentation demonstrating that.</p>
-<p>Most likely you'll never write a store enhancer, but you may use the one provided by the <a href="https://github.com/gaearon/redux-devtools">developer tools</a>. It is what makes time travel possible without the app being aware it is happening. Amusingly, the <a href="api/applyMiddleware.md">Redux middleware implementation</a> is itself a store enhancer.</p>
+<p>Because a store is not an instance, but rather a plain-object collection of functions, copies can be easily created and modified without mutating the original store. There is an example in <a href="api/compose.md" target="_blank" rel="noopener"><code>compose</code></a> documentation demonstrating that.</p>
+<p>Most likely you'll never write a store enhancer, but you may use the one provided by the <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">developer tools</a>. It is what makes time travel possible without the app being aware it is happening. Amusingly, the <a href="api/applyMiddleware.md" target="_blank" rel="noopener">Redux middleware implementation</a> is itself a store enhancer.</p>
 
       
     </div>
@@ -140,7 +140,7 @@ There should only be a single store in a Redux app, as the composition happens o
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

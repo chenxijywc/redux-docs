@@ -32,7 +32,7 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../basics/index.html" class="breadcrumb-item">basics</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../basics/Reducers.html" class="breadcrumb-item">Reducers</a></div>
     <h1 class="article-title">Reducers</h1>
     <div class="article">
-      <p><a href="./Actions.md">Actions</a> describe the fact that <em>something happened</em>, but don't specify how the application's state changes in response. This is the job of reducers.</p>
+      <p><a href="./Actions.md" target="_blank" rel="noopener">Actions</a> describe the fact that <em>something happened</em>, but don't specify how the application's state changes in response. This is the job of reducers.</p>
 <h2 id="designing-the-state-shape">Designing the State Shape <a class="markdownIt-Anchor" href="#designing-the-state-shape">#</a></h2>
 <p>In Redux, all the application state is stored as a single object. It's a good idea to think of its shape before writing any code. What's the minimal representation of your app's state as an object?</p>
 <p>For our todo app, we want to store two different things:</p>
@@ -59,20 +59,20 @@
 <h5 id="note-on-relationships">Note on Relationships <a class="markdownIt-Anchor" href="#note-on-relationships">#</a></h5>
 </blockquote>
 <blockquote>
-<p>In a more complex app, you're going to want different entities to reference each other. We suggest that you keep your state as normalized as possible, without any nesting. Keep every entity in an object stored with an ID as a key, and use IDs to reference it from other entities, or lists. Think of the app's state as a database. This approach is described in <a href="https://github.com/gaearon/normalizr">normalizr's</a> documentation in detail. For example, keeping <code>todosById: { id -&gt; todo }</code> and <code>todos: array&lt;id&gt;</code> inside the state would be a better idea in a real app, but we're keeping the example simple.</p>
+<p>In a more complex app, you're going to want different entities to reference each other. We suggest that you keep your state as normalized as possible, without any nesting. Keep every entity in an object stored with an ID as a key, and use IDs to reference it from other entities, or lists. Think of the app's state as a database. This approach is described in <a href="https://github.com/gaearon/normalizr" target="_blank" rel="noopener">normalizr's</a> documentation in detail. For example, keeping <code>todosById: { id -&gt; todo }</code> and <code>todos: array&lt;id&gt;</code> inside the state would be a better idea in a real app, but we're keeping the example simple.</p>
 </blockquote>
 <h2 id="handling-actions">Handling Actions <a class="markdownIt-Anchor" href="#handling-actions">#</a></h2>
 <p>Now that we've decided what our state object looks like, we're ready to write a reducer for it. The reducer is a pure function that takes the previous state and an action, and returns the next state.</p>
 <pre class="hljs"><code>(previousState, action) =&gt; newState
 </code></pre>
-<p>It's called a reducer because it's the type of function you would pass to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"><code>Array.prototype.reduce(reducer, ?initialValue)</code></a>. It's very important that the reducer stays pure. Things you should <strong>never</strong> do inside a reducer:</p>
+<p>It's called a reducer because it's the type of function you would pass to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank" rel="noopener"><code>Array.prototype.reduce(reducer, ?initialValue)</code></a>. It's very important that the reducer stays pure. Things you should <strong>never</strong> do inside a reducer:</p>
 <ul>
 <li>Mutate its arguments;</li>
 <li>Perform side effects like API calls and routing transitions;</li>
 <li>Call non-pure functions, e.g. <code>Date.now()</code> or <code>Math.random()</code>.</li>
 </ul>
-<p>We'll explore how to perform side effects in the <a href="../advanced/README.md">advanced walkthrough</a>. For now, just remember that the reducer must be pure. <strong>Given the same arguments, it should calculate the next state and return it. No surprises. No side effects. No API calls. No mutations. Just a calculation.</strong></p>
-<p>With this out of the way, let's start writing our reducer by gradually teaching it to understand the <a href="Actions.md">actions</a> we defined earlier.</p>
+<p>We'll explore how to perform side effects in the <a href="../advanced/README.md" target="_blank" rel="noopener">advanced walkthrough</a>. For now, just remember that the reducer must be pure. <strong>Given the same arguments, it should calculate the next state and return it. No surprises. No side effects. No API calls. No mutations. Just a calculation.</strong></p>
+<p>With this out of the way, let's start writing our reducer by gradually teaching it to understand the <a href="Actions.md" target="_blank" rel="noopener">actions</a> we defined earlier.</p>
 <p>We'll start by specifying the initial state. Redux will call our reducer with an <code>undefined</code> state for the first time. This is our chance to return the initial state of our app:</p>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { VisibilityFilters } <span class="hljs-keyword">from</span> <span class="hljs-string">'./actions'</span>
 
@@ -91,7 +91,7 @@
   <span class="hljs-keyword">return</span> state
 }
 </code></pre>
-<p>One neat trick is to use the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/default_parameters">ES6 default arguments syntax</a> to write this in a more compact way:</p>
+<p>One neat trick is to use the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/default_parameters" target="_blank" rel="noopener">ES6 default arguments syntax</a> to write this in a more compact way:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">todoApp</span>(<span class="hljs-params">state = initialState, action</span>) </span>{
   <span class="hljs-comment">// For now, don't handle any actions</span>
   <span class="hljs-comment">// and just return the state given to us.</span>
@@ -113,7 +113,7 @@
 <p>Note that:</p>
 <ol>
 <li>
-<p><strong>We don't mutate the <code>state</code>.</strong> We create a copy with <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>. <code>Object.assign(state, { visibilityFilter: action.filter })</code> is also wrong: it will mutate the first argument. You <strong>must</strong> supply an empty object as the first parameter. You can also enable the <a href="../recipes/UsingObjectSpreadOperator.md">object spread operator proposal</a> to write <code>{ ...state, ...newState }</code> instead.</p>
+<p><strong>We don't mutate the <code>state</code>.</strong> We create a copy with <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener"><code>Object.assign()</code></a>. <code>Object.assign(state, { visibilityFilter: action.filter })</code> is also wrong: it will mutate the first argument. You <strong>must</strong> supply an empty object as the first parameter. You can also enable the <a href="../recipes/UsingObjectSpreadOperator.md" target="_blank" rel="noopener">object spread operator proposal</a> to write <code>{ ...state, ...newState }</code> instead.</p>
 </li>
 <li>
 <p><strong>We return the previous <code>state</code> in the <code>default</code> case.</strong> It's important to return the previous <code>state</code> for any unknown action.</p>
@@ -123,7 +123,7 @@
 <h5 id="note-on-objectassign">Note on <code>Object.assign</code> <a class="markdownIt-Anchor" href="#note-on-objectassign">#</a></h5>
 </blockquote>
 <blockquote>
-<p><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a> is a part of ES6, but is not implemented by most browsers yet. You'll need to either use a polyfill, a <a href="https://www.npmjs.com/package/babel-plugin-transform-object-assign">Babel plugin</a>, or a helper from another library like <a href="https://lodash.com/docs#assign"><code>_.assign()</code></a>.</p>
+<p><a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener"><code>Object.assign()</code></a> is a part of ES6, but is not implemented by most browsers yet. You'll need to either use a polyfill, a <a href="https://www.npmjs.com/package/babel-plugin-transform-object-assign" target="_blank" rel="noopener">Babel plugin</a>, or a helper from another library like <a href="https://lodash.com/docs#assign" target="_blank" rel="noopener"><code>_.assign()</code></a>.</p>
 </blockquote>
 <blockquote>
 <h5 id="note-on-switch-and-boilerplate">Note on <code>switch</code> and Boilerplate <a class="markdownIt-Anchor" href="#note-on-switch-and-boilerplate">#</a></h5>
@@ -132,7 +132,7 @@
 <p>The <code>switch</code> statement is <em>not</em> the real boilerplate. The real boilerplate of Flux is conceptual: the need to emit an update, the need to register the Store with a Dispatcher, the need for the Store to be an object (and the complications that arise when you want a universal app). Redux solves these problems by using pure reducers instead of event emitters.</p>
 </blockquote>
 <blockquote>
-<p>It's unfortunate that many still choose a framework based on whether it uses <code>switch</code> statements in the documentation. If you don't like <code>switch</code>, you can use a custom <code>createReducer</code> function that accepts a handler map, as shown in <a href="../recipes/ReducingBoilerplate.md#reducers">“reducing boilerplate”</a>.</p>
+<p>It's unfortunate that many still choose a framework based on whether it uses <code>switch</code> statements in the documentation. If you don't like <code>switch</code>, you can use a custom <code>createReducer</code> function that accepts a handler map, as shown in <a href="../recipes/ReducingBoilerplate.md#reducers" target="_blank" rel="noopener">“reducing boilerplate”</a>.</p>
 </blockquote>
 <h2 id="handling-more-actions">Handling More Actions <a class="markdownIt-Anchor" href="#handling-more-actions">#</a></h2>
 <p>We have two more actions to handle! Just like we did with <code>SET_VISIBILITY_FILTER</code>, we'll import the <code>ADD_TODO</code> and <code>TOGGLE_TODO</code> actions and then extend our reducer to handle <code>ADD_TODO</code>.</p>
@@ -171,7 +171,7 @@
     })
   })
 </code></pre>
-<p>Because we want to update a specific item in the array without resorting to mutations, we have to create a new array with the same items except the item at the index. If you find yourself often writing such operations, it's a good idea to use a helper like <a href="https://github.com/kolodny/immutability-helper">immutability-helper</a>, <a href="https://github.com/substantial/updeep">updeep</a>, or even a library like <a href="http://facebook.github.io/immutable-js/">Immutable</a> that has native support for deep updates. Just remember to never assign to anything inside the <code>state</code> unless you clone it first.</p>
+<p>Because we want to update a specific item in the array without resorting to mutations, we have to create a new array with the same items except the item at the index. If you find yourself often writing such operations, it's a good idea to use a helper like <a href="https://github.com/kolodny/immutability-helper" target="_blank" rel="noopener">immutability-helper</a>, <a href="https://github.com/substantial/updeep" target="_blank" rel="noopener">updeep</a>, or even a library like <a href="http://facebook.github.io/immutable-js/" target="_blank" rel="noopener">Immutable</a> that has native support for deep updates. Just remember to never assign to anything inside the <code>state</code> unless you clone it first.</p>
 <h2 id="splitting-reducers">Splitting Reducers <a class="markdownIt-Anchor" href="#splitting-reducers">#</a></h2>
 <p>Here is our code so far. It is rather verbose:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">todoApp</span>(<span class="hljs-params">state = initialState, action</span>) </span>{
@@ -249,7 +249,7 @@
 </code></pre>
 <p>Note that <code>todos</code> also accepts <code>state</code>—but it's an array! Now <code>todoApp</code> just gives it the slice of the state to manage, and <code>todos</code> knows how to update just that slice. <strong>This is called <em>reducer composition</em>, and it's the fundamental pattern of building Redux apps.</strong></p>
 <p>Let's explore reducer composition more. Can we also extract a reducer managing just <code>visibilityFilter</code>? We can.</p>
-<p>Below our imports, let's use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">ES6 Object Destructuring</a> to declare <code>SHOW_ALL</code>:</p>
+<p>Below our imports, let's use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">ES6 Object Destructuring</a> to declare <code>SHOW_ALL</code>:</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> { SHOW_ALL } = VisibilityFilters;
 </code></pre>
 <p>Then:</p>
@@ -305,7 +305,7 @@
 </code></pre>
 <p><strong>Note that each of these reducers is managing its own part of the global state. The <code>state</code> parameter is different for every reducer, and corresponds to the part of the state it manages.</strong></p>
 <p>This is already looking good! When the app is larger, we can split the reducers into separate files and keep them completely independent and managing different data domains.</p>
-<p>Finally, Redux provides a utility called <a href="../api/combineReducers.md"><code>combineReducers()</code></a> that does the same boilerplate logic that the <code>todoApp</code> above currently does. With its help, we can rewrite <code>todoApp</code> like this:</p>
+<p>Finally, Redux provides a utility called <a href="../api/combineReducers.md" target="_blank" rel="noopener"><code>combineReducers()</code></a> that does the same boilerplate logic that the <code>todoApp</code> above currently does. With its help, we can rewrite <code>todoApp</code> like this:</p>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { combineReducers } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
 
 <span class="hljs-keyword">const</span> todoApp = combineReducers({
@@ -338,7 +338,7 @@
   }
 }
 </code></pre>
-<p>All <a href="../api/combineReducers.md"><code>combineReducers()</code></a> does is generate a function that calls your reducers <strong>with the slices of state selected according to their keys</strong>, and combining their results into a single object again. <a href="https://github.com/reactjs/redux/issues/428#issuecomment-129223274">It's not magic.</a> And like other reducers, <code>combineReducers()</code> does not create a new object if all of the reducers provided to it do not change state.</p>
+<p>All <a href="../api/combineReducers.md" target="_blank" rel="noopener"><code>combineReducers()</code></a> does is generate a function that calls your reducers <strong>with the slices of state selected according to their keys</strong>, and combining their results into a single object again. <a href="https://github.com/reactjs/redux/issues/428#issuecomment-129223274" target="_blank" rel="noopener">It's not magic.</a> And like other reducers, <code>combineReducers()</code> does not create a new object if all of the reducers provided to it do not change state.</p>
 <blockquote>
 <h5 id="note-for-es6-savvy-users">Note for ES6 Savvy Users <a class="markdownIt-Anchor" href="#note-for-es6-savvy-users">#</a></h5>
 </blockquote>
@@ -351,7 +351,7 @@
 
 <span class="hljs-keyword">const</span> todoApp = combineReducers(reducers)
 </code></pre>
-<p>Because <code>import *</code> is still new syntax, we don't use it anymore in the documentation to avoid <a href="https://github.com/reactjs/redux/issues/428#issuecomment-129223274">confusion</a>, but you may encounter it in some community examples.</p>
+<p>Because <code>import *</code> is still new syntax, we don't use it anymore in the documentation to avoid <a href="https://github.com/reactjs/redux/issues/428#issuecomment-129223274" target="_blank" rel="noopener">confusion</a>, but you may encounter it in some community examples.</p>
 </blockquote>
 <h2 id="source-code">Source Code <a class="markdownIt-Anchor" href="#source-code">#</a></h2>
 <h4 id="reducersjs"><code>reducers.js</code> <a class="markdownIt-Anchor" href="#reducersjs">#</a></h4>
@@ -400,7 +400,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> todoApp
 </code></pre>
 <h2 id="next-steps">Next Steps <a class="markdownIt-Anchor" href="#next-steps">#</a></h2>
-<p>Next, we'll explore how to <a href="Store.md">create a Redux store</a> that holds the state and takes care of calling your reducer when you dispatch an action.</p>
+<p>Next, we'll explore how to <a href="Store.md" target="_blank" rel="noopener">create a Redux store</a> that holds the state and takes care of calling your reducer when you dispatch an action.</p>
 
       
     </div>
@@ -435,7 +435,7 @@
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

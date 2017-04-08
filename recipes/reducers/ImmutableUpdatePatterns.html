@@ -32,7 +32,7 @@
     <div class="breadcrumb-area"><a href="../../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/index.html" class="breadcrumb-item">reducers</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/ImmutableUpdatePatterns.html" class="breadcrumb-item">Immutable Update Patterns</a></div>
     <h1 class="article-title">Immutable Update Patterns</h1>
     <div class="article">
-      <p>The articles listed in <a href="PrerequisiteConcepts.md#immutable-data-management">Prerequisite Concepts#Immutable Data Management</a> give a number of good examples for how to perform basic update operations immutably, such as updating a field in an object or adding an item to the end of an array.  However, reducers will often need to use those basic operations in combination to perform more complicated tasks.  Here are some examples for some of the more common tasks you might have to implement.</p>
+      <p>The articles listed in <a href="PrerequisiteConcepts.md#immutable-data-management" target="_blank" rel="noopener">Prerequisite Concepts#Immutable Data Management</a> give a number of good examples for how to perform basic update operations immutably, such as updating a field in an object or adding an item to the end of an array.  However, reducers will often need to use those basic operations in combination to perform more complicated tasks.  Here are some examples for some of the more common tasks you might have to implement.</p>
 <h2 id="updating-nested-objects">Updating Nested Objects <a class="markdownIt-Anchor" href="#updating-nested-objects">#</a></h2>
 <p>The key to updating nested data is <strong>that <em>every</em> level of nesting must be copied and updated appropriately</strong>.  This is often a difficult concept for those learning Redux, and there are some specific problems that frequently occur when trying to update nested objects.  These lead to accidental direct mutation, and should be avoided.</p>
 <h5 id="common-mistake-1-new-variables-that-point-to-the-same-objects">Common Mistake #1: New variables that point to the same objects <a class="markdownIt-Anchor" href="#common-mistake-1-new-variables-that-point-to-the-same-objects">#</a></h5>
@@ -135,15 +135,15 @@
 }
 </code></pre>
 <h2 id="immutable-update-utility-libraries">Immutable Update Utility Libraries <a class="markdownIt-Anchor" href="#immutable-update-utility-libraries">#</a></h2>
-<p>Because writing immutable update code can become tedious, there are a number of utility libraries that try to abstract out the process.  These libraries vary in APIs and usage, but all try to provide a shorter and more succinct way of writing these updates.  Some, like <a href="https://github.com/debitoor/dot-prop-immutable">dot-prop-immutable</a>, take string paths for commands:</p>
+<p>Because writing immutable update code can become tedious, there are a number of utility libraries that try to abstract out the process.  These libraries vary in APIs and usage, but all try to provide a shorter and more succinct way of writing these updates.  Some, like <a href="https://github.com/debitoor/dot-prop-immutable" target="_blank" rel="noopener">dot-prop-immutable</a>, take string paths for commands:</p>
 <pre class="hljs"><code>state = dotProp.set(state, <span class="hljs-string">`todos.<span class="hljs-subst">${index}</span>.complete`</span>, <span class="hljs-literal">true</span>)
 </code></pre>
-<p>Others, like <a href="https://github.com/kolodny/immutability-helper">immutability-helper</a> (a fork of the now-deprecated React Immutability Helpers addon), use nested values and helper functions:</p>
+<p>Others, like <a href="https://github.com/kolodny/immutability-helper" target="_blank" rel="noopener">immutability-helper</a> (a fork of the now-deprecated React Immutability Helpers addon), use nested values and helper functions:</p>
 <pre class="hljs"><code><span class="hljs-keyword">var</span> collection = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, {<span class="hljs-attr">a</span>: [<span class="hljs-number">12</span>, <span class="hljs-number">17</span>, <span class="hljs-number">15</span>]}];
 <span class="hljs-keyword">var</span> newCollection = update(collection, {<span class="hljs-number">2</span>: {<span class="hljs-attr">a</span>: {<span class="hljs-attr">$splice</span>: [[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">13</span>, <span class="hljs-number">14</span>]]}}});
 </code></pre>
 <p>They can provide a useful alternative to writing manual immutable update logic.</p>
-<p>A list of many immutable update utilities can be found in the <a href="https://github.com/markerikson/redux-ecosystem-links/blob/master/immutable-data.md#immutable-update-utilities">Immutable Data#Immutable Update Utilities</a> section of the <a href="https://github.com/markerikson/redux-ecosystem-links">Redux Addons Catalog</a>.</p>
+<p>A list of many immutable update utilities can be found in the <a href="https://github.com/markerikson/redux-ecosystem-links/blob/master/immutable-data.md#immutable-update-utilities" target="_blank" rel="noopener">Immutable Data#Immutable Update Utilities</a> section of the <a href="https://github.com/markerikson/redux-ecosystem-links" target="_blank" rel="noopener">Redux Addons Catalog</a>.</p>
 
       
     </div>
@@ -178,7 +178,7 @@
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

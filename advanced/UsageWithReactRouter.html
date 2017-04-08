@@ -32,7 +32,7 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/index.html" class="breadcrumb-item">advanced</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/UsageWithReactRouter.html" class="breadcrumb-item">Usage with React Router</a></div>
     <h1 class="article-title">Usage with React Router</h1>
     <div class="article">
-      <p>So you want to do routing with your Redux app. You can use it with <a href="https://github.com/reactjs/react-router">React Router</a>. Redux will be the source of truth for your data and React Router will be the source of truth for your URL. In most of the cases, <strong>it is fine</strong> to have them separate unless you need to time travel and rewind actions that triggers the change URL.</p>
+      <p>So you want to do routing with your Redux app. You can use it with <a href="https://github.com/reactjs/react-router" target="_blank" rel="noopener">React Router</a>. Redux will be the source of truth for your data and React Router will be the source of truth for your URL. In most of the cases, <strong>it is fine</strong> to have them separate unless you need to time travel and rewind actions that triggers the change URL.</p>
 <h2 id="installing-react-router">Installing React Router <a class="markdownIt-Anchor" href="#installing-react-router">#</a></h2>
 <p><code>react-router</code> is available on npm . This guides assumes you are using <code>react-router@^2.7.0</code>.</p>
 <p><code>npm install --save react-router</code></p>
@@ -51,14 +51,14 @@
   })
 </code></pre>
 <h3 id="configuring-webpackdevserver">Configuring WebpackDevServer <a class="markdownIt-Anchor" href="#configuring-webpackdevserver">#</a></h3>
-<p>If you are serving your <code>index.html</code> from WebpackDevServer:
+<p>If you are serving your <code>index.html</code> from WebpackDevServer:<br>
 You can add to your webpack.config.dev.js:</p>
 <pre class="hljs"><code>  devServer: {
     <span class="hljs-attr">historyApiFallback</span>: <span class="hljs-literal">true</span>,
   }
 </code></pre>
 <h2 id="connecting-react-router-with-redux-app">Connecting React Router with Redux App <a class="markdownIt-Anchor" href="#connecting-react-router-with-redux-app">#</a></h2>
-<p>Along this chapter, we will be using the <a href="https://github.com/reactjs/redux/tree/master/examples/todos">Todos</a> example. We recommend you to clone it while reading this chapter.</p>
+<p>Along this chapter, we will be using the <a href="https://github.com/reactjs/redux/tree/master/examples/todos" target="_blank" rel="noopener">Todos</a> example. We recommend you to clone it while reading this chapter.</p>
 <p>First we will need to import <code>&lt;Router /&gt;</code> and <code>&lt;Route /&gt;</code> from React Router. Here's how to do it:</p>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { Router, Route, browserHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router'</span>;
 </code></pre>
@@ -69,11 +69,11 @@ You can add to your webpack.config.dev.js:</p>
   <span class="hljs-tag">&lt;/<span class="hljs-name">Router</span>&gt;</span>  
 );
 </span></code></pre>
-<p>However, in our Redux App we will still need <code>&lt;Provider /&gt;</code>. <code>&lt;Provider /&gt;</code> is the higher-order component provided by React Redux that lets you bind Redux to React (see <a href="../basics/UsageWithReact.md">Usage with React</a>).</p>
+<p>However, in our Redux App we will still need <code>&lt;Provider /&gt;</code>. <code>&lt;Provider /&gt;</code> is the higher-order component provided by React Redux that lets you bind Redux to React (see <a href="../basics/UsageWithReact.md" target="_blank" rel="noopener">Usage with React</a>).</p>
 <p>We will then import the <code>&lt;Provider /&gt;</code> from React Redux:</p>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { Provider } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
 </code></pre>
-<p>We will wrap <code>&lt;Router /&gt;</code> in <code>&lt;Provider /&gt;</code> so that route handlers can get <a href="http://redux.js.org/docs/basics/UsageWithReact.html#passing-the-store">access to the <code>store</code></a>.</p>
+<p>We will wrap <code>&lt;Router /&gt;</code> in <code>&lt;Provider /&gt;</code> so that route handlers can get <a href="http://redux.js.org/docs/basics/UsageWithReact.html#passing-the-store" target="_blank" rel="noopener">access to the <code>store</code></a>.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> Root = <span class="hljs-function">(<span class="hljs-params">{ store }</span>) =&gt;</span> (
   <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">Router</span>&gt;</span>
@@ -115,7 +115,7 @@ Root.propTypes = {
 export default Root;
 </span></code></pre>
 <h2 id="navigating-with-react-router">Navigating with React Router <a class="markdownIt-Anchor" href="#navigating-with-react-router">#</a></h2>
-<p>React Router comes with a <a href="https://github.com/reactjs/react-router/blob/master/docs/API.md#link"><code>&lt;Link /&gt;</code></a> component that lets you navigate around your application. In our example, we can wrap <code>&lt;Link /&gt;</code> with a new container component <code>&lt;FilterLink /&gt;</code> so as to dynamically change the URL. The <code>activeStyle={}</code> property lets us apply a style on the active state.</p>
+<p>React Router comes with a <a href="https://github.com/reactjs/react-router/blob/master/docs/API.md#link" target="_blank" rel="noopener"><code>&lt;Link /&gt;</code></a> component that lets you navigate around your application. In our example, we can wrap <code>&lt;Link /&gt;</code> with a new container component <code>&lt;FilterLink /&gt;</code> so as to dynamically change the URL. The <code>activeStyle={}</code> property lets us apply a style on the active state.</p>
 <h4 id="containersfilterlinkjs"><code>containers/FilterLink.js</code> <a class="markdownIt-Anchor" href="#containersfilterlinkjs">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> { Link } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router'</span>;
@@ -171,7 +171,7 @@ export default Root;
 <p>Right now we are not passing anything to <code>&lt;App /&gt;</code> so <code>ownProps</code> is an empty object. To filter our todos according to the URL, we want to pass the URL params to <code>&lt;VisibleTodoList /&gt;</code>.</p>
 <p>When previously we wrote:  <code>&lt;Route path=&quot;/(:filter)&quot; component={App} /&gt;</code>, it made available inside <code>App</code> a <code>params</code> property.</p>
 <p><code>params</code> property is an object with every param specified in the url. <em>e.g: <code>params</code> will be equal to <code>{ filter: 'completed' }</code> if we are navigating to <code>localhost:3000/completed</code>. We can now read the URL from <code>&lt;App /&gt;</code>.</em></p>
-<p>Note that we are using <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">ES6 destructuring</a> on the properties to pass in <code>params</code> to <code>&lt;VisibleTodoList /&gt;</code>.</p>
+<p>Note that we are using <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">ES6 destructuring</a> on the properties to pass in <code>params</code> to <code>&lt;VisibleTodoList /&gt;</code>.</p>
 <h4 id="componentsappjs"><code>components/App.js</code> <a class="markdownIt-Anchor" href="#componentsappjs">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> App = <span class="hljs-function">(<span class="hljs-params">{ params }</span>) =&gt;</span> {
   <span class="hljs-keyword">return</span> (
@@ -186,7 +186,7 @@ export default Root;
 };
 </span></code></pre>
 <h2 id="next-steps">Next Steps <a class="markdownIt-Anchor" href="#next-steps">#</a></h2>
-<p>Now that you know how to do basic routing, you can learn more about <a href="https://github.com/reactjs/react-router/tree/master/docs">React Router API</a></p>
+<p>Now that you know how to do basic routing, you can learn more about <a href="https://github.com/reactjs/react-router/tree/master/docs" target="_blank" rel="noopener">React Router API</a></p>
 <blockquote>
 <h5 id="note-about-other-routing-libraries">Note About Other Routing Libraries <a class="markdownIt-Anchor" href="#note-about-other-routing-libraries">#</a></h5>
 </blockquote>
@@ -230,7 +230,7 @@ export default Root;
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

@@ -32,17 +32,17 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/index.html" class="breadcrumb-item">api</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/bindActionCreators.html" class="breadcrumb-item">`bindActionCreators(actionCreators, dispatch)`</a></div>
     <h1 class="article-title">`bindActionCreators(actionCreators, dispatch)`</h1>
     <div class="article">
-      <p>Turns an object whose values are <a href="../Glossary.md#action-creator">action creators</a>, into an object with the same keys, but with every action creator wrapped into a <a href="Store.md#dispatch"><code>dispatch</code></a> call so they may be invoked directly.</p>
-<p>Normally you should just call <a href="Store.md#dispatch"><code>dispatch</code></a> directly on your <a href="Store.md"><code>Store</code></a> instance. If you use Redux with React, <a href="https://github.com/gaearon/react-redux">react-redux</a> will provide you with the <a href="Store.md#dispatch"><code>dispatch</code></a> function so you can call it directly, too.</p>
-<p>The only use case for <code>bindActionCreators</code> is when you want to pass some action creators down to a component that isn't aware of Redux, and you don't want to pass <a href="Store.md#dispatch"><code>dispatch</code></a> or the Redux store to it.</p>
+      <p>Turns an object whose values are <a href="../Glossary.md#action-creator" target="_blank" rel="noopener">action creators</a>, into an object with the same keys, but with every action creator wrapped into a <a href="Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> call so they may be invoked directly.</p>
+<p>Normally you should just call <a href="Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> directly on your <a href="Store.md" target="_blank" rel="noopener"><code>Store</code></a> instance. If you use Redux with React, <a href="https://github.com/gaearon/react-redux" target="_blank" rel="noopener">react-redux</a> will provide you with the <a href="Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> function so you can call it directly, too.</p>
+<p>The only use case for <code>bindActionCreators</code> is when you want to pass some action creators down to a component that isn't aware of Redux, and you don't want to pass <a href="Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> or the Redux store to it.</p>
 <p>For convenience, you can also pass a single function as the first argument, and get a function in return.</p>
 <h4 id="parameters">Parameters <a class="markdownIt-Anchor" href="#parameters">#</a></h4>
 <ol>
 <li>
-<p><code>actionCreators</code> (<em>Function</em> or <em>Object</em>): An <a href="../Glossary.md#action-creator">action creator</a>, or an object whose values are action creators.</p>
+<p><code>actionCreators</code> (<em>Function</em> or <em>Object</em>): An <a href="../Glossary.md#action-creator" target="_blank" rel="noopener">action creator</a>, or an object whose values are action creators.</p>
 </li>
 <li>
-<p><code>dispatch</code> (<em>Function</em>): A <a href="Store.md#dispatch"><code>dispatch</code></a> function available on the <a href="Store.md"><code>Store</code></a> instance.</p>
+<p><code>dispatch</code> (<em>Function</em>): A <a href="Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> function available on the <a href="Store.md" target="_blank" rel="noopener"><code>Store</code></a> instance.</p>
 </li>
 </ol>
 <h4 id="returns">Returns <a class="markdownIt-Anchor" href="#returns">#</a></h4>
@@ -165,7 +165,7 @@ export default connect(
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

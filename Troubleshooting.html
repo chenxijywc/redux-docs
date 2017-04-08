@@ -38,8 +38,8 @@ The examples use React, but you should still find them useful if you use somethi
 <p>Sometimes, you are trying to dispatch an action, but your view does not update. Why does this happen? There may be several reasons for this.</p>
 <h4 id="never-mutate-reducer-arguments">Never mutate reducer arguments <a class="markdownIt-Anchor" href="#never-mutate-reducer-arguments">#</a></h4>
 <p>It is tempting to modify the <code>state</code> or <code>action</code> passed to you by Redux. Don't do this!</p>
-<p>Redux assumes that you never mutate the objects it gives to you in the reducer. <strong>Every single time, you must return the new state object.</strong> Even if you don't use a library like <a href="https://facebook.github.io/immutable-js/">Immutable</a>, you need to completely avoid mutation.</p>
-<p>Immutability is what lets <a href="https://github.com/gaearon/react-redux">react-redux</a> efficiently subscribe to fine-grained updates of your state. It also enables great developer experience features such as time travel with <a href="http://github.com/gaearon/redux-devtools">redux-devtools</a>.</p>
+<p>Redux assumes that you never mutate the objects it gives to you in the reducer. <strong>Every single time, you must return the new state object.</strong> Even if you don't use a library like <a href="https://facebook.github.io/immutable-js/" target="_blank" rel="noopener">Immutable</a>, you need to completely avoid mutation.</p>
+<p>Immutability is what lets <a href="https://github.com/gaearon/react-redux" target="_blank" rel="noopener">react-redux</a> efficiently subscribe to fine-grained updates of your state. It also enables great developer experience features such as time travel with <a href="http://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">redux-devtools</a>.</p>
 <p>For example, a reducer like this is wrong because it mutates the state:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">todos</span>(<span class="hljs-params">state = [], action</span>) </span>{
   <span class="hljs-keyword">switch</span> (action.type) {
@@ -87,7 +87,7 @@ The examples use React, but you should still find them useful if you use somethi
   }
 }
 </code></pre>
-<p>It's more code, but it's exactly what makes Redux predictable and efficient. If you want to have less code, you can use a helper like <a href="https://facebook.github.io/react/docs/update.html"><code>React.addons.update</code></a> to write immutable transformations with a terse syntax:</p>
+<p>It's more code, but it's exactly what makes Redux predictable and efficient. If you want to have less code, you can use a helper like <a href="https://facebook.github.io/react/docs/update.html" target="_blank" rel="noopener"><code>React.addons.update</code></a> to write immutable transformations with a terse syntax:</p>
 <pre class="hljs"><code><span class="hljs-comment">// Before:</span>
 <span class="hljs-keyword">return</span> state.map(<span class="hljs-function">(<span class="hljs-params">todo, index</span>) =&gt;</span> {
   <span class="hljs-keyword">if</span> (index === action.index) {
@@ -107,9 +107,9 @@ The examples use React, but you should still find them useful if you use somethi
   }
 })
 </code></pre>
-<p>Finally, to update objects, you'll need something like <code>_.extend</code> from Underscore, or better, an <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign</code></a> polyfill.</p>
+<p>Finally, to update objects, you'll need something like <code>_.extend</code> from Underscore, or better, an <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener"><code>Object.assign</code></a> polyfill.</p>
 <p>Make sure that you use <code>Object.assign</code> correctly. For example, instead of returning something like <code>Object.assign(state, newData)</code> from your reducers, return <code>Object.assign({}, state, newData)</code>. This way you don't override the previous <code>state</code>.</p>
-<p>You can also enable the <a href="recipes/UsingObjectSpreadOperator.md">object spread operator proposal</a> for a more succinct syntax:</p>
+<p>You can also enable the <a href="recipes/UsingObjectSpreadOperator.md" target="_blank" rel="noopener">object spread operator proposal</a> for a more succinct syntax:</p>
 <pre class="hljs"><code><span class="hljs-comment">// Before:</span>
 <span class="hljs-keyword">return</span> state.map(<span class="hljs-function">(<span class="hljs-params">todo, index</span>) =&gt;</span> {
   <span class="hljs-keyword">if</span> (index === action.index) {
@@ -129,8 +129,8 @@ The examples use React, but you should still find them useful if you use somethi
 })
 </code></pre>
 <p>Note that experimental language features are subject to change.</p>
-<p>Also keep an eye out for nested state objects that need to be deeply copied. Both <code>_.extend</code> and <code>Object.assign</code> make a shallow copy of the state. See <a href="/docs/recipes/reducers/ImmutableUpdatePatterns.md#updating-nested-objects">Updating Nested Objects</a> for suggestions on how to deal with nested state objects.</p>
-<h4 id="dont-forget-to-call-dispatchaction">Don't forget to call <a href="api/Store.md#dispatch"><code>dispatch(action)</code></a> <a class="markdownIt-Anchor" href="#dont-forget-to-call-dispatchaction">#</a></h4>
+<p>Also keep an eye out for nested state objects that need to be deeply copied. Both <code>_.extend</code> and <code>Object.assign</code> make a shallow copy of the state. See <a href="/docs/recipes/reducers/ImmutableUpdatePatterns.md#updating-nested-objects" target="_blank" rel="noopener">Updating Nested Objects</a> for suggestions on how to deal with nested state objects.</p>
+<h4 id="dont-forget-to-call-dispatchaction">Don't forget to call <a href="api/Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch(action)</code></a> <a class="markdownIt-Anchor" href="#dont-forget-to-call-dispatchaction">#</a></h4>
 <p>If you define an action creator, calling it will <em>not</em> automatically dispatch the action. For example, this code will do nothing:</p>
 <h4 id="todoactionsjs"><code>TodoActions.js</code> <a class="markdownIt-Anchor" href="#todoactionsjs">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addTodo</span>(<span class="hljs-params">text</span>) </span>{
@@ -157,15 +157,15 @@ The examples use React, but you should still find them useful if you use somethi
 }
 </code></pre>
 <p>It doesn't work because your action creator is just a function that <em>returns</em> an action. It is up to you to actually dispatch it. We can't bind your action creators to a particular Store instance during the definition because apps that render on the server need a separate Redux store for every request.</p>
-<p>The fix is to call <a href="api/Store.md#dispatch"><code>dispatch()</code></a> method on the <a href="api/Store.md">store</a> instance:</p>
+<p>The fix is to call <a href="api/Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch()</code></a> method on the <a href="api/Store.md" target="_blank" rel="noopener">store</a> instance:</p>
 <pre class="hljs"><code>handleClick() {
   <span class="hljs-comment">// Works! (but you need to grab store somehow)</span>
   store.dispatch(addTodo(<span class="hljs-string">'Fix the issue'</span>))
 }
 </code></pre>
-<p>If you're somewhere deep in the component hierarchy, it is cumbersome to pass the store down manually. This is why <a href="https://github.com/gaearon/react-redux">react-redux</a> lets you use a <code>connect</code> <a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750">higher-order component</a> that will, apart from subscribing you to a Redux store, inject <code>dispatch</code> into your component's props.</p>
+<p>If you're somewhere deep in the component hierarchy, it is cumbersome to pass the store down manually. This is why <a href="https://github.com/gaearon/react-redux" target="_blank" rel="noopener">react-redux</a> lets you use a <code>connect</code> <a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750" target="_blank" rel="noopener">higher-order component</a> that will, apart from subscribing you to a Redux store, inject <code>dispatch</code> into your component's props.</p>
 <p>The fixed code looks like this:</p>
-<h4 id="addtodojs-2"><code>AddTodo.js</code> <a class="markdownIt-Anchor" href="#addtodojs-2">#</a></h4>
+<h4 id="addtodojs-1"><code>AddTodo.js</code> <a class="markdownIt-Anchor" href="#addtodojs-1">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
 <span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
 <span class="hljs-keyword">import</span> { addTodo } <span class="hljs-keyword">from</span> <span class="hljs-string">'./TodoActions'</span>
@@ -192,8 +192,8 @@ The examples use React, but you should still find them useful if you use somethi
 <h4 id="make-sure-mapstatetoprops-is-correct">Make sure mapStateToProps is correct <a class="markdownIt-Anchor" href="#make-sure-mapstatetoprops-is-correct">#</a></h4>
 <p>It's possible you're correctly dispatching an action and applying your reducer but the corresponding state is not being correctly translated into props.</p>
 <h2 id="something-else-doesnt-work">Something else doesn't work <a class="markdownIt-Anchor" href="#something-else-doesnt-work">#</a></h2>
-<p>Ask around on the <strong>#redux</strong> <a href="http://reactiflux.com/">Reactiflux</a> Discord channel, or <a href="https://github.com/reactjs/redux/issues">create an issue</a>.<br>
-If you figure it out, <a href="https://github.com/reactjs/redux/edit/master/docs/Troubleshooting.md">edit this document</a> as a courtesy to the next person having the same problem.</p>
+<p>Ask around on the <strong>#redux</strong> <a href="http://reactiflux.com/" target="_blank" rel="noopener">Reactiflux</a> Discord channel, or <a href="https://github.com/reactjs/redux/issues" target="_blank" rel="noopener">create an issue</a>.<br>
+If you figure it out, <a href="https://github.com/reactjs/redux/edit/master/docs/Troubleshooting.md" target="_blank" rel="noopener">edit this document</a> as a courtesy to the next person having the same problem.</p>
 
       
     </div>
@@ -228,7 +228,7 @@ If you figure it out, <a href="https://github.com/reactjs/redux/edit/master/docs
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

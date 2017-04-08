@@ -32,22 +32,22 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../basics/index.html" class="breadcrumb-item">basics</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../basics/Store.html" class="breadcrumb-item">Store</a></div>
     <h1 class="article-title">Store</h1>
     <div class="article">
-      <p>In the previous sections, we defined the <a href="Actions.md">actions</a> that represent the facts about “what happened” and the <a href="Reducers.md">reducers</a> that update the state according to those actions.</p>
+      <p>In the previous sections, we defined the <a href="Actions.md" target="_blank" rel="noopener">actions</a> that represent the facts about “what happened” and the <a href="Reducers.md" target="_blank" rel="noopener">reducers</a> that update the state according to those actions.</p>
 <p>The <strong>Store</strong> is the object that brings them together. The store has the following responsibilities:</p>
 <ul>
 <li>Holds application state;</li>
-<li>Allows access to state via <a href="../api/Store.md#getState"><code>getState()</code></a>;</li>
-<li>Allows state to be updated via <a href="../api/Store.md#dispatch"><code>dispatch(action)</code></a>;</li>
-<li>Registers listeners via <a href="../api/Store.md#subscribe"><code>subscribe(listener)</code></a>;</li>
-<li>Handles unregistering of listeners via the function returned by <a href="../api/Store.md#subscribe"><code>subscribe(listener)</code></a>.</li>
+<li>Allows access to state via <a href="../api/Store.md#getState" target="_blank" rel="noopener"><code>getState()</code></a>;</li>
+<li>Allows state to be updated via <a href="../api/Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch(action)</code></a>;</li>
+<li>Registers listeners via <a href="../api/Store.md#subscribe" target="_blank" rel="noopener"><code>subscribe(listener)</code></a>;</li>
+<li>Handles unregistering of listeners via the function returned by <a href="../api/Store.md#subscribe" target="_blank" rel="noopener"><code>subscribe(listener)</code></a>.</li>
 </ul>
-<p>It's important to note that you'll only have a single store in a Redux application. When you want to split your data handling logic, you'll use <a href="Reducers.md#splitting-reducers">reducer composition</a> instead of many stores.</p>
-<p>It's easy to create a store if you have a reducer. In the <a href="Reducers.md">previous section</a>, we used <a href="../api/combineReducers.md"><code>combineReducers()</code></a> to combine several reducers into one. We will now import it, and pass it to <a href="../api/createStore.md"><code>createStore()</code></a>.</p>
+<p>It's important to note that you'll only have a single store in a Redux application. When you want to split your data handling logic, you'll use <a href="Reducers.md#splitting-reducers" target="_blank" rel="noopener">reducer composition</a> instead of many stores.</p>
+<p>It's easy to create a store if you have a reducer. In the <a href="Reducers.md" target="_blank" rel="noopener">previous section</a>, we used <a href="../api/combineReducers.md" target="_blank" rel="noopener"><code>combineReducers()</code></a> to combine several reducers into one. We will now import it, and pass it to <a href="../api/createStore.md" target="_blank" rel="noopener"><code>createStore()</code></a>.</p>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
 <span class="hljs-keyword">import</span> todoApp <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducers'</span>
 <span class="hljs-keyword">let</span> store = createStore(todoApp)
 </code></pre>
-<p>You may optionally specify the initial state as the second argument to <a href="../api/createStore.md"><code>createStore()</code></a>. This is useful for hydrating the state of the client to match the state of a Redux application running on the server.</p>
+<p>You may optionally specify the initial state as the second argument to <a href="../api/createStore.md" target="_blank" rel="noopener"><code>createStore()</code></a>. This is useful for hydrating the state of the client to match the state of a Redux application running on the server.</p>
 <pre class="hljs"><code><span class="hljs-keyword">let</span> store = createStore(todoApp, <span class="hljs-built_in">window</span>.STATE_FROM_SERVER)
 </code></pre>
 <h2 id="dispatching-actions">Dispatching Actions <a class="markdownIt-Anchor" href="#dispatching-actions">#</a></h2>
@@ -76,7 +76,7 @@ unsubscribe()
 </code></pre>
 <p>You can see how this causes the state held by the store to change:</p>
 <img src='http://i.imgur.com/zMMtoMz.png' width='70%'>
-<p>We specified the behavior of our app before we even started writing the UI. We won't do this in this tutorial, but at this point you can write tests for your reducers and action creators. You won't need to mock anything because they are just <a href="../introduction/ThreePrinciples.md#changes-are-made-with-pure-functions">pure</a> functions. Call them, and make assertions on what they return.</p>
+<p>We specified the behavior of our app before we even started writing the UI. We won't do this in this tutorial, but at this point you can write tests for your reducers and action creators. You won't need to mock anything because they are just <a href="../introduction/ThreePrinciples.md#changes-are-made-with-pure-functions" target="_blank" rel="noopener">pure</a> functions. Call them, and make assertions on what they return.</p>
 <h2 id="source-code">Source Code <a class="markdownIt-Anchor" href="#source-code">#</a></h2>
 <h4 id="indexjs"><code>index.js</code> <a class="markdownIt-Anchor" href="#indexjs">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
@@ -85,7 +85,7 @@ unsubscribe()
 <span class="hljs-keyword">let</span> store = createStore(todoApp)
 </code></pre>
 <h2 id="next-steps">Next Steps <a class="markdownIt-Anchor" href="#next-steps">#</a></h2>
-<p>Before creating a UI for our todo app, we will take a detour to see <a href="DataFlow.md">how the data flows in a Redux application</a>.</p>
+<p>Before creating a UI for our todo app, we will take a detour to see <a href="DataFlow.md" target="_blank" rel="noopener">how the data flows in a Redux application</a>.</p>
 
       
     </div>
@@ -120,7 +120,7 @@ unsubscribe()
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

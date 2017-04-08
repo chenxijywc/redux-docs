@@ -33,17 +33,17 @@
     <h1 class="article-title">Implementing Undo History</h1>
     <div class="article">
       <p>Building an Undo and Redo functionality into an app has traditionally required conscious effort from the developer. It is not an easy problem with classical MVC frameworks because you need to keep track of every past state by cloning all relevant models. In addition, you need to be mindful of the undo stack because the user-initiated changes should be undoable.</p>
-<p>This means that implementing Undo and Redo in an MVC application usually forces you to rewrite parts of your application to use a specific data mutation pattern like <a href="https://en.wikipedia.org/wiki/Command_pattern">Command</a>.</p>
+<p>This means that implementing Undo and Redo in an MVC application usually forces you to rewrite parts of your application to use a specific data mutation pattern like <a href="https://en.wikipedia.org/wiki/Command_pattern" target="_blank" rel="noopener">Command</a>.</p>
 <p>With Redux, however, implementing undo history is a breeze. There are three reasons for this:</p>
 <ul>
 <li>There are no multiple models—just a state subtree that you want to keep track of.</li>
 <li>The state is already immutable, and mutations are already described as discrete actions, which is close to the undo stack mental model.</li>
 <li>The reducer <code>(state, action) =&gt; state</code> signature makes it natural to implement generic “reducer enhancers” or “higher order reducers”. They are functions that take your reducer and enhance it with some additional functionality while preserving its signature. Undo history is exactly such a case.</li>
 </ul>
-<p>Before proceeding, make sure you have worked through the <a href="../basics/README.md">basics tutorial</a> and understand <a href="../basics/Reducers.md">reducer composition</a> well. This recipe will build on top of the example described in the <a href="../basics/README.md">basics tutorial</a>.</p>
+<p>Before proceeding, make sure you have worked through the <a href="../basics/README.md" target="_blank" rel="noopener">basics tutorial</a> and understand <a href="../basics/Reducers.md" target="_blank" rel="noopener">reducer composition</a> well. This recipe will build on top of the example described in the <a href="../basics/README.md" target="_blank" rel="noopener">basics tutorial</a>.</p>
 <p>In the first part of this recipe, we will explain the underlying concepts that make Undo and Redo possible to implement in a generic way.</p>
-<p>In the second part of this recipe, we will show how to use <a href="https://github.com/omnidan/redux-undo">Redux Undo</a> package that provides this functionality out of the box.</p>
-<p><a href="https://twitter.com/dan_abramov/status/647038407286390784"><img src="http://i.imgur.com/lvDFHkH.gif" alt="demo of todos-with-undo"></a></p>
+<p>In the second part of this recipe, we will show how to use <a href="https://github.com/omnidan/redux-undo" target="_blank" rel="noopener">Redux Undo</a> package that provides this functionality out of the box.</p>
+<figure><a href="https://twitter.com/dan_abramov/status/647038407286390784" target="_blank" rel="noopener"><img src="http://i.imgur.com/lvDFHkH.gif" alt="demo of todos-with-undo"></a><figcaption>demo of todos-with-undo</figcaption></figure>
 <h2 id="understanding-undo-history">Understanding Undo History <a class="markdownIt-Anchor" href="#understanding-undo-history">#</a></h2>
 <h3 id="designing-the-state-shape">Designing the State Shape <a class="markdownIt-Anchor" href="#designing-the-state-shape">#</a></h3>
 <p>Undo history is also part of your app's state, and there is no reason why we should approach it differently. Regardless of the type of the state changing over time, when you implement Undo and Redo, you want to keep track of the <em>history</em> of this state at different points in time.</p>
@@ -227,8 +227,8 @@
 </ul>
 <p>It seems that reducer isn't the right abstraction, but we're very close.</p>
 <h3 id="meet-reducer-enhancers">Meet Reducer Enhancers <a class="markdownIt-Anchor" href="#meet-reducer-enhancers">#</a></h3>
-<p>You might be familiar with <a href="https://en.wikipedia.org/wiki/Higher-order_function">higher order functions</a>. If you use React, you might be familiar with <a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750">higher order components</a>. Here is a variation on the same pattern, applied to reducers.</p>
-<p>A <em>reducer enhancer</em> (or a <em>higher order reducer</em>) is a function that takes a reducer, and returns a new reducer that is able to handle new actions, or to hold more state, delegating control to the inner reducer for the actions it doesn't understand. This isn't a new pattern—technically, <a href="../api/combineReducers.md"><code>combineReducers()</code></a> is also a reducer enhancer because it takes reducers and returns a new reducer.</p>
+<p>You might be familiar with <a href="https://en.wikipedia.org/wiki/Higher-order_function" target="_blank" rel="noopener">higher order functions</a>. If you use React, you might be familiar with <a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750" target="_blank" rel="noopener">higher order components</a>. Here is a variation on the same pattern, applied to reducers.</p>
+<p>A <em>reducer enhancer</em> (or a <em>higher order reducer</em>) is a function that takes a reducer, and returns a new reducer that is able to handle new actions, or to hold more state, delegating control to the inner reducer for the actions it doesn't understand. This isn't a new pattern—technically, <a href="../api/combineReducers.md" target="_blank" rel="noopener"><code>combineReducers()</code></a> is also a reducer enhancer because it takes reducers and returns a new reducer.</p>
 <p>A reducer enhancer that doesn't do anything looks like this:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doNothingWith</span>(<span class="hljs-params">reducer</span>) </span>{
   <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">state, action</span>) </span>{
@@ -321,10 +321,10 @@ store.dispatch({
 })
 </code></pre>
 <p>There is an important gotcha: you need to remember to append <code>.present</code> to the current state when you retrieve it. You may also check <code>.past.length</code> and <code>.future.length</code> to determine whether to enable or to disable the Undo and Redo buttons, respectively.</p>
-<p>You might have heard that Redux was influenced by <a href="https://github.com/evancz/elm-architecture-tutorial/">Elm Architecture</a>. It shouldn't come as a surprise that this example is very similar to <a href="http://package.elm-lang.org/packages/TheSeamau5/elm-undo-redo/2.0.0">elm-undo-redo package</a>.</p>
+<p>You might have heard that Redux was influenced by <a href="https://github.com/evancz/elm-architecture-tutorial/" target="_blank" rel="noopener">Elm Architecture</a>. It shouldn't come as a surprise that this example is very similar to <a href="http://package.elm-lang.org/packages/TheSeamau5/elm-undo-redo/2.0.0" target="_blank" rel="noopener">elm-undo-redo package</a>.</p>
 <h2 id="using-redux-undo">Using Redux Undo <a class="markdownIt-Anchor" href="#using-redux-undo">#</a></h2>
-<p>This was all very informative, but can't we just drop a library and use it instead of implementing <code>undoable</code> ourselves? Sure, we can! Meet <a href="https://github.com/omnidan/redux-undo">Redux Undo</a>, a library that provides simple Undo and Redo functionality for any part of your Redux tree.</p>
-<p>In this part of the recipe, you will learn how to make the <a href="http://redux.js.org/docs/basics/ExampleTodoList.html">Todo List example</a> undoable. You can find the full source of this recipe in the <a href="https://github.com/reactjs/redux/tree/master/examples/todos-with-undo"><code>todos-with-undo</code> example that comes with Redux</a>.</p>
+<p>This was all very informative, but can't we just drop a library and use it instead of implementing <code>undoable</code> ourselves? Sure, we can! Meet <a href="https://github.com/omnidan/redux-undo" target="_blank" rel="noopener">Redux Undo</a>, a library that provides simple Undo and Redo functionality for any part of your Redux tree.</p>
+<p>In this part of the recipe, you will learn how to make the <a href="http://redux.js.org/docs/basics/ExampleTodoList.html" target="_blank" rel="noopener">Todo List example</a> undoable. You can find the full source of this recipe in the <a href="https://github.com/reactjs/redux/tree/master/examples/todos-with-undo" target="_blank" rel="noopener"><code>todos-with-undo</code> example that comes with Redux</a>.</p>
 <h3 id="installation">Installation <a class="markdownIt-Anchor" href="#installation">#</a></h3>
 <p>First of all, you need to run</p>
 <pre class="hljs"><code>npm install --save redux-undo
@@ -347,7 +347,7 @@ store.dispatch({
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> undoableTodos
 </code></pre>
-<p>The <code>distinctState()</code> filter serves to ignore the actions that didn't result in a state change. There are <a href="https://github.com/omnidan/redux-undo#configuration">many other options</a> to configure your undoable reducer, like setting the action type for Undo and Redo actions.</p>
+<p>The <code>distinctState()</code> filter serves to ignore the actions that didn't result in a state change. There are <a href="https://github.com/omnidan/redux-undo#configuration" target="_blank" rel="noopener">many other options</a> to configure your undoable reducer, like setting the action type for Undo and Redo actions.</p>
 <p>Note that your <code>combineReducers()</code> call will stay exactly as it was, but the <code>todos</code> reducer will now refer to the reducer enhanced with Redux Undo:</p>
 <h4 id="reducersindexjs"><code>reducers/index.js</code> <a class="markdownIt-Anchor" href="#reducersindexjs">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { combineReducers } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
@@ -379,7 +379,7 @@ store.dispatch({
   }
 }
 </code></pre>
-<p>This means you need to access your state with <code>state.todos.present</code> instead of
+<p>This means you need to access your state with <code>state.todos.present</code> instead of<br>
 just <code>state.todos</code>:</p>
 <h4 id="containersvisibletodolistjs"><code>containers/VisibleTodoList.js</code> <a class="markdownIt-Anchor" href="#containersvisibletodolistjs">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> mapStateToProps = <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> {
@@ -407,8 +407,8 @@ just <code>state.todos</code>:</p>
   <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
 )
 </code></pre>
-<p>You will use <code>connect()</code> from <a href="https://github.com/reactjs/react-redux">React Redux</a> to generate a container component. To determine whether to enable Undo and Redo buttons, you can check <code>state.todos.past.length</code> and <code>state.todos.future.length</code>. You won't need to write action creators for performing undo and redo because Redux Undo already provides them:</p>
-<h4 id="containersundoredojs-2"><code>containers/UndoRedo.js</code> <a class="markdownIt-Anchor" href="#containersundoredojs-2">#</a></h4>
+<p>You will use <code>connect()</code> from <a href="https://github.com/reactjs/react-redux" target="_blank" rel="noopener">React Redux</a> to generate a container component. To determine whether to enable Undo and Redo buttons, you can check <code>state.todos.past.length</code> and <code>state.todos.future.length</code>. You won't need to write action creators for performing undo and redo because Redux Undo already provides them:</p>
+<h4 id="containersundoredojs-1"><code>containers/UndoRedo.js</code> <a class="markdownIt-Anchor" href="#containersundoredojs-1">#</a></h4>
 <pre class="hljs"><code><span class="hljs-comment">/* ... */</span>
 
 <span class="hljs-keyword">import</span> { ActionCreators <span class="hljs-keyword">as</span> UndoActionCreators } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-undo'</span>
@@ -456,7 +456,7 @@ UndoRedo = connect(
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App
 </code></pre>
-<p>This is it! Run <code>npm install</code> and <code>npm start</code> in the <a href="https://github.com/reactjs/redux/tree/master/examples/todos-with-undo">example folder</a> and try it out!</p>
+<p>This is it! Run <code>npm install</code> and <code>npm start</code> in the <a href="https://github.com/reactjs/redux/tree/master/examples/todos-with-undo" target="_blank" rel="noopener">example folder</a> and try it out!</p>
 
       
     </div>
@@ -491,7 +491,7 @@ UndoRedo = connect(
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

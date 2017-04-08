@@ -46,14 +46,14 @@
 <p>On the client side, a new Redux store will be created and initialized with the state provided from the server.<br>
 Redux's <strong><em>only</em></strong> job on the server side is to provide the <strong>initial state</strong> of our app.</p>
 <h2 id="setting-up">Setting Up <a class="markdownIt-Anchor" href="#setting-up">#</a></h2>
-<p>In the following recipe, we are going to look at how to set up server-side rendering. We'll use the simplistic <a href="https://github.com/reactjs/redux/tree/master/examples/counter">Counter app</a> as a guide and show how the server can render state ahead of time based on the request.</p>
+<p>In the following recipe, we are going to look at how to set up server-side rendering. We'll use the simplistic <a href="https://github.com/reactjs/redux/tree/master/examples/counter" target="_blank" rel="noopener">Counter app</a> as a guide and show how the server can render state ahead of time based on the request.</p>
 <h3 id="install-packages">Install Packages <a class="markdownIt-Anchor" href="#install-packages">#</a></h3>
-<p>For this example, we'll be using <a href="http://expressjs.com/">Express</a> as a simple web server. We also need to install the React bindings for Redux, since they are not included in Redux by default.</p>
+<p>For this example, we'll be using <a href="http://expressjs.com/" target="_blank" rel="noopener">Express</a> as a simple web server. We also need to install the React bindings for Redux, since they are not included in Redux by default.</p>
 <pre class="hljs"><code>npm install --save express react-redux
 </code></pre>
 <h2 id="the-server-side">The Server Side <a class="markdownIt-Anchor" href="#the-server-side">#</a></h2>
-<p>The following is the outline for what our server side is going to look like. We are going to set up an <a href="http://expressjs.com/guide/using-middleware.html">Express middleware</a> using <a href="http://expressjs.com/api.html#app.use">app.use</a> to handle all requests that come in to our server. If you're unfamiliar with Express or middleware, just know that our handleRender function will be called every time the server receives a request.</p>
-<p>Additionally, as we are using ES6 and JSX syntax, we will need to compile with <a href="https://babeljs.io/">Babel</a> (see this example of a <a href="https://github.com/babel/example-node-server">this example of a Node Server with Babel</a>) and the <a href="https://babeljs.io/docs/plugins/preset-react/">React preset</a>.</p>
+<p>The following is the outline for what our server side is going to look like. We are going to set up an <a href="http://expressjs.com/guide/using-middleware.html" target="_blank" rel="noopener">Express middleware</a> using <a href="http://expressjs.com/api.html#app.use" target="_blank" rel="noopener">app.use</a> to handle all requests that come in to our server. If you're unfamiliar with Express or middleware, just know that our handleRender function will be called every time the server receives a request.</p>
+<p>Additionally, as we are using ES6 and JSX syntax, we will need to compile with <a href="https://babeljs.io/" target="_blank" rel="noopener">Babel</a> (see this example of a <a href="https://github.com/babel/example-node-server" target="_blank" rel="noopener">this example of a Node Server with Babel</a>) and the <a href="https://babeljs.io/docs/plugins/preset-react/" target="_blank" rel="noopener">React preset</a>.</p>
 <h5 id="serverjs"><code>server.js</code> <a class="markdownIt-Anchor" href="#serverjs">#</a></h5>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">'path'</span>
 <span class="hljs-keyword">import</span> Express <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>
@@ -77,9 +77,9 @@ app.listen(port)
 </code></pre>
 <h3 id="handling-the-request">Handling the Request <a class="markdownIt-Anchor" href="#handling-the-request">#</a></h3>
 <p>The first thing that we need to do on every request is create a new Redux store instance. The only purpose of this store instance is to provide the initial state of our application.</p>
-<p>When rendering, we will wrap <code>&lt;App /&gt;</code>, our root component, inside a <code>&lt;Provider&gt;</code> to make the store available to all components in the component tree, as we saw in <a href="../basics/UsageWithReact.md">Usage with React</a>.</p>
-<p>The key step in server side rendering is to render the initial HTML of our component <em><strong>before</strong></em> we send it to the client side. To do this, we use <a href="https://facebook.github.io/react/docs/react-dom-server.html#rendertostring">ReactDOMServer.renderToString()</a>.</p>
-<p>We then get the initial state from our Redux store using <a href="../api/Store.md#getState"><code>store.getState()</code></a>. We will see how this is passed along in our <code>renderFullPage</code> function.</p>
+<p>When rendering, we will wrap <code>&lt;App /&gt;</code>, our root component, inside a <code>&lt;Provider&gt;</code> to make the store available to all components in the component tree, as we saw in <a href="../basics/UsageWithReact.md" target="_blank" rel="noopener">Usage with React</a>.</p>
+<p>The key step in server side rendering is to render the initial HTML of our component <em><strong>before</strong></em> we send it to the client side. To do this, we use <a href="https://facebook.github.io/react/docs/react-dom-server.html#rendertostring" target="_blank" rel="noopener">ReactDOMServer.renderToString()</a>.</p>
+<p>We then get the initial state from our Redux store using <a href="../api/Store.md#getState" target="_blank" rel="noopener"><code>store.getState()</code></a>. We will see how this is passed along in our <code>renderFullPage</code> function.</p>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { renderToString } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom/server'</span>
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleRender</span>(<span class="hljs-params">req, res</span>) </span>{
@@ -125,7 +125,7 @@ app.listen(port)
 }
 </code></pre>
 <h2 id="the-client-side">The Client Side <a class="markdownIt-Anchor" href="#the-client-side">#</a></h2>
-<p>The client side is very straightforward. All we need to do is grab the initial state from <code>window.__PRELOADED_STATE__</code>, and pass it to our <a href="../api/createStore.md"><code>createStore()</code></a> function as the initial state.</p>
+<p>The client side is very straightforward. All we need to do is grab the initial state from <code>window.__PRELOADED_STATE__</code>, and pass it to our <a href="../api/createStore.md" target="_blank" rel="noopener"><code>createStore()</code></a> function as the initial state.</p>
 <p>Let's take a look at our new client file:</p>
 <h4 id="clientjs"><code>client.js</code> <a class="markdownIt-Anchor" href="#clientjs">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
@@ -149,15 +149,15 @@ render(
 )
 </code></pre>
 <p>You can set up your build tool of choice (Webpack, Browserify, etc.) to compile a bundle file into <code>static/bundle.js</code>.</p>
-<p>When the page loads, the bundle file will be started up and <a href="https://facebook.github.io/react/docs/top-level-api.html#reactdom.render"><code>ReactDOM.render()</code></a> will hook into the <code>data-react-id</code> attributes from the server-rendered HTML. This will connect our newly-started React instance to the virtual DOM used on the server. Since we have the same initial state for our Redux store and used the same code for all our view components, the result will be the same real DOM.</p>
+<p>When the page loads, the bundle file will be started up and <a href="https://facebook.github.io/react/docs/top-level-api.html#reactdom.render" target="_blank" rel="noopener"><code>ReactDOM.render()</code></a> will hook into the <code>data-react-id</code> attributes from the server-rendered HTML. This will connect our newly-started React instance to the virtual DOM used on the server. Since we have the same initial state for our Redux store and used the same code for all our view components, the result will be the same real DOM.</p>
 <p>And that's it! That is all we need to do to implement server side rendering.</p>
 <p>But the result is pretty vanilla. It essentially renders a static view from dynamic code. What we need to do next is build an initial state dynamically to allow that rendered view to be dynamic.</p>
 <h2 id="preparing-the-initial-state">Preparing the Initial State <a class="markdownIt-Anchor" href="#preparing-the-initial-state">#</a></h2>
 <p>Because the client side executes ongoing code, it can start with an empty initial state and obtain any necessary state on demand and over time. On the server side, rendering is synchronous and we only get one shot to render our view. We need to be able to compile our initial state during the request, which will have to react to input and obtain external state (such as that from an API or database).</p>
 <h3 id="processing-request-parameters">Processing Request Parameters <a class="markdownIt-Anchor" href="#processing-request-parameters">#</a></h3>
 <p>The only input for server side code is the request made when loading up a page in your app in your browser. You may choose to configure the server during its boot (such as when you are running in a development vs. production environment), but that configuration is static.</p>
-<p>The request contains information about the URL requested, including any query parameters, which will be useful when using something like <a href="https://github.com/reactjs/react-router">React Router</a>. It can also contain headers with inputs like cookies or authorization, or POST body data. Let's see how we can set the initial counter state based on a query parameter.</p>
-<h4 id="serverjs-2"><code>server.js</code> <a class="markdownIt-Anchor" href="#serverjs-2">#</a></h4>
+<p>The request contains information about the URL requested, including any query parameters, which will be useful when using something like <a href="https://github.com/reactjs/react-router" target="_blank" rel="noopener">React Router</a>. It can also contain headers with inputs like cookies or authorization, or POST body data. Let's see how we can set the initial counter state based on a query parameter.</p>
+<h4 id="serverjs-1"><code>server.js</code> <a class="markdownIt-Anchor" href="#serverjs-1">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> qs <span class="hljs-keyword">from</span> <span class="hljs-string">'qs'</span> <span class="hljs-comment">// Add this at the top of the file</span>
 <span class="hljs-keyword">import</span> { renderToString } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom/server'</span>
 
@@ -186,7 +186,7 @@ render(
   res.send(renderFullPage(html, finalState))
 }
 </code></pre>
-<p>The code reads from the Express <code>Request</code> object passed into our server middleware. The parameter is parsed into a number and then set in the initial state. If you visit <a href="http://localhost:3000/?counter=100">http://localhost:3000/?counter=100</a> in your browser, you'll see the counter starts at 100. In the rendered HTML, you'll see the counter output as 100 and the <code>__PRELOADED_STATE__</code> variable has the counter set in it.</p>
+<p>The code reads from the Express <code>Request</code> object passed into our server middleware. The parameter is parsed into a number and then set in the initial state. If you visit <a href="http://localhost:3000/?counter=100" target="_blank" rel="noopener">http://localhost:3000/?counter=100</a> in your browser, you'll see the counter starts at 100. In the rendered HTML, you'll see the counter output as 100 and the <code>__PRELOADED_STATE__</code> variable has the counter set in it.</p>
 <h3 id="async-state-fetching">Async State Fetching <a class="markdownIt-Anchor" href="#async-state-fetching">#</a></h3>
 <p>The most common issue with server side rendering is dealing with state that comes in asynchronously. Rendering on the server is synchronous by nature, so it's necessary to map any asynchronous fetches into a synchronous operation.</p>
 <p>The easiest way to do this is to pass through some callback back to your synchronous code. In this case, that will be a function that will reference the response object and send back our rendered HTML to the client. Don't worry, it's not as hard as it may sound.</p>
@@ -204,7 +204,7 @@ render(
 </code></pre>
 <p>Again, this is just a mock API, so we use <code>setTimeout</code> to simulate a network request that takes 500 milliseconds to respond (this should be much faster with a real world API). We pass in a callback that returns a random number asynchronously. If you're using a Promise-based API client, then you would issue this callback in your <code>then</code> handler.</p>
 <p>On the server side, we simply wrap our existing code in the <code>fetchCounter</code> and receive the result in the callback:</p>
-<h4 id="serverjs-3"><code>server.js</code> <a class="markdownIt-Anchor" href="#serverjs-3">#</a></h4>
+<h4 id="serverjs-2"><code>server.js</code> <a class="markdownIt-Anchor" href="#serverjs-2">#</a></h4>
 <pre class="hljs"><code><span class="hljs-comment">// Add this to our imports</span>
 <span class="hljs-keyword">import</span> { fetchCounter } <span class="hljs-keyword">from</span> <span class="hljs-string">'./api/counter'</span>
 <span class="hljs-keyword">import</span> { renderToString } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom/server'</span>
@@ -241,11 +241,11 @@ render(
 <h3 id="security-considerations">Security Considerations <a class="markdownIt-Anchor" href="#security-considerations">#</a></h3>
 <p>Because we have introduced more code that relies on user generated content (UGC) and input, we have increased our attack surface area for our application. It is important for any application that you ensure your input is properly sanitized to prevent things like cross-site scripting (XSS) attacks or code injections.</p>
 <p>In our example, we take a rudimentary approach to security. When we obtain the parameters from the request, we use <code>parseInt</code> on the <code>counter</code> parameter to ensure this value is a number. If we did not do this, you could easily get dangerous data into the rendered HTML by providing a script tag in the request. That might look like this: <code>?counter=&lt;/script&gt;&lt;script&gt;doSomethingBad();&lt;/script&gt;</code></p>
-<p>For our simplistic example, coercing our input into a number is sufficiently secure. If you're handling more complex input, such as freeform text, then you should run that input through an appropriate sanitization function, such as <a href="https://www.npmjs.com/package/validator">validator.js</a>.</p>
-<p>Furthermore, you can add additional layers of security by sanitizing your state output. <code>JSON.stringify</code> can be subject to script injections. To counter this, you can scrub the JSON string of HTML tags and other dangerous characters. This can be done with either a simple text replacement on the string, e.g. <code>JSON.stringify(state).replace(/&lt;/g, '\\u003c')</code>, or via more sophisticated libraries such as <a href="https://github.com/yahoo/serialize-javascript">serialize-javascript</a>.</p>
+<p>For our simplistic example, coercing our input into a number is sufficiently secure. If you're handling more complex input, such as freeform text, then you should run that input through an appropriate sanitization function, such as <a href="https://www.npmjs.com/package/validator" target="_blank" rel="noopener">validator.js</a>.</p>
+<p>Furthermore, you can add additional layers of security by sanitizing your state output. <code>JSON.stringify</code> can be subject to script injections. To counter this, you can scrub the JSON string of HTML tags and other dangerous characters. This can be done with either a simple text replacement on the string, e.g. <code>JSON.stringify(state).replace(/&lt;/g, '\\u003c')</code>, or via more sophisticated libraries such as <a href="https://github.com/yahoo/serialize-javascript" target="_blank" rel="noopener">serialize-javascript</a>.</p>
 <h2 id="next-steps">Next Steps <a class="markdownIt-Anchor" href="#next-steps">#</a></h2>
-<p>You may want to read <a href="../advanced/AsyncActions.md">Async Actions</a> to learn more about expressing asynchronous flow in Redux with async primitives such as Promises and thunks. Keep in mind that anything you learn there can also be applied to universal rendering.</p>
-<p>If you use something like <a href="https://github.com/reactjs/react-router">React Router</a>, you might also want to express your data fetching dependencies as static <code>fetchData()</code> methods on your route handler components. They may return <a href="../advanced/AsyncActions.md">async actions</a>, so that your <code>handleRender</code> function can match the route to the route handler component classes, dispatch <code>fetchData()</code> result for each of them, and render only after the Promises have resolved. This way the specific API calls required for different routes are colocated with the route handler component definitions. You can also use the same technique on the client side to prevent the router from switching the page until its data has been loaded.</p>
+<p>You may want to read <a href="../advanced/AsyncActions.md" target="_blank" rel="noopener">Async Actions</a> to learn more about expressing asynchronous flow in Redux with async primitives such as Promises and thunks. Keep in mind that anything you learn there can also be applied to universal rendering.</p>
+<p>If you use something like <a href="https://github.com/reactjs/react-router" target="_blank" rel="noopener">React Router</a>, you might also want to express your data fetching dependencies as static <code>fetchData()</code> methods on your route handler components. They may return <a href="../advanced/AsyncActions.md" target="_blank" rel="noopener">async actions</a>, so that your <code>handleRender</code> function can match the route to the route handler component classes, dispatch <code>fetchData()</code> result for each of them, and render only after the Promises have resolved. This way the specific API calls required for different routes are colocated with the route handler component definitions. You can also use the same technique on the client side to prevent the router from switching the page until its data has been loaded.</p>
 
       
     </div>
@@ -280,7 +280,7 @@ render(
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

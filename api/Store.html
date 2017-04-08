@@ -32,15 +32,15 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/index.html" class="breadcrumb-item">api</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/Store.html" class="breadcrumb-item">Store</a></div>
     <h1 class="article-title">Store</h1>
     <div class="article">
-      <p>A store holds the whole <a href="../Glossary.md#state">state tree</a> of your application.<br>
-The only way to change the state inside it is to dispatch an <a href="../Glossary.md#action">action</a> on it.</p>
+      <p>A store holds the whole <a href="../Glossary.md#state" target="_blank" rel="noopener">state tree</a> of your application.<br>
+The only way to change the state inside it is to dispatch an <a href="../Glossary.md#action" target="_blank" rel="noopener">action</a> on it.</p>
 <p>A store is not a class. It's just an object with a few methods on it.<br>
-To create it, pass your root <a href="../Glossary.md#reducer">reducing function</a> to <a href="createStore.md"><code>createStore</code></a>.</p>
+To create it, pass your root <a href="../Glossary.md#reducer" target="_blank" rel="noopener">reducing function</a> to <a href="createStore.md" target="_blank" rel="noopener"><code>createStore</code></a>.</p>
 <blockquote>
 <h5 id="a-note-for-flux-users">A Note for Flux Users <a class="markdownIt-Anchor" href="#a-note-for-flux-users">#</a></h5>
 </blockquote>
 <blockquote>
-<p>If you're coming from Flux, there is a single important difference you need to understand. Redux doesn't have a Dispatcher or support many stores. <strong>Instead, there is just a single store with a single root <a href="../Glossary.md#reducer">reducing function</a>.</strong> As your app grows, instead of adding stores, you split the root reducer into smaller reducers independently operating on the different parts of the state tree. You can use a helper like <a href="combineReducers.md"><code>combineReducers</code></a> to combine them. This is similar to how there is just one root component in a React app, but it is composed out of many small components.</p>
+<p>If you're coming from Flux, there is a single important difference you need to understand. Redux doesn't have a Dispatcher or support many stores. <strong>Instead, there is just a single store with a single root <a href="../Glossary.md#reducer" target="_blank" rel="noopener">reducing function</a>.</strong> As your app grows, instead of adding stores, you split the root reducer into smaller reducers independently operating on the different parts of the state tree. You can use a helper like <a href="combineReducers.md" target="_blank" rel="noopener"><code>combineReducers</code></a> to combine them. This is similar to how there is just one root component in a React app, but it is composed out of many small components.</p>
 </blockquote>
 <h3 id="store-methods">Store Methods <a class="markdownIt-Anchor" href="#store-methods">#</a></h3>
 <ul>
@@ -49,7 +49,7 @@ To create it, pass your root <a href="../Glossary.md#reducer">reducing function<
 <li><a href="#subscribe"><code>subscribe(listener)</code></a></li>
 <li><a href="#replaceReducer"><code>replaceReducer(nextReducer)</code></a></li>
 </ul>
-<h2 id="store-methods-2">Store Methods <a class="markdownIt-Anchor" href="#store-methods-2">#</a></h2>
+<h2 id="store-methods-1">Store Methods <a class="markdownIt-Anchor" href="#store-methods-1">#</a></h2>
 <h3 id="a-idgetstateagetstate"><a id='getState'></a><a href="#getState"><code>getState()</code></a> <a class="markdownIt-Anchor" href="#a-idgetstateagetstate">#</a></h3>
 <p>Returns the current state tree of your application.<br>
 It is equal to the last value returned by the store's reducer.</p>
@@ -60,23 +60,23 @@ It is equal to the last value returned by the store's reducer.</p>
 <p>Dispatches an action. This is the only way to trigger a state change.</p>
 <p>The store's reducing function will be called with the current <a href="#getState"><code>getState()</code></a> result and the given <code>action</code> synchronously. Its return value will be considered the next state. It will be returned from <a href="#getState"><code>getState()</code></a> from now on, and the change listeners will immediately be notified.</p>
 <blockquote>
-<h5 id="a-note-for-flux-users-2">A Note for Flux Users <a class="markdownIt-Anchor" href="#a-note-for-flux-users-2">#</a></h5>
-<p>If you attempt to call <code>dispatch</code> from inside the <a href="../Glossary.md#reducer">reducer</a>, it will throw with an error saying “Reducers may not dispatch actions.” This is similar to “Cannot dispatch in a middle of dispatch” error in Flux, but doesn't cause the problems associated with it. In Flux, a dispatch is forbidden while Stores are handling the action and emitting updates. This is unfortunate because it makes it impossible to dispatch actions from component lifecycle hooks or other benign places.</p>
+<h5 id="a-note-for-flux-users-1">A Note for Flux Users <a class="markdownIt-Anchor" href="#a-note-for-flux-users-1">#</a></h5>
+<p>If you attempt to call <code>dispatch</code> from inside the <a href="../Glossary.md#reducer" target="_blank" rel="noopener">reducer</a>, it will throw with an error saying “Reducers may not dispatch actions.” This is similar to “Cannot dispatch in a middle of dispatch” error in Flux, but doesn't cause the problems associated with it. In Flux, a dispatch is forbidden while Stores are handling the action and emitting updates. This is unfortunate because it makes it impossible to dispatch actions from component lifecycle hooks or other benign places.</p>
 </blockquote>
 <blockquote>
-<p>In Redux, subscriptions are called after the root reducer has returned the new state, so you <em>may</em> dispatch in the subscription listeners. You are only disallowed to dispatch inside the reducers because they must have no side effects. If you want to cause a side effect in response to an action, the right place to do this is in the potentially async <a href="../Glossary.md#action-creator">action creator</a>.</p>
+<p>In Redux, subscriptions are called after the root reducer has returned the new state, so you <em>may</em> dispatch in the subscription listeners. You are only disallowed to dispatch inside the reducers because they must have no side effects. If you want to cause a side effect in response to an action, the right place to do this is in the potentially async <a href="../Glossary.md#action-creator" target="_blank" rel="noopener">action creator</a>.</p>
 </blockquote>
 <h4 id="arguments">Arguments <a class="markdownIt-Anchor" href="#arguments">#</a></h4>
 <ol>
-<li><code>action</code> (<em>Object</em><sup>†</sup>): A plain object describing the change that makes sense for your application. Actions are the only way to get data into the store, so any data, whether from the UI events, network callbacks, or other sources such as WebSockets needs to eventually be dispatched as actions. Actions must have a <code>type</code> field that indicates the type of action being performed. Types can be defined as constants and imported from another module. It's better to use strings for <code>type</code> than <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbols</a> because strings are serializable. Other than <code>type</code>, the structure of an action object is really up to you. If you're interested, check out <a href="https://github.com/acdlite/flux-standard-action">Flux Standard Action</a> for recommendations on how actions could be constructed.</li>
+<li><code>action</code> (<em>Object</em><sup>†</sup>): A plain object describing the change that makes sense for your application. Actions are the only way to get data into the store, so any data, whether from the UI events, network callbacks, or other sources such as WebSockets needs to eventually be dispatched as actions. Actions must have a <code>type</code> field that indicates the type of action being performed. Types can be defined as constants and imported from another module. It's better to use strings for <code>type</code> than <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Symbol" target="_blank" rel="noopener">Symbols</a> because strings are serializable. Other than <code>type</code>, the structure of an action object is really up to you. If you're interested, check out <a href="https://github.com/acdlite/flux-standard-action" target="_blank" rel="noopener">Flux Standard Action</a> for recommendations on how actions could be constructed.</li>
 </ol>
-<h4 id="returns-2">Returns <a class="markdownIt-Anchor" href="#returns-2">#</a></h4>
+<h4 id="returns-1">Returns <a class="markdownIt-Anchor" href="#returns-1">#</a></h4>
 <p>(Object<sup>†</sup>): The dispatched action (see notes).</p>
 <h4 id="notes">Notes <a class="markdownIt-Anchor" href="#notes">#</a></h4>
-<p><sup>†</sup> The “vanilla” store implementation you get by calling <a href="createStore.md"><code>createStore</code></a> only supports plain object actions and hands them immediately to the reducer.</p>
-<p>However, if you wrap <a href="createStore.md"><code>createStore</code></a> with <a href="applyMiddleware.md"><code>applyMiddleware</code></a>, the middleware can interpret actions differently, and provide support for dispatching <a href="../Glossary.md#async-action">async actions</a>. Async actions are usually asynchronous primitives like Promises, Observables, or thunks.</p>
-<p>Middleware is created by the community and does not ship with Redux by default. You need to explicitly install packages like <a href="https://github.com/gaearon/redux-thunk">redux-thunk</a> or <a href="https://github.com/acdlite/redux-promise">redux-promise</a> to use it. You may also create your own middleware.</p>
-<p>To learn how to describe asynchronous API calls, read the current state inside action creators, perform side effects, or chain them to execute in a sequence, see the examples for <a href="applyMiddleware.md"><code>applyMiddleware</code></a>.</p>
+<p><sup>†</sup> The “vanilla” store implementation you get by calling <a href="createStore.md" target="_blank" rel="noopener"><code>createStore</code></a> only supports plain object actions and hands them immediately to the reducer.</p>
+<p>However, if you wrap <a href="createStore.md" target="_blank" rel="noopener"><code>createStore</code></a> with <a href="applyMiddleware.md" target="_blank" rel="noopener"><code>applyMiddleware</code></a>, the middleware can interpret actions differently, and provide support for dispatching <a href="../Glossary.md#async-action" target="_blank" rel="noopener">async actions</a>. Async actions are usually asynchronous primitives like Promises, Observables, or thunks.</p>
+<p>Middleware is created by the community and does not ship with Redux by default. You need to explicitly install packages like <a href="https://github.com/gaearon/redux-thunk" target="_blank" rel="noopener">redux-thunk</a> or <a href="https://github.com/acdlite/redux-promise" target="_blank" rel="noopener">redux-promise</a> to use it. You may also create your own middleware.</p>
+<p>To learn how to describe asynchronous API calls, read the current state inside action creators, perform side effects, or chain them to execute in a sequence, see the examples for <a href="applyMiddleware.md" target="_blank" rel="noopener"><code>applyMiddleware</code></a>.</p>
 <h4 id="example">Example <a class="markdownIt-Anchor" href="#example">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
 <span class="hljs-keyword">let</span> store = createStore(todos, [ <span class="hljs-string">'Use Redux'</span> ])
@@ -106,15 +106,15 @@ store.dispatch(addTodo(<span class="hljs-string">'Read about the middleware'</sp
 <p>The listener should not expect to see all state changes, as the state might have been updated multiple times during a nested <a href="#dispatch"><code>dispatch()</code></a> before the listener is called. It is, however, guaranteed that all subscribers registered before the <a href="#dispatch"><code>dispatch()</code></a> started will be called with the latest state by the time it exits.</p>
 </li>
 </ol>
-<p>It is a low-level API. Most likely, instead of using it directly, you'll use React (or other) bindings. If you commonly use the callback as a hook to react to state changes, you might want to <a href="https://github.com/reactjs/redux/issues/303#issuecomment-125184409">write a custom <code>observeStore</code> utility</a>. The <code>Store</code> is also an <a href="https://github.com/zenparsing/es-observable"><code>Observable</code></a>, so you can <code>subscribe</code> to changes with libraries like <a href="https://github.com/ReactiveX/RxJS">RxJS</a>.</p>
+<p>It is a low-level API. Most likely, instead of using it directly, you'll use React (or other) bindings. If you commonly use the callback as a hook to react to state changes, you might want to <a href="https://github.com/reactjs/redux/issues/303#issuecomment-125184409" target="_blank" rel="noopener">write a custom <code>observeStore</code> utility</a>. The <code>Store</code> is also an <a href="https://github.com/zenparsing/es-observable" target="_blank" rel="noopener"><code>Observable</code></a>, so you can <code>subscribe</code> to changes with libraries like <a href="https://github.com/ReactiveX/RxJS" target="_blank" rel="noopener">RxJS</a>.</p>
 <p>To unsubscribe the change listener, invoke the function returned by <code>subscribe</code>.</p>
-<h4 id="arguments-2">Arguments <a class="markdownIt-Anchor" href="#arguments-2">#</a></h4>
+<h4 id="arguments-1">Arguments <a class="markdownIt-Anchor" href="#arguments-1">#</a></h4>
 <ol>
 <li><code>listener</code> (<em>Function</em>): The callback to be invoked any time an action has been dispatched, and the state tree might have changed. You may call <a href="#getState"><code>getState()</code></a> inside this callback to read the current state tree. It is reasonable to expect that the store's reducer is a pure function, so you may compare references to some deep path in the state tree to learn whether its value has changed.</li>
 </ol>
-<h5 id="returns-3">Returns <a class="markdownIt-Anchor" href="#returns-3">#</a></h5>
+<h5 id="returns-2">Returns <a class="markdownIt-Anchor" href="#returns-2">#</a></h5>
 <p>(<em>Function</em>): A function that unsubscribes the change listener.</p>
-<h5 id="example-2">Example <a class="markdownIt-Anchor" href="#example-2">#</a></h5>
+<h5 id="example-1">Example <a class="markdownIt-Anchor" href="#example-1">#</a></h5>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">select</span>(<span class="hljs-params">state</span>) </span>{
   <span class="hljs-keyword">return</span> state.some.deep.property
 }
@@ -136,7 +136,7 @@ unsubscribe()
 <h3 id="a-idreplacereducerareplacereducernextreducer"><a id='replaceReducer'></a><a href="#replaceReducer"><code>replaceReducer(nextReducer)</code></a> <a class="markdownIt-Anchor" href="#a-idreplacereducerareplacereducernextreducer">#</a></h3>
 <p>Replaces the reducer currently used by the store to calculate the state.</p>
 <p>It is an advanced API. You might need this if your app implements code splitting, and you want to load some of the reducers dynamically. You might also need this if you implement a hot reloading mechanism for Redux.</p>
-<h4 id="arguments-3">Arguments <a class="markdownIt-Anchor" href="#arguments-3">#</a></h4>
+<h4 id="arguments-2">Arguments <a class="markdownIt-Anchor" href="#arguments-2">#</a></h4>
 <ol>
 <li><code>reducer</code> (<em>Function</em>) The next reducer for the store to use.</li>
 </ol>
@@ -174,7 +174,7 @@ unsubscribe()
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 
@@ -190,7 +190,7 @@ unsubscribe()
   var LOPPO = {};
   LOPPO.current_path = 'api/Store.md';
   LOPPO.relative_root_path = '../';
-  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li>\n<ul>\n<li><a href=\"#store-methods\">Store Methods</a></li>\n</ul>\n</li>\n<li><a href=\"#store-methods-2\">Store Methods</a>\n<ul>\n<li>[<a id='getState'></a><a href=\"#getState\"><code>getState()</code></a>](#a-idgetstateagetstate)</li>\n<li>[<a id='dispatch'></a><a href=\"#dispatch\"><code>dispatch(action)</code></a>](#a-iddispatchadispatchaction)</li>\n<li>[<a id='subscribe'></a><a href=\"#subscribe\"><code>subscribe(listener)</code></a>](#a-idsubscribeasubscribelistener)</li>\n<li>[<a id='replaceReducer'></a><a href=\"#replaceReducer\"><code>replaceReducer(nextReducer)</code></a>](#a-idreplacereducerareplacereducernextreducer)</li>\n</ul>\n</li>\n</ul>\n";
+  LOPPO.article_toc = "<ul class=\"markdownIt-TOC\">\n<li>\n<ul>\n<li><a href=\"#store-methods\">Store Methods</a></li>\n</ul>\n</li>\n<li><a href=\"#store-methods-1\">Store Methods</a>\n<ul>\n<li>[<a id='getState'></a><a href=\"#getState\"><code>getState()</code></a>](#a-idgetstateagetstate)</li>\n<li>[<a id='dispatch'></a><a href=\"#dispatch\"><code>dispatch(action)</code></a>](#a-iddispatchadispatchaction)</li>\n<li>[<a id='subscribe'></a><a href=\"#subscribe\"><code>subscribe(listener)</code></a>](#a-idsubscribeasubscribelistener)</li>\n<li>[<a id='replaceReducer'></a><a href=\"#replaceReducer\"><code>replaceReducer(nextReducer)</code></a>](#a-idreplacereducerareplacereducernextreducer)</li>\n</ul>\n</li>\n</ul>\n";
 </script>
 <script src="../assets/js/app.js"></script>
 

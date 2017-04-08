@@ -32,7 +32,7 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/index.html" class="breadcrumb-item">advanced</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/Middleware.html" class="breadcrumb-item">Middleware</a></div>
     <h1 class="article-title">Middleware</h1>
     <div class="article">
-      <p>You've seen middleware in action in the <a href="../advanced/AsyncActions.md">Async Actions</a> example. If you've used server-side libraries like <a href="http://expressjs.com/">Express</a> and <a href="http://koajs.com/">Koa</a>, you were also probably already familiar with the concept of <em>middleware</em>. In these frameworks, middleware is some code you can put between the framework receiving a request, and the framework generating a response. For example, Express or Koa middleware may add CORS headers, logging, compression, and more. The best feature of middleware is that it's composable in a chain. You can use multiple independent third-party middleware in a single project.</p>
+      <p>You've seen middleware in action in the <a href="../advanced/AsyncActions.md" target="_blank" rel="noopener">Async Actions</a> example. If you've used server-side libraries like <a href="http://expressjs.com/" target="_blank" rel="noopener">Express</a> and <a href="http://koajs.com/" target="_blank" rel="noopener">Koa</a>, you were also probably already familiar with the concept of <em>middleware</em>. In these frameworks, middleware is some code you can put between the framework receiving a request, and the framework generating a response. For example, Express or Koa middleware may add CORS headers, logging, compression, and more. The best feature of middleware is that it's composable in a chain. You can use multiple independent third-party middleware in a single project.</p>
 <p>Redux middleware solves different problems than Express or Koa middleware, but in a conceptually similar way. <strong>It provides a third-party extension point between dispatching an action, and the moment it reaches the reducer.</strong> People use Redux middleware for logging, crash reporting, talking to an asynchronous API, routing, and more.</p>
 <p>This article is divided into an in-depth intro to help you grok the concept, and <a href="#seven-examples">a few practical examples</a> to show the power of middleware at the very end. You may find it helpful to switch back and forth between them, as you flip between feeling bored and inspired.</p>
 <h2 id="understanding-middleware">Understanding Middleware <a class="markdownIt-Anchor" href="#understanding-middleware">#</a></h2>
@@ -43,12 +43,12 @@
 <img src='http://i.imgur.com/BjGBlES.png' width='70%'>
 <p>How do we approach this with Redux?</p>
 <h3 id="attempt-1-logging-manually">Attempt #1: Logging Manually <a class="markdownIt-Anchor" href="#attempt-1-logging-manually">#</a></h3>
-<p>The most naïve solution is just to log the action and the next state yourself every time you call <a href="../api/Store.md#dispatch"><code>store.dispatch(action)</code></a>. It's not really a solution, but just a first step towards understanding the problem.</p>
+<p>The most naïve solution is just to log the action and the next state yourself every time you call <a href="../api/Store.md#dispatch" target="_blank" rel="noopener"><code>store.dispatch(action)</code></a>. It's not really a solution, but just a first step towards understanding the problem.</p>
 <blockquote>
 <h5 id="note">Note <a class="markdownIt-Anchor" href="#note">#</a></h5>
 </blockquote>
 <blockquote>
-<p>If you're using <a href="https://github.com/gaearon/react-redux">react-redux</a> or similar bindings, you likely won't have direct access to the store instance in your components. For the next few paragraphs, just assume you pass the store down explicitly.</p>
+<p>If you're using <a href="https://github.com/gaearon/react-redux" target="_blank" rel="noopener">react-redux</a> or similar bindings, you likely won't have direct access to the store instance in your components. For the next few paragraphs, just assume you pass the store down explicitly.</p>
 </blockquote>
 <p>Say, you call this when creating a todo:</p>
 <pre class="hljs"><code>store.dispatch(addTodo(<span class="hljs-string">'Use Redux'</span>))
@@ -74,7 +74,7 @@ store.dispatch(action)
 </code></pre>
 <p>We could end this here, but it's not very convenient to import a special function every time.</p>
 <h3 id="attempt-3-monkeypatching-dispatch">Attempt #3: Monkeypatching Dispatch <a class="markdownIt-Anchor" href="#attempt-3-monkeypatching-dispatch">#</a></h3>
-<p>What if we just replace the <code>dispatch</code> function on the store instance? The Redux store is just a plain object with <a href="../api/Store.md">a few methods</a>, and we're writing JavaScript, so we can just monkeypatch the <code>dispatch</code> implementation:</p>
+<p>What if we just replace the <code>dispatch</code> function on the store instance? The Redux store is just a plain object with <a href="../api/Store.md" target="_blank" rel="noopener">a few methods</a>, and we're writing JavaScript, so we can just monkeypatch the <code>dispatch</code> implementation:</p>
 <pre class="hljs"><code><span class="hljs-keyword">let</span> next = store.dispatch
 store.dispatch = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dispatchAndLog</span>(<span class="hljs-params">action</span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dispatching'</span>, action)
@@ -87,7 +87,7 @@ store.dispatch = <span class="hljs-function"><span class="hljs-keyword">function
 <h3 id="problem-crash-reporting">Problem: Crash Reporting <a class="markdownIt-Anchor" href="#problem-crash-reporting">#</a></h3>
 <p>What if we want to apply <strong>more than one</strong> such transformation to <code>dispatch</code>?</p>
 <p>A different useful transformation that comes to my mind is reporting JavaScript errors in production. The global <code>window.onerror</code> event is not reliable because it doesn't provide stack information in some older browsers, which is crucial to understand why an error is happening.</p>
-<p>Wouldn't it be useful if, any time an error is thrown as a result of dispatching an action, we would send it to a crash reporting service like <a href="https://getsentry.com/welcome/">Sentry</a> with the stack trace, the action that caused the error, and the current state? This way it's much easier to reproduce the error in development.</p>
+<p>Wouldn't it be useful if, any time an error is thrown as a result of dispatching an action, we would send it to a crash reporting service like <a href="https://getsentry.com/welcome/" target="_blank" rel="noopener">Sentry</a> with the stack trace, the action that caused the error, and the current state? This way it's much easier to reproduce the error in development.</p>
 <p>However, it is important that we keep logging and crash reporting separate. Ideally we want them to be different modules, potentially in different packages. Otherwise we can't have an ecosystem of such utilities. (Hint: we're slowly getting to what middleware is!)</p>
 <p>If logging and crash reporting are separate utilities, they might look like this:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">patchStoreToAddLogging</span>(<span class="hljs-params">store</span>) </span>{
@@ -183,7 +183,7 @@ The fact that we hide it inside the library doesn't alter this fact.</p>
   }
 }
 </code></pre>
-<p>It's a <a href="http://knowyourmeme.com/memes/we-need-to-go-deeper">“we need to go deeper”</a> kind of moment, so it might take a while for this to make sense. The function cascade feels intimidating. ES6 arrow functions make this <a href="https://en.wikipedia.org/wiki/Currying">currying</a> easier on eyes:</p>
+<p>It's a <a href="http://knowyourmeme.com/memes/we-need-to-go-deeper" target="_blank" rel="noopener">“we need to go deeper”</a> kind of moment, so it might take a while for this to make sense. The function cascade feels intimidating. ES6 arrow functions make this <a href="https://en.wikipedia.org/wiki/Currying" target="_blank" rel="noopener">currying</a> easier on eyes:</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> logger = <span class="hljs-function"><span class="hljs-params">store</span> =&gt;</span> next =&gt; <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> {
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dispatching'</span>, action)
   <span class="hljs-keyword">let</span> result = next(action)
@@ -225,13 +225,13 @@ The fact that we hide it inside the library doesn't alter this fact.</p>
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.assign({}, store, { dispatch })
 }
 </code></pre>
-<p>The implementation of <a href="../api/applyMiddleware.md"><code>applyMiddleware()</code></a> that ships with Redux is similar, but <strong>different in three important aspects</strong>:</p>
+<p>The implementation of <a href="../api/applyMiddleware.md" target="_blank" rel="noopener"><code>applyMiddleware()</code></a> that ships with Redux is similar, but <strong>different in three important aspects</strong>:</p>
 <ul>
 <li>
-<p>It only exposes a subset of the <a href="../api/Store.md">store API</a> to the middleware: <a href="../api/Store.md#dispatch"><code>dispatch(action)</code></a> and <a href="../api/Store.md#getState"><code>getState()</code></a>.</p>
+<p>It only exposes a subset of the <a href="../api/Store.md" target="_blank" rel="noopener">store API</a> to the middleware: <a href="../api/Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch(action)</code></a> and <a href="../api/Store.md#getState" target="_blank" rel="noopener"><code>getState()</code></a>.</p>
 </li>
 <li>
-<p>It does a bit of trickery to make sure that if you call <code>store.dispatch(action)</code> from your middleware instead of <code>next(action)</code>, the action will actually travel the whole middleware chain again, including the current middleware. This is useful for asynchronous middleware, as we have seen <a href="AsyncActions.md">previously</a>.</p>
+<p>It does a bit of trickery to make sure that if you call <code>store.dispatch(action)</code> from your middleware instead of <code>next(action)</code>, the action will actually travel the whole middleware chain again, including the current middleware. This is useful for asynchronous middleware, as we have seen <a href="AsyncActions.md" target="_blank" rel="noopener">previously</a>.</p>
 </li>
 <li>
 <p>To ensure that you may only apply middleware once, it operates on <code>createStore()</code> rather than on <code>store</code> itself. Instead of <code>(store, middlewares) =&gt; store</code>, its signature is <code>(...middlewares) =&gt; (createStore) =&gt; createStore</code>.</p>
@@ -471,7 +471,7 @@ store.dispatch(addTodo(<span class="hljs-string">'Use Redux'</span>))
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

@@ -53,7 +53,7 @@
 </code></pre>
 <p>Unfortunately, this setup has a problem.  Because <code>combineReducers</code> will call each slice reducer with the same action, dispatching <code>{type : 'INCREMENT'}</code> will actually cause <em>all three</em> counter values to be incremented, not just one of them.  We need some way to wrap the <code>counter</code> logic so that we can ensure that only the counter we care about is updated.</p>
 <h2 id="customizing-behavior-with-higher-order-reducers">Customizing Behavior with Higher-Order Reducers <a class="markdownIt-Anchor" href="#customizing-behavior-with-higher-order-reducers">#</a></h2>
-<p>As defined in <a href="SplittingReducerLogic.md">Splitting Reducer Logic</a>, a <em>higher-order reducer</em> is a function that takes a reducer function as an argument, and/or returns a new reducer function as a result.  It can also be viewed as a &quot;reducer factory&quot;.  <code>combineReducers</code> is one example of a higher-order reducer.  We can use this pattern to create specialized versions of our own reducer functions, with each version only responding to specific actions.</p>
+<p>As defined in <a href="SplittingReducerLogic.md" target="_blank" rel="noopener">Splitting Reducer Logic</a>, a <em>higher-order reducer</em> is a function that takes a reducer function as an argument, and/or returns a new reducer function as a result.  It can also be viewed as a &quot;reducer factory&quot;.  <code>combineReducers</code> is one example of a higher-order reducer.  We can use this pattern to create specialized versions of our own reducer functions, with each version only responding to specific actions.</p>
 <p>The two most common ways to specialize a reducer are to generate new action constants with a given prefix or suffix, or to attach additional info inside the action object.  Here's what those might look like:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createCounterWithNamedType</span>(<span class="hljs-params">counterName = <span class="hljs-string">''</span></span>) </span>{
     <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">counter</span>(<span class="hljs-params">state = <span class="hljs-number">0</span>, action</span>) </span>{
@@ -176,7 +176,7 @@ store.dispatch({<span class="hljs-attr">type</span> : <span class="hljs-string">
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

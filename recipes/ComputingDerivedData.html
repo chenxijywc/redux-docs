@@ -32,9 +32,9 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../recipes/ComputingDerivedData.html" class="breadcrumb-item">Computing Derived Data</a></div>
     <h1 class="article-title">Computing Derived Data</h1>
     <div class="article">
-      <p><a href="https://github.com/reactjs/reselect">Reselect</a> is a simple library for creating memoized, composable <strong>selector</strong> functions. Reselect selectors can be used to efficiently compute derived data from the Redux store.</p>
+      <p><a href="https://github.com/reactjs/reselect" target="_blank" rel="noopener">Reselect</a> is a simple library for creating memoized, composable <strong>selector</strong> functions. Reselect selectors can be used to efficiently compute derived data from the Redux store.</p>
 <h3 id="motivation-for-memoized-selectors">Motivation for Memoized Selectors <a class="markdownIt-Anchor" href="#motivation-for-memoized-selectors">#</a></h3>
-<p>Let's revisit the <a href="../basics/UsageWithReact.md">Todos List example</a>:</p>
+<p>Let's revisit the <a href="../basics/UsageWithReact.md" target="_blank" rel="noopener">Todos List example</a>:</p>
 <h4 id="containersvisibletodolistjs"><code>containers/VisibleTodoList.js</code> <a class="markdownIt-Anchor" href="#containersvisibletodolistjs">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
 <span class="hljs-keyword">import</span> { toggleTodo } <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions'</span>
@@ -110,8 +110,8 @@
 )
 </code></pre>
 <h3 id="connecting-a-selector-to-the-redux-store">Connecting a Selector to the Redux Store <a class="markdownIt-Anchor" href="#connecting-a-selector-to-the-redux-store">#</a></h3>
-<p>If you are using <a href="https://github.com/reactjs/react-redux">React Redux</a>, you can call selectors as regular functions inside <code>mapStateToProps()</code>:</p>
-<h4 id="containersvisibletodolistjs-2"><code>containers/VisibleTodoList.js</code> <a class="markdownIt-Anchor" href="#containersvisibletodolistjs-2">#</a></h4>
+<p>If you are using <a href="https://github.com/reactjs/react-redux" target="_blank" rel="noopener">React Redux</a>, you can call selectors as regular functions inside <code>mapStateToProps()</code>:</p>
+<h4 id="containersvisibletodolistjs-1"><code>containers/VisibleTodoList.js</code> <a class="markdownIt-Anchor" href="#containersvisibletodolistjs-1">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
 <span class="hljs-keyword">import</span> { toggleTodo } <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions'</span>
 <span class="hljs-keyword">import</span> TodoList <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/TodoList'</span>
@@ -194,7 +194,7 @@
 <p>So now <code>getVisibleTodos</code> has access to <code>props</code>, and everything seems to be working fine.</p>
 <p><strong>But there is a problem!</strong></p>
 <p>Using the <code>getVisibleTodos</code> selector with multiple instances of the <code>visibleTodoList</code> container will not correctly memoize:</p>
-<h4 id="containersvisibletodolistjs-3"><code>containers/VisibleTodoList.js</code> <a class="markdownIt-Anchor" href="#containersvisibletodolistjs-3">#</a></h4>
+<h4 id="containersvisibletodolistjs-2"><code>containers/VisibleTodoList.js</code> <a class="markdownIt-Anchor" href="#containersvisibletodolistjs-2">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
 <span class="hljs-keyword">import</span> { toggleTodo } <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions'</span>
 <span class="hljs-keyword">import</span> TodoList <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/TodoList'</span>
@@ -229,7 +229,7 @@
 </blockquote>
 <p>In order to share a selector across multiple <code>VisibleTodoList</code> components <strong>and</strong> retain memoization, each instance of the component needs its own private copy of the selector.</p>
 <p>Let's create a function named <code>makeGetVisibleTodos</code> that returns a new copy of the <code>getVisibleTodos</code> selector each time it is called:</p>
-<h4 id="selectorstodoselectorsjs-2"><code>selectors/todoSelectors.js</code> <a class="markdownIt-Anchor" href="#selectorstodoselectorsjs-2">#</a></h4>
+<h4 id="selectorstodoselectorsjs-1"><code>selectors/todoSelectors.js</code> <a class="markdownIt-Anchor" href="#selectorstodoselectorsjs-1">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { createSelector } <span class="hljs-keyword">from</span> <span class="hljs-string">'reselect'</span>
 
 <span class="hljs-keyword">const</span> getVisibilityFilter = <span class="hljs-function">(<span class="hljs-params">state, props</span>) =&gt;</span>
@@ -270,7 +270,7 @@
 }
 </code></pre>
 <p>If we pass <code>makeMapStateToProps</code> to <code>connect</code>, each instance of the <code>VisibleTodosList</code> container will get its own <code>mapStateToProps</code> function with a private <code>getVisibleTodos</code> selector. Memoization will now work correctly regardless of the render order of the <code>VisibleTodoList</code> containers.</p>
-<h4 id="containersvisibletodolistjs-4"><code>containers/VisibleTodoList.js</code> <a class="markdownIt-Anchor" href="#containersvisibletodolistjs-4">#</a></h4>
+<h4 id="containersvisibletodolistjs-3"><code>containers/VisibleTodoList.js</code> <a class="markdownIt-Anchor" href="#containersvisibletodolistjs-3">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
 <span class="hljs-keyword">import</span> { toggleTodo } <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions'</span>
 <span class="hljs-keyword">import</span> TodoList <span class="hljs-keyword">from</span> <span class="hljs-string">'../components/TodoList'</span>
@@ -302,7 +302,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> VisibleTodoList
 </code></pre>
 <h2 id="next-steps">Next Steps <a class="markdownIt-Anchor" href="#next-steps">#</a></h2>
-<p>Check out the <a href="https://github.com/reactjs/reselect">official documentation</a> of Reselect as well as its <a href="https://github.com/reactjs/reselect#faq">FAQ</a>. Most Redux projects start using Reselect when they have performance problems because of too many derived computations and wasted re-renders, so make sure you are familiar with it before you build something big. It can also be useful to study <a href="https://github.com/reactjs/reselect/blob/master/src/index.js">its source code</a> so you don't think it's magic.</p>
+<p>Check out the <a href="https://github.com/reactjs/reselect" target="_blank" rel="noopener">official documentation</a> of Reselect as well as its <a href="https://github.com/reactjs/reselect#faq" target="_blank" rel="noopener">FAQ</a>. Most Redux projects start using Reselect when they have performance problems because of too many derived computations and wasted re-renders, so make sure you are familiar with it before you build something big. It can also be useful to study <a href="https://github.com/reactjs/reselect/blob/master/src/index.js" target="_blank" rel="noopener">its source code</a> so you don't think it's magic.</p>
 
       
     </div>
@@ -337,7 +337,7 @@
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

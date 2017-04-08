@@ -32,22 +32,22 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/index.html" class="breadcrumb-item">api</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/createStore.html" class="breadcrumb-item">`createStore(reducer, [preloadedState], [enhancer])`</a></div>
     <h1 class="article-title">`createStore(reducer, [preloadedState], [enhancer])`</h1>
     <div class="article">
-      <p>Creates a Redux <a href="Store.md">store</a> that holds the complete state tree of your app.<br>
+      <p>Creates a Redux <a href="Store.md" target="_blank" rel="noopener">store</a> that holds the complete state tree of your app.<br>
 There should only be a single store in your app.</p>
 <h4 id="arguments">Arguments <a class="markdownIt-Anchor" href="#arguments">#</a></h4>
 <ol>
 <li>
-<p><code>reducer</code> <em>(Function)</em>: A <a href="../Glossary.md#reducer">reducing function</a> that returns the next <a href="../Glossary.md#state">state tree</a>, given the current state tree and an <a href="../Glossary.md#action">action</a> to handle.</p>
+<p><code>reducer</code> <em>(Function)</em>: A <a href="../Glossary.md#reducer" target="_blank" rel="noopener">reducing function</a> that returns the next <a href="../Glossary.md#state" target="_blank" rel="noopener">state tree</a>, given the current state tree and an <a href="../Glossary.md#action" target="_blank" rel="noopener">action</a> to handle.</p>
 </li>
 <li>
-<p>[<code>preloadedState</code>] <em>(any)</em>: The initial state. You may optionally specify it to hydrate the state from the server in universal apps, or to restore a previously serialized user session. If you produced <code>reducer</code> with <a href="combineReducers.md"><code>combineReducers</code></a>, this must be a plain object with the same shape as the keys passed to it. Otherwise, you are free to pass anything that your <code>reducer</code> can understand.</p>
+<p>[<code>preloadedState</code>] <em>(any)</em>: The initial state. You may optionally specify it to hydrate the state from the server in universal apps, or to restore a previously serialized user session. If you produced <code>reducer</code> with <a href="combineReducers.md" target="_blank" rel="noopener"><code>combineReducers</code></a>, this must be a plain object with the same shape as the keys passed to it. Otherwise, you are free to pass anything that your <code>reducer</code> can understand.</p>
 </li>
 <li>
-<p>[<code>enhancer</code>] <em>(Function)</em>: The store enhancer. You may optionally specify it to enhance the store with third-party capabilities such as middleware, time travel, persistence, etc. The only store enhancer that ships with Redux is <a href="./applyMiddleware.md"><code>applyMiddleware()</code></a>.</p>
+<p>[<code>enhancer</code>] <em>(Function)</em>: The store enhancer. You may optionally specify it to enhance the store with third-party capabilities such as middleware, time travel, persistence, etc. The only store enhancer that ships with Redux is <a href="./applyMiddleware.md" target="_blank" rel="noopener"><code>applyMiddleware()</code></a>.</p>
 </li>
 </ol>
 <h4 id="returns">Returns <a class="markdownIt-Anchor" href="#returns">#</a></h4>
-<p>(<a href="Store.md"><em><code>Store</code></em></a>): An object that holds the complete state of your app. The only way to change its state is by <a href="Store.md#dispatch">dispatching actions</a>. You may also <a href="Store.md#subscribe">subscribe</a> to the changes to its state to update the UI.</p>
+<p>(<a href="Store.md" target="_blank" rel="noopener"><em><code>Store</code></em></a>): An object that holds the complete state of your app. The only way to change its state is by <a href="Store.md#dispatch" target="_blank" rel="noopener">dispatching actions</a>. You may also <a href="Store.md#subscribe" target="_blank" rel="noopener">subscribe</a> to the changes to its state to update the UI.</p>
 <h4 id="example">Example <a class="markdownIt-Anchor" href="#example">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
 
@@ -73,13 +73,13 @@ store.dispatch({
 <h4 id="tips">Tips <a class="markdownIt-Anchor" href="#tips">#</a></h4>
 <ul>
 <li>
-<p>Don't create more than one store in an application! Instead, use <a href="combineReducers.md"><code>combineReducers</code></a> to create a single root reducer out of many.</p>
+<p>Don't create more than one store in an application! Instead, use <a href="combineReducers.md" target="_blank" rel="noopener"><code>combineReducers</code></a> to create a single root reducer out of many.</p>
 </li>
 <li>
-<p>It is up to you to choose the state format. You can use plain objects or something like <a href="http://facebook.github.io/immutable-js/">Immutable</a>. If you're not sure, start with plain objects.</p>
+<p>It is up to you to choose the state format. You can use plain objects or something like <a href="http://facebook.github.io/immutable-js/" target="_blank" rel="noopener">Immutable</a>. If you're not sure, start with plain objects.</p>
 </li>
 <li>
-<p>If your state is a plain object, make sure you never mutate it! For example, instead of returning something like <code>Object.assign(state, newData)</code> from your reducers, return <code>Object.assign({}, state, newData)</code>. This way you don't override the previous <code>state</code>. You can also write <code>return { ...state, ...newData }</code> if you enable the <a href="../recipes/UsingObjectSpreadOperator.md">object spread operator proposal</a>.</p>
+<p>If your state is a plain object, make sure you never mutate it! For example, instead of returning something like <code>Object.assign(state, newData)</code> from your reducers, return <code>Object.assign({}, state, newData)</code>. This way you don't override the previous <code>state</code>. You can also write <code>return { ...state, ...newData }</code> if you enable the <a href="../recipes/UsingObjectSpreadOperator.md" target="_blank" rel="noopener">object spread operator proposal</a>.</p>
 </li>
 <li>
 <p>For universal apps that run on the server, create a store instance with every request so that they are isolated. Dispatch a few data fetching actions to a store instance and wait for them to complete before rendering the app on the server.</p>
@@ -88,7 +88,7 @@ store.dispatch({
 <p>When a store is created, Redux dispatches a dummy action to your reducer to populate the store with the initial state. You are not meant to handle the dummy action directly. Just remember that your reducer should return some kind of initial state if the state given to it as the first argument is <code>undefined</code>, and you're all set.</p>
 </li>
 <li>
-<p>To apply multiple store enhancers, you may use <a href="./compose.md"><code>compose()</code></a>.</p>
+<p>To apply multiple store enhancers, you may use <a href="./compose.md" target="_blank" rel="noopener"><code>compose()</code></a>.</p>
 </li>
 </ul>
 
@@ -125,7 +125,7 @@ store.dispatch({
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

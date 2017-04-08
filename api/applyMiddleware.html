@@ -32,16 +32,16 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/index.html" class="breadcrumb-item">api</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../api/applyMiddleware.html" class="breadcrumb-item">`applyMiddleware(...middlewares)`</a></div>
     <h1 class="article-title">`applyMiddleware(...middlewares)`</h1>
     <div class="article">
-      <p>Middleware is the suggested way to extend Redux with custom functionality. Middleware lets you wrap the store's <a href="Store.md#dispatch"><code>dispatch</code></a> method for fun and profit. The key feature of middleware is that it is composable. Multiple middleware can be combined together, where each middleware requires no knowledge of what comes before or after it in the chain.</p>
-<p>The most common use case for middleware is to support asynchronous actions without much boilerplate code or a dependency on a library like <a href="https://github.com/Reactive-Extensions/RxJS">Rx</a>. It does so by letting you dispatch <a href="../Glossary.md#async-action">async actions</a> in addition to normal actions.</p>
-<p>For example, <a href="https://github.com/gaearon/redux-thunk">redux-thunk</a> lets the action creators invert control by dispatching functions. They would receive <a href="Store.md#dispatch"><code>dispatch</code></a> as an argument and may call it asynchronously. Such functions are called <em>thunks</em>. Another example of middleware is <a href="https://github.com/acdlite/redux-promise">redux-promise</a>. It lets you dispatch a <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> async action, and dispatches a normal action when the Promise resolves.</p>
-<p>Middleware is not baked into <a href="createStore.md"><code>createStore</code></a> and is not a fundamental part of the Redux architecture, but we consider it useful enough to be supported right in the core. This way, there is a single standard way to extend <a href="Store.md#dispatch"><code>dispatch</code></a> in the ecosystem, and different middleware may compete in expressiveness and utility.</p>
+      <p>Middleware is the suggested way to extend Redux with custom functionality. Middleware lets you wrap the store's <a href="Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> method for fun and profit. The key feature of middleware is that it is composable. Multiple middleware can be combined together, where each middleware requires no knowledge of what comes before or after it in the chain.</p>
+<p>The most common use case for middleware is to support asynchronous actions without much boilerplate code or a dependency on a library like <a href="https://github.com/Reactive-Extensions/RxJS" target="_blank" rel="noopener">Rx</a>. It does so by letting you dispatch <a href="../Glossary.md#async-action" target="_blank" rel="noopener">async actions</a> in addition to normal actions.</p>
+<p>For example, <a href="https://github.com/gaearon/redux-thunk" target="_blank" rel="noopener">redux-thunk</a> lets the action creators invert control by dispatching functions. They would receive <a href="Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> as an argument and may call it asynchronously. Such functions are called <em>thunks</em>. Another example of middleware is <a href="https://github.com/acdlite/redux-promise" target="_blank" rel="noopener">redux-promise</a>. It lets you dispatch a <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">Promise</a> async action, and dispatches a normal action when the Promise resolves.</p>
+<p>Middleware is not baked into <a href="createStore.md" target="_blank" rel="noopener"><code>createStore</code></a> and is not a fundamental part of the Redux architecture, but we consider it useful enough to be supported right in the core. This way, there is a single standard way to extend <a href="Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> in the ecosystem, and different middleware may compete in expressiveness and utility.</p>
 <h4 id="arguments">Arguments <a class="markdownIt-Anchor" href="#arguments">#</a></h4>
 <ul>
-<li><code>...middlewares</code> (<em>arguments</em>): Functions that conform to the Redux <em>middleware API</em>. Each middleware receives <a href="Store.md"><code>Store</code></a>'s <a href="Store.md#dispatch"><code>dispatch</code></a> and <a href="Store.md#getState"><code>getState</code></a> functions as named arguments, and returns a function. That function will be given the <code>next</code> middleware's dispatch method, and is expected to return a function of <code>action</code> calling <code>next(action)</code> with a potentially different argument, or at a different time, or maybe not calling it at all. The last middleware in the chain will receive the real store's <a href="Store.md#dispatch"><code>dispatch</code></a> method as the <code>next</code> parameter, thus ending the chain. So, the middleware signature is <code>({ getState, dispatch }) =&gt; next =&gt; action</code>.</li>
+<li><code>...middlewares</code> (<em>arguments</em>): Functions that conform to the Redux <em>middleware API</em>. Each middleware receives <a href="Store.md" target="_blank" rel="noopener"><code>Store</code></a>'s <a href="Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> and <a href="Store.md#getState" target="_blank" rel="noopener"><code>getState</code></a> functions as named arguments, and returns a function. That function will be given the <code>next</code> middleware's dispatch method, and is expected to return a function of <code>action</code> calling <code>next(action)</code> with a potentially different argument, or at a different time, or maybe not calling it at all. The last middleware in the chain will receive the real store's <a href="Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> method as the <code>next</code> parameter, thus ending the chain. So, the middleware signature is <code>({ getState, dispatch }) =&gt; next =&gt; action</code>.</li>
 </ul>
 <h4 id="returns">Returns <a class="markdownIt-Anchor" href="#returns">#</a></h4>
-<p>(<em>Function</em>) A store enhancer that applies the given middleware. The store enhancer signature is <code>createStore =&gt; createStore'</code> but the easiest way to apply it is to pass it to <a href="./createStore.md"><code>createStore()</code></a> as the last <code>enhancer</code> argument.</p>
+<p>(<em>Function</em>) A store enhancer that applies the given middleware. The store enhancer signature is <code>createStore =&gt; createStore'</code> but the easiest way to apply it is to pass it to <a href="./createStore.md" target="_blank" rel="noopener"><code>createStore()</code></a> as the last <code>enhancer</code> argument.</p>
 <h4 id="example-custom-logger-middleware">Example: Custom Logger Middleware <a class="markdownIt-Anchor" href="#example-custom-logger-middleware">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore, applyMiddleware } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
 <span class="hljs-keyword">import</span> todos <span class="hljs-keyword">from</span> <span class="hljs-string">'./reducers'</span>
@@ -237,10 +237,10 @@ export default connect(
 <h4 id="tips">Tips <a class="markdownIt-Anchor" href="#tips">#</a></h4>
 <ul>
 <li>
-<p>Middleware only wraps the store's <a href="Store.md#dispatch"><code>dispatch</code></a> function. Technically, anything a middleware can do, you can do manually by wrapping every <code>dispatch</code> call, but it's easier to manage this in a single place and define action transformations on the scale of the whole project.</p>
+<p>Middleware only wraps the store's <a href="Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch</code></a> function. Technically, anything a middleware can do, you can do manually by wrapping every <code>dispatch</code> call, but it's easier to manage this in a single place and define action transformations on the scale of the whole project.</p>
 </li>
 <li>
-<p>If you use other store enhancers in addition to <code>applyMiddleware</code>, make sure to put <code>applyMiddleware</code> before them in the composition chain because the middleware is potentially asynchronous. For example, it should go before <a href="https://github.com/gaearon/redux-devtools">redux-devtools</a> because otherwise the DevTools won't see the raw actions emitted by the Promise middleware and such.</p>
+<p>If you use other store enhancers in addition to <code>applyMiddleware</code>, make sure to put <code>applyMiddleware</code> before them in the composition chain because the middleware is potentially asynchronous. For example, it should go before <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">redux-devtools</a> because otherwise the DevTools won't see the raw actions emitted by the Promise middleware and such.</p>
 </li>
 <li>
 <p>If you want to conditionally apply a middleware, make sure to only import it when it's needed:</p>
@@ -260,13 +260,13 @@ export default connect(
 <p>This makes it easier for bundling tools to cut out unneeded modules and reduces the size of your builds.</p>
 </li>
 <li>
-<p>Ever wondered what <code>applyMiddleware</code> itself is? It ought to be an extension mechanism more powerful than the middleware itself. Indeed, <code>applyMiddleware</code> is an example of the most powerful Redux extension mechanism called <a href="../Glossary.md#store-enhancer">store enhancers</a>. It is highly unlikely you'll ever want to write a store enhancer yourself. Another example of a store enhancer is <a href="https://github.com/gaearon/redux-devtools">redux-devtools</a>. Middleware is less powerful than a store enhancer, but it is easier to write.</p>
+<p>Ever wondered what <code>applyMiddleware</code> itself is? It ought to be an extension mechanism more powerful than the middleware itself. Indeed, <code>applyMiddleware</code> is an example of the most powerful Redux extension mechanism called <a href="../Glossary.md#store-enhancer" target="_blank" rel="noopener">store enhancers</a>. It is highly unlikely you'll ever want to write a store enhancer yourself. Another example of a store enhancer is <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">redux-devtools</a>. Middleware is less powerful than a store enhancer, but it is easier to write.</p>
 </li>
 <li>
 <p>Middleware sounds much more complicated than it really is. The only way to really understand middleware is to see how the existing middleware works, and try to write your own. The function nesting can be intimidating, but most of the middleware you'll find are, in fact, 10-liners, and the nesting and composability is what makes the middleware system powerful.</p>
 </li>
 <li>
-<p>To apply multiple store enhancers, you may use <a href="./compose.md"><code>compose()</code></a>.</p>
+<p>To apply multiple store enhancers, you may use <a href="./compose.md" target="_blank" rel="noopener"><code>compose()</code></a>.</p>
 </li>
 </ul>
 
@@ -303,7 +303,7 @@ export default connect(
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

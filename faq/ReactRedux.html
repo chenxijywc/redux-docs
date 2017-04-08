@@ -44,8 +44,8 @@
 <p><a id="react-not-rerendering"></a></p>
 <h3 id="why-isnt-my-component-re-rendering-or-my-mapstatetoprops-running">Why isn't my component re-rendering, or my mapStateToProps running? <a class="markdownIt-Anchor" href="#why-isnt-my-component-re-rendering-or-my-mapstatetoprops-running">#</a></h3>
 <p>Accidentally mutating or modifying your state directly is by far the most common reason why components do not re-render after an action has been dispatched. Redux expects that your reducers will update their state “immutably”, which effectively means always making copies of your data, and applying your changes to the copies. If you return the same object from a reducer, Redux assumes that nothing has been changed, even if you made changes to its contents. Similarly, React Redux tries to improve performance by doing shallow equality reference checks on incoming props in <code>shouldComponentUpdate</code>, and if all references are the same, returns <code>false</code> to skip actually updating your original component.</p>
-<p>It's important to remember that whenever you update a nested value, you must also return new copies of anything above it in your state tree. If you have <code>state.a.b.c.d</code>, and you want to make an update to <code>d</code>, you would also need to return new copies of <code>c</code>, <code>b</code>, <code>a</code>, and <code>state</code>. This <a href="http://arqex.com/wp-content/uploads/2015/02/trees.png">state tree mutation diagram</a> demonstrates how a change deep in a tree requires changes all the way up.</p>
-<p>Note that “updating data immutably” does <em>not</em> mean that you must use <a href="https://facebook.github.io/immutable-js/">Immutable.js</a>, although that is certainly an option. You can do immutable updates to plain JS objects and arrays using several different approaches:</p>
+<p>It's important to remember that whenever you update a nested value, you must also return new copies of anything above it in your state tree. If you have <code>state.a.b.c.d</code>, and you want to make an update to <code>d</code>, you would also need to return new copies of <code>c</code>, <code>b</code>, <code>a</code>, and <code>state</code>. This <a href="http://arqex.com/wp-content/uploads/2015/02/trees.png" target="_blank" rel="noopener">state tree mutation diagram</a> demonstrates how a change deep in a tree requires changes all the way up.</p>
+<p>Note that “updating data immutably” does <em>not</em> mean that you must use <a href="https://facebook.github.io/immutable-js/" target="_blank" rel="noopener">Immutable.js</a>, although that is certainly an option. You can do immutable updates to plain JS objects and arrays using several different approaches:</p>
 <ul>
 <li>Copying objects using functions like <code>Object.assign()</code> or <code>_.extend()</code>, and array functions such as <code>slice()</code> and <code>concat()</code></li>
 <li>The array spread operator in ES6, and the similar object spread operator that is proposed for a future version of JavaScript</li>
@@ -54,24 +54,24 @@
 <h4 id="further-information">Further information <a class="markdownIt-Anchor" href="#further-information">#</a></h4>
 <p><strong>Documentation</strong></p>
 <ul>
-<li><a href="/docs/Troubleshooting.md">Troubleshooting</a></li>
-<li><a href="https://github.com/reactjs/react-redux/blob/master/docs/troubleshooting.md">React Redux: Troubleshooting</a></li>
-<li><a href="/docs/recipes/UsingObjectSpreadOperator.md">Recipes: Using the Object Spread Operator</a></li>
-<li><a href="/docs/recipes/reducers/PrerequisiteConcepts.md">Recipes: Structuring Reducers - Prerequisite Concepts</a></li>
-<li><a href="/docs/recipes/reducers/ImmutableUpdatePatterns.md">Recipes: Structuring Reducers - Immutable Update Patterns</a></li>
+<li><a href="/docs/Troubleshooting.md" target="_blank" rel="noopener">Troubleshooting</a></li>
+<li><a href="https://github.com/reactjs/react-redux/blob/master/docs/troubleshooting.md" target="_blank" rel="noopener">React Redux: Troubleshooting</a></li>
+<li><a href="/docs/recipes/UsingObjectSpreadOperator.md" target="_blank" rel="noopener">Recipes: Using the Object Spread Operator</a></li>
+<li><a href="/docs/recipes/reducers/PrerequisiteConcepts.md" target="_blank" rel="noopener">Recipes: Structuring Reducers - Prerequisite Concepts</a></li>
+<li><a href="/docs/recipes/reducers/ImmutableUpdatePatterns.md" target="_blank" rel="noopener">Recipes: Structuring Reducers - Immutable Update Patterns</a></li>
 </ul>
 <p><strong>Articles</strong></p>
 <ul>
-<li><a href="http://reactkungfu.com/2015/08/pros-and-cons-of-using-immutability-with-react-js/">Pros and Cons of Using Immutability with React</a></li>
-<li><a href="https://github.com/markerikson/react-redux-links/blob/master/immutable-data.md">React/Redux Links: Immutable Data</a></li>
+<li><a href="http://reactkungfu.com/2015/08/pros-and-cons-of-using-immutability-with-react-js/" target="_blank" rel="noopener">Pros and Cons of Using Immutability with React</a></li>
+<li><a href="https://github.com/markerikson/react-redux-links/blob/master/immutable-data.md" target="_blank" rel="noopener">React/Redux Links: Immutable Data</a></li>
 </ul>
 <p><strong>Discussions</strong></p>
 <ul>
-<li><a href="https://github.com/reactjs/redux/issues/1262">#1262: Immutable data + bad performance</a></li>
-<li><a href="https://github.com/reactjs/react-redux/issues/235">React Redux #235: Predicate function for updating component</a></li>
-<li><a href="https://github.com/reactjs/react-redux/issues/291">React Redux #291: Should mapStateToProps be called every time an action is dispatched?</a></li>
-<li><a href="http://stackoverflow.com/questions/35592078/cleaner-shorter-way-to-update-nested-state-in-redux">Stack Overflow: Cleaner/shorter way to update nested state in Redux?</a></li>
-<li><a href="https://gist.github.com/amcdnl/7d93c0c67a9a44fe5761#gistcomment-1706579">Gist: state mutations</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1262" target="_blank" rel="noopener">#1262: Immutable data + bad performance</a></li>
+<li><a href="https://github.com/reactjs/react-redux/issues/235" target="_blank" rel="noopener">React Redux #235: Predicate function for updating component</a></li>
+<li><a href="https://github.com/reactjs/react-redux/issues/291" target="_blank" rel="noopener">React Redux #291: Should mapStateToProps be called every time an action is dispatched?</a></li>
+<li><a href="http://stackoverflow.com/questions/35592078/cleaner-shorter-way-to-update-nested-state-in-redux" target="_blank" rel="noopener">Stack Overflow: Cleaner/shorter way to update nested state in Redux?</a></li>
+<li><a href="https://gist.github.com/amcdnl/7d93c0c67a9a44fe5761#gistcomment-1706579" target="_blank" rel="noopener">Gist: state mutations</a></li>
 </ul>
 <p><a id="react-rendering-too-often"></a></p>
 <h3 id="why-is-my-component-re-rendering-too-often">Why is my component re-rendering too often? <a class="markdownIt-Anchor" href="#why-is-my-component-re-rendering-too-often">#</a></h3>
@@ -83,61 +83,61 @@
 }
 </code></pre>
 <p>Even though the array might contain the exact same object references each time, the array itself is a different reference, so the shallow equality check fails and React Redux would re-render the wrapped component.</p>
-<p>The extra re-renders could be resolved by saving the array of objects into the state using a reducer, caching the mapped array using <a href="https://github.com/reactjs/reselect">Reselect</a>, or implementing <code>shouldComponentUpdate</code> in the component by hand and doing a more in-depth props comparison using a function such as <code>_.isEqual</code>. Be careful to not make your custom <code>shouldComponentUpdate()</code> more expensive than the rendering itself! Always use a profiler to check your assumptions about performance.</p>
+<p>The extra re-renders could be resolved by saving the array of objects into the state using a reducer, caching the mapped array using <a href="https://github.com/reactjs/reselect" target="_blank" rel="noopener">Reselect</a>, or implementing <code>shouldComponentUpdate</code> in the component by hand and doing a more in-depth props comparison using a function such as <code>_.isEqual</code>. Be careful to not make your custom <code>shouldComponentUpdate()</code> more expensive than the rendering itself! Always use a profiler to check your assumptions about performance.</p>
 <p>For non-connected components, you may want to check what props are being passed in. A common issue is having a parent component re-bind a callback inside its render function, like <code>&lt;Child onClick={this.handleClick.bind(this)} /&gt;</code>. That creates a new function reference every time the parent re-renders. It's generally good practice to only bind callbacks once in the parent component's constructor.</p>
-<h4 id="further-information-2">Further information <a class="markdownIt-Anchor" href="#further-information-2">#</a></h4>
+<h4 id="further-information-1">Further information <a class="markdownIt-Anchor" href="#further-information-1">#</a></h4>
 <p><strong>Documentation</strong></p>
 <ul>
-<li><a href="/docs/faq/Performance.md#performance-scaling">FAQ: Performance - Scaling</a></li>
+<li><a href="/docs/faq/Performance.md#performance-scaling" target="_blank" rel="noopener">FAQ: Performance - Scaling</a></li>
 </ul>
 <p><strong>Articles</strong></p>
 <ul>
-<li><a href="http://benchling.engineering/deep-dive-react-perf-debugging/">A Deep Dive into React Perf Debugging</a></li>
-<li><a href="https://medium.com/@esamatti/react-js-pure-render-performance-anti-pattern-fb88c101332f">React.js pure render performance anti-pattern</a></li>
-<li><a href="http://blog.rangle.io/react-and-redux-performance-with-reselect/">Improving React and Redux Performance with Reselect</a></li>
-<li><a href="http://randycoulman.com/blog/2016/09/13/encapsulating-the-redux-state-tree/">Encapsulating the Redux State Tree</a></li>
-<li><a href="https://github.com/markerikson/react-redux-links/blob/master/react-performance.md">React/Redux Links: React/Redux Performance</a></li>
+<li><a href="http://benchling.engineering/deep-dive-react-perf-debugging/" target="_blank" rel="noopener">A Deep Dive into React Perf Debugging</a></li>
+<li><a href="https://medium.com/@esamatti/react-js-pure-render-performance-anti-pattern-fb88c101332f" target="_blank" rel="noopener">React.js pure render performance anti-pattern</a></li>
+<li><a href="http://blog.rangle.io/react-and-redux-performance-with-reselect/" target="_blank" rel="noopener">Improving React and Redux Performance with Reselect</a></li>
+<li><a href="http://randycoulman.com/blog/2016/09/13/encapsulating-the-redux-state-tree/" target="_blank" rel="noopener">Encapsulating the Redux State Tree</a></li>
+<li><a href="https://github.com/markerikson/react-redux-links/blob/master/react-performance.md" target="_blank" rel="noopener">React/Redux Links: React/Redux Performance</a></li>
 </ul>
 <p><strong>Discussions</strong></p>
 <ul>
-<li><a href="http://stackoverflow.com/questions/34782249/can-a-react-redux-app-really-scale-as-well-as-say-backbone-even-with-reselect">Stack Overflow: Can a React Redux app scale as well as Backbone?</a></li>
+<li><a href="http://stackoverflow.com/questions/34782249/can-a-react-redux-app-really-scale-as-well-as-say-backbone-even-with-reselect" target="_blank" rel="noopener">Stack Overflow: Can a React Redux app scale as well as Backbone?</a></li>
 </ul>
 <p><strong>Libraries</strong></p>
 <ul>
-<li><a href="https://github.com/markerikson/redux-ecosystem-links/blob/master/devtools.md#component-update-monitoring">Redux Addons Catalog: DevTools - Component Update Monitoring</a></li>
+<li><a href="https://github.com/markerikson/redux-ecosystem-links/blob/master/devtools.md#component-update-monitoring" target="_blank" rel="noopener">Redux Addons Catalog: DevTools - Component Update Monitoring</a></li>
 </ul>
 <p><a id="react-mapstate-speed"></a></p>
 <h3 id="how-can-i-speed-up-my-mapstatetoprops">How can I speed up my <code>mapStateToProps</code>? <a class="markdownIt-Anchor" href="#how-can-i-speed-up-my-mapstatetoprops">#</a></h3>
-<p>While React Redux does work to minimize the number of times that your <code>mapStateToProps</code> function is called, it's still a good idea to ensure that your <code>mapStateToProps</code> runs quickly and also minimizes the amount of work it does. The common recommended approach is to create memoized “selector” functions using <a href="https://github.com/reactjs/reselect">Reselect</a>. These selectors can be combined and composed together, and selectors later in a pipeline will only run if their inputs have changed. This means you can create selectors that do things like filtering or sorting, and ensure that the real work only happens if needed.</p>
-<h4 id="further-information-3">Further information <a class="markdownIt-Anchor" href="#further-information-3">#</a></h4>
+<p>While React Redux does work to minimize the number of times that your <code>mapStateToProps</code> function is called, it's still a good idea to ensure that your <code>mapStateToProps</code> runs quickly and also minimizes the amount of work it does. The common recommended approach is to create memoized “selector” functions using <a href="https://github.com/reactjs/reselect" target="_blank" rel="noopener">Reselect</a>. These selectors can be combined and composed together, and selectors later in a pipeline will only run if their inputs have changed. This means you can create selectors that do things like filtering or sorting, and ensure that the real work only happens if needed.</p>
+<h4 id="further-information-2">Further information <a class="markdownIt-Anchor" href="#further-information-2">#</a></h4>
 <p><strong>Documentation</strong></p>
 <ul>
-<li><a href="/docs/recipes/ComputingDerivedData.md">Recipes: Computed Derived Data</a></li>
+<li><a href="/docs/recipes/ComputingDerivedData.md" target="_blank" rel="noopener">Recipes: Computed Derived Data</a></li>
 </ul>
 <p><strong>Articles</strong></p>
 <ul>
-<li><a href="http://blog.rangle.io/react-and-redux-performance-with-reselect/">Improving React and Redux Performance with Reselect</a></li>
+<li><a href="http://blog.rangle.io/react-and-redux-performance-with-reselect/" target="_blank" rel="noopener">Improving React and Redux Performance with Reselect</a></li>
 </ul>
 <p><strong>Discussions</strong></p>
 <ul>
-<li><a href="https://github.com/reactjs/redux/issues/815">#815: Working with Data Structures</a></li>
-<li><a href="https://github.com/reactjs/reselect/issues/47">Reselect #47: Memoizing Hierarchical Selectors</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/815" target="_blank" rel="noopener">#815: Working with Data Structures</a></li>
+<li><a href="https://github.com/reactjs/reselect/issues/47" target="_blank" rel="noopener">Reselect #47: Memoizing Hierarchical Selectors</a></li>
 </ul>
 <p><a id="react-props-dispatch"></a></p>
 <h3 id="why-dont-i-have-thispropsdispatch-available-in-my-connected-component">Why don't I have <code>this.props.dispatch</code> available in my connected component? <a class="markdownIt-Anchor" href="#why-dont-i-have-thispropsdispatch-available-in-my-connected-component">#</a></h3>
 <p>The <code>connect()</code> function takes two primary arguments, both optional. The first, <code>mapStateToProps</code>, is a function you provide to pull data from the store when it changes, and pass those values as props to your component. The second, <code>mapDispatchToProps</code>, is a function you provide to make use of the store's <code>dispatch</code> function, usually by creating pre-bound versions of action creators that will automatically dispatch their actions as soon as they are called.</p>
 <p>If you do not provide your own <code>mapDispatchToProps</code> function when calling <code>connect()</code>, React Redux will provide a default version, which simply returns the <code>dispatch</code> function as a prop. That means that if you <em>do</em> provide your own function, <code>dispatch</code> is <em>not</em> automatically provided.  If you still want it available as a prop, you need to explicitly return it yourself in your <code>mapDispatchToProps</code> implementation.</p>
-<h4 id="further-information-4">Further information <a class="markdownIt-Anchor" href="#further-information-4">#</a></h4>
+<h4 id="further-information-3">Further information <a class="markdownIt-Anchor" href="#further-information-3">#</a></h4>
 <p><strong>Documentation</strong></p>
 <ul>
-<li><a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options">React Redux API: connect()</a></li>
+<li><a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options" target="_blank" rel="noopener">React Redux API: connect()</a></li>
 </ul>
 <p><strong>Discussions</strong></p>
 <ul>
-<li><a href="https://github.com/reactjs/react-redux/issues/89">React Redux #89: can i wrap multi actionCreators into one props with name?</a></li>
-<li><a href="https://github.com/reactjs/react-redux/issues/145">React Redux #145: consider always passing down dispatch regardless of what mapDispatchToProps does</a></li>
-<li><a href="https://github.com/reactjs/react-redux/issues/255">React Redux #255: this.props.dispatch is undefined if using mapDispatchToProps</a></li>
-<li><a href="http://stackoverflow.com/questions/34458261/how-to-get-simple-dispatch-from-this-props-using-connect-w-redux/34458710%5D">Stack Overflow: How to get simple dispatch from this.props using connect w/ Redux?</a></li>
+<li><a href="https://github.com/reactjs/react-redux/issues/89" target="_blank" rel="noopener">React Redux #89: can i wrap multi actionCreators into one props with name?</a></li>
+<li><a href="https://github.com/reactjs/react-redux/issues/145" target="_blank" rel="noopener">React Redux #145: consider always passing down dispatch regardless of what mapDispatchToProps does</a></li>
+<li><a href="https://github.com/reactjs/react-redux/issues/255" target="_blank" rel="noopener">React Redux #255: this.props.dispatch is undefined if using mapDispatchToProps</a></li>
+<li><a href="http://stackoverflow.com/questions/34458261/how-to-get-simple-dispatch-from-this-props-using-connect-w-redux/34458710%5D" target="_blank" rel="noopener">Stack Overflow: How to get simple dispatch from this.props using connect w/ Redux?</a></li>
 </ul>
 <p><a id="react-multiple-components"></a></p>
 <h3 id="should-i-only-connect-my-top-component-or-can-i-connect-multiple-components-in-my-tree">Should I only connect my top component, or can I connect multiple components in my tree? <a class="markdownIt-Anchor" href="#should-i-only-connect-my-top-component-or-can-i-connect-multiple-components-in-my-tree">#</a></h3>
@@ -148,26 +148,26 @@
 </blockquote>
 <p>In fact, benchmarks have shown that more connected components generally leads to better performance than fewer connected components.</p>
 <p>In general, try to find a balance between understandable data flow and areas of responsibility with your components.</p>
-<h4 id="further-information-5">Further information <a class="markdownIt-Anchor" href="#further-information-5">#</a></h4>
+<h4 id="further-information-4">Further information <a class="markdownIt-Anchor" href="#further-information-4">#</a></h4>
 <p><strong>Documentation</strong></p>
 <ul>
-<li><a href="/docs/basics/UsageWithReact.md">Basics: Usage with React</a></li>
-<li><a href="/docs/faq/Performance.md#performance-scaling">FAQ: Performance - Scaling</a></li>
+<li><a href="/docs/basics/UsageWithReact.md" target="_blank" rel="noopener">Basics: Usage with React</a></li>
+<li><a href="/docs/faq/Performance.md#performance-scaling" target="_blank" rel="noopener">FAQ: Performance - Scaling</a></li>
 </ul>
 <p><strong>Articles</strong></p>
 <ul>
-<li><a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">Presentational and Container Components</a></li>
-<li><a href="http://somebody32.github.io/high-performance-redux/">High-Performance Redux</a></li>
-<li><a href="https://github.com/markerikson/react-redux-links/blob/master/react-redux-architecture.md#redux-architecture">React/Redux Links: Architecture - Redux Architecture</a></li>
-<li><a href="https://github.com/markerikson/react-redux-links/blob/master/react-performance.md#redux-performance">React/Redux Links: Performance - Redux Performance</a></li>
+<li><a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0" target="_blank" rel="noopener">Presentational and Container Components</a></li>
+<li><a href="http://somebody32.github.io/high-performance-redux/" target="_blank" rel="noopener">High-Performance Redux</a></li>
+<li><a href="https://github.com/markerikson/react-redux-links/blob/master/react-redux-architecture.md#redux-architecture" target="_blank" rel="noopener">React/Redux Links: Architecture - Redux Architecture</a></li>
+<li><a href="https://github.com/markerikson/react-redux-links/blob/master/react-performance.md#redux-performance" target="_blank" rel="noopener">React/Redux Links: Performance - Redux Performance</a></li>
 </ul>
 <p><strong>Discussions</strong></p>
 <ul>
-<li><a href="https://twitter.com/dan_abramov/status/668585589609005056">Twitter: emphasizing “one container” was a mistake</a></li>
-<li><a href="https://github.com/reactjs/redux/issues/419">#419: Recommended usage of connect</a></li>
-<li><a href="https://github.com/reactjs/redux/issues/756">#756: container vs component?</a></li>
-<li><a href="https://github.com/reactjs/redux/issues/1176">#1176: Redux+React with only stateless components</a></li>
-<li><a href="http://stackoverflow.com/questions/34992247/can-a-dumb-component-use-render-redux-container-component">Stack Overflow: can a dumb component use a Redux container?</a></li>
+<li><a href="https://twitter.com/dan_abramov/status/668585589609005056" target="_blank" rel="noopener">Twitter: emphasizing “one container” was a mistake</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/419" target="_blank" rel="noopener">#419: Recommended usage of connect</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/756" target="_blank" rel="noopener">#756: container vs component?</a></li>
+<li><a href="https://github.com/reactjs/redux/issues/1176" target="_blank" rel="noopener">#1176: Redux+React with only stateless components</a></li>
+<li><a href="http://stackoverflow.com/questions/34992247/can-a-dumb-component-use-render-redux-container-component" target="_blank" rel="noopener">Stack Overflow: can a dumb component use a Redux container?</a></li>
 </ul>
 
       
@@ -203,7 +203,7 @@
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

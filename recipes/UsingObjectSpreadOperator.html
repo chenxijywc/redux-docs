@@ -32,8 +32,8 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../recipes/UsingObjectSpreadOperator.html" class="breadcrumb-item">Using Object Spread Operator</a></div>
     <h1 class="article-title">Using Object Spread Operator</h1>
     <div class="article">
-      <p>Since one of the core tenets of Redux is to never mutate state, you'll often find yourself using <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a> to create
-copies of objects with new or updated values. For example, in the <code>todoApp</code> below <code>Object.assign()</code> is used to return a new
+      <p>Since one of the core tenets of Redux is to never mutate state, you'll often find yourself using <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener"><code>Object.assign()</code></a> to create<br>
+copies of objects with new or updated values. For example, in the <code>todoApp</code> below <code>Object.assign()</code> is used to return a new<br>
 <code>state</code> object with an updated <code>visibilityFilter</code> property:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">todoApp</span>(<span class="hljs-params">state = initialState, action</span>) </span>{
   <span class="hljs-keyword">switch</span> (action.type) {
@@ -47,7 +47,7 @@ copies of objects with new or updated values. For example, in the <code>todoApp<
 }
 </code></pre>
 <p>While effective, using <code>Object.assign()</code> can quickly make simple reducers difficult to read given its rather verbose syntax.</p>
-<p>An alternative approach is to use the <a href="https://github.com/sebmarkbage/ecmascript-rest-spread">object spread syntax</a> proposed for the next versions of JavaScript which lets you use the spread (<code>...</code>) operator to copy enumerable properties from one object to another in a more succinct way. The object spread operator is conceptually similar to the ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator">array spread operator</a>. We
+<p>An alternative approach is to use the <a href="https://github.com/sebmarkbage/ecmascript-rest-spread" target="_blank" rel="noopener">object spread syntax</a> proposed for the next versions of JavaScript which lets you use the spread (<code>...</code>) operator to copy enumerable properties from one object to another in a more succinct way. The object spread operator is conceptually similar to the ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator" target="_blank" rel="noopener">array spread operator</a>. We<br>
 can simplify the <code>todoApp</code> example above by using the object spread syntax:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">todoApp</span>(<span class="hljs-params">state = initialState, action</span>) </span>{
   <span class="hljs-keyword">switch</span> (action.type) {
@@ -73,13 +73,13 @@ can simplify the <code>todoApp</code> example above by using the object spread s
   <span class="hljs-attr">quantity</span>: getQuantity(state.cart, id)
 }))
 </code></pre>
-<p>Since the object spread syntax is still a Stage 3 proposal for ECMAScript you'll need to use a transpiler such as <a href="http://babeljs.io/">Babel</a> to use it in production. You can use your existing <code>es2015</code> preset, install <a href="http://babeljs.io/docs/plugins/transform-object-rest-spread/"><code>babel-plugin-transform-object-rest-spread</code></a> and add it individually to the <code>plugins</code> array in your <code>.babelrc</code>.</p>
+<p>Since the object spread syntax is still a Stage 3 proposal for ECMAScript you'll need to use a transpiler such as <a href="http://babeljs.io/" target="_blank" rel="noopener">Babel</a> to use it in production. You can use your existing <code>es2015</code> preset, install <a href="http://babeljs.io/docs/plugins/transform-object-rest-spread/" target="_blank" rel="noopener"><code>babel-plugin-transform-object-rest-spread</code></a> and add it individually to the <code>plugins</code> array in your <code>.babelrc</code>.</p>
 <pre class="hljs"><code>{
   <span class="hljs-string">"presets"</span>: [<span class="hljs-string">"es2015"</span>],
   <span class="hljs-string">"plugins"</span>: [<span class="hljs-string">"transform-object-rest-spread"</span>]
 }
 </code></pre>
-<p>Note that this is still an experimental language feature proposal so it may change in the future. Nevertheless some large projects such as <a href="https://github.com/facebook/react-native">React Native</a> already use it extensively so it is safe to say that there will be a good automated migration path if it changes.</p>
+<p>Note that this is still an experimental language feature proposal so it may change in the future. Nevertheless some large projects such as <a href="https://github.com/facebook/react-native" target="_blank" rel="noopener">React Native</a> already use it extensively so it is safe to say that there will be a good automated migration path if it changes.</p>
 
       
     </div>
@@ -114,7 +114,7 @@ can simplify the <code>todoApp</code> example above by using the object spread s
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

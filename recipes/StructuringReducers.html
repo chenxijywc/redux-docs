@@ -33,25 +33,25 @@
     <h1 class="article-title">Structuring Reducers</h1>
     <div class="article">
       <p>At its core, Redux is really a fairly simple design pattern: all your &quot;write&quot; logic goes into a single function, and the only way to run that logic is to give Redux a plain object that describes something that has happened.  The Redux store calls that write logic function and passes in the current state tree and the descriptive object, the write logic function returns some new state tree, and the Redux store notifies any subscribers that the state tree has changed.</p>
-<p>Redux puts some basic constraints on how that write logic function should work.  As described in <a href="../basics/Reducers.md">Reducers</a>, it has to have a signature of <code>(previousState, action) =&gt; newState</code>, is known as a <strong><em>reducer function</em></strong>, and must be <em>pure</em> and predictable.</p>
+<p>Redux puts some basic constraints on how that write logic function should work.  As described in <a href="../basics/Reducers.md" target="_blank" rel="noopener">Reducers</a>, it has to have a signature of <code>(previousState, action) =&gt; newState</code>, is known as a <strong><em>reducer function</em></strong>, and must be <em>pure</em> and predictable.</p>
 <p>Beyond that, Redux does not really care how you actually structure your logic inside that reducer function, as long as it obeys those basic rules.  This is both a source of freedom and a source of confusion.  However, there are a number of common patterns that are widely used when writing reducers, as well as a number of related topics and concepts to be aware of.  As an application grows, these patterns play a crucial role in managing reducer code complexity, handling real-world data, and optimizing UI performance.</p>
 <h3 id="prerequisite-concepts-for-writing-reducers">Prerequisite Concepts for Writing Reducers <a class="markdownIt-Anchor" href="#prerequisite-concepts-for-writing-reducers">#</a></h3>
 <p>Some of these concepts are already described elsewhere in the Redux documentation.  Others are generic and applicable outside of Redux itself, and there are numerous existing articles that cover these concepts in detail.  These concepts and techniques form the foundation of writing solid Redux reducer logic.</p>
 <p>It is vital that these Prerequisite Concepts are <strong>thoroughly understood</strong> before moving on to more advanced and Redux-specific techniques. A recommended reading list is available at:</p>
-<h4 id="prerequisite-concepts"><a href="./reducers/PrerequisiteConcepts.md">Prerequisite Concepts</a> <a class="markdownIt-Anchor" href="#prerequisite-concepts">#</a></h4>
+<h4 id="prerequisite-concepts"><a href="./reducers/PrerequisiteConcepts.md" target="_blank" rel="noopener">Prerequisite Concepts</a> <a class="markdownIt-Anchor" href="#prerequisite-concepts">#</a></h4>
 <p>It's also important to note that some of these suggestions may or may not be directly applicable based on architectural decisions in a specific application.  For example, an application using Immutable.js Maps to store data would likely have its reducer logic structured at least somewhat differently than an application using plain Javascript objects.  This documentation primarily assumes use of plain Javascript objects, but many of the principles would still apply if using other tools.</p>
 <h3 id="reducer-concepts-and-techniques">Reducer Concepts and Techniques <a class="markdownIt-Anchor" href="#reducer-concepts-and-techniques">#</a></h3>
 <ul>
-<li><a href="./reducers/BasicReducerStructure.md">Basic Reducer Structure</a></li>
-<li><a href="./reducers/SplittingReducerLogic.md">Splitting Reducer Logic</a></li>
-<li><a href="./reducers/RefactoringReducersExample.md">Refactoring Reducers Example</a></li>
-<li><a href="./reducers/UsingCombineReducers.md">Using <code>combineReducers</code></a></li>
-<li><a href="./reducers/BeyondCombineReducers.md">Beyond <code>combineReducers</code></a></li>
-<li><a href="./reducers/NormalizingStateShape.md">Normalizing State Shape</a></li>
-<li><a href="./reducers/UpdatingNormalizedData.md">Updating Normalized Data</a></li>
-<li><a href="./reducers/ReusingReducerLogic.md">Reusing Reducer Logic</a></li>
-<li><a href="./reducers/ImmutableUpdatePatterns.md">Immutable Update Patterns</a></li>
-<li><a href="./reducers/InitializingState.md">Initializing State</a></li>
+<li><a href="./reducers/BasicReducerStructure.md" target="_blank" rel="noopener">Basic Reducer Structure</a></li>
+<li><a href="./reducers/SplittingReducerLogic.md" target="_blank" rel="noopener">Splitting Reducer Logic</a></li>
+<li><a href="./reducers/RefactoringReducersExample.md" target="_blank" rel="noopener">Refactoring Reducers Example</a></li>
+<li><a href="./reducers/UsingCombineReducers.md" target="_blank" rel="noopener">Using <code>combineReducers</code></a></li>
+<li><a href="./reducers/BeyondCombineReducers.md" target="_blank" rel="noopener">Beyond <code>combineReducers</code></a></li>
+<li><a href="./reducers/NormalizingStateShape.md" target="_blank" rel="noopener">Normalizing State Shape</a></li>
+<li><a href="./reducers/UpdatingNormalizedData.md" target="_blank" rel="noopener">Updating Normalized Data</a></li>
+<li><a href="./reducers/ReusingReducerLogic.md" target="_blank" rel="noopener">Reusing Reducer Logic</a></li>
+<li><a href="./reducers/ImmutableUpdatePatterns.md" target="_blank" rel="noopener">Immutable Update Patterns</a></li>
+<li><a href="./reducers/InitializingState.md" target="_blank" rel="noopener">Initializing State</a></li>
 </ul>
 
       
@@ -87,7 +87,7 @@
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

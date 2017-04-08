@@ -34,7 +34,7 @@
     <div class="article">
       <p>Redux can be described in three fundamental principles:</p>
 <h2 id="single-source-of-truth">Single source of truth <a class="markdownIt-Anchor" href="#single-source-of-truth">#</a></h2>
-<p><strong>The <a href="../Glossary.md#state">state</a> of your whole application is stored in an object tree within a single <a href="../Glossary.md#store">store</a>.</strong></p>
+<p><strong>The <a href="../Glossary.md#state" target="_blank" rel="noopener">state</a> of your whole application is stored in an object tree within a single <a href="../Glossary.md#store" target="_blank" rel="noopener">store</a>.</strong></p>
 <p>This makes it easy to create universal apps, as the state from your server can be serialized and hydrated into the client with no extra coding effort. A single state tree also makes it easier to debug or introspect an application; it also enables you to persist your app's state in development, for a faster development cycle. Some functionality which has been traditionally difficult to implement - Undo/Redo, for example - can suddenly become trivial to implement, if all of your state is stored in a single tree.</p>
 <pre class="hljs"><code><span class="hljs-built_in">console</span>.log(store.getState())
 
@@ -55,7 +55,7 @@
 */</span>
 </code></pre>
 <h2 id="state-is-read-only">State is read-only <a class="markdownIt-Anchor" href="#state-is-read-only">#</a></h2>
-<p><strong>The only way to change the state is to emit an <a href="../Glossary.md#action">action</a>, an object describing what happened.</strong></p>
+<p><strong>The only way to change the state is to emit an <a href="../Glossary.md#action" target="_blank" rel="noopener">action</a>, an object describing what happened.</strong></p>
 <p>This ensures that neither the views nor the network callbacks will ever write directly to the state. Instead, they express an intent to transform the state. Because all changes are centralized and happen one by one in a strict order, there are no subtle race conditions to watch out for. As actions are just plain objects, they can be logged, serialized, stored, and later replayed for debugging or testing purposes.</p>
 <pre class="hljs"><code>store.dispatch({
   <span class="hljs-attr">type</span>: <span class="hljs-string">'COMPLETE_TODO'</span>,
@@ -68,7 +68,7 @@ store.dispatch({
 })
 </code></pre>
 <h2 id="changes-are-made-with-pure-functions">Changes are made with pure functions <a class="markdownIt-Anchor" href="#changes-are-made-with-pure-functions">#</a></h2>
-<p><strong>To specify how the state tree is transformed by actions, you write pure <a href="../Glossary.md#reducer">reducers</a>.</strong></p>
+<p><strong>To specify how the state tree is transformed by actions, you write pure <a href="../Glossary.md#reducer" target="_blank" rel="noopener">reducers</a>.</strong></p>
 <p>Reducers are just pure functions that take the previous state and an action, and return the next state. Remember to return new state objects, instead of mutating the previous state. You can start with a single reducer, and as your app grows, split it off into smaller reducers that manage specific parts of the state tree. Because reducers are just functions, you can control the order in which they are called, pass additional data, or even make reusable reducers for common tasks such as pagination.</p>
 <pre class="hljs"><code>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">visibilityFilter</span>(<span class="hljs-params">state = <span class="hljs-string">'SHOW_ALL'</span>, action</span>) </span>{
@@ -143,7 +143,7 @@ store.dispatch({
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

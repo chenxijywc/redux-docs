@@ -56,32 +56,32 @@
 <h4 id="further-information">Further information <a class="markdownIt-Anchor" href="#further-information">#</a></h4>
 <p><strong>Documentation</strong></p>
 <ul>
-<li><a href="/docs/introduction/Motivation.md">Introduction: Motivation</a></li>
+<li><a href="/docs/introduction/Motivation.md" target="_blank" rel="noopener">Introduction: Motivation</a></li>
 </ul>
 <p><strong>Articles</strong></p>
 <ul>
-<li><a href="https://github.com/petehunt/react-howto">React How-To</a></li>
-<li><a href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367">You Might Not Need Redux</a></li>
-<li><a href="https://medium.com/swlh/the-case-for-flux-379b7d1982c6">The Case for Flux</a></li>
+<li><a href="https://github.com/petehunt/react-howto" target="_blank" rel="noopener">React How-To</a></li>
+<li><a href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367" target="_blank" rel="noopener">You Might Not Need Redux</a></li>
+<li><a href="https://medium.com/swlh/the-case-for-flux-379b7d1982c6" target="_blank" rel="noopener">The Case for Flux</a></li>
 </ul>
 <p><strong>Discussions</strong></p>
 <ul>
-<li><a href="https://twitter.com/dan_abramov/status/699241546248536064">Twitter: Don't use Redux until...</a></li>
-<li><a href="https://twitter.com/dan_abramov/status/733742952657342464">Twitter: Redux is designed to be predictable, not concise</a></li>
-<li><a href="https://twitter.com/dan_abramov/status/732912085840089088">Twitter: Redux is useful to eliminate deep prop passing</a></li>
-<li><a href="https://twitter.com/dan_abramov/status/725089243836588032">Twitter: Don't use Redux unless you're unhappy with local component state</a></li>
-<li><a href="https://twitter.com/dan_abramov/status/737036433215610880">Twitter: You don't need Redux if your data never changes</a></li>
-<li><a href="http://stackoverflow.com/questions/32461229/why-use-redux-over-facebook-flux">Stack Overflow: Why use Redux over Facebook Flux?</a></li>
-<li><a href="http://stackoverflow.com/questions/35675339/why-should-i-use-redux-in-this-example">Stack Overflow: Why should I use Redux in this example?</a></li>
-<li><a href="http://stackoverflow.com/questions/32021763/what-could-be-the-downsides-of-using-redux-instead-of-flux">Stack Overflow: What could be the downsides of using Redux instead of Flux?</a></li>
-<li><a href="http://stackoverflow.com/questions/36631761/when-should-i-add-redux-to-a-react-app">Stack Overflow: When should I add Redux to a React app?</a></li>
+<li><a href="https://twitter.com/dan_abramov/status/699241546248536064" target="_blank" rel="noopener">Twitter: Don't use Redux until...</a></li>
+<li><a href="https://twitter.com/dan_abramov/status/733742952657342464" target="_blank" rel="noopener">Twitter: Redux is designed to be predictable, not concise</a></li>
+<li><a href="https://twitter.com/dan_abramov/status/732912085840089088" target="_blank" rel="noopener">Twitter: Redux is useful to eliminate deep prop passing</a></li>
+<li><a href="https://twitter.com/dan_abramov/status/725089243836588032" target="_blank" rel="noopener">Twitter: Don't use Redux unless you're unhappy with local component state</a></li>
+<li><a href="https://twitter.com/dan_abramov/status/737036433215610880" target="_blank" rel="noopener">Twitter: You don't need Redux if your data never changes</a></li>
+<li><a href="http://stackoverflow.com/questions/32461229/why-use-redux-over-facebook-flux" target="_blank" rel="noopener">Stack Overflow: Why use Redux over Facebook Flux?</a></li>
+<li><a href="http://stackoverflow.com/questions/35675339/why-should-i-use-redux-in-this-example" target="_blank" rel="noopener">Stack Overflow: Why should I use Redux in this example?</a></li>
+<li><a href="http://stackoverflow.com/questions/32021763/what-could-be-the-downsides-of-using-redux-instead-of-flux" target="_blank" rel="noopener">Stack Overflow: What could be the downsides of using Redux instead of Flux?</a></li>
+<li><a href="http://stackoverflow.com/questions/36631761/when-should-i-add-redux-to-a-react-app" target="_blank" rel="noopener">Stack Overflow: When should I add Redux to a React app?</a></li>
 </ul>
 <p><a id="general-only-react"></a></p>
 <h3 id="can-redux-only-be-used-with-react">Can Redux only be used with React? <a class="markdownIt-Anchor" href="#can-redux-only-be-used-with-react">#</a></h3>
 <p>Redux can be used as a data store for any UI layer. The most common usage is with React and React Native, but there are bindings available for Angular, Angular 2, Vue, Mithril, and more. Redux simply provides a subscription mechanism which can be used by any other code. That said, it is most useful when combined with a declarative view implementation that can infer the UI updates from the state changes, such as React or one of the similar libraries available.</p>
 <p><a id="general-build-tools"></a></p>
 <h3 id="do-i-need-to-have-a-particular-build-tool-to-use-redux">Do I need to have a particular build tool to use Redux? <a class="markdownIt-Anchor" href="#do-i-need-to-have-a-particular-build-tool-to-use-redux">#</a></h3>
-<p>Redux is originally written in ES6 and transpiled for production into ES5 with Webpack and Babel. You should be able to use it regardless of your JavaScript build process. Redux also offers a UMD build that can be used directly without any build process at all. The <a href="https://github.com/reactjs/redux/tree/master/examples/counter-vanilla">counter-vanilla</a> example demonstrates basic ES5 usage with Redux included as a <code>&lt;script&gt;</code> tag. As the relevant pull request says:</p>
+<p>Redux is originally written in ES6 and transpiled for production into ES5 with Webpack and Babel. You should be able to use it regardless of your JavaScript build process. Redux also offers a UMD build that can be used directly without any build process at all. The <a href="https://github.com/reactjs/redux/tree/master/examples/counter-vanilla" target="_blank" rel="noopener">counter-vanilla</a> example demonstrates basic ES5 usage with Redux included as a <code>&lt;script&gt;</code> tag. As the relevant pull request says:</p>
 <blockquote>
 <p>The new Counter Vanilla example is aimed to dispel the myth that Redux requires Webpack, React, hot reloading, sagas, action creators, constants, Babel, npm, CSS modules, decorators, fluent Latin, an Egghead subscription, a PhD, or an Exceeds Expectations O.W.L. level.</p>
 </blockquote>
@@ -122,7 +122,7 @@
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

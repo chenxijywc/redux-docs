@@ -32,16 +32,16 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../recipes/MigratingToRedux.html" class="breadcrumb-item">Migrating to Redux</a></div>
     <h1 class="article-title">Migrating to Redux</h1>
     <div class="article">
-      <p>Redux is not a monolithic framework, but a set of contracts and a <a href="../api/README.md">few functions that make them work together</a>. The majority of your “Redux code” will not even use Redux APIs, as most of the time you'll be writing functions.</p>
+      <p>Redux is not a monolithic framework, but a set of contracts and a <a href="../api/README.md" target="_blank" rel="noopener">few functions that make them work together</a>. The majority of your “Redux code” will not even use Redux APIs, as most of the time you'll be writing functions.</p>
 <p>This makes it easy to migrate both to and from Redux.<br>
 We don't want to lock you in!</p>
 <h2 id="from-flux">From Flux <a class="markdownIt-Anchor" href="#from-flux">#</a></h2>
-<p><a href="../Glossary.md#reducer">Reducers</a> capture “the essence” of Flux Stores, so it's possible to gradually migrate an existing Flux project towards Redux, whether you are using <a href="http://github.com/acdlite/flummox">Flummox</a>, <a href="http://github.com/goatslacker/alt">Alt</a>, <a href="https://github.com/facebook/flux">traditional Flux</a>, or any other Flux library.</p>
+<p><a href="../Glossary.md#reducer" target="_blank" rel="noopener">Reducers</a> capture “the essence” of Flux Stores, so it's possible to gradually migrate an existing Flux project towards Redux, whether you are using <a href="http://github.com/acdlite/flummox" target="_blank" rel="noopener">Flummox</a>, <a href="http://github.com/goatslacker/alt" target="_blank" rel="noopener">Alt</a>, <a href="https://github.com/facebook/flux" target="_blank" rel="noopener">traditional Flux</a>, or any other Flux library.</p>
 <p>It is also possible to do the reverse and migrate from Redux to any of these libraries following the same steps.</p>
 <p>Your process will look like this:</p>
 <ul>
 <li>
-<p>Create a function called <code>createFluxStore(reducer)</code> that creates a Flux store compatible with your existing app from a reducer function. Internally it might look similar to <a href="../api/createStore.md"><code>createStore</code></a> (<a href="https://github.com/reactjs/redux/blob/master/src/createStore.js">source</a>) implementation from Redux. Its dispatch handler should just call the <code>reducer</code> for any action, store the next state, and emit change.</p>
+<p>Create a function called <code>createFluxStore(reducer)</code> that creates a Flux store compatible with your existing app from a reducer function. Internally it might look similar to <a href="../api/createStore.md" target="_blank" rel="noopener"><code>createStore</code></a> (<a href="https://github.com/reactjs/redux/blob/master/src/createStore.js" target="_blank" rel="noopener">source</a>) implementation from Redux. Its dispatch handler should just call the <code>reducer</code> for any action, store the next state, and emit change.</p>
 </li>
 <li>
 <p>This allows you to gradually rewrite every Flux Store in your app as a reducer, but still export <code>createFluxStore(reducer)</code> so the rest of your app is not aware that this is happening and sees the Flux stores.</p>
@@ -50,17 +50,17 @@ We don't want to lock you in!</p>
 <p>As you rewrite your Stores, you will find that you need to avoid certain Flux anti-patterns such as fetching API inside the Store, or triggering actions inside the Stores. Your Flux code will be easier to follow once you port it to be based on reducers!</p>
 </li>
 <li>
-<p>When you have ported all of your Flux Stores to be implemented on top of reducers, you can replace the Flux library with a single Redux store, and combine those reducers you already have into one using <a href="../api/combineReducers.md"><code>combineReducers(reducers)</code></a>.</p>
+<p>When you have ported all of your Flux Stores to be implemented on top of reducers, you can replace the Flux library with a single Redux store, and combine those reducers you already have into one using <a href="../api/combineReducers.md" target="_blank" rel="noopener"><code>combineReducers(reducers)</code></a>.</p>
 </li>
 <li>
-<p>Now all that's left to do is to port the UI to <a href="../basics/UsageWithReact.md">use react-redux</a> or equivalent.</p>
+<p>Now all that's left to do is to port the UI to <a href="../basics/UsageWithReact.md" target="_blank" rel="noopener">use react-redux</a> or equivalent.</p>
 </li>
 <li>
 <p>Finally, you might want to begin using some Redux idioms like middleware to further simplify your asynchronous code.</p>
 </li>
 </ul>
 <h2 id="from-backbone">From Backbone <a class="markdownIt-Anchor" href="#from-backbone">#</a></h2>
-<p>Backbone's model layer is quite different from Redux, so we don't suggest mixing them. If possible, it is best that you rewrite your app's model layer from scratch instead of connecting Backbone to Redux. However, if a rewrite is not feasible, you may use <a href="https://github.com/redbooth/backbone-redux">backbone-redux</a> to migrate gradually, and keep the Redux store in sync with Backbone models and collections.</p>
+<p>Backbone's model layer is quite different from Redux, so we don't suggest mixing them. If possible, it is best that you rewrite your app's model layer from scratch instead of connecting Backbone to Redux. However, if a rewrite is not feasible, you may use <a href="https://github.com/redbooth/backbone-redux" target="_blank" rel="noopener">backbone-redux</a> to migrate gradually, and keep the Redux store in sync with Backbone models and collections.</p>
 
       
     </div>
@@ -95,7 +95,7 @@ We don't want to lock you in!</p>
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

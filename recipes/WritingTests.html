@@ -34,11 +34,11 @@
     <div class="article">
       <p>Because most of the Redux code you write are functions, and many of them are pure, they are easy to test without mocking.</p>
 <h3 id="setting-up">Setting Up <a class="markdownIt-Anchor" href="#setting-up">#</a></h3>
-<p>We recommend <a href="http://facebook.github.io/jest/">Jest</a> as the testing engine.
+<p>We recommend <a href="http://facebook.github.io/jest/" target="_blank" rel="noopener">Jest</a> as the testing engine.<br>
 Note that it runs in a Node environment, so you won't have access to the DOM.</p>
 <pre class="hljs"><code>npm install --save-dev jest
 </code></pre>
-<p>To use it together with <a href="http://babeljs.io">Babel</a>, you will need to install <code>babel-jest</code>:</p>
+<p>To use it together with <a href="http://babeljs.io" target="_blank" rel="noopener">Babel</a>, you will need to install <code>babel-jest</code>:</p>
 <pre class="hljs"><code>npm install --save-dev babel-jest
 </code></pre>
 <p>and configure it to use ES2015 features in <code>.babelrc</code>:</p>
@@ -84,8 +84,8 @@ describe(<span class="hljs-string">'actions'</span>, () =&gt; {
 })
 </code></pre>
 <h3 id="async-action-creators">Async Action Creators <a class="markdownIt-Anchor" href="#async-action-creators">#</a></h3>
-<p>For async action creators using <a href="https://github.com/gaearon/redux-thunk">Redux Thunk</a> or other middleware, it's best to completely mock the Redux store for tests. You can apply the middleware to a mock store using <a href="https://github.com/arnaudbenard/redux-mock-store">redux-mock-store</a>. You can also use <a href="https://github.com/pgte/nock">nock</a> to mock the HTTP requests.</p>
-<h4 id="example-2">Example <a class="markdownIt-Anchor" href="#example-2">#</a></h4>
+<p>For async action creators using <a href="https://github.com/gaearon/redux-thunk" target="_blank" rel="noopener">Redux Thunk</a> or other middleware, it's best to completely mock the Redux store for tests. You can apply the middleware to a mock store using <a href="https://github.com/arnaudbenard/redux-mock-store" target="_blank" rel="noopener">redux-mock-store</a>. You can also use <a href="https://github.com/pgte/nock" target="_blank" rel="noopener">nock</a> to mock the HTTP requests.</p>
+<h4 id="example-1">Example <a class="markdownIt-Anchor" href="#example-1">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> fetch <span class="hljs-keyword">from</span> <span class="hljs-string">'isomorphic-fetch'</span>;
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchTodosRequest</span>(<span class="hljs-params"></span>) </span>{
@@ -154,7 +154,7 @@ describe(<span class="hljs-string">'async actions'</span>, () =&gt; {
 </code></pre>
 <h3 id="reducers">Reducers <a class="markdownIt-Anchor" href="#reducers">#</a></h3>
 <p>A reducer should return the new state after applying the action to the previous state, and that's the behavior tested below.</p>
-<h4 id="example-3">Example <a class="markdownIt-Anchor" href="#example-3">#</a></h4>
+<h4 id="example-2">Example <a class="markdownIt-Anchor" href="#example-2">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { ADD_TODO } <span class="hljs-keyword">from</span> <span class="hljs-string">'../constants/ActionTypes'</span>
 
 <span class="hljs-keyword">const</span> initialState = [
@@ -248,11 +248,11 @@ describe(<span class="hljs-string">'todos reducer'</span>, () =&gt; {
 </code></pre>
 <h3 id="components">Components <a class="markdownIt-Anchor" href="#components">#</a></h3>
 <p>A nice thing about React components is that they are usually small and only rely on their props. That makes them easy to test.</p>
-<p>First, we will install <a href="http://airbnb.io/enzyme/">Enzyme</a>. Enzyme uses the <a href="https://facebook.github.io/react/docs/test-utils.html">React Test Utilities</a> underneath, but is more convenient, readable, and powerful.</p>
+<p>First, we will install <a href="http://airbnb.io/enzyme/" target="_blank" rel="noopener">Enzyme</a>. Enzyme uses the <a href="https://facebook.github.io/react/docs/test-utils.html" target="_blank" rel="noopener">React Test Utilities</a> underneath, but is more convenient, readable, and powerful.</p>
 <pre class="hljs"><code>npm install --save-dev enzyme
 </code></pre>
-<p>To test the components we make a <code>setup()</code> helper that passes the stubbed callbacks as props and renders the component with <a href="http://airbnb.io/enzyme/docs/api/shallow.html">shallow rendering</a>. This lets individual tests assert on whether the callbacks were called when expected.</p>
-<h4 id="example-4">Example <a class="markdownIt-Anchor" href="#example-4">#</a></h4>
+<p>To test the components we make a <code>setup()</code> helper that passes the stubbed callbacks as props and renders the component with <a href="http://airbnb.io/enzyme/docs/api/shallow.html" target="_blank" rel="noopener">shallow rendering</a>. This lets individual tests assert on whether the callbacks were called when expected.</p>
+<h4 id="example-3">Example <a class="markdownIt-Anchor" href="#example-3">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> React, { PropTypes, Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
 <span class="hljs-keyword">import</span> TodoTextInput <span class="hljs-keyword">from</span> <span class="hljs-string">'./TodoTextInput'</span>
 
@@ -326,7 +326,7 @@ describe('components', () =&gt; {
 
 </span></code></pre>
 <h3 id="connected-components">Connected Components <a class="markdownIt-Anchor" href="#connected-components">#</a></h3>
-<p>If you use a library like <a href="https://github.com/reactjs/react-redux">React Redux</a>, you might be using <a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750">higher-order components</a> like <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options"><code>connect()</code></a>. This lets you inject Redux state into a regular React component.</p>
+<p>If you use a library like <a href="https://github.com/reactjs/react-redux" target="_blank" rel="noopener">React Redux</a>, you might be using <a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750" target="_blank" rel="noopener">higher-order components</a> like <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options" target="_blank" rel="noopener"><code>connect()</code></a>. This lets you inject Redux state into a regular React component.</p>
 <p>Consider the following <code>App</code> component:</p>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
 
@@ -337,7 +337,7 @@ describe('components', () =&gt; {
 <p>In a unit test, you would normally import the <code>App</code> component like this:</p>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./App'</span>
 </code></pre>
-<p>However, when you import it, you're actually holding the wrapper component returned by <code>connect()</code>, and not the <code>App</code> component itself. If you want to test its interaction with Redux, this is good news: you can wrap it in a <a href="https://github.com/reactjs/react-redux#provider-store"><code>&lt;Provider&gt;</code></a> with a store created specifically for this unit test. But sometimes you want to test just the rendering of the component, without a Redux store.</p>
+<p>However, when you import it, you're actually holding the wrapper component returned by <code>connect()</code>, and not the <code>App</code> component itself. If you want to test its interaction with Redux, this is good news: you can wrap it in a <a href="https://github.com/reactjs/react-redux#provider-store" target="_blank" rel="noopener"><code>&lt;Provider&gt;</code></a> with a store created specifically for this unit test. But sometimes you want to test just the rendering of the component, without a Redux store.</p>
 <p>In order to be able to test the App component itself without having to deal with the decorator, we recommend you to also export the undecorated component:</p>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>
 
@@ -362,11 +362,11 @@ describe('components', () =&gt; {
 <h5 id="a-note-on-mixing-es6-modules-and-commonjs">A Note on Mixing ES6 Modules and CommonJS <a class="markdownIt-Anchor" href="#a-note-on-mixing-es6-modules-and-commonjs">#</a></h5>
 </blockquote>
 <blockquote>
-<p>If you are using ES6 in your application source, but write your tests in ES5, you should know that Babel handles the interchangeable use of ES6 <code>import</code> and CommonJS <code>require</code> through its <a href="http://babeljs.io/docs/usage/modules/#interop">interop</a> capability to run two module formats side-by-side, but the behavior is <a href="https://github.com/babel/babel/issues/2047">slightly different</a>. If you add a second export beside your default export, you can no longer import the default using <code>require('./App')</code>. Instead you have to use <code>require('./App').default</code>.</p>
+<p>If you are using ES6 in your application source, but write your tests in ES5, you should know that Babel handles the interchangeable use of ES6 <code>import</code> and CommonJS <code>require</code> through its <a href="http://babeljs.io/docs/usage/modules/#interop" target="_blank" rel="noopener">interop</a> capability to run two module formats side-by-side, but the behavior is <a href="https://github.com/babel/babel/issues/2047" target="_blank" rel="noopener">slightly different</a>. If you add a second export beside your default export, you can no longer import the default using <code>require('./App')</code>. Instead you have to use <code>require('./App').default</code>.</p>
 </blockquote>
 <h3 id="middleware">Middleware <a class="markdownIt-Anchor" href="#middleware">#</a></h3>
 <p>Middleware functions wrap behavior of <code>dispatch</code> calls in Redux, so to test this modified behavior we need to mock the behavior of the <code>dispatch</code> call.</p>
-<h4 id="example-5">Example <a class="markdownIt-Anchor" href="#example-5">#</a></h4>
+<h4 id="example-4">Example <a class="markdownIt-Anchor" href="#example-4">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> types <span class="hljs-keyword">from</span> <span class="hljs-string">'../../constants/ActionTypes'</span>
 <span class="hljs-keyword">import</span> singleDispatch <span class="hljs-keyword">from</span> <span class="hljs-string">'../../middleware/singleDispatch'</span>
 
@@ -410,13 +410,13 @@ describe(<span class="hljs-string">'middleware'</span>, () =&gt; {
 <h3 id="glossary">Glossary <a class="markdownIt-Anchor" href="#glossary">#</a></h3>
 <ul>
 <li>
-<p><a href="http://airbnb.io/enzyme/">Enzyme</a>: Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.</p>
+<p><a href="http://airbnb.io/enzyme/" target="_blank" rel="noopener">Enzyme</a>: Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.</p>
 </li>
 <li>
-<p><a href="http://facebook.github.io/react/docs/test-utils.html">React Test Utils</a>: Test Utilities for React. Used by Enzyme.</p>
+<p><a href="http://facebook.github.io/react/docs/test-utils.html" target="_blank" rel="noopener">React Test Utils</a>: Test Utilities for React. Used by Enzyme.</p>
 </li>
 <li>
-<p><a href="http://airbnb.io/enzyme/docs/api/shallow.html">Shallow rendering</a>: Shallow rendering lets you instantiate a component and effectively get the result of its <code>render</code> method just a single level deep instead of rendering components recursively to a DOM. Shallow rendering is useful for unit tests, where you test a particular component only, and importantly not its children. This also means that changing a child component won't affect the tests for the parent component. Testing a component and all its children can be accomplished with <a href="http://airbnb.io/enzyme/docs/api/mount.html">Enzyme's <code>mount()</code> method</a>, aka full DOM rendering.</p>
+<p><a href="http://airbnb.io/enzyme/docs/api/shallow.html" target="_blank" rel="noopener">Shallow rendering</a>: Shallow rendering lets you instantiate a component and effectively get the result of its <code>render</code> method just a single level deep instead of rendering components recursively to a DOM. Shallow rendering is useful for unit tests, where you test a particular component only, and importantly not its children. This also means that changing a child component won't affect the tests for the parent component. Testing a component and all its children can be accomplished with <a href="http://airbnb.io/enzyme/docs/api/mount.html" target="_blank" rel="noopener">Enzyme's <code>mount()</code> method</a>, aka full DOM rendering.</p>
 </li>
 </ul>
 
@@ -453,7 +453,7 @@ describe(<span class="hljs-string">'middleware'</span>, () =&gt; {
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

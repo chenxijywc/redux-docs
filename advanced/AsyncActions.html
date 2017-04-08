@@ -32,7 +32,7 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/index.html" class="breadcrumb-item">advanced</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/AsyncActions.html" class="breadcrumb-item">Async Actions</a></div>
     <h1 class="article-title">Async Actions</h1>
     <div class="article">
-      <p>In the <a href="../basics/README.md">basics guide</a>, we built a simple todo application. It was fully synchronous. Every time an action was dispatched, the state was updated immediately.</p>
+      <p>In the <a href="../basics/README.md" target="_blank" rel="noopener">basics guide</a>, we built a simple todo application. It was fully synchronous. Every time an action was dispatched, the state was updated immediately.</p>
 <p>In this guide, we will build a different, asynchronous application. It will use the Reddit API to show the current headlines for a selected subreddit. How does asynchronicity fit into Redux flow?</p>
 <h2 id="actions">Actions <a class="markdownIt-Anchor" href="#actions">#</a></h2>
 <p>When you call an asynchronous API, there are two crucial moments in time: the moment you start the call, and the moment when you receive an answer (or a timeout).</p>
@@ -61,7 +61,7 @@
 { <span class="hljs-attr">type</span>: <span class="hljs-string">'FETCH_POSTS_FAILURE'</span>, <span class="hljs-attr">error</span>: <span class="hljs-string">'Oops'</span> }
 { <span class="hljs-attr">type</span>: <span class="hljs-string">'FETCH_POSTS_SUCCESS'</span>, <span class="hljs-attr">response</span>: { ... } }
 </code></pre>
-<p>Choosing whether to use a single action type with flags, or multiple action types, is up to you. It's a convention you need to decide with your team. Multiple types leave less room for a mistake, but this is not an issue if you generate action creators and reducers with a helper library like <a href="https://github.com/acdlite/redux-actions">redux-actions</a>.</p>
+<p>Choosing whether to use a single action type with flags, or multiple action types, is up to you. It's a convention you need to decide with your team. Multiple types leave less room for a mistake, but this is not an issue if you generate action creators and reducers with a helper library like <a href="https://github.com/acdlite/redux-actions" target="_blank" rel="noopener">redux-actions</a>.</p>
 <p>Whatever convention you choose, stick with it throughout the application.<br>
 We'll use separate types in this tutorial.</p>
 <h2 id="synchronous-action-creators">Synchronous Action Creators <a class="markdownIt-Anchor" href="#synchronous-action-creators">#</a></h2>
@@ -115,10 +115,10 @@ We'll use separate types in this tutorial.</p>
 <h5 id="note-on-error-handling">Note on Error Handling <a class="markdownIt-Anchor" href="#note-on-error-handling">#</a></h5>
 </blockquote>
 <blockquote>
-<p>In a real app, you'd also want to dispatch an action on request failure. We won't implement error handling in this tutorial, but the <a href="../introduction/Examples.md#real-world">real world example</a> shows one of the possible approaches.</p>
+<p>In a real app, you'd also want to dispatch an action on request failure. We won't implement error handling in this tutorial, but the <a href="../introduction/Examples.md#real-world" target="_blank" rel="noopener">real world example</a> shows one of the possible approaches.</p>
 </blockquote>
 <h2 id="designing-the-state-shape">Designing the State Shape <a class="markdownIt-Anchor" href="#designing-the-state-shape">#</a></h2>
-<p>Just like in the basic tutorial, you'll need to <a href="../basics/Reducers.md#designing-the-state-shape">design the shape of your application's state</a> before rushing into the implementation. With asynchronous code, there is more state to take care of, so we need to think it through.</p>
+<p>Just like in the basic tutorial, you'll need to <a href="../basics/Reducers.md#designing-the-state-shape" target="_blank" rel="noopener">design the shape of your application's state</a> before rushing into the implementation. With asynchronous code, there is more state to take care of, so we need to think it through.</p>
 <p>This part is often confusing to beginners, because it is not immediately clear what information describes the state of an asynchronous application, and how to organize it in a single tree.</p>
 <p>We'll start with the most common use case: lists. Web applications often show lists of things. For example, a list of posts, or a list of friends. You'll need to figure out what sorts of lists your app can show. You want to store them separately in the state, because this way you can cache them and only fetch again if necessary.</p>
 <p>Here's what the state shape for our “Reddit headlines” app might look like:</p>
@@ -164,7 +164,7 @@ We'll use separate types in this tutorial.</p>
 <p>In this example, we store the received items together with the pagination information. However, this approach won't work well if you have nested entities referencing each other, or if you let the user edit items. Imagine the user wants to edit a fetched post, but this post is duplicated in several places in the state tree. This would be really painful to implement.</p>
 </blockquote>
 <blockquote>
-<p>If you have nested entities, or if you let users edit received entities, you should keep them separately in the state as if it was a database. In pagination information, you would only refer to them by their IDs. This lets you always keep them up to date. The <a href="../introduction/Examples.md#real-world">real world example</a> shows this approach, together with <a href="https://github.com/gaearon/normalizr">normalizr</a> to normalize the nested API responses. With this approach, your state might look like this:</p>
+<p>If you have nested entities, or if you let users edit received entities, you should keep them separately in the state as if it was a database. In pagination information, you would only refer to them by their IDs. This lets you always keep them up to date. The <a href="../introduction/Examples.md#real-world" target="_blank" rel="noopener">real world example</a> shows this approach, together with <a href="https://github.com/gaearon/normalizr" target="_blank" rel="noopener">normalizr</a> to normalize the nested API responses. With this approach, your state might look like this:</p>
 </blockquote>
 <blockquote>
 <pre class="hljs"><code>{
@@ -214,7 +214,7 @@ We'll use separate types in this tutorial.</p>
 <h5 id="note-on-reducer-composition">Note on Reducer Composition <a class="markdownIt-Anchor" href="#note-on-reducer-composition">#</a></h5>
 </blockquote>
 <blockquote>
-<p>Here, we assume that you understand reducer composition with <a href="../api/combineReducers.md"><code>combineReducers()</code></a>, as described in the <a href="../basics/Reducers.md#splitting-reducers">Splitting Reducers</a> section on the <a href="../basics/README.md">basics guide</a>. If you don't, please <a href="../basics/Reducers.md#splitting-reducers">read it first</a>.</p>
+<p>Here, we assume that you understand reducer composition with <a href="../api/combineReducers.md" target="_blank" rel="noopener"><code>combineReducers()</code></a>, as described in the <a href="../basics/Reducers.md#splitting-reducers" target="_blank" rel="noopener">Splitting Reducers</a> section on the <a href="../basics/README.md" target="_blank" rel="noopener">basics guide</a>. If you don't, please <a href="../basics/Reducers.md#splitting-reducers" target="_blank" rel="noopener">read it first</a>.</p>
 </blockquote>
 <h4 id="reducersjs"><code>reducers.js</code> <a class="markdownIt-Anchor" href="#reducersjs">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { combineReducers } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
@@ -294,15 +294,15 @@ nextState[action.subreddit] = posts(state[action.subreddit], action)
 </code></pre>
 </li>
 <li>
-<p>We extracted <code>posts(state, action)</code> that manages the state of a specific post list. This is just <a href="../basics/Reducers.md#splitting-reducers">reducer composition</a>! It is our choice how to split the reducer into smaller reducers, and in this case, we're delegating updating items inside an object to a <code>posts</code> reducer. The <a href="../introduction/Examples.md#real-world">real world example</a> goes even further, showing how to create a reducer factory for parameterized pagination reducers.</p>
+<p>We extracted <code>posts(state, action)</code> that manages the state of a specific post list. This is just <a href="../basics/Reducers.md#splitting-reducers" target="_blank" rel="noopener">reducer composition</a>! It is our choice how to split the reducer into smaller reducers, and in this case, we're delegating updating items inside an object to a <code>posts</code> reducer. The <a href="../introduction/Examples.md#real-world" target="_blank" rel="noopener">real world example</a> goes even further, showing how to create a reducer factory for parameterized pagination reducers.</p>
 </li>
 </ul>
 <p>Remember that reducers are just functions, so you can use functional composition and higher-order functions as much as you feel comfortable.</p>
 <h2 id="async-action-creators">Async Action Creators <a class="markdownIt-Anchor" href="#async-action-creators">#</a></h2>
-<p>Finally, how do we use the synchronous action creators we <a href="#synchronous-action-creators">defined earlier</a> together with network requests? The standard way to do it with Redux is to use the <a href="https://github.com/gaearon/redux-thunk">Redux Thunk middleware</a>. It comes in a separate package called <code>redux-thunk</code>. We'll explain how middleware works in general <a href="Middleware.md">later</a>; for now, there is just one important thing you need to know: by using this specific middleware, an action creator can return a function instead of an action object. This way, the action creator becomes a <a href="https://en.wikipedia.org/wiki/Thunk">thunk</a>.</p>
+<p>Finally, how do we use the synchronous action creators we <a href="#synchronous-action-creators">defined earlier</a> together with network requests? The standard way to do it with Redux is to use the <a href="https://github.com/gaearon/redux-thunk" target="_blank" rel="noopener">Redux Thunk middleware</a>. It comes in a separate package called <code>redux-thunk</code>. We'll explain how middleware works in general <a href="Middleware.md" target="_blank" rel="noopener">later</a>; for now, there is just one important thing you need to know: by using this specific middleware, an action creator can return a function instead of an action object. This way, the action creator becomes a <a href="https://en.wikipedia.org/wiki/Thunk" target="_blank" rel="noopener">thunk</a>.</p>
 <p>When an action creator returns a function, that function will get executed by the Redux Thunk middleware. This function doesn't need to be pure; it is thus allowed to have side effects, including executing asynchronous API calls. The function can also dispatch actions—like those synchronous actions we defined earlier.</p>
 <p>We can still define these special thunk action creators inside our <code>actions.js</code> file:</p>
-<h4 id="actionsjs-2"><code>actions.js</code> <a class="markdownIt-Anchor" href="#actionsjs-2">#</a></h4>
+<h4 id="actionsjs-1"><code>actions.js</code> <a class="markdownIt-Anchor" href="#actionsjs-1">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> fetch <span class="hljs-keyword">from</span> <span class="hljs-string">'isomorphic-fetch'</span>
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> REQUEST_POSTS = <span class="hljs-string">'REQUEST_POSTS'</span>
@@ -365,7 +365,7 @@ nextState[action.subreddit] = posts(state[action.subreddit], action)
 <h5 id="note-on-fetch">Note on <code>fetch</code> <a class="markdownIt-Anchor" href="#note-on-fetch">#</a></h5>
 </blockquote>
 <blockquote>
-<p>We use <a href="https://developer.mozilla.org/en/docs/Web/API/Fetch_API"><code>fetch</code> API</a> in the examples. It is a new API for making network requests that replaces <code>XMLHttpRequest</code> for most common needs. Because most browsers don't yet support it natively, we suggest that you use <a href="https://github.com/matthew-andrews/isomorphic-fetch"><code>isomorphic-fetch</code></a> library:</p>
+<p>We use <a href="https://developer.mozilla.org/en/docs/Web/API/Fetch_API" target="_blank" rel="noopener"><code>fetch</code> API</a> in the examples. It is a new API for making network requests that replaces <code>XMLHttpRequest</code> for most common needs. Because most browsers don't yet support it natively, we suggest that you use <a href="https://github.com/matthew-andrews/isomorphic-fetch" target="_blank" rel="noopener"><code>isomorphic-fetch</code></a> library:</p>
 </blockquote>
 <blockquote>
 <pre class="hljs"><code></code></pre>
@@ -376,17 +376,17 @@ nextState[action.subreddit] = posts(state[action.subreddit], action)
 <pre class="hljs"><code></code></pre>
 </blockquote>
 <blockquote>
-<p>Internally, it uses <a href="https://github.com/github/fetch"><code>whatwg-fetch</code> polyfill</a> on the client, and <a href="https://github.com/bitinn/node-fetch"><code>node-fetch</code></a> on the server, so you won't need to change API calls if you change your app to be <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9">universal</a>.</p>
+<p>Internally, it uses <a href="https://github.com/github/fetch" target="_blank" rel="noopener"><code>whatwg-fetch</code> polyfill</a> on the client, and <a href="https://github.com/bitinn/node-fetch" target="_blank" rel="noopener"><code>node-fetch</code></a> on the server, so you won't need to change API calls if you change your app to be <a href="https://medium.com/@mjackson/universal-javascript-4761051b7ae9" target="_blank" rel="noopener">universal</a>.</p>
 </blockquote>
 <blockquote>
-<p>Be aware that any <code>fetch</code> polyfill assumes a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a> polyfill is already present. The easiest way to ensure you have a Promise polyfill is to enable Babel's ES6 polyfill in your entry point before any other code runs:</p>
+<p>Be aware that any <code>fetch</code> polyfill assumes a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">Promise</a> polyfill is already present. The easiest way to ensure you have a Promise polyfill is to enable Babel's ES6 polyfill in your entry point before any other code runs:</p>
 </blockquote>
 <blockquote>
 <pre class="hljs"><code><span class="hljs-comment">// Do this once before any other code in your app</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">'babel-polyfill'</span>
 </code></pre>
 </blockquote>
-<p>How do we include the Redux Thunk middleware in the dispatch mechanism? We use the <a href="../api/applyMiddleware.md"><code>applyMiddleware()</code></a> store enhancer from Redux, as shown below:</p>
+<p>How do we include the Redux Thunk middleware in the dispatch mechanism? We use the <a href="../api/applyMiddleware.md" target="_blank" rel="noopener"><code>applyMiddleware()</code></a> store enhancer from Redux, as shown below:</p>
 <h4 id="indexjs"><code>index.js</code> <a class="markdownIt-Anchor" href="#indexjs">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> thunkMiddleware <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-thunk'</span>
 <span class="hljs-keyword">import</span> createLogger <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-logger'</span>
@@ -410,7 +410,7 @@ store.dispatch(fetchPosts(<span class="hljs-string">'reactjs'</span>)).then(<spa
 )
 </code></pre>
 <p>The nice thing about thunks is that they can dispatch results of each other:</p>
-<h4 id="actionsjs-3"><code>actions.js</code> <a class="markdownIt-Anchor" href="#actionsjs-3">#</a></h4>
+<h4 id="actionsjs-2"><code>actions.js</code> <a class="markdownIt-Anchor" href="#actionsjs-2">#</a></h4>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> fetch <span class="hljs-keyword">from</span> <span class="hljs-string">'isomorphic-fetch'</span>
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> REQUEST_POSTS = <span class="hljs-string">'REQUEST_POSTS'</span>
@@ -471,7 +471,7 @@ store.dispatch(fetchPosts(<span class="hljs-string">'reactjs'</span>)).then(<spa
 }
 </code></pre>
 <p>This lets us write more sophisticated async control flow gradually, while the consuming code can stay pretty much the same:</p>
-<h4 id="indexjs-2"><code>index.js</code> <a class="markdownIt-Anchor" href="#indexjs-2">#</a></h4>
+<h4 id="indexjs-1"><code>index.js</code> <a class="markdownIt-Anchor" href="#indexjs-1">#</a></h4>
 <pre class="hljs"><code>store.dispatch(fetchPostsIfNeeded(<span class="hljs-string">'reactjs'</span>)).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
   <span class="hljs-built_in">console</span>.log(store.getState())
 )
@@ -482,18 +482,18 @@ store.dispatch(fetchPosts(<span class="hljs-string">'reactjs'</span>)).then(<spa
 <blockquote>
 <p>Async action creators are especially convenient for server rendering. You can create a store, dispatch a single async action creator that dispatches other async action creators to fetch data for a whole section of your app, and only render after the Promise it returns, completes. Then your store will already be hydrated with the state you need before rendering.</p>
 </blockquote>
-<p><a href="https://github.com/gaearon/redux-thunk">Thunk middleware</a> isn't the only way to orchestrate asynchronous actions in Redux:</p>
+<p><a href="https://github.com/gaearon/redux-thunk" target="_blank" rel="noopener">Thunk middleware</a> isn't the only way to orchestrate asynchronous actions in Redux:</p>
 <ul>
-<li>You can use <a href="https://github.com/acdlite/redux-promise">redux-promise</a> or <a href="https://github.com/pburtchaell/redux-promise-middleware">redux-promise-middleware</a> to dispatch Promises instead of functions.</li>
-<li>You can use <a href="https://github.com/redux-observable/redux-observable">redux-observable</a> to dispatch Observables.</li>
-<li>You can use the <a href="https://github.com/yelouafi/redux-saga/">redux-saga</a> middleware to build more complex asynchronous actions.</li>
-<li>You can even write a custom middleware to describe calls to your API, like the <a href="../introduction/Examples.md#real-world">real world example</a> does.</li>
+<li>You can use <a href="https://github.com/acdlite/redux-promise" target="_blank" rel="noopener">redux-promise</a> or <a href="https://github.com/pburtchaell/redux-promise-middleware" target="_blank" rel="noopener">redux-promise-middleware</a> to dispatch Promises instead of functions.</li>
+<li>You can use <a href="https://github.com/redux-observable/redux-observable" target="_blank" rel="noopener">redux-observable</a> to dispatch Observables.</li>
+<li>You can use the <a href="https://github.com/yelouafi/redux-saga/" target="_blank" rel="noopener">redux-saga</a> middleware to build more complex asynchronous actions.</li>
+<li>You can even write a custom middleware to describe calls to your API, like the <a href="../introduction/Examples.md#real-world" target="_blank" rel="noopener">real world example</a> does.</li>
 </ul>
 <p>It is up to you to try a few options, choose a convention you like, and follow it, whether with, or without the middleware.</p>
 <h2 id="connecting-to-ui">Connecting to UI <a class="markdownIt-Anchor" href="#connecting-to-ui">#</a></h2>
-<p>Dispatching async actions is no different from dispatching synchronous actions, so we won't discuss this in detail. See <a href="../basics/UsageWithReact.md">Usage with React</a> for an introduction into using Redux from React components. See <a href="ExampleRedditAPI.md">Example: Reddit API</a> for the complete source code discussed in this example.</p>
+<p>Dispatching async actions is no different from dispatching synchronous actions, so we won't discuss this in detail. See <a href="../basics/UsageWithReact.md" target="_blank" rel="noopener">Usage with React</a> for an introduction into using Redux from React components. See <a href="ExampleRedditAPI.md" target="_blank" rel="noopener">Example: Reddit API</a> for the complete source code discussed in this example.</p>
 <h2 id="next-steps">Next Steps <a class="markdownIt-Anchor" href="#next-steps">#</a></h2>
-<p>Read <a href="AsyncFlow.md">Async Flow</a> to recap how async actions fit into the Redux flow.</p>
+<p>Read <a href="AsyncFlow.md" target="_blank" rel="noopener">Async Flow</a> to recap how async actions fit into the Redux flow.</p>
 
       
     </div>
@@ -528,7 +528,7 @@ store.dispatch(fetchPosts(<span class="hljs-string">'reactjs'</span>)).then(<spa
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

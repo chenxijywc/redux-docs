@@ -32,13 +32,13 @@
     <div class="breadcrumb-area"><a href="../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/index.html" class="breadcrumb-item">advanced</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../advanced/AsyncFlow.html" class="breadcrumb-item">Async Flow</a></div>
     <h1 class="article-title">Async Flow</h1>
     <div class="article">
-      <p>Without <a href="Middleware.md">middleware</a>, Redux store only supports <a href="../basics/DataFlow.md">synchronous data flow</a>. This is what you get by default with <a href="../api/createStore.md"><code>createStore()</code></a>.</p>
-<p>You may enhance <a href="../api/createStore.md"><code>createStore()</code></a> with <a href="../api/applyMiddleware.md"><code>applyMiddleware()</code></a>. It is not required, but it lets you <a href="AsyncActions.md">express asynchronous actions in a convenient way</a>.</p>
-<p>Asynchronous middleware like <a href="https://github.com/gaearon/redux-thunk">redux-thunk</a> or <a href="https://github.com/acdlite/redux-promise">redux-promise</a> wraps the store's <a href="../api/Store.md#dispatch"><code>dispatch()</code></a> method and allows you to dispatch something other than actions, for example, functions or Promises. Any middleware you use can then interpret anything you dispatch, and in turn, can pass actions to the next middleware in the chain. For example, a Promise middleware can intercept Promises and dispatch a pair of begin/end actions asynchronously in response to each Promise.</p>
-<p>When the last middleware in the chain dispatches an action, it has to be a plain object. This is when the <a href="../basics/DataFlow.md">synchronous Redux data flow</a> takes place.</p>
-<p>Check out <a href="ExampleRedditAPI.md">the full source code for the async example</a>.</p>
+      <p>Without <a href="Middleware.md" target="_blank" rel="noopener">middleware</a>, Redux store only supports <a href="../basics/DataFlow.md" target="_blank" rel="noopener">synchronous data flow</a>. This is what you get by default with <a href="../api/createStore.md" target="_blank" rel="noopener"><code>createStore()</code></a>.</p>
+<p>You may enhance <a href="../api/createStore.md" target="_blank" rel="noopener"><code>createStore()</code></a> with <a href="../api/applyMiddleware.md" target="_blank" rel="noopener"><code>applyMiddleware()</code></a>. It is not required, but it lets you <a href="AsyncActions.md" target="_blank" rel="noopener">express asynchronous actions in a convenient way</a>.</p>
+<p>Asynchronous middleware like <a href="https://github.com/gaearon/redux-thunk" target="_blank" rel="noopener">redux-thunk</a> or <a href="https://github.com/acdlite/redux-promise" target="_blank" rel="noopener">redux-promise</a> wraps the store's <a href="../api/Store.md#dispatch" target="_blank" rel="noopener"><code>dispatch()</code></a> method and allows you to dispatch something other than actions, for example, functions or Promises. Any middleware you use can then interpret anything you dispatch, and in turn, can pass actions to the next middleware in the chain. For example, a Promise middleware can intercept Promises and dispatch a pair of begin/end actions asynchronously in response to each Promise.</p>
+<p>When the last middleware in the chain dispatches an action, it has to be a plain object. This is when the <a href="../basics/DataFlow.md" target="_blank" rel="noopener">synchronous Redux data flow</a> takes place.</p>
+<p>Check out <a href="ExampleRedditAPI.md" target="_blank" rel="noopener">the full source code for the async example</a>.</p>
 <h2 id="next-steps">Next Steps <a class="markdownIt-Anchor" href="#next-steps">#</a></h2>
-<p>Now you saw an example of what middleware can do in Redux, it's time to learn how it actually works, and how you can create your own. Go on to the next detailed section about <a href="Middleware.md">Middleware</a>.</p>
+<p>Now you saw an example of what middleware can do in Redux, it's time to learn how it actually works, and how you can create your own. Go on to the next detailed section about <a href="Middleware.md" target="_blank" rel="noopener">Middleware</a>.</p>
 
       
     </div>
@@ -73,7 +73,7 @@
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

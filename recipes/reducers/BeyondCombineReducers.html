@@ -35,7 +35,7 @@
       <p>The <code>combineReducers</code> utility included with Redux is very useful, but is deliberately limited to handle a single common use case: updating a state tree that is a plain Javascript object, by delegating the work of updating each slice of state to a specific slice reducer.  It does <em>not</em> handle other use cases, such as a state tree made up of Immutable.js Maps, trying to pass other portions of the state tree as an additional argument to a slice reducer, or performing &quot;ordering&quot; of slice reducer calls.  It also does not care how a given slice reducer does its work.</p>
 <p>The common question, then, is &quot;How can I use <code>combineReducers</code> to handle these other use cases?&quot;.  The answer to that is simply: &quot;you don't - you probably need to use something else&quot;.  <strong>Once you go past the core use case for <code>combineReducers</code>, it's time to use more &quot;custom&quot; reducer logic</strong>, whether it be specific logic for a one-off use case, or a reusable function that could be widely shared.  Here's some suggestions for dealing with a couple of these typical use cases, but feel free to come up with your own approaches.</p>
 <h2 id="using-slice-reducers-with-immutablejs-objects">Using slice reducers with Immutable.js objects <a class="markdownIt-Anchor" href="#using-slice-reducers-with-immutablejs-objects">#</a></h2>
-<p>Since <code>combineReducers</code> currently only works with plain Javascript objects, an application that uses an Immutable.js Map object for the top of its state tree could not use <code>combineReducers</code> to manage that Map.  Since many developers do use Immutable.js, there are a number of published utilities that provide equivalent functionality, such as <a href="https://github.com/gajus/redux-immutable">redux-immutable</a>.  This package provides its own implementation of <code>combineReducers</code> that knows how to iterate over an Immutable Map instead of a plain Javascript object.</p>
+<p>Since <code>combineReducers</code> currently only works with plain Javascript objects, an application that uses an Immutable.js Map object for the top of its state tree could not use <code>combineReducers</code> to manage that Map.  Since many developers do use Immutable.js, there are a number of published utilities that provide equivalent functionality, such as <a href="https://github.com/gajus/redux-immutable" target="_blank" rel="noopener">redux-immutable</a>.  This package provides its own implementation of <code>combineReducers</code> that knows how to iterate over an Immutable Map instead of a plain Javascript object.</p>
 <h2 id="sharing-data-between-slice-reducers">Sharing data between slice reducers <a class="markdownIt-Anchor" href="#sharing-data-between-slice-reducers">#</a></h2>
 <p>Similarly, if <code>sliceReducerA</code> happens to need some data from <code>sliceReducerB</code>'s slice of state in order to handle a particular action, or <code>sliceReducerB</code> happens to need the entire state as an argument, <code>combineReducers</code> does not handle that itself.  This could be resolved by writing a custom function that knows to pass the needed data as an additional argument in those specific cases, such as:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">combinedReducer</span>(<span class="hljs-params">state, action</span>) </span>{
@@ -105,7 +105,7 @@
     <span class="hljs-keyword">return</span> finalState;
 }
 </code></pre>
-<p>As it turns out, there's a useful utility called <a href="https://github.com/acdlite/reduce-reducers">reduce-reducers</a> that can make that process easier.  It simply takes multiple reducers and runs <code>reduce()</code> on them, passing the intermediate state values to the next reducer in line:</p>
+<p>As it turns out, there's a useful utility called <a href="https://github.com/acdlite/reduce-reducers" target="_blank" rel="noopener">reduce-reducers</a> that can make that process easier.  It simply takes multiple reducers and runs <code>reduce()</code> on them, passing the intermediate state values to the next reducer in line:</p>
 <pre class="hljs"><code><span class="hljs-comment">// Same as the "manual" rootReducer above</span>
 <span class="hljs-keyword">const</span> rootReducer = reduceReducers(combinedReducers, crossSliceReducer);
 </code></pre>
@@ -119,7 +119,7 @@
 });
 </code></pre>
 <p>Note that <code>combineReducers</code> doesn't know or care that there's anything special about the reducer function that's responsible for managing <code>a</code>.  We didn't need to modify <code>combineReducers</code> to specifically know how to undo things - we just built up the pieces we needed into a new composed function.</p>
-<p>Also, while <code>combineReducers</code> is the one reducer utility function that's built into Redux, there's a wide variety of third-party reducer utilities that have published for reuse.  The <a href="https://github.com/markerikson/redux-ecosystem-links">Redux Addons Catalog</a> lists many of the third-party utilities that are available.  Or, if none of the published utilities solve your use case, you can always write a function yourself that does just exactly what you need.</p>
+<p>Also, while <code>combineReducers</code> is the one reducer utility function that's built into Redux, there's a wide variety of third-party reducer utilities that have published for reuse.  The <a href="https://github.com/markerikson/redux-ecosystem-links" target="_blank" rel="noopener">Redux Addons Catalog</a> lists many of the third-party utilities that are available.  Or, if none of the published utilities solve your use case, you can always write a function yourself that does just exactly what you need.</p>
 
       
     </div>
@@ -154,7 +154,7 @@
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

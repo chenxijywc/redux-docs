@@ -215,7 +215,7 @@
 </code></pre>
 <p>Operations like &quot;Look up all books by this author&quot; can then accomplished with a single loop over the join table.  Given the typical amounts of data in a client application and the speed of Javascript engines, this kind of operation is likely to have sufficiently fast performance for most use cases.</p>
 <h2 id="normalizing-nested-data">Normalizing Nested Data <a class="markdownIt-Anchor" href="#normalizing-nested-data">#</a></h2>
-<p>Because APIs frequently send back data in a nested form, that data needs to be transformed into a normalized shape before it can be included in the state tree.  The <a href="https://github.com/paularmstrong/normalizr">Normalizr</a> library is usually used for this task.  You can define schema types and relations, feed the schema and the response data to Normalizr, and it will output a normalized transformation of the response.  That output can then be included in an action and used to update the store.  See the Normalizr documentation for more details on its usage.</p>
+<p>Because APIs frequently send back data in a nested form, that data needs to be transformed into a normalized shape before it can be included in the state tree.  The <a href="https://github.com/paularmstrong/normalizr" target="_blank" rel="noopener">Normalizr</a> library is usually used for this task.  You can define schema types and relations, feed the schema and the response data to Normalizr, and it will output a normalized transformation of the response.  That output can then be included in an action and used to update the store.  See the Normalizr documentation for more details on its usage.</p>
 
       
     </div>
@@ -250,7 +250,7 @@
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

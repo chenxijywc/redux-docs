@@ -34,7 +34,7 @@
     <div class="article">
       <p>Composes functions from right to left.</p>
 <p>This is a functional programming utility, and is included in Redux as a convenience.<br>
-You might want to use it to apply several <a href="../Glossary.md#store-enhancer">store enhancers</a> in a row.</p>
+You might want to use it to apply several <a href="../Glossary.md#store-enhancer" target="_blank" rel="noopener">store enhancers</a> in a row.</p>
 <h4 id="arguments">Arguments <a class="markdownIt-Anchor" href="#arguments">#</a></h4>
 <ol>
 <li>(<em>arguments</em>): The functions to compose. Each function is expected to accept a single parameter. Its return value will be provided as an argument to the function standing to the left, and so on. The exception is the right-most argument which can accept multiple parameters, as it will provide the signature for the resulting composed function.</li>
@@ -42,7 +42,7 @@ You might want to use it to apply several <a href="../Glossary.md#store-enhancer
 <h4 id="returns">Returns <a class="markdownIt-Anchor" href="#returns">#</a></h4>
 <p>(<em>Function</em>): The final function obtained by composing the given functions from right to left.</p>
 <h4 id="example">Example <a class="markdownIt-Anchor" href="#example">#</a></h4>
-<p>This example demonstrates how to use <code>compose</code> to enhance a <a href="Store.md">store</a> with <a href="applyMiddleware.md"><code>applyMiddleware</code></a> and a few developer tools from the <a href="https://github.com/gaearon/redux-devtools">redux-devtools</a> package.</p>
+<p>This example demonstrates how to use <code>compose</code> to enhance a <a href="Store.md" target="_blank" rel="noopener">store</a> with <a href="applyMiddleware.md" target="_blank" rel="noopener"><code>applyMiddleware</code></a> and a few developer tools from the <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">redux-devtools</a> package.</p>
 <pre class="hljs"><code><span class="hljs-keyword">import</span> { createStore, combineReducers, applyMiddleware, compose } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>
 <span class="hljs-keyword">import</span> thunk <span class="hljs-keyword">from</span> <span class="hljs-string">'redux-thunk'</span>
 <span class="hljs-keyword">import</span> DevTools <span class="hljs-keyword">from</span> <span class="hljs-string">'./containers/DevTools'</span>
@@ -94,7 +94,7 @@ You might want to use it to apply several <a href="../Glossary.md#store-enhancer
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 

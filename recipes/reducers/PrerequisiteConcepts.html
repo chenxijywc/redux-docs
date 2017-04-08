@@ -32,9 +32,9 @@
     <div class="breadcrumb-area"><a href="../../index.html" class="breadcrumb-item">Home</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/index.html" class="breadcrumb-item">recipes</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/index.html" class="breadcrumb-item">reducers</a><span class="breadcrumb-delimiter"> &gt; </span><a href="../../recipes/reducers/PrerequisiteConcepts.html" class="breadcrumb-item">Prerequisite Reducer Concepts</a></div>
     <h1 class="article-title">Prerequisite Reducer Concepts</h1>
     <div class="article">
-      <p>As described in <a href="../../basics/Reducers.md">Reducers</a>, a Redux reducer function:</p>
+      <p>As described in <a href="../../basics/Reducers.md" target="_blank" rel="noopener">Reducers</a>, a Redux reducer function:</p>
 <ul>
-<li>Should have a signature of <code>(previousState, action) =&gt; newState</code>, similar to the type of function you would pass to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"><code>Array.prototype.reduce(reducer, ?initialValue)</code></a></li>
+<li>Should have a signature of <code>(previousState, action) =&gt; newState</code>, similar to the type of function you would pass to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank" rel="noopener"><code>Array.prototype.reduce(reducer, ?initialValue)</code></a></li>
 <li>Should be &quot;pure&quot;, which means it does not mutate its arguments, perform side effects like API calls or modifying values outside of the function, or call non-pure functions like <code>Date.now()</code> or <code>Math.random()</code>.  This also means that updates should be done in an <strong><em>&quot;immutable&quot;</em></strong> fashion, which means <strong>always returning new objects with the updated data</strong>, rather than directly modifying the original state tree in-place.</li>
 </ul>
 <blockquote>
@@ -57,13 +57,13 @@
 </ul>
 <p><strong>Reading list</strong>:</p>
 <ul>
-<li><a href="../../basics/Reducers.md">Redux Docs: Reducers</a></li>
-<li><a href="../ReducingBoilerplate.md">Redux Docs: Reducing Boilerplate</a></li>
-<li><a href="../ImplementingUndoHistory.md">Redux Docs: Implementing Undo History</a></li>
-<li><a href="../../api/combineReducers.md">Redux Docs: <code>combineReducers</code></a></li>
-<li><a href="http://slides.com/omnidan/hor#/">The Power of Higher-Order Reducers</a></li>
-<li><a href="http://stackoverflow.com/questions/33749759/read-stores-initial-state-in-redux-reducer">Stack Overflow: Store initial state and <code>combineReducers</code></a></li>
-<li><a href="http://stackoverflow.com/questions/35667775/state-in-redux-react-app-has-a-property-with-the-name-of-the-reducer">Stack Overflow: State key names and <code>combineReducers</code></a></li>
+<li><a href="../../basics/Reducers.md" target="_blank" rel="noopener">Redux Docs: Reducers</a></li>
+<li><a href="../ReducingBoilerplate.md" target="_blank" rel="noopener">Redux Docs: Reducing Boilerplate</a></li>
+<li><a href="../ImplementingUndoHistory.md" target="_blank" rel="noopener">Redux Docs: Implementing Undo History</a></li>
+<li><a href="../../api/combineReducers.md" target="_blank" rel="noopener">Redux Docs: <code>combineReducers</code></a></li>
+<li><a href="http://slides.com/omnidan/hor#/" target="_blank" rel="noopener">The Power of Higher-Order Reducers</a></li>
+<li><a href="http://stackoverflow.com/questions/33749759/read-stores-initial-state-in-redux-reducer" target="_blank" rel="noopener">Stack Overflow: Store initial state and <code>combineReducers</code></a></li>
+<li><a href="http://stackoverflow.com/questions/35667775/state-in-redux-react-app-has-a-property-with-the-name-of-the-reducer" target="_blank" rel="noopener">Stack Overflow: State key names and <code>combineReducers</code></a></li>
 </ul>
 <h4 id="pure-functions-and-side-effects">Pure Functions and Side Effects <a class="markdownIt-Anchor" href="#pure-functions-and-side-effects">#</a></h4>
 <p><strong>Key Concepts</strong>:</p>
@@ -74,10 +74,10 @@
 </ul>
 <p><strong>Reading List</strong>:</p>
 <ul>
-<li><a href="http://jaysoo.ca/2016/01/13/functional-programming-little-ideas/">The Little Idea of Functional Programming</a></li>
-<li><a href="http://web24studios.com/2015/10/understanding-programmatic-side-effects/">Understanding Programmatic Side Effects</a></li>
-<li><a href="https://youtu.be/e-5obm1G_FY">Learning Functional Programming in Javascript</a></li>
-<li><a href="https://www.sitepoint.com/an-introduction-to-reasonably-pure-functional-programming/">An Introduction to Reasonably Pure Functional Programming</a></li>
+<li><a href="http://jaysoo.ca/2016/01/13/functional-programming-little-ideas/" target="_blank" rel="noopener">The Little Idea of Functional Programming</a></li>
+<li><a href="http://web24studios.com/2015/10/understanding-programmatic-side-effects/" target="_blank" rel="noopener">Understanding Programmatic Side Effects</a></li>
+<li><a href="https://youtu.be/e-5obm1G_FY" target="_blank" rel="noopener">Learning Functional Programming in Javascript</a></li>
+<li><a href="https://www.sitepoint.com/an-introduction-to-reasonably-pure-functional-programming/" target="_blank" rel="noopener">An Introduction to Reasonably Pure Functional Programming</a></li>
 </ul>
 <h4 id="immutable-data-management">Immutable Data Management <a class="markdownIt-Anchor" href="#immutable-data-management">#</a></h4>
 <p><strong>Key Concepts</strong>:</p>
@@ -88,11 +88,11 @@
 </ul>
 <p><strong>Reading List</strong>:</p>
 <ul>
-<li><a href="http://reactkungfu.com/2015/08/pros-and-cons-of-using-immutability-with-react-js/">Pros and Cons of Using Immutability With React</a></li>
-<li><a href="http://t4d.io/javascript-and-immutability/">Javascript and Immutability</a></li>
-<li><a href="http://wecodetheweb.com/2016/02/12/immutable-javascript-using-es6-and-beyond/">Immutable Data using ES6 and Beyond</a></li>
-<li><a href="https://ryanfunduk.com/articles/immutable-data-from-scratch/">Immutable Data from Scratch</a></li>
-<li><a href="../UsingObjectSpreadOperator.md">Redux Docs: Using the Object Spread Operator</a></li>
+<li><a href="http://reactkungfu.com/2015/08/pros-and-cons-of-using-immutability-with-react-js/" target="_blank" rel="noopener">Pros and Cons of Using Immutability With React</a></li>
+<li><a href="http://t4d.io/javascript-and-immutability/" target="_blank" rel="noopener">Javascript and Immutability</a></li>
+<li><a href="http://wecodetheweb.com/2016/02/12/immutable-javascript-using-es6-and-beyond/" target="_blank" rel="noopener">Immutable Data using ES6 and Beyond</a></li>
+<li><a href="https://ryanfunduk.com/articles/immutable-data-from-scratch/" target="_blank" rel="noopener">Immutable Data from Scratch</a></li>
+<li><a href="../UsingObjectSpreadOperator.md" target="_blank" rel="noopener">Redux Docs: Using the Object Spread Operator</a></li>
 </ul>
 <h4 id="normalizing-data">Normalizing Data <a class="markdownIt-Anchor" href="#normalizing-data">#</a></h4>
 <p><strong>Key Concepts</strong>:</p>
@@ -106,14 +106,14 @@
 </ul>
 <p><strong>Reading List</strong>:</p>
 <ul>
-<li><a href="http://www.essentialsql.com/get-ready-to-learn-sql-database-normalization-explained-in-simple-english/">Database Normalization in Simple English</a></li>
-<li><a href="https://egghead.io/lessons/javascript-redux-normalizing-the-state-shape">Idiomatic Redux: Normalizing the State Shape</a></li>
-<li><a href="https://github.com/paularmstrong/normalizr">Normalizr Documentation</a></li>
-<li><a href="https://tonyhb.gitbooks.io/redux-without-profanity/content/normalizer.html">Redux Without Profanity: Normalizr</a></li>
-<li><a href="https://medium.com/@adamrackis/querying-a-redux-store-37db8c7f3b0f">Querying a Redux Store</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Associative_entity">Wikipedia: Associative Entity</a></li>
-<li><a href="http://www.tomjewett.com/dbdesign/dbdesign.php?page=manymany.php">Database Design: Many-to-Many</a></li>
-<li><a href="https://medium.com/@talkol/avoiding-accidental-complexity-when-structuring-your-app-state-6e6d22ad5e2a">Avoiding Accidental Complexity When Structuring Your App State</a></li>
+<li><a href="http://www.essentialsql.com/get-ready-to-learn-sql-database-normalization-explained-in-simple-english/" target="_blank" rel="noopener">Database Normalization in Simple English</a></li>
+<li><a href="https://egghead.io/lessons/javascript-redux-normalizing-the-state-shape" target="_blank" rel="noopener">Idiomatic Redux: Normalizing the State Shape</a></li>
+<li><a href="https://github.com/paularmstrong/normalizr" target="_blank" rel="noopener">Normalizr Documentation</a></li>
+<li><a href="https://tonyhb.gitbooks.io/redux-without-profanity/content/normalizer.html" target="_blank" rel="noopener">Redux Without Profanity: Normalizr</a></li>
+<li><a href="https://medium.com/@adamrackis/querying-a-redux-store-37db8c7f3b0f" target="_blank" rel="noopener">Querying a Redux Store</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Associative_entity" target="_blank" rel="noopener">Wikipedia: Associative Entity</a></li>
+<li><a href="http://www.tomjewett.com/dbdesign/dbdesign.php?page=manymany.php" target="_blank" rel="noopener">Database Design: Many-to-Many</a></li>
+<li><a href="https://medium.com/@talkol/avoiding-accidental-complexity-when-structuring-your-app-state-6e6d22ad5e2a" target="_blank" rel="noopener">Avoiding Accidental Complexity When Structuring Your App State</a></li>
 </ul>
 
       
@@ -149,7 +149,7 @@
 
 <div class="columns foot">
   <div class="column is-3 is-offset-9 build-by">
-    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.4.1
+    Build by <a href="https://github.com/ruanyf/loppo" target="_blank">Loppo</a> 0.5.1
   </div>
 </div>
 
